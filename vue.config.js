@@ -1,4 +1,5 @@
 module.exports = {
+    publicPath: '',
     chainWebpack: config => {
         config.resolve.extensions.merge(['.ts']).end()
         config.module
