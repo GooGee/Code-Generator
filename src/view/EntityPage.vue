@@ -8,10 +8,10 @@
             <b-nav tabs class="mt11">
                 <b-nav-item @click="tab = 'File'" :active="tab === 'File'"> File </b-nav-item>
                 <b-nav-item @click="tab = 'Field'" :active="tab === 'Field'"> Field </b-nav-item>
-                <b-nav-item @click="tab = 'Index'" :active="tab === 'Index'"> Index </b-nav-item>
                 <b-nav-item @click="tab = 'Cast'" :active="tab === 'Cast'"> Cast </b-nav-item>
                 <b-nav-item @click="tab = 'Data'" :active="tab === 'Data'"> Data </b-nav-item>
                 <b-nav-item @click="tab = 'Faker'" :active="tab === 'Faker'"> Faker </b-nav-item>
+                <b-nav-item @click="tab = 'Index'" :active="tab === 'Index'"> Index </b-nav-item>
                 <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
                 <b-nav-item @click="tab = 'Relation'" :active="tab === 'Relation'"> Relation </b-nav-item>
                 <b-nav-item @click="tab = 'Script'" :active="tab === 'Script'"> Script </b-nav-item>
@@ -27,13 +27,13 @@
 
             <FieldList v-if="tab === 'Field'"></FieldList>
 
-            <IndexList v-if="tab === 'Index'"></IndexList>
-
             <CastList v-if="tab === 'Cast'"></CastList>
 
             <DataList v-if="tab === 'Data'" :manager="sss.sidebar.item.dataManager"></DataList>
 
             <Faker v-if="tab === 'Faker'"></Faker>
+
+            <IndexList v-if="tab === 'Index'"></IndexList>
 
             <EntityProperty v-if="tab === 'Property'" :item="sss.sidebar.item">
                 <tr>
