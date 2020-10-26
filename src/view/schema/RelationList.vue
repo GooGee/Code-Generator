@@ -6,8 +6,8 @@
         </caption>
         <thead>
             <tr>
-                <th>Method Name</th>
                 <th>Type</th>
+                <th>Method Name</th>
                 <th>Parameter List</th>
             </tr>
         </thead>
@@ -15,6 +15,7 @@
         <draggable v-model="manager.list" group="relation" handle=".drag-handle" tag="tbody">
             <Relation
                 v-for="relation in manager.list"
+                :entity="sidebar.item"
                 :relation="relation"
                 :relationxx="relationxx"
                 :manager="manager"
@@ -54,6 +55,7 @@ export default {
     },
     data() {
         return {
+            sidebar: sss.sidebar,
             entityManager: sss.project.entityManager,
             relationxx: sss.getPreset('RelationType').propertyManager.list,
         }
