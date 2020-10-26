@@ -24,6 +24,14 @@ const bridge = {
     },
 }
 
+setInterval(() => {
+    if (window.JavaBridge) {
+        if (sss.project.autoSave) {
+            bridge.save(sss.project)
+        }
+    }
+}, 11222)
+
 window.bridge = bridge
 
 export default bridge

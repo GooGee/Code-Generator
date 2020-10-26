@@ -23,6 +23,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">auto save</td>
+                <td>
+                    <b-form-checkbox v-model="item.autoSave" switch></b-form-checkbox>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">dataVersion</td>
                 <td>
                     <b-form-input v-model="item.dataVersion"></b-form-input>
