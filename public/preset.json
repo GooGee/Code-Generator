@@ -4,14 +4,14 @@
     "ns": "App",
     "dataVersion": "1.0",
     "description": "",
-    "script": "",
+    "script": "function run(data) {\n}\n",
     "validationScript": "function run(data) {\n    const integerManager = data.project.getPreset('FieldTypeInteger').propertyManager\n    const numericManager = data.project.getPreset('FieldTypeNumeric').propertyManager\n    const ruleManager = data.project.getPreset('ValidationRule').propertyManager\n    const nameSet = new Set()\n    ruleManager.list.forEach(rule => {\n        if (rule.tag === 'WWW') {\n            nameSet.add(rule.name)\n        }\n    })\n\n    const addField = function(field, name) {\n        const found = field.ruleManager.find(name)\n        if (found) {\n            return found\n        }\n        const rule = field.ruleManager.make(name)\n        field.ruleManager.add(rule)\n        return rule\n    }\n\n    data.entity.fieldManager.list.forEach(field => {\n        if (field.included === false) {\n            return\n        }\n        if (field.isIncrement) {\n            return\n        }\n\n        addField(field, 'required')\n\n        if (field.type === 'boolean') {\n            addField(field, 'boolean')\n            return\n        }\n        if (integerManager.find(field.type)) {\n            addField(field, 'integer')\n            return\n        }\n        if (numericManager.find(field.type)) {\n            addField(field, 'numeric')\n            return\n        }\n        if (field.type === 'char' || field.type === 'string') {\n            if (field.length) {\n                const max = addField(field, 'max')\n                max.value = field.length\n            }\n        }\n\n        if (nameSet.has(field.name)) {\n            addField(field, field.name)\n        }\n    })\n}\n",
     "entityManager": {
         "list": [
             {
                 "name": "User",
                 "description": "",
-                "script": "",
+                "script": "function run(data) {\n}\n",
                 "tableName": "user",
                 "fieldManager": {
                     "list": [
@@ -216,7 +216,7 @@
             {
                 "name": "Post",
                 "description": "",
-                "script": "",
+                "script": "function run(data) {\n}\n",
                 "tableName": "post",
                 "fieldManager": {
                     "list": [
