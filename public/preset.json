@@ -746,7 +746,7 @@
                 "classPattern": "",
                 "filePattern": "index.blade.php",
                 "nsPattern": "",
-                "pathPattern": "resources/views/${entity.name}",
+                "pathPattern": "resources/views/${entity.snakeCase}",
                 "script": "",
                 "template": "",
                 "dataManager": {
