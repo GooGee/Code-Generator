@@ -1,9 +1,10 @@
 <template>
     <div>
         <div class="text-center" style="margin-top: 11%;">
-            <img v-if="loading" alt="loading" src="@/assets/loading.svg" />
+            <img v-if="loading" alt="loading" src="@/assets/loading.svg" class="mb11" />
             <img v-else alt="logo" src="@/assets/logo.svg" style="width: 222px;" />
-            <h1 class="m11">Code Generator</h1>
+            <h1>Code Generator</h1>
+            <p>{{ version }}</p>
         </div>
     </div>
 </template>
@@ -17,6 +18,11 @@ export default {
         loading() {
             return sss.project === null
         },
+    }, 
+    data() {
+        return {
+            version: process.env.VUE_APP_VERSION,
+        }
     },
 }
 </script>
