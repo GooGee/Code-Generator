@@ -12,7 +12,7 @@ export default class Project extends NameItem {
     dataVersion = '1.0'
     description: string = ''
     script: string = ''
-
+    server: string = 'http://localhost'
     validationScript: string = ''
 
     readonly entityManager = new EntityManager()

@@ -63,10 +63,12 @@ export default {
     },
     methods: {
         read() {
-            const server = prompt('Please enter the local server', 'http://localhost')
+            const server = prompt('Please enter the local server', sss.project.server)
             if (!server) {
                 return
             }
+
+            sss.project.server = server
             sss.bridge.readDB(server, data => {
                 if (data) {
                     this.data = data
