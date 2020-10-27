@@ -3,6 +3,14 @@
         <caption>
             <h3 class="inline mr11">DataBase Schema</h3>
             <b-button @click="read" variant="outline-success"> Read </b-button>
+            <ul class="gray">
+                <li>
+                    make sure the PHP
+                    <a href="https://packagist.org/packages/googee/entity" target="_blank"> package </a>
+                    is installed
+                </li>
+                <li>and the local laravel project is running</li>
+            </ul>
         </caption>
         <tbody>
             <tr v-for="table in data.tables" :key="table.name">
@@ -55,10 +63,14 @@ export default {
     },
     methods: {
         read() {
-            try {
-                const data = sss.bridge.readDB()
+            const server = prompt('Please enter the local server', 'http://localhost')
+            if (!server) {
+                return
+            }
+            sss.bridge.readDB(server, data => {
                 if (data) {
                     this.data = data
+                    this.select(true)
                     return
                 }
                 this.$bvToast.toast('No table found', {
@@ -66,13 +78,7 @@ export default {
                     variant: 'success',
                     solid: true,
                 })
-            } catch (error) {
-                this.$bvToast.toast(error.message, {
-                    title: 'i',
-                    variant: 'danger',
-                    solid: true,
-                })
-            }
+            })
         },
         convert() {
             if (this.data.tables.length === 0) {
