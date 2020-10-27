@@ -1,6 +1,8 @@
 import sss from './state.js'
 
 const bridge = {
+    readDBHandler: null,
+
     load() {
         window.JavaBridge.load()
     },
@@ -16,11 +18,25 @@ const bridge = {
     make(file, text) {
         window.JavaBridge.make(file + '*' + text)
     },
+    makeCB(text) {
+        console.log(text)
+    },
     save(project) {
         window.JavaBridge.save(JSON.stringify(project))
     },
-    readDB() {
-        window.JavaBridge.readDB()
+    saveCB(text) {
+        console.log(text)
+    },
+    readDB(server, cb) {
+        this.readDBHandler = cb
+        window.JavaBridge.readDB(server + '/entity/table')
+    },
+    readDBCB(text) {
+        // console.log(text)
+        if (this.readDBHandler) {
+            const data = JSON.parse(text)
+            this.readDBHandler(data.data)
+        }
     },
 }
 
