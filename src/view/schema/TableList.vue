@@ -70,16 +70,19 @@ export default {
 
             sss.project.server = server
             sss.bridge.readDB(server, data => {
-                if (data) {
-                    this.data = data
-                    this.select(true)
+                if (!data) {
                     return
                 }
-                this.$bvToast.toast('No table found', {
-                    title: 'i',
-                    variant: 'success',
-                    solid: true,
-                })
+                if (data.tables.length === 0) {
+                    this.$bvToast.toast('No table found', {
+                        title: 'i',
+                        variant: 'success',
+                        solid: true,
+                    })
+                    return
+                }
+                this.data = data
+                this.select(true)
             })
         },
         convert() {
