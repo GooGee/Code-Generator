@@ -11,6 +11,7 @@ export enum LayerEnum {
 }
 
 export default class Layer extends UniqueItem {
+    color: string = '#fff'
     original: boolean = false
     single: boolean = false
     description: string = ''
