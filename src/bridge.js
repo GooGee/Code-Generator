@@ -2,6 +2,7 @@ import sss from './state.js'
 
 const bridge = {
     readDBHandler: null,
+    runHandler: null,
 
     load() {
         window.JavaBridge.load()
@@ -35,6 +36,19 @@ const bridge = {
         // console.log(text)
         if (this.readDBHandler) {
             this.readDBHandler(text)
+            this.readDBHandler = null
+        }
+    },
+    run(command, cb) {
+        console.log(command)
+        this.runHandler = cb
+        // window.JavaBridge.run(command)
+    },
+    runCB(text) {
+        // console.log(text)
+        if (this.runHandler) {
+            this.runHandler(text)
+            this.runHandler = null
         }
     },
     toJSON() {
