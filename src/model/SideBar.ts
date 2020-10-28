@@ -1,13 +1,14 @@
 import { filter } from './Text'
-import UniqueItem from './Base/UniqueItem'
+import IUniqueItemWithColor from './Base/IUniqueItemWithColor'
 import UniqueList from './Base/UniqueList'
 
 export default class SideBar {
-    readonly manager: UniqueList<UniqueItem> | null = null
-    item: UniqueItem | null = null
+    readonly manager: UniqueList<IUniqueItemWithColor> | null = null
+    color: string = '#fff'
+    item: IUniqueItemWithColor | null = null
     keyword: string = ''
 
-    constructor(manager: UniqueList<UniqueItem>) {
+    constructor(manager: UniqueList<IUniqueItemWithColor>) {
         this.manager = manager
     }
 
@@ -18,6 +19,9 @@ export default class SideBar {
 
         if (this.keyword) {
             return filter(this.keyword, this.manager.list)
+        }
+        if (this.color) {
+            return this.manager.list.filter(item => item.color === this.color)
         }
         return this.manager.list
     }
