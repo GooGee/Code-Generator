@@ -13,7 +13,9 @@
             {
                 "name": "clear-compiled",
                 "original": true,
+                "color": "#f00",
                 "description": "Remove the compiled class file",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -21,7 +23,9 @@
             {
                 "name": "down",
                 "original": true,
+                "color": "#f00",
                 "description": "Put the application into maintenance mode",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -29,7 +33,9 @@
             {
                 "name": "env",
                 "original": true,
+                "color": "#f00",
                 "description": "Display the current framework environment",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -37,7 +43,9 @@
             {
                 "name": "help",
                 "original": true,
+                "color": "#f00",
                 "description": "Displays help for a command",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -45,7 +53,9 @@
             {
                 "name": "inspire",
                 "original": true,
+                "color": "#f00",
                 "description": "Display an inspiring quote",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -53,7 +63,9 @@
             {
                 "name": "list",
                 "original": true,
+                "color": "#f00",
                 "description": "Lists commands",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -61,7 +73,9 @@
             {
                 "name": "migrate",
                 "original": true,
+                "color": "#f00",
                 "description": "Run the database migrations",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -69,7 +83,9 @@
             {
                 "name": "optimize",
                 "original": true,
+                "color": "#f00",
                 "description": "Cache the framework bootstrap files",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -77,7 +93,9 @@
             {
                 "name": "preset",
                 "original": true,
+                "color": "#f00",
                 "description": "Swap the front-end scaffolding for the application",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -85,7 +103,9 @@
             {
                 "name": "serve",
                 "original": true,
+                "color": "#f00",
                 "description": "Serve the application on the PHP development server",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -93,7 +113,9 @@
             {
                 "name": "tinker",
                 "original": true,
+                "color": "#f00",
                 "description": "Interact with your application",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -101,7 +123,9 @@
             {
                 "name": "up",
                 "original": true,
+                "color": "#f00",
                 "description": "Bring the application out of maintenance mode",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -109,7 +133,9 @@
             {
                 "name": "auth:clear-resets",
                 "original": true,
+                "color": "",
                 "description": "Flush expired password reset tokens",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -117,7 +143,9 @@
             {
                 "name": "cache:clear",
                 "original": true,
+                "color": "",
                 "description": "Flush the application cache",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -125,7 +153,9 @@
             {
                 "name": "cache:forget",
                 "original": true,
+                "color": "",
                 "description": "Remove an item from the cache",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -133,7 +163,9 @@
             {
                 "name": "cache:table",
                 "original": true,
+                "color": "",
                 "description": "Create a migration for the cache database table",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -141,7 +173,9 @@
             {
                 "name": "config:cache",
                 "original": true,
+                "color": "",
                 "description": "Create a cache file for faster configuration loading",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -149,7 +183,9 @@
             {
                 "name": "config:clear",
                 "original": true,
+                "color": "",
                 "description": "Remove the configuration cache file",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -157,7 +193,9 @@
             {
                 "name": "db:seed",
                 "original": true,
+                "color": "",
                 "description": "Seed the database with records",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -165,7 +203,9 @@
             {
                 "name": "db:wipe",
                 "original": true,
+                "color": "",
                 "description": "Drop all tables, views, and types",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -173,7 +213,9 @@
             {
                 "name": "event:cache",
                 "original": true,
+                "color": "",
                 "description": "Discover and cache the application's events and listeners",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -181,7 +223,9 @@
             {
                 "name": "event:clear",
                 "original": true,
+                "color": "",
                 "description": "Clear all cached events and listeners",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -189,7 +233,9 @@
             {
                 "name": "event:generate",
                 "original": true,
+                "color": "",
                 "description": "Generate the missing events and listeners based on registration",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -197,7 +243,9 @@
             {
                 "name": "event:list",
                 "original": true,
+                "color": "",
                 "description": "List the application's events and listeners",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -205,7 +253,9 @@
             {
                 "name": "key:generate",
                 "original": true,
+                "color": "",
                 "description": "Set the application key",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -213,7 +263,9 @@
             {
                 "name": "make:channel",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new channel class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -221,7 +273,9 @@
             {
                 "name": "make:command",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new Artisan command",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -229,7 +283,9 @@
             {
                 "name": "make:controller",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new controller class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -237,7 +293,9 @@
             {
                 "name": "make:event",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new event class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -245,7 +303,9 @@
             {
                 "name": "make:exception",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new custom exception class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -253,7 +313,9 @@
             {
                 "name": "make:factory",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new model factory",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -261,7 +323,9 @@
             {
                 "name": "make:job",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new job class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -269,7 +333,9 @@
             {
                 "name": "make:listener",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new event listener class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -277,7 +343,9 @@
             {
                 "name": "make:mail",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new email class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -285,7 +353,9 @@
             {
                 "name": "make:middleware",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new middleware class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -293,7 +363,9 @@
             {
                 "name": "make:migration",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new migration file",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -301,7 +373,9 @@
             {
                 "name": "make:model",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new Eloquent model class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -309,7 +383,9 @@
             {
                 "name": "make:notification",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new notification class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -317,7 +393,9 @@
             {
                 "name": "make:observer",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new observer class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -325,7 +403,9 @@
             {
                 "name": "make:policy",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new policy class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -333,7 +413,9 @@
             {
                 "name": "make:provider",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new service provider class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -341,7 +423,9 @@
             {
                 "name": "make:request",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new form request class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -349,7 +433,9 @@
             {
                 "name": "make:resource",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new resource",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -357,7 +443,9 @@
             {
                 "name": "make:rule",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new validation rule",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -365,7 +453,9 @@
             {
                 "name": "make:seeder",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new seeder class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -373,7 +463,9 @@
             {
                 "name": "make:test",
                 "original": true,
+                "color": "#f80",
                 "description": "Create a new test class",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -381,7 +473,9 @@
             {
                 "name": "migrate:fresh",
                 "original": true,
+                "color": "",
                 "description": "Drop all tables and re-run all migrations",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -389,7 +483,9 @@
             {
                 "name": "migrate:install",
                 "original": true,
+                "color": "",
                 "description": "Create the migration repository",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -397,7 +493,9 @@
             {
                 "name": "migrate:refresh",
                 "original": true,
+                "color": "",
                 "description": "Reset and re-run all migrations",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -405,7 +503,9 @@
             {
                 "name": "migrate:reset",
                 "original": true,
+                "color": "",
                 "description": "Rollback all database migrations",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -413,7 +513,9 @@
             {
                 "name": "migrate:rollback",
                 "original": true,
+                "color": "",
                 "description": "Rollback the last database migration",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -421,7 +523,9 @@
             {
                 "name": "migrate:status",
                 "original": true,
+                "color": "",
                 "description": "Show the status of each migration",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -429,7 +533,9 @@
             {
                 "name": "notifications:table",
                 "original": true,
+                "color": "",
                 "description": "Create a migration for the notifications table",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -437,7 +543,9 @@
             {
                 "name": "optimize:clear",
                 "original": true,
+                "color": "",
                 "description": "Remove the cached bootstrap files",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -445,7 +553,9 @@
             {
                 "name": "package:discover",
                 "original": true,
+                "color": "",
                 "description": "Rebuild the cached package manifest",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -453,7 +563,9 @@
             {
                 "name": "queue:failed",
                 "original": true,
+                "color": "",
                 "description": "List all of the failed queue jobs",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -461,7 +573,9 @@
             {
                 "name": "queue:failed-table",
                 "original": true,
+                "color": "",
                 "description": "Create a migration for the failed queue jobs database table",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -469,7 +583,9 @@
             {
                 "name": "queue:flush",
                 "original": true,
+                "color": "",
                 "description": "Flush all of the failed queue jobs",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -477,7 +593,9 @@
             {
                 "name": "queue:forget",
                 "original": true,
+                "color": "",
                 "description": "Delete a failed queue job",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -485,7 +603,9 @@
             {
                 "name": "queue:listen",
                 "original": true,
+                "color": "",
                 "description": "Listen to a given queue",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -493,7 +613,9 @@
             {
                 "name": "queue:restart",
                 "original": true,
+                "color": "",
                 "description": "Restart queue worker daemons after their current job",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -501,7 +623,9 @@
             {
                 "name": "queue:retry",
                 "original": true,
+                "color": "",
                 "description": "Retry a failed queue job",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -509,7 +633,9 @@
             {
                 "name": "queue:table",
                 "original": true,
+                "color": "",
                 "description": "Create a migration for the queue jobs database table",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -517,7 +643,9 @@
             {
                 "name": "queue:work",
                 "original": true,
+                "color": "",
                 "description": "Start processing jobs on the queue as a daemon",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -525,7 +653,9 @@
             {
                 "name": "route:cache",
                 "original": true,
+                "color": "",
                 "description": "Create a route cache file for faster route registration",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -533,7 +663,9 @@
             {
                 "name": "route:clear",
                 "original": true,
+                "color": "",
                 "description": "Remove the route cache file",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -541,7 +673,9 @@
             {
                 "name": "route:list",
                 "original": true,
+                "color": "",
                 "description": "List all registered routes",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -549,7 +683,9 @@
             {
                 "name": "schedule:run",
                 "original": true,
+                "color": "",
                 "description": "Run the scheduled commands",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -557,7 +693,9 @@
             {
                 "name": "session:table",
                 "original": true,
+                "color": "",
                 "description": "Create a migration for the session database table",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -565,7 +703,9 @@
             {
                 "name": "storage:link",
                 "original": true,
+                "color": "",
                 "description": "Create a symbolic link from \"public/storage\" to \"storage/app/public\"",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -573,7 +713,9 @@
             {
                 "name": "vendor:publish",
                 "original": true,
+                "color": "",
                 "description": "Publish any publishable assets from vendor packages",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -581,7 +723,9 @@
             {
                 "name": "view:cache",
                 "original": true,
+                "color": "",
                 "description": "Compile all of the application's Blade templates",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -589,7 +733,9 @@
             {
                 "name": "view:clear",
                 "original": true,
+                "color": "",
                 "description": "Clear all compiled view files",
+                "value": "",
                 "argumentManager": {
                     "list": []
                 }
@@ -600,6 +746,7 @@
         "list": [
             {
                 "name": "User",
+                "color": "",
                 "description": "",
                 "script": "function run(data) {\n}\n",
                 "tableName": "user",
@@ -805,6 +952,7 @@
             },
             {
                 "name": "Post",
+                "color": "",
                 "description": "",
                 "script": "function run(data) {\n}\n",
                 "tableName": "post",
@@ -970,6 +1118,7 @@
         "list": [
             {
                 "name": "Channel",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -985,6 +1134,7 @@
             },
             {
                 "name": "Command",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1000,6 +1150,7 @@
             },
             {
                 "name": "Controller",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1015,6 +1166,7 @@
             },
             {
                 "name": "ControllerAPI",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1030,6 +1182,7 @@
             },
             {
                 "name": "DBFactory",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1045,6 +1198,7 @@
             },
             {
                 "name": "DBSeeder",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1060,6 +1214,7 @@
             },
             {
                 "name": "Event",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1075,6 +1230,7 @@
             },
             {
                 "name": "Exception",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1090,6 +1246,7 @@
             },
             {
                 "name": "Job",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1105,6 +1262,7 @@
             },
             {
                 "name": "Listener",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1120,6 +1278,7 @@
             },
             {
                 "name": "Mail",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1135,6 +1294,7 @@
             },
             {
                 "name": "Middleware",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1150,6 +1310,7 @@
             },
             {
                 "name": "Migration",
+                "color": "",
                 "original": true,
                 "single": false,
                 "description": "",
@@ -1165,6 +1326,7 @@
             },
             {
                 "name": "Model",
+                "color": "",
                 "original": true,
                 "single": false,
                 "description": "",
@@ -1180,6 +1342,7 @@
             },
             {
                 "name": "Notification",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1195,6 +1358,7 @@
             },
             {
                 "name": "Observer",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1210,6 +1374,7 @@
             },
             {
                 "name": "Policy",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1225,6 +1390,7 @@
             },
             {
                 "name": "Provider",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1240,6 +1406,7 @@
             },
             {
                 "name": "Repository",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1255,6 +1422,7 @@
             },
             {
                 "name": "Request",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1270,6 +1438,7 @@
             },
             {
                 "name": "Resource",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1285,6 +1454,7 @@
             },
             {
                 "name": "Rule",
+                "color": "",
                 "original": false,
                 "single": true,
                 "description": "",
@@ -1300,6 +1470,7 @@
             },
             {
                 "name": "TestFeature",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1315,6 +1486,7 @@
             },
             {
                 "name": "TestUnit",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1330,6 +1502,7 @@
             },
             {
                 "name": "View",
+                "color": "",
                 "original": false,
                 "single": false,
                 "description": "",
@@ -1350,8 +1523,9 @@
             {
                 "name": "CastPHP",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Cast in Model",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -1432,8 +1606,9 @@
             {
                 "name": "FakerMethod",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Factory",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -1790,8 +1965,9 @@
             {
                 "name": "FakerProperty",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Factory",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -2460,8 +2636,9 @@
             {
                 "name": "FieldName",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Migration (tag is FieldType)",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -2560,8 +2737,9 @@
             {
                 "name": "FieldSpecial",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Migration (tag is FieldType)",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -2741,8 +2919,9 @@
             {
                 "name": "FieldType",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Migration (tag is PHP type)",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3015,8 +3194,9 @@
             {
                 "name": "FieldTypeInteger",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Field Validation",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3085,8 +3265,9 @@
             {
                 "name": "FieldTypeNumeric",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Field Validation",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3173,8 +3354,9 @@
             {
                 "name": "FieldTypeMySQL",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "MySQL type (tag is FieldType)",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3405,8 +3587,9 @@
             {
                 "name": "FieldTypePGSQL",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "PostgreSQL type (tag is FieldType)",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3661,8 +3844,9 @@
             {
                 "name": "FieldTypeWithParameter",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Migration",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3737,8 +3921,9 @@
             {
                 "name": "IncrementMySQL",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "increments of MySQL schema",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3783,8 +3968,9 @@
             {
                 "name": "IncrementPGSQL",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "increments of PostgreSQL schema",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3823,8 +4009,9 @@
             {
                 "name": "RegularExpression",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Field Validation",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3869,8 +4056,9 @@
             {
                 "name": "RelationType",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Model Relation",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
@@ -3939,8 +4127,9 @@
             {
                 "name": "ValidationRule",
                 "original": true,
-                "version": 1,
+                "color": "",
                 "description": "for Field Validation",
+                "version": 1,
                 "propertyManager": {
                     "list": [
                         {
