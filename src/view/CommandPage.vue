@@ -18,13 +18,14 @@
                     </b-button-group>
                     <b-button @click="run" variant="outline-success"> Run </b-button>
                 </div>
-                <div>
+                <div class="mb11">
                     <b-form-input
                         v-model="sss.sidebar.item.description"
                         class="mt11"
                         placeholder="description"
                     ></b-form-input>
                 </div>
+                <ColorButton :color.sync="sss.sidebar.item.color"></ColorButton>
             </ArgumentList>
 
             <div>
@@ -38,6 +39,7 @@
 <script>
 import ArgumentList from './schema/ArgumentList.vue'
 import ChangeButton from './button/ChangeButton.vue'
+import ColorButton from './button/ColorButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '../state.js'
@@ -47,6 +49,7 @@ export default {
     components: {
         ArgumentList,
         ChangeButton,
+        ColorButton,
         DeleteButton,
         SideBar,
     },

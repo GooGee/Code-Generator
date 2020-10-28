@@ -19,6 +19,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">color</td>
+                <td>
+                    <ColorButton :color.sync="item.color"></ColorButton>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">class name</td>
                 <td>
                     <b-form-input v-model="item.classPattern"></b-form-input>
@@ -53,11 +59,13 @@
 </template>
 
 <script>
+import ColorButton from '../button/ColorButton.vue'
 import WriteButton from '../button/WriteButton.vue'
 
 export default {
     name: 'LayerProperty',
     components: {
+        ColorButton,
         WriteButton,
     },
     props: {

@@ -18,6 +18,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">color</td>
+                <td>
+                    <ColorButton :color.sync="item.color"></ColorButton>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">description</td>
                 <td>
                     <b-form-textarea v-model="item.description" rows="11"></b-form-textarea>
@@ -29,11 +35,13 @@
 
 <script>
 import ChangeButton from '../button/ChangeButton.vue'
+import ColorButton from '../button/ColorButton.vue'
 
 export default {
     name: 'EntityProperty',
     components: {
         ChangeButton,
+        ColorButton,
     },
     props: {
         item: {

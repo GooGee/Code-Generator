@@ -9,7 +9,11 @@
             <b-form-input v-model="sidebar.keyword" placeholder="Search"></b-form-input>
         </div>
 
-        <div v-if="sidebar.keyword" class="list-group">
+        <div class="mb11">
+            <ColorButton :color.sync="sidebar.color" style="margin: auto;"></ColorButton>
+        </div>
+
+        <div v-if="sidebar.keyword || sidebar.color" class="list-group">
             <div
                 v-for="item in sidebar.list"
                 :key="item.name"
@@ -37,12 +41,14 @@
 
 <script>
 import AddButton from '../button/AddButton.vue'
+import ColorButton from '../button/ColorButton.vue'
 import draggable from 'vuedraggable'
 
 export default {
     name: 'SideBar',
     components: {
         AddButton,
+        ColorButton,
         draggable,
     },
     props: {
