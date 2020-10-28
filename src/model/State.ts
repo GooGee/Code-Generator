@@ -18,11 +18,13 @@ export default class State {
     readonly inputDialogue = new InputDialogue()
     readonly listDialogue = new ListDialogue()
 
+    private sidebarCommand: SideBar | null = null
     private sidebarEntity: SideBar | null = null
     private sidebarLayer: SideBar | null = null
     private sidebarPreset: SideBar | null = null
 
     private prepare() {
+        this.sidebarCommand = new SideBar(this.project!.commandManager)
         this.sidebarEntity = new SideBar(this.project!.entityManager)
         this.sidebarLayer = new SideBar(this.project!.layerManager)
         this.sidebarPreset = new SideBar(this.project!.presetManager)
@@ -48,6 +50,10 @@ export default class State {
         loader.load(data)
         this.project = project
         this.prepare()
+    }
+
+    showCommand() {
+        this.sidebar = this.sidebarCommand
     }
 
     showEntity() {

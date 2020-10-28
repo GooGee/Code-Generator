@@ -1,4 +1,5 @@
 import NameItem from '../Base/NameItem'
+import { CommandManager } from './Command'
 import { EntityManager } from './Entity'
 import { LayerManager } from './Layer'
 import { PresetManager } from './Preset'
@@ -15,6 +16,7 @@ export default class Project extends NameItem {
     server: string = 'http://localhost'
     validationScript: string = ''
 
+    readonly commandManager = new CommandManager()
     readonly entityManager = new EntityManager()
     readonly layerManager = new LayerManager()
     readonly presetManager = new PresetManager()
