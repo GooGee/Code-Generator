@@ -6,13 +6,14 @@ export default class Command extends UniqueItem {
     original: boolean = true
     color: string = '#fff'
     description: string = ''
+    value: string = ''
     readonly argumentManager = new ArgumentManager()
 
     toString() {
         const list = this.argumentManager.list
             .filter(argument => argument.included)
             .map(argument => argument.name + ' ' + argument.value)
-        return this.name + ' ' + list.join(' ')
+        return this.name + ' ' + this.value + ' ' + list.join(' ')
     }
 }
 
