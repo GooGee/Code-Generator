@@ -8,7 +8,7 @@ import ncListener from '../Event/NameChangeListener'
 import idListener from '../Event/ItemDeleteListener'
 
 export default class Entity extends UniqueItem {
-    color: string = '#fff'
+    color: string = ''
     description: string = ''
     script: string = ''
     tableName: string = ''

@@ -4,7 +4,7 @@ import { PropertyManager } from './Property'
 
 export default class Preset extends UniqueItem {
     original: boolean = false
-    color: string = '#fff'
+    color: string = ''
     description: string = ''
     version: number = 1
     readonly propertyManager = new PropertyManager()

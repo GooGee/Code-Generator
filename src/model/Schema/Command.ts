@@ -4,7 +4,7 @@ import { ArgumentManager } from './Argument'
 
 export default class Command extends UniqueItem {
     original: boolean = true
-    color: string = '#fff'
+    color: string = ''
     description: string = ''
     value: string = ''
     readonly argumentManager = new ArgumentManager()

@@ -1,12 +1,13 @@
 <template>
-    <div id="ColorButton" style="width: 222px;">
+    <div id="ColorButton" style="width: 244px;">
+        <span @click="$emit('update:color', '')" :class="{ active: '' === color }" class="button empty"></span>
         <span
             v-for="item in list"
             :key="item"
             :style="'background-color:' + item"
             @click="$emit('update:color', item)"
-            class="button inline mr11"
-            :class="{ active: item === color, first: item === '#fff' }"
+            class="button"
+            :class="{ active: item === color, white: item === '#fff' }"
         ></span>
     </div>
 </template>
@@ -22,7 +23,7 @@ export default {
     },
     data() {
         return {
-            list: ['#fff', '#f00', '#f80', '#ff0', '#f08', '#f0f', '#0f0', '#0ff', '#00f', '#08f'],
+            list: ['#f00', '#f80', '#ff0', '#f08', '#f0f', '#fff', '#0f0', '#0ff', '#00f', '#08f', '#888'],
         }
     },
 }
@@ -30,17 +31,35 @@ export default {
 
 <style>
 #ColorButton .button {
+    display: inline-block;
     border-radius: 50%;
     cursor: pointer;
     width: 33px;
     height: 33px;
+    margin: 3px;
 }
 
-#ColorButton .button.first {
+#ColorButton .button.white {
     border: solid 1px lightgray;
 }
 
 #ColorButton .button.active {
+    border: solid 5px black;
+}
+
+#ColorButton .button.empty {
+    border: solid 1px lightgray;
+    background: linear-gradient(
+        to top left,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) calc(50% - 3px),
+        #f00 50%,
+        rgba(0, 0, 0, 0) calc(50% + 3px),
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+#ColorButton .button.empty.active {
     border: solid 5px black;
 }
 </style>
