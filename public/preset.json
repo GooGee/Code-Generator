@@ -1,11 +1,601 @@
 {
-    "name": "Entity",
+    "name": "Project",
     "version": 12,
     "ns": "App",
+    "autoSave": false,
     "dataVersion": "1.0",
     "description": "",
     "script": "function run(data) {\n}\n",
+    "server": "http://localhost",
     "validationScript": "function run(data) {\n    const integerManager = data.project.getPreset('FieldTypeInteger').propertyManager\n    const numericManager = data.project.getPreset('FieldTypeNumeric').propertyManager\n    const ruleManager = data.project.getPreset('ValidationRule').propertyManager\n    const nameSet = new Set()\n    ruleManager.list.forEach(rule => {\n        if (rule.tag === 'WWW') {\n            nameSet.add(rule.name)\n        }\n    })\n\n    const addField = function(field, name) {\n        const found = field.ruleManager.find(name)\n        if (found) {\n            return found\n        }\n        const rule = field.ruleManager.make(name)\n        field.ruleManager.add(rule)\n        return rule\n    }\n\n    data.entity.fieldManager.list.forEach(field => {\n        if (field.included === false) {\n            return\n        }\n        if (field.isIncrement) {\n            return\n        }\n\n        addField(field, 'required')\n\n        if (field.type === 'boolean') {\n            addField(field, 'boolean')\n            return\n        }\n        if (integerManager.find(field.type)) {\n            addField(field, 'integer')\n            return\n        }\n        if (numericManager.find(field.type)) {\n            addField(field, 'numeric')\n            return\n        }\n        if (field.type === 'char' || field.type === 'string') {\n            if (field.length) {\n                const max = addField(field, 'max')\n                max.value = field.length\n            }\n        }\n\n        if (nameSet.has(field.name)) {\n            addField(field, field.name)\n        }\n    })\n}\n",
+    "commandManager": {
+        "list": [
+            {
+                "name": "clear-compiled",
+                "original": true,
+                "description": "Remove the compiled class file",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "down",
+                "original": true,
+                "description": "Put the application into maintenance mode",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "env",
+                "original": true,
+                "description": "Display the current framework environment",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "help",
+                "original": true,
+                "description": "Displays help for a command",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "inspire",
+                "original": true,
+                "description": "Display an inspiring quote",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "list",
+                "original": true,
+                "description": "Lists commands",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "migrate",
+                "original": true,
+                "description": "Run the database migrations",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "optimize",
+                "original": true,
+                "description": "Cache the framework bootstrap files",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "preset",
+                "original": true,
+                "description": "Swap the front-end scaffolding for the application",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "serve",
+                "original": true,
+                "description": "Serve the application on the PHP development server",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "tinker",
+                "original": true,
+                "description": "Interact with your application",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "up",
+                "original": true,
+                "description": "Bring the application out of maintenance mode",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "auth:clear-resets",
+                "original": true,
+                "description": "Flush expired password reset tokens",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "cache:clear",
+                "original": true,
+                "description": "Flush the application cache",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "cache:forget",
+                "original": true,
+                "description": "Remove an item from the cache",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "cache:table",
+                "original": true,
+                "description": "Create a migration for the cache database table",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "config:cache",
+                "original": true,
+                "description": "Create a cache file for faster configuration loading",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "config:clear",
+                "original": true,
+                "description": "Remove the configuration cache file",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "db:seed",
+                "original": true,
+                "description": "Seed the database with records",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "db:wipe",
+                "original": true,
+                "description": "Drop all tables, views, and types",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "event:cache",
+                "original": true,
+                "description": "Discover and cache the application's events and listeners",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "event:clear",
+                "original": true,
+                "description": "Clear all cached events and listeners",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "event:generate",
+                "original": true,
+                "description": "Generate the missing events and listeners based on registration",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "event:list",
+                "original": true,
+                "description": "List the application's events and listeners",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "key:generate",
+                "original": true,
+                "description": "Set the application key",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:channel",
+                "original": true,
+                "description": "Create a new channel class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:command",
+                "original": true,
+                "description": "Create a new Artisan command",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:controller",
+                "original": true,
+                "description": "Create a new controller class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:event",
+                "original": true,
+                "description": "Create a new event class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:exception",
+                "original": true,
+                "description": "Create a new custom exception class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:factory",
+                "original": true,
+                "description": "Create a new model factory",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:job",
+                "original": true,
+                "description": "Create a new job class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:listener",
+                "original": true,
+                "description": "Create a new event listener class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:mail",
+                "original": true,
+                "description": "Create a new email class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:middleware",
+                "original": true,
+                "description": "Create a new middleware class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:migration",
+                "original": true,
+                "description": "Create a new migration file",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:model",
+                "original": true,
+                "description": "Create a new Eloquent model class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:notification",
+                "original": true,
+                "description": "Create a new notification class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:observer",
+                "original": true,
+                "description": "Create a new observer class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:policy",
+                "original": true,
+                "description": "Create a new policy class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:provider",
+                "original": true,
+                "description": "Create a new service provider class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:request",
+                "original": true,
+                "description": "Create a new form request class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:resource",
+                "original": true,
+                "description": "Create a new resource",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:rule",
+                "original": true,
+                "description": "Create a new validation rule",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:seeder",
+                "original": true,
+                "description": "Create a new seeder class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "make:test",
+                "original": true,
+                "description": "Create a new test class",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "migrate:fresh",
+                "original": true,
+                "description": "Drop all tables and re-run all migrations",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "migrate:install",
+                "original": true,
+                "description": "Create the migration repository",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "migrate:refresh",
+                "original": true,
+                "description": "Reset and re-run all migrations",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "migrate:reset",
+                "original": true,
+                "description": "Rollback all database migrations",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "migrate:rollback",
+                "original": true,
+                "description": "Rollback the last database migration",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "migrate:status",
+                "original": true,
+                "description": "Show the status of each migration",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "notifications:table",
+                "original": true,
+                "description": "Create a migration for the notifications table",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "optimize:clear",
+                "original": true,
+                "description": "Remove the cached bootstrap files",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "package:discover",
+                "original": true,
+                "description": "Rebuild the cached package manifest",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:failed",
+                "original": true,
+                "description": "List all of the failed queue jobs",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:failed-table",
+                "original": true,
+                "description": "Create a migration for the failed queue jobs database table",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:flush",
+                "original": true,
+                "description": "Flush all of the failed queue jobs",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:forget",
+                "original": true,
+                "description": "Delete a failed queue job",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:listen",
+                "original": true,
+                "description": "Listen to a given queue",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:restart",
+                "original": true,
+                "description": "Restart queue worker daemons after their current job",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:retry",
+                "original": true,
+                "description": "Retry a failed queue job",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:table",
+                "original": true,
+                "description": "Create a migration for the queue jobs database table",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "queue:work",
+                "original": true,
+                "description": "Start processing jobs on the queue as a daemon",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "route:cache",
+                "original": true,
+                "description": "Create a route cache file for faster route registration",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "route:clear",
+                "original": true,
+                "description": "Remove the route cache file",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "route:list",
+                "original": true,
+                "description": "List all registered routes",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "schedule:run",
+                "original": true,
+                "description": "Run the scheduled commands",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "session:table",
+                "original": true,
+                "description": "Create a migration for the session database table",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "storage:link",
+                "original": true,
+                "description": "Create a symbolic link from \"public/storage\" to \"storage/app/public\"",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "vendor:publish",
+                "original": true,
+                "description": "Publish any publishable assets from vendor packages",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "view:cache",
+                "original": true,
+                "description": "Compile all of the application's Blade templates",
+                "argumentManager": {
+                    "list": []
+                }
+            },
+            {
+                "name": "view:clear",
+                "original": true,
+                "description": "Clear all compiled view files",
+                "argumentManager": {
+                    "list": []
+                }
+            }
+        ]
+    },
     "entityManager": {
         "list": [
             {
