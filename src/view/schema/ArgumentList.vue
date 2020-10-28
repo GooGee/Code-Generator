@@ -1,7 +1,7 @@
 <template>
     <table class="table b-table b-table-caption-top">
         <caption>
-            <slot></slot>
+            <slot name="caption"></slot>
         </caption>
         <thead>
             <tr>
@@ -12,6 +12,7 @@
         </thead>
 
         <draggable v-model="manager.list" group="property" handle=".drag-handle" tag="tbody">
+            <slot name="body"></slot>
             <tr v-for="item in manager.list" :key="item.name">
                 <td>
                     <span class="drag-handle"> ✥ </span>
