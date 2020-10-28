@@ -2,7 +2,7 @@
     <table class="table b-table b-table-caption-top">
         <caption>
             <h3 class="inline mr11">DataBase Schema</h3>
-            <b-button @click="read" variant="outline-success"> Read </b-button>
+            <b-button @click="read" :disabled="waiting" variant="outline-success"> Read </b-button>
             <ul class="gray">
                 <li>
                     make sure the PHP
@@ -55,6 +55,7 @@ export default {
         return {
             all: true,
             skip: false,
+            waiting: false,
             data: {
                 prefix: '',
                 tables: [],
@@ -63,26 +64,49 @@ export default {
     },
     methods: {
         read() {
+            if (this.waiting) {
+                return
+            }
             const server = prompt('Please enter the local server', sss.project.server)
             if (!server) {
                 return
             }
 
+            this.waiting = true
             sss.project.server = server
-            sss.bridge.readDB(server, data => {
-                if (!data) {
-                    return
-                }
-                if (data.tables.length === 0) {
-                    this.$bvToast.toast('No table found', {
+            sss.bridge.readDB(server, text => {
+                try {
+                    const json = JSON.parse(text)
+                    if (parseInt(json.status) > 200) {
+                        this.$bvToast.toast(json.message, {
+                            title: 'i',
+                            variant: 'danger',
+                            solid: true,
+                        })
+                        this.waiting = false
+                        return
+                    }
+
+                    const data = json.data
+                    if (data.tables.length === 0) {
+                        this.$bvToast.toast('No table found', {
+                            title: 'i',
+                            variant: 'success',
+                            solid: true,
+                        })
+                        this.waiting = false
+                        return
+                    }
+                    this.data = data
+                    this.select(true)
+                } catch (error) {
+                    this.$bvToast.toast(error.message, {
                         title: 'i',
-                        variant: 'success',
+                        variant: 'danger',
                         solid: true,
                     })
-                    return
                 }
-                this.data = data
-                this.select(true)
+                this.waiting = false
             })
         },
         convert() {

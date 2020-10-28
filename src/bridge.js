@@ -34,9 +34,11 @@ const bridge = {
     readDBCB(text) {
         // console.log(text)
         if (this.readDBHandler) {
-            const data = JSON.parse(text)
-            this.readDBHandler(data.data)
+            this.readDBHandler(text)
         }
+    },
+    toJSON() {
+        console.log(JSON.stringify(sss.project))
     },
 }
 
