@@ -7,8 +7,9 @@
         <div v-if="sss.sidebar.item" class="col-9">
             <ArgumentList :manager="sss.sidebar.item.argumentManager">
                 <template slot="caption">
-                    <h2 v-if="sss.sidebar.item.original" class="inline mr11">{{ sss.sidebar.item.name }}</h2>
+                    <h2 v-if="sss.sidebar.item.original" class="inline mr11">artisan {{ sss.sidebar.item.name }}</h2>
                     <b-button-group v-else class="mr11">
+                        artisan
                         <DeleteButton
                             :manager="sss.sidebar.manager"
                             :item="sss.sidebar.item"
@@ -16,11 +17,19 @@
                         ></DeleteButton>
                         <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
                     </b-button-group>
-                    <b-button @click="run" variant="outline-success"> Run </b-button>
+                    <WaitButton @run="run" :waiting="waiting"> Run </WaitButton>
+                    <ul class="gray">
+                        <li>
+                            make sure the PHP
+                            <a href="https://packagist.org/packages/googee/entity" target="_blank"> package </a>
+                            is installed
+                        </li>
+                        <li>and the local laravel project is running</li>
+                    </ul>
                 </template>
                 <template slot="body">
                     <tr>
-                        <td></td>
+                        <td class="text-right">{{ sss.sidebar.item.name }}</td>
                         <td>
                             <b-form-input v-model="sss.sidebar.item.value"></b-form-input>
                         </td>
@@ -53,6 +62,7 @@ import ArgumentList from './schema/ArgumentList.vue'
 import ChangeButton from './button/ChangeButton.vue'
 import ColorButton from './button/ColorButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
+import WaitButton from './button/WaitButton.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '../state.js'
 
@@ -63,6 +73,7 @@ export default {
         ChangeButton,
         ColorButton,
         DeleteButton,
+        WaitButton,
         SideBar,
     },
     data() {
@@ -80,34 +91,20 @@ export default {
             if (this.waiting) {
                 return
             }
-            const server = prompt('Please enter the local server', sss.project.server)
-            if (!server) {
-                return
-            }
 
             this.waiting = true
-            sss.project.server = server
-            sss.bridge.run(server, sss.sidebar.item.toString(), text => {
-                try {
-                    const json = JSON.parse(text)
-                    if (parseInt(json.status) > 200) {
-                        this.$bvToast.toast(json.message, {
-                            title: 'i',
-                            variant: 'danger',
-                            solid: true,
-                        })
-                        this.waiting = false
-                        return
-                    }
-
-                    this.result = json.data
-                } catch (error) {
-                    this.$bvToast.toast(error.message, {
-                        title: 'i',
-                        variant: 'danger',
-                        solid: true,
-                    })
+            sss.bridge.run(sss.sidebar.item.toString(), (ok, data) => {
+                if (ok) {
+                    this.result = data
+                    this.waiting = false
+                    return
                 }
+
+                this.$bvToast.toast(data, {
+                    title: 'i',
+                    variant: 'danger',
+                    solid: true,
+                })
                 this.waiting = false
             })
         },

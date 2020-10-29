@@ -4,6 +4,18 @@ const bridge = {
     readDBHandler: null,
     runHandler: null,
 
+    handle(text, cb) {
+        try {
+            const json = JSON.parse(text)
+            if (parseInt(json.status) > 200) {
+                cb(false, json.message)
+                return
+            }
+            cb(true, json.data)
+        } catch (error) {
+            cb(false, error.message)
+        }
+    },
     load() {
         window.JavaBridge.load()
     },
@@ -28,28 +40,24 @@ const bridge = {
     saveCB(text) {
         console.log(text)
     },
-    readDB(server, cb) {
+    readDB(cb) {
         this.readDBHandler = cb
-        window.JavaBridge.readDB(server + '/entity/table')
+        window.JavaBridge.readDB(sss.project.server + '/entity/table')
     },
     readDBCB(text) {
         // console.log(text)
-        if (this.readDBHandler) {
-            this.readDBHandler(text)
-            this.readDBHandler = null
-        }
+        this.handle(text, this.readDBHandler)
+        this.readDBHandler = null
     },
-    run(server, command, cb) {
+    run(command, cb) {
         // console.log(command)
         this.runHandler = cb
-        window.JavaBridge.run(server + '/entity/run?command=' + encodeURIComponent(command))
+        window.JavaBridge.run(sss.project.server + '/entity/run?command=' + encodeURIComponent(command))
     },
     runCB(text) {
         // console.log(text)
-        if (this.runHandler) {
-            this.runHandler(text)
-            this.runHandler = null
-        }
+        this.handle(text, this.runHandler)
+        this.runHandler = null
     },
     toJSON() {
         console.log(JSON.stringify(sss.project))
