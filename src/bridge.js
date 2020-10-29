@@ -39,10 +39,10 @@ const bridge = {
             this.readDBHandler = null
         }
     },
-    run(command, cb) {
-        console.log(command)
+    run(server, command, cb) {
+        // console.log(command)
         this.runHandler = cb
-        // window.JavaBridge.run(command)
+        window.JavaBridge.run(server + '/entity/run?command=' + encodeURIComponent(command))
     },
     runCB(text) {
         // console.log(text)
