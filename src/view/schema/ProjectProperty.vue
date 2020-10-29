@@ -29,6 +29,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">server</td>
+                <td>
+                    <b-form-input v-model="item.server"></b-form-input>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">dataVersion</td>
                 <td>
                     <b-form-input v-model="item.dataVersion"></b-form-input>
