@@ -5,7 +5,13 @@
 
 # Laravel Code Generator
 
-[Online](https://googee.github.io/Entity-Builder/dist)
+Intuitive and efficient code generator for Laravel developers.
+
+[PHPStorm plugin](https://plugins.jetbrains.com/plugin/15276-laravel-code-generator)
+
+[Document](https://googee.github.io/Code-Generator/docs/model/index.html)
+
+![GUI](https://github.com/GooGee/Code-Generator/raw/main/image/table.gif)
 
 
 ## Project setup
