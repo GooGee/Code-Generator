@@ -1,1 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><circle cx="16" cy="64" r="16" fill="#20a0f0" fill-opacity="1"/><circle cx="16" cy="64" r="14.344" fill="#20a0f0" fill-opacity="1" transform="rotate(45 64 64)"/><circle cx="16" cy="64" r="12.531" fill="#20a0f0" fill-opacity="1" transform="rotate(90 64 64)"/><circle cx="16" cy="64" r="10.75" fill="#20a0f0" fill-opacity="1" transform="rotate(135 64 64)"/><circle cx="16" cy="64" r="10.063" fill="#20a0f0" fill-opacity="1" transform="rotate(180 64 64)"/><circle cx="16" cy="64" r="8.063" fill="#20a0f0" fill-opacity="1" transform="rotate(225 64 64)"/><circle cx="16" cy="64" r="6.438" fill="#20a0f0" fill-opacity="1" transform="rotate(270 64 64)"/><circle cx="16" cy="64" r="5.375" fill="#20a0f0" fill-opacity="1" transform="rotate(315 64 64)"/><animateTransform attributeName="transform" type="rotate" values="0 64 64;315 64 64;270 64 64;225 64 64;180 64 64;135 64 64;90 64 64;45 64 64" calcMode="discrete" dur="720ms" repeatCount="indefinite"></animateTransform></g></svg>
+<?xml version="1.0" standalone="no"?>
+<svg width="64" height="64" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g fill="dodgerblue">
+        <circle cx="128" cy="32" r="28"></circle>
+        <circle cx="196" cy="60" r="24"></circle>
+        <circle cx="224" cy="128" r="22"></circle>
+        <circle cx="196" cy="196" r="20"></circle>
+
+        <circle cx="128" cy="224" r="18"></circle>
+        <circle cx="60" cy="196" r="16"></circle>
+        <circle cx="32" cy="128" r="14"></circle>
+        <circle cx="60" cy="60" r="12"></circle>
+
+        <animateTransform
+            attributeName="transform"
+            type="rotate"
+            values="0 128 128; 315 128 128; 270 128 128; 225 128 128; 180 128 128; 135 128 128; 90 128 128; 45 128 128"
+            calcMode="discrete"
+            dur="640ms"
+            repeatCount="indefinite"
+        />
+    </g>
+</svg>
