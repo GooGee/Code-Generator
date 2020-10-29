@@ -4,7 +4,7 @@ import { EntityManager } from './Entity'
 import { LayerManager } from './Layer'
 import { PresetManager } from './Preset'
 
-const Version = 12
+const Version = 13
 
 export default class Project extends NameItem {
     version = Version
