@@ -28,8 +28,12 @@ const bridge = {
         }
         sss.create('Project')
     },
-    make(file, text) {
-        window.JavaBridge.make(file + '*' + text)
+    make(file, content) {
+        const data = {
+            file,
+            content,
+        }
+        window.JavaBridge.make(JSON.stringify(data))
     },
     makeCB(text) {
         console.log(text)
