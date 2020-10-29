@@ -1,4 +1,12 @@
-# code-generator
+
+<p align="center">
+    <img src="src/assets/logo.svg" alt="logo" width="222" />
+</p>
+
+# Laravel Code Generator
+
+[Online](https://googee.github.io/Entity-Builder/dist)
+
 
 ## Project setup
 ```
