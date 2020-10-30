@@ -24,6 +24,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">script</td>
+                <td>
+                    <EditButton :title="title" :content="item.script" @save="save"></EditButton>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">description</td>
                 <td>
                     <b-form-textarea v-model="item.description" rows="11"></b-form-textarea>
@@ -36,17 +42,31 @@
 <script>
 import ChangeButton from '../button/ChangeButton.vue'
 import ColorButton from '../button/ColorButton.vue'
+import EditButton from '../button/EditButton.vue'
 
 export default {
     name: 'EntityProperty',
     components: {
         ChangeButton,
         ColorButton,
+        EditButton,
     },
     props: {
         item: {
             type: Object,
             required: true,
+        },
+    },
+    data() {
+        return {
+            title: `Entity ${this.item.name} Script`,
+        }
+    },
+    methods: {
+        save(ok, text) {
+            if (ok) {
+                this.item.script = text
+            }
         },
     },
 }

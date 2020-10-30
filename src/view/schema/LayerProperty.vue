@@ -5,7 +5,7 @@
         </caption>
         <thead>
             <tr>
-                <th class="text-right" style="width: 111px;">name</th>
+                <th class="text-right" style="width: 122px;">name</th>
                 <th>value</th>
             </tr>
         </thead>
@@ -43,9 +43,21 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-right">pathPattern</td>
+                <td class="text-right">path pattern</td>
                 <td>
                     <b-form-input v-model="item.pathPattern"></b-form-input>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">script</td>
+                <td>
+                    <EditButton :title="titleScript" :content="item.script" @save="saveScript"></EditButton>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">template</td>
+                <td>
+                    <EditButton :title="titleTemplate" :content="item.template" @save="saveTemplate"></EditButton>
                 </td>
             </tr>
             <tr>
@@ -60,18 +72,38 @@
 
 <script>
 import ColorButton from '../button/ColorButton.vue'
+import EditButton from '../button/EditButton.vue'
 import WriteButton from '../button/WriteButton.vue'
 
 export default {
     name: 'LayerProperty',
     components: {
         ColorButton,
+        EditButton,
         WriteButton,
     },
     props: {
         item: {
             type: Object,
             required: true,
+        },
+    },
+    data() {
+        return {
+            titleScript: `Layer ${this.item.name} Script`,
+            titleTemplate: `Layer ${this.item.name} Template`,
+        }
+    },
+    methods: {
+        saveScript(ok, text) {
+            if (ok) {
+                this.item.script = text
+            }
+        },
+        saveTemplate(ok, text) {
+            if (ok) {
+                this.item.template = text
+            }
         },
     },
 }

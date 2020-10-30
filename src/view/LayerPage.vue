@@ -7,8 +7,6 @@
         <div v-if="sss.sidebar.item" class="col-9">
             <b-nav tabs class="mt11">
                 <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
-                <b-nav-item @click="tab = 'Script'" :active="tab === 'Script'"> Script </b-nav-item>
-                <b-nav-item @click="tab = 'Template'" :active="tab === 'Template'"> Template </b-nav-item>
                 <b-nav-item @click="tab = 'Data'" :active="tab === 'Data'"> Data </b-nav-item>
             </b-nav>
 
@@ -31,9 +29,6 @@
                 </tr>
             </LayerProperty>
 
-            <Script v-if="tab === 'Script'" :item="sss.sidebar.item"></Script>
-
-            <Template v-if="tab === 'Template'" :item="sss.sidebar.item"></Template>
         </div>
     </div>
 </template>
@@ -43,9 +38,7 @@ import ChangeButton from './button/ChangeButton.vue'
 import DataList from './schema/DataList.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import LayerProperty from './schema/LayerProperty.vue'
-import Script from './schema/Script.vue'
 import SideBar from './part/SideBar.vue'
-import Template from './schema/Template.vue'
 import sss from '../state.js'
 
 export default {
@@ -55,9 +48,7 @@ export default {
         DataList,
         DeleteButton,
         LayerProperty,
-        Script,
         SideBar,
-        Template,
     },
     data() {
         return {

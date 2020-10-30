@@ -29,6 +29,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">script</td>
+                <td>
+                    <EditButton :title="title" :content="item.script" @save="save"></EditButton>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">server</td>
                 <td>
                     <b-form-input v-model="item.server"></b-form-input>
@@ -52,16 +58,30 @@
 
 <script>
 import ChangeButton from '../button/ChangeButton.vue'
+import EditButton from '../button/EditButton.vue'
 
 export default {
     name: 'ProjectProperty',
     components: {
         ChangeButton,
+        EditButton,
     },
     props: {
         item: {
             type: Object,
             required: true,
+        },
+    },
+    data() {
+        return {
+            title: 'Project Script',
+        }
+    },
+    methods: {
+        save(ok, text) {
+            if (ok) {
+                this.item.script = text
+            }
         },
     },
 }
