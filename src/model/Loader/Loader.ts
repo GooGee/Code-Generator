@@ -1,15 +1,18 @@
+import BaseLoader from './BaseLoader'
+import LoaderV12 from './LoaderV12'
 import Project from '../Schema/Project'
 
 const MinVersion = 12
 
-export default class Loader {
+export default class Loader extends BaseLoader {
     readonly project: Project
 
     constructor(project: Project) {
+        super()
         this.project = project
     }
 
-    load(source: Project) {
+    load(source: Project, preset: Project) {
         if (!this.isProject(source)) {
             throw new Error('Unknown data!')
         }
@@ -24,6 +27,13 @@ export default class Loader {
         }
 
         source.version = this.project.version
+
+        if (version === 12) {
+            const loader = new LoaderV12(this.project)
+            loader.load(source, preset)
+            return
+        }
+
         this.project.load(source)
     }
 
