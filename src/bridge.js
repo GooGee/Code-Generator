@@ -14,9 +14,9 @@ const bridge = {
         window.JavaBridge.edit(JSON.stringify(data))
     },
     editCB(text) {
-        // console.log(text)
-        this.handle(text, this.editHandler)
-        this.editHandler = null
+        console.log(text)
+        // this.handle(text, this.editHandler)
+        // this.editHandler = null
     },
     handle(text, cb) {
         try {
