@@ -1,9 +1,23 @@
 import sss from './state.js'
 
 const bridge = {
+    editHandler: null,
     readDBHandler: null,
     runHandler: null,
 
+    edit(title, content, cb) {
+        const data = {
+            title,
+            content,
+        }
+        this.editHandler = cb
+        window.JavaBridge.edit(JSON.stringify(data))
+    },
+    editCB(text) {
+        // console.log(text)
+        this.handle(text, this.editHandler)
+        this.editHandler = null
+    },
     handle(text, cb) {
         try {
             const json = JSON.parse(text)
