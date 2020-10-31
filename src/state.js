@@ -1,7 +1,5 @@
-import bridge from './bridge.js'
 import State from './model/State'
 
-const sss = new State()
-sss.bridge = bridge
+const sss = new State(window)
 
 export default sss

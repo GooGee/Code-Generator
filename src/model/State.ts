@@ -8,9 +8,10 @@ import Entity from './Schema/Entity'
 import Loader from './Loader/Loader'
 import { IData } from './DataBase/IData'
 import Convertor from './DataBase/Convertor'
+import Bridge, { CEFW } from './Bridge'
 
 export default class State {
-    bridge = null
+    bridge: Bridge
     preset: Project | null = null
     project: Project | null = null
     sidebar: SideBar | null = null
@@ -22,6 +23,30 @@ export default class State {
     private sidebarEntity: SideBar | null = null
     private sidebarLayer: SideBar | null = null
     private sidebarPreset: SideBar | null = null
+
+    constructor(window: CEFW) {
+        this.bridge = new Bridge(window)
+        window.bridge = this.bridge
+
+        this.bridge.add((ok, data) => {
+            if (ok) {
+                this.load(data)
+                return
+            }
+            this.create('Project')
+        })
+
+        setInterval(() => {
+            if (window.JavaBridge) {
+                if (this.ready) {
+                    if (this.project!.autoSave) {
+                        this.bridge.save(JSON.stringify(this.project))
+                    }
+                }
+            }
+        }, 11222)
+
+    }
 
     private prepare() {
         this.sidebarCommand = new SideBar(this.project!.commandManager)
