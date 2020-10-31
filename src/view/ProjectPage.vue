@@ -37,20 +37,21 @@ export default {
     },
     methods: {
         save() {
-            try {
-                sss.bridge.save(sss.project)
-                this.$bvToast.toast('OK', {
-                    title: 'i',
-                    variant: 'success',
-                    solid: true,
-                })
-            } catch (error) {
-                this.$bvToast.toast(error.message, {
+            sss.bridge.save(JSON.stringify(sss.project), (ok, data) => {
+                if (ok) {
+                    this.$bvToast.toast(data.message, {
+                        title: 'i',
+                        variant: 'success',
+                        solid: true,
+                    })
+                    return
+                }
+                this.$bvToast.toast(data, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,
                 })
-            }
+            })
         },
     },
 }
