@@ -62,8 +62,6 @@ export default class Bridge {
                 return
             }
 
-            map.delete(json.key)
-
             if (json.status === StatusOK) {
                 handler(true, json.data)
                 return
