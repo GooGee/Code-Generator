@@ -31,7 +31,7 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :title="title" :content="item.script" @save="save"></EditButton>
+                    <EditButton identifier="Project:Script" :content="item.script" @save="save"></EditButton>
                 </td>
             </tr>
             <tr>
@@ -71,11 +71,6 @@ export default {
             type: Object,
             required: true,
         },
-    },
-    data() {
-        return {
-            title: 'Project Script',
-        }
     },
     methods: {
         save(ok, text) {

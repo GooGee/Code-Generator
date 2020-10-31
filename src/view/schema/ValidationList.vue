@@ -27,7 +27,7 @@
                 <td colspan="2">
                     <b-button-group>
                         <EditButton
-                            title="Validation Rule Script"
+                            identifier="Validation:Script"
                             :content="sss.project.validationScript"
                             @save="save"
                         ></EditButton>

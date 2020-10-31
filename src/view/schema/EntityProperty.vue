@@ -26,7 +26,7 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :title="title" :content="item.script" @save="save"></EditButton>
+                    <EditButton :identifier="identifier" :content="item.script" @save="save"></EditButton>
                 </td>
             </tr>
             <tr>
@@ -59,7 +59,7 @@ export default {
     },
     data() {
         return {
-            title: `Entity ${this.item.name} Script`,
+            identifier: `Entity:${this.item.name}:Script`,
         }
     },
     methods: {

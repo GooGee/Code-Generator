@@ -51,13 +51,17 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :title="titleScript" :content="item.script" @save="saveScript"></EditButton>
+                    <EditButton :identifier="identifierScript" :content="item.script" @save="saveScript"></EditButton>
                 </td>
             </tr>
             <tr>
                 <td class="text-right">template</td>
                 <td>
-                    <EditButton :title="titleTemplate" :content="item.template" @save="saveTemplate"></EditButton>
+                    <EditButton
+                        :identifier="identifierTemplate"
+                        :content="item.template"
+                        @save="saveTemplate"
+                    ></EditButton>
                 </td>
             </tr>
             <tr>
@@ -90,8 +94,8 @@ export default {
     },
     data() {
         return {
-            titleScript: `Layer ${this.item.name} Script`,
-            titleTemplate: `Layer ${this.item.name} Template`,
+            identifierScript: `Layer:${this.item.name}:Script`,
+            identifierTemplate: `Layer:${this.item.name}:Template`,
         }
     },
     methods: {
