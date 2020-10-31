@@ -26,7 +26,11 @@
             <tr>
                 <td colspan="2">
                     <b-button-group>
-                        <b-button @click="visible = !visible" variant="outline-primary"> Code </b-button>
+                        <EditButton
+                            title="Validation Rule Script"
+                            :content="sss.project.validationScript"
+                            @save="save"
+                        ></EditButton>
                         <b-button @click="run" variant="outline-primary"> Run </b-button>
                     </b-button-group>
                 </td>
@@ -34,32 +38,24 @@
                     <b-button @click="clear" variant="outline-danger"> Clear All </b-button>
                 </td>
             </tr>
-            <tr v-if="visible">
-                <td colspan="3">
-                    <b-form-textarea
-                        v-model="sss.project.validationScript"
-                        rows="22"
-                        spellcheck="false"
-                    ></b-form-textarea>
-                </td>
-            </tr>
         </tfoot>
     </table>
 </template>
 
 <script>
+import EditButton from '../button/EditButton.vue'
 import RuleTab from './RuleTab.vue'
 import sss from '@/state.js'
 
 export default {
     name: 'ValidationList',
     components: {
+        EditButton,
         RuleTab,
     },
     data() {
         return {
             sss,
-            visible: false,
             rulexx: sss.getPreset('ValidationRule').propertyManager.list,
             rexx: sss.getPreset('RegularExpression').propertyManager.list,
         }
@@ -79,6 +75,11 @@ export default {
                     variant: 'danger',
                     solid: true,
                 })
+            }
+        },
+        save(ok, text) {
+            if (ok) {
+                sss.project.validationScript = text
             }
         },
         clear() {
