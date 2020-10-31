@@ -73,7 +73,8 @@ export default {
             }
 
             this.waiting = true
-            sss.bridge.readDB((ok, data) => {
+            const route = sss.project.server + '/entity/table'
+            sss.bridge.get(route, '', (ok, data) => {
                 if (ok) {
                     this.data = data
                     if (data.tables.length === 0) {

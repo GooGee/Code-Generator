@@ -93,7 +93,11 @@ export default {
             }
 
             this.waiting = true
-            sss.bridge.run(sss.sidebar.item.toString(), (ok, data) => {
+            const data = {
+                command: sss.sidebar.item.toString(),
+            }
+            const route = sss.project.server + '/entity/run'
+            sss.bridge.post(route, JSON.stringify(data), (ok, data) => {
                 if (ok) {
                     this.result = data
                     this.waiting = false
