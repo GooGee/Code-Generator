@@ -9,6 +9,7 @@ function getFolder() {
 module.exports = {
     outputDir: getFolder(),
     publicPath: '',
+    productionSourceMap: false,
     chainWebpack: config => {
         config.resolve.extensions.merge(['.ts']).end()
         config.module
