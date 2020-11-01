@@ -54,6 +54,9 @@ export default class Bridge {
 
     handle(map: Map<string, Handler>, json: IResponse) {
         console.log(json)
+        if (json === undefined) {
+            return
+        }
         try {
             const handler = map.get(json.key)
 
