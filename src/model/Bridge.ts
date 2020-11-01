@@ -52,9 +52,9 @@ export default class Bridge {
         this.listenerxx.push(handler)
     }
 
-    handle(map: Map<string, Handler>, text: string) {
+    handle(map: Map<string, Handler>, json: IResponse) {
+        console.log(json)
         try {
-            const json = JSON.parse(text) as IResponse
             const handler = map.get(json.key)
 
             if (handler === undefined) {
@@ -75,8 +75,8 @@ export default class Bridge {
         }
     }
 
-    handleError(text: string) {
-        console.log(text)
+    handleError(code: number, text: string) {
+        console.log(code)
         alert(text)
     }
 
@@ -104,21 +104,25 @@ export default class Bridge {
 
     edit(identifier: string, data: string, handler: Handler = CallBack) {
         const key = identifier
+        const type = 'js'
         editMap.set(key, handler)
         const ddd = {
             key,
+            type,
             data
         }
         this.window.JavaBridge.edit(JSON.stringify(ddd))
     }
 
-    editHandler(text: string) {
-        console.log(text)
-        // this.handle(editMap, text)
+    editHandler(json: IResponse) {
+        console.log('editHandler')
+        console.log(json)
+        // this.handle(editMap, json)
     }
 
-    editUpdate(text: string) {
-        this.handle(editMap, text)
+    editUpdate(json: IResponse) {
+        console.log('editUpdate')
+        this.handle(editMap, json)
     }
 
     get(route: string, data: string, handler: Handler = CallBack) {
@@ -131,8 +135,9 @@ export default class Bridge {
         this.window.JavaBridge.get(JSON.stringify(ddd))
     }
 
-    getHandler(text: string) {
-        this.handle(getMap, text)
+    getHandler(json: IResponse) {
+        console.log('getHandler')
+        this.handle(getMap, json)
     }
 
     post(route: string, data: string, handler: Handler = CallBack) {
@@ -145,8 +150,9 @@ export default class Bridge {
         this.window.JavaBridge.post(JSON.stringify(ddd))
     }
 
-    postHandler(text: string) {
-        this.handle(postMap, text)
+    postHandler(json: IResponse) {
+        console.log('postHandler')
+        this.handle(postMap, json)
     }
 
     read(file: string, data: string, handler: Handler = CallBack) {
@@ -159,9 +165,9 @@ export default class Bridge {
         this.window.JavaBridge.read(JSON.stringify(ddd))
     }
 
-    readHandler(text: string) {
+    readHandler(json: IResponse) {
         console.log('readHandler')
-        this.handle(readMap, text)
+        this.handle(readMap, json)
     }
 
     write(file: string, data: string, handler: Handler = CallBack) {
@@ -174,9 +180,9 @@ export default class Bridge {
         this.window.JavaBridge.write(JSON.stringify(ddd))
     }
 
-    writeHandler(text: string) {
+    writeHandler(json: IResponse) {
         console.log('writeHandler')
-        this.handle(writeMap, text)
+        this.handle(writeMap, json)
     }
 
 }
