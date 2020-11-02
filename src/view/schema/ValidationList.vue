@@ -25,7 +25,7 @@
         <tfoot>
             <tr>
                 <td colspan="2">
-                    <b-button-group>
+                    <b-button-group class="mr11">
                         <EditButton
                             identifier="Validation:Script"
                             :content="sss.project.validationScript"
@@ -33,6 +33,9 @@
                         ></EditButton>
                         <b-button @click="run" variant="outline-primary"> Run </b-button>
                     </b-button-group>
+                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
+                        Guide
+                    </a>
                 </td>
                 <td>
                     <b-button @click="clear" variant="outline-danger"> Clear All </b-button>
