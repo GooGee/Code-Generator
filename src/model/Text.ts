@@ -61,11 +61,11 @@ export function runAndRender(data: JSParameter) {
     try {
         run(data.project.script, data)
 
+        message = 'Failed to run script of entity ' + data.entity.name
+        run(data.entity.script, data)
+
         message = 'Failed to run script of layer ' + data.layer.name
         run(data.layer.script, data)
-
-        message = 'Failed to run script of entity ' + data.layer.name
-        run(data.entity.script, data)
 
         message = 'Failed to render template of ' + data.layer.name
         return render(data.layer.template, data)
