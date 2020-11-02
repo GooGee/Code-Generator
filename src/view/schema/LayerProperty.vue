@@ -51,7 +51,7 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :identifier="identifierScript" :content="item.script" @save="saveScript" class="mr11" />
+                    <EditButton :identifier="identifierScript" type="js" :content="item.script" @save="saveScript" class="mr11" />
                     <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
                         Guide
                     </a>
@@ -62,6 +62,7 @@
                 <td>
                     <EditButton
                         :identifier="identifierTemplate"
+                        type="text"
                         :content="item.template"
                         @save="saveTemplate"
                         class="mr11"

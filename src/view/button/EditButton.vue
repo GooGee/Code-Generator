@@ -20,6 +20,10 @@ export default {
             type: String,
             required: true,
         },
+        type: {
+            type: String,
+            required: true,
+        },
     },
     data() {
         return {
@@ -33,7 +37,7 @@ export default {
             }
 
             this.waiting = true
-            sss.bridge.edit(this.identifier, this.content, (ok, text) => {
+            sss.bridge.edit(this.identifier, this.type, this.content, (ok, text) => {
                 this.waiting = false
                 this.$emit('save', ok, text)
             })
