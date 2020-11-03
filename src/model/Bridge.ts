@@ -61,7 +61,7 @@ export default class Bridge {
             const handler = map.get(json.key)
 
             if (handler === undefined) {
-                console.log(`read handler for ${json.key} is undefined`)
+                alert(`handler ${json.key} not found`)
                 return
             }
 
@@ -70,7 +70,7 @@ export default class Bridge {
                 return
             }
 
-            handler(false, json.message)
+            handler(false, json.message ?? 'Error')
 
         } catch (error) {
             console.log(error)
