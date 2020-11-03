@@ -87,11 +87,27 @@ export default {
             }
         },
         clear() {
-            if (confirm('Are you sure?')) {
-                this.manager.list.forEach(field => {
-                    field.ruleManager.clear()
+            this.$bvModal
+                .msgBoxConfirm('Are you sure?', {
+                    title: 'Delete',
+                    headerClass: 'border-bottom-0',
+                    footerClass: 'border-top-0',
+                    centered: true,
                 })
-            }
+                .then(value => {
+                    if (value) {
+                        this.manager.list.forEach(field => {
+                            field.ruleManager.clear()
+                        })
+                    }
+                })
+                .catch(error => {
+                    this.$bvToast.toast(error.message, {
+                        title: 'i',
+                        variant: 'danger',
+                        solid: true,
+                    })
+                })
         },
     },
 }

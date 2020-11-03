@@ -19,18 +19,26 @@ export default {
     },
     methods: {
         remove() {
-            if (confirm('Are you sure?')) {
-                try {
-                    this.manager.remove(this.item)
-                    this.$emit('deleted')
-                } catch (error) {
+            this.$bvModal
+                .msgBoxConfirm('Are you sure?', {
+                    title: 'Delete',
+                    headerClass: 'border-bottom-0',
+                    footerClass: 'border-top-0',
+                    centered: true,
+                })
+                .then(value => {
+                    if (value) {
+                        this.manager.remove(this.item)
+                        this.$emit('deleted')
+                    }
+                })
+                .catch(error => {
                     this.$bvToast.toast(error.message, {
                         title: 'i',
                         variant: 'danger',
                         solid: true,
                     })
-                }
-            }
+                })
         },
     },
 }
