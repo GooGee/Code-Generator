@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import sss from '@/state.js'
+
 export default {
     name: 'AddButton',
     props: {
@@ -23,26 +25,37 @@ export default {
     },
     methods: {
         add() {
-            let value = this.value
             if (this.name) {
-                value = prompt(`Please input the ${this.name}`, this.value)
-            } else {
-                value = Math.random()
-            }
-            if (value) {
-                try {
-                    const item = this.manager.make(value)
-                    if (this.name === '') {
-                        item.name = value
+                sss.nameDialogue.showInput(`Please input the ${this.name}`, this.value, (ok, text) => {
+                    if (ok) {
+                        if (text === '') {
+                            this.$root.$bvToast.toast(`${this.name} cannot be empty`, {
+                                title: 'i',
+                                variant: 'danger',
+                                solid: true,
+                            })
+                        } else {
+                            this.make(text)
+                        }
                     }
-                    this.manager.add(item)
-                } catch (error) {
-                    this.$root.$bvToast.toast(error.message, {
-                        title: 'i',
-                        variant: 'danger',
-                        solid: true,
-                    })
+                })
+            } else {
+                this.make(Math.random())
+            }
+        },
+        make(value) {
+            try {
+                const item = this.manager.make(value)
+                if (this.name === '') {
+                    item.name = value
                 }
+                this.manager.add(item)
+            } catch (error) {
+                this.$root.$bvToast.toast(error.message, {
+                    title: 'i',
+                    variant: 'danger',
+                    solid: true,
+                })
             }
         },
     },

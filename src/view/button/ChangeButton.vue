@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import sss from '@/state.js'
+
 export default {
     name: 'ChangeButton',
     props: {
@@ -17,18 +19,19 @@ export default {
     },
     methods: {
         change() {
-            const value = prompt(`Please input the ${this.name}`, this.item[this.name])
-            if (value) {
-                try {
-                    this.item[this.name] = value
-                } catch (error) {
-                    this.$root.$bvToast.toast(error.message, {
-                        title: 'i',
-                        variant: 'danger',
-                        solid: true,
-                    })
+            sss.nameDialogue.showInput(`Please input the ${this.name}`, this.item[this.name], (ok, text) => {
+                if (ok) {
+                    if (text === '') {
+                        this.$root.$bvToast.toast(`${this.name} cannot be empty`, {
+                            title: 'i',
+                            variant: 'danger',
+                            solid: true,
+                        })
+                    } else {
+                        this.item[this.name] = text
+                    }
                 }
-            }
+            })
         },
     },
 }

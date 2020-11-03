@@ -20,15 +20,27 @@ export default {
     },
     methods: {
         render() {
-            try {
-                let entity = this.entity
-                if (entity === null) {
-                    const name = prompt('Please input the name')
-                    if (!name) {
-                        return
+            if (this.entity === null) {
+                sss.nameDialogue.showInput(`Please input the name`, '', (ok, text) => {
+                    if (ok) {
+                        if (text === '') {
+                            this.$root.$bvToast.toast('name cannot be empty', {
+                                title: 'i',
+                                variant: 'danger',
+                                solid: true,
+                            })
+                        } else {
+                            const entity = sss.project.entityManager.make(text)
+                            this.write(entity)
+                        }
                     }
-                    entity = sss.project.entityManager.make(name)
-                }
+                })
+            } else {
+                this.write(this.entity)
+            }
+        },
+        write(entity) {
+            try {
                 const file = this.layer.getFilePath(sss.project, entity)
                 const text = sss.render(this.layer, entity)
                 sss.bridge.write(file, text, (ok, data) => {
