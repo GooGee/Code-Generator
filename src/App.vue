@@ -6,6 +6,7 @@
         </div>
         <InputDialogue></InputDialogue>
         <ListDialogue></ListDialogue>
+        <NameDialogue></NameDialogue>
         <Top></Top>
     </div>
 </template>
@@ -14,6 +15,7 @@
 import Bar from './view/part/Bar.vue'
 import InputDialogue from './view/part/InputDialogue.vue'
 import ListDialogue from './view/part/ListDialogue.vue'
+import NameDialogue from './view/part/NameDialogue.vue'
 import Top from './view/part/Top.vue'
 import sss from './state.js'
 
@@ -23,6 +25,7 @@ export default {
         Bar,
         InputDialogue,
         ListDialogue,
+        NameDialogue,
         Top,
     },
     data() {
