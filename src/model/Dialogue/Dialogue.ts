@@ -4,7 +4,7 @@ export default class Dialogue {
     visible: boolean = false
     callback: CallableFunction | null = null
 
-    show(title = '', callback: CallableFunction | null = null) {
+    show(title: string, callback: CallableFunction | null = null) {
         this.title = title
         this.callback = callback
         this.visible = true

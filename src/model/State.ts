@@ -9,6 +9,7 @@ import Loader from './Loader/Loader'
 import { IData } from './DataBase/IData'
 import Convertor from './DataBase/Convertor'
 import Bridge, { CEFW } from './Bridge'
+import NameDialogue from './Dialogue/NameDialogue'
 
 export default class State {
     bridge: Bridge
@@ -18,6 +19,7 @@ export default class State {
 
     readonly inputDialogue = new InputDialogue()
     readonly listDialogue = new ListDialogue()
+    readonly nameDialogue = new NameDialogue()
 
     private sidebarCommand: SideBar | null = null
     private sidebarEntity: SideBar | null = null
