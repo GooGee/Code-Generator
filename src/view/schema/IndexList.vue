@@ -79,7 +79,7 @@ export default {
                     const field = index.fieldManager.make(selected.name)
                     index.fieldManager.add(field)
                 } catch (error) {
-                    this.$bvToast.toast(error.message, {
+                    this.$root.$bvToast.toast(error.message, {
                         title: 'i',
                         variant: 'danger',
                         solid: true,

@@ -33,7 +33,7 @@ export default {
                     }
                 })
                 .catch(error => {
-                    this.$bvToast.toast(error.message, {
+                    this.$root.$bvToast.toast(error.message, {
                         title: 'i',
                         variant: 'danger',
                         solid: true,

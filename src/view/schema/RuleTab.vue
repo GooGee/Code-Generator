@@ -103,7 +103,7 @@ export default {
                 const rrr = this.manager.make(rule.name)
                 this.manager.add(rrr)
             } catch (error) {
-                this.$bvToast.toast(error.message, {
+                this.$root.$bvToast.toast(error.message, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,

@@ -104,7 +104,7 @@ export default {
                     return
                 }
 
-                this.$bvToast.toast(data, {
+                this.$root.$bvToast.toast(data, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,

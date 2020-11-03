@@ -22,7 +22,7 @@ export default {
                 try {
                     this.item[this.name] = value
                 } catch (error) {
-                    this.$bvToast.toast(error.message, {
+                    this.$root.$bvToast.toast(error.message, {
                         title: 'i',
                         variant: 'danger',
                         solid: true,

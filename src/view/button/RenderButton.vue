@@ -24,7 +24,7 @@ export default {
                 const text = sss.render(this.layer, this.entity)
                 sss.inputDialogue.showText(title, text)
             } catch (error) {
-                this.$bvToast.toast(error.message, {
+                this.$root.$bvToast.toast(error.message, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,

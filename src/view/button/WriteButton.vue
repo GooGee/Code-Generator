@@ -33,21 +33,21 @@ export default {
                 const text = sss.render(this.layer, entity)
                 sss.bridge.write(file, text, (ok, data) => {
                     if (ok) {
-                        this.$bvToast.toast('OK', {
+                        this.$root.$bvToast.toast('OK', {
                             title: 'i',
                             variant: 'success',
                             solid: true,
                         })
                         return
                     }
-                    this.$bvToast.toast(data, {
+                    this.$root.$bvToast.toast(data, {
                         title: 'i',
                         variant: 'danger',
                         solid: true,
                     })
                 })
             } catch (error) {
-                this.$bvToast.toast(error.message, {
+                this.$root.$bvToast.toast(error.message, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,

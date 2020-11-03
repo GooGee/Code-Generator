@@ -39,14 +39,14 @@ export default {
         save() {
             sss.bridge.save(JSON.stringify(sss.project), (ok, data) => {
                 if (ok) {
-                    this.$bvToast.toast('OK', {
+                    this.$root.$bvToast.toast('OK', {
                         title: 'i',
                         variant: 'success',
                         solid: true,
                     })
                     return
                 }
-                this.$bvToast.toast(data, {
+                this.$root.$bvToast.toast(data, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,

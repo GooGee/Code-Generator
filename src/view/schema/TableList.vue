@@ -78,7 +78,7 @@ export default {
                 if (ok) {
                     this.data = data
                     if (data.tables.length === 0) {
-                        this.$bvToast.toast('No table found', {
+                        this.$root.$bvToast.toast('No table found', {
                             title: 'i',
                             variant: 'success',
                             solid: true,
@@ -89,7 +89,7 @@ export default {
                     return
                 }
 
-                this.$bvToast.toast(data, {
+                this.$root.$bvToast.toast(data, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,
@@ -104,13 +104,13 @@ export default {
 
             try {
                 sss.convert(this.data, this.skip)
-                this.$bvToast.toast('Table imported', {
+                this.$root.$bvToast.toast('Table imported', {
                     title: 'i',
                     variant: 'success',
                     solid: true,
                 })
             } catch (error) {
-                this.$bvToast.toast(error.message, {
+                this.$root.$bvToast.toast(error.message, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,
