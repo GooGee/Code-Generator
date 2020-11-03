@@ -24,10 +24,12 @@
                 </td>
                 <td>{{ field.type }}</td>
                 <td>
-                    <b-button-group>
-                        <b-button @click="select(field)" variant="outline-primary"> {{ plus(field) }} </b-button>
-                        <b-button @click="change(field)" variant="outline-primary"> * </b-button>
-                    </b-button-group>
+                    <b-input-group>
+                        <b-input-group-prepend>
+                            <b-button @click="select(field)" variant="outline-primary"> + </b-button>
+                        </b-input-group-prepend>
+                        <b-form-input v-model="field.cast"></b-form-input>
+                    </b-input-group>
                 </td>
             </tr>
         </tbody>
@@ -45,23 +47,11 @@ export default {
         },
     },
     methods: {
-        plus(field) {
-            if (field.cast) {
-                return field.cast
-            }
-            return '+'
-        },
         select(field) {
             const list = sss.getPreset('CastPHP').propertyManager.list
             sss.listDialogue.showList(list, 'Select a Type', () => {
                 field.cast = sss.listDialogue.selected.name
             })
-        },
-        change(field) {
-            const text = prompt('Please input something', field.cast)
-            if ('string' === typeof text) {
-                field.cast = text
-            }
         },
     },
 }
