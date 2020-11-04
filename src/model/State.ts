@@ -1,3 +1,4 @@
+import lodash from 'lodash'
 import Project from './Schema/Project'
 import SideBar from './SideBar'
 import InputDialogue from './Dialogue/InputDialogue'
@@ -112,6 +113,7 @@ export default class State {
             project: this.project!,
             layer,
             entity,
+            lodash,
         }
         return runAndRender(data)
     }
@@ -120,6 +122,7 @@ export default class State {
         const data = {
             project: this.project,
             entity,
+            lodash,
         }
         run(this.project!.validationScript, data)
     }

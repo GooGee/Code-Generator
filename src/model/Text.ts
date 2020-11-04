@@ -45,7 +45,7 @@ export function numberOrQuote(text: any) {
     return text
 }
 
-export function render(template: string, data: object) {
+export function render(template: string, data: JSParameter) {
     return nunjucks.renderString(template, data)
 }
 
