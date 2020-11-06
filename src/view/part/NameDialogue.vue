@@ -7,7 +7,7 @@
         @ok="close(true)"
         @cancel="close(false)"
     >
-        <b-form-input v-model="dialogue.text" autofocus></b-form-input>
+        <b-form-input v-model="dialogue.text" v-on:keyup.enter="close(true)" autofocus></b-form-input>
     </b-modal>
 </template>
 
@@ -23,6 +23,7 @@ export default {
     },
     methods: {
         close(ok) {
+            this.dialogue.visible = false
             if (this.dialogue.callback) {
                 this.dialogue.callback(ok, this.dialogue.text)
             }
