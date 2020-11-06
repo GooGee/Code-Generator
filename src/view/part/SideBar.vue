@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pre-scrollable position-fixed" style="max-height: 90%;height: 90vh;">
         <div class="text-center mtb11">
             <h2 class="inline mr11">{{ title }}</h2>
             <AddButton :manager="sidebar.manager"></AddButton>
