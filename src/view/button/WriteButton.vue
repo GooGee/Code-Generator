@@ -45,8 +45,8 @@ export default {
                 const text = sss.render(this.layer, entity)
                 sss.bridge.write(file, text, (ok, data) => {
                     if (ok) {
-                        this.$root.$bvToast.toast('OK', {
-                            title: 'i',
+                        this.$root.$bvToast.toast(file, {
+                            title: 'Saved',
                             variant: 'success',
                             solid: true,
                         })
