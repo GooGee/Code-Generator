@@ -24,7 +24,15 @@
                             <a href="https://packagist.org/packages/googee/entity" target="_blank"> package </a>
                             is installed
                         </li>
-                        <li>and the local laravel project is running</li>
+                        <li>
+                            and the server
+                            <a :href="sss.project.server" target="_blank">{{ sss.project.server }}</a>
+                            is running
+                        </li>
+                        <li>
+                            to change the server URL, go to page
+                            <router-link to="/project">Project</router-link>
+                        </li>
                     </ul>
                 </template>
                 <template slot="body">
