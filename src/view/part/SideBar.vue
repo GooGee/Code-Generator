@@ -8,7 +8,7 @@
         <b-input-group class="mb11">
             <b-form-input v-model="sidebar.keyword" placeholder="Search"></b-form-input>
             <b-input-group-append @click="visible = !visible">
-                <ColorButton :color="sidebar.color"></ColorButton>
+                <ColorButton :color="sidebar.color" :active="true"></ColorButton>
             </b-input-group-append>
         </b-input-group>
 
