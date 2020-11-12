@@ -1,5 +1,5 @@
 <template>
-    <div id="ColorButton" style="width: 244px;">
+    <div id="ColorPanel" style="width: 244px;">
         <span @click="$emit('update:color', '')" :class="{ active: '' === color }" class="button empty"></span>
         <span
             v-for="item in list"
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-    name: 'ColorButton',
+    name: 'ColorPanel',
     props: {
         color: {
             type: String,
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style>
-#ColorButton .button {
+#ColorPanel .button {
     display: inline-block;
     border-radius: 50%;
     cursor: pointer;
@@ -39,15 +39,15 @@ export default {
     margin: 3px;
 }
 
-#ColorButton .button.white {
+#ColorPanel .button.white {
     border: solid 1px lightgray;
 }
 
-#ColorButton .button.active {
+#ColorPanel .button.active {
     border: solid 5px black;
 }
 
-#ColorButton .button.empty {
+#ColorPanel .button.empty {
     border: solid 1px lightgray;
     background: linear-gradient(
         to top left,
@@ -59,7 +59,7 @@ export default {
     );
 }
 
-#ColorButton .button.empty.active {
+#ColorPanel .button.empty.active {
     border: solid 5px black;
 }
 </style>

@@ -10,7 +10,7 @@
         </div>
 
         <div class="mb11">
-            <ColorButton :color.sync="sidebar.color" style="margin: auto;"></ColorButton>
+            <ColorPanel :color.sync="sidebar.color" style="margin: auto;"></ColorPanel>
         </div>
 
         <div v-if="sidebar.keyword || sidebar.color" class="list-group">
@@ -41,14 +41,14 @@
 
 <script>
 import AddButton from '../button/AddButton.vue'
-import ColorButton from '../button/ColorButton.vue'
+import ColorPanel from '../button/ColorPanel.vue'
 import draggable from 'vuedraggable'
 
 export default {
     name: 'SideBar',
     components: {
         AddButton,
-        ColorButton,
+        ColorPanel,
         draggable,
     },
     props: {

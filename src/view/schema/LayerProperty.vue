@@ -21,7 +21,7 @@
             <tr>
                 <td class="text-right">color</td>
                 <td>
-                    <ColorButton :color.sync="item.color"></ColorButton>
+                    <ColorPanel :color.sync="item.color"></ColorPanel>
                 </td>
             </tr>
             <tr>
@@ -81,14 +81,14 @@
 </template>
 
 <script>
-import ColorButton from '../button/ColorButton.vue'
+import ColorPanel from '../button/ColorPanel.vue'
 import EditButton from '../button/EditButton.vue'
 import WriteButton from '../button/WriteButton.vue'
 
 export default {
     name: 'LayerProperty',
     components: {
-        ColorButton,
+        ColorPanel,
         EditButton,
         WriteButton,
     },

@@ -51,7 +51,7 @@
                     <tr>
                         <td class="text-right">color</td>
                         <td colspan="2">
-                            <ColorButton :color.sync="sss.sidebar.item.color"></ColorButton>
+                            <ColorPanel :color.sync="sss.sidebar.item.color"></ColorPanel>
                         </td>
                     </tr>
                 </template>
@@ -68,7 +68,7 @@
 <script>
 import ArgumentList from './schema/ArgumentList.vue'
 import ChangeButton from './button/ChangeButton.vue'
-import ColorButton from './button/ColorButton.vue'
+import ColorPanel from './button/ColorPanel.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import WaitButton from './button/WaitButton.vue'
 import SideBar from './part/SideBar.vue'
@@ -79,7 +79,7 @@ export default {
     components: {
         ArgumentList,
         ChangeButton,
-        ColorButton,
+        ColorPanel,
         DeleteButton,
         WaitButton,
         SideBar,

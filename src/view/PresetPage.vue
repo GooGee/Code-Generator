@@ -20,7 +20,7 @@
                 <div class="mb11">
                     <b-form-input v-model="sss.sidebar.item.description" placeholder="description"></b-form-input>
                 </div>
-                <ColorButton :color.sync="sss.sidebar.item.color"></ColorButton>
+                <ColorPanel :color.sync="sss.sidebar.item.color"></ColorPanel>
             </PropertyList>
         </div>
     </div>
@@ -28,7 +28,7 @@
 
 <script>
 import ChangeButton from './button/ChangeButton.vue'
-import ColorButton from './button/ColorButton.vue'
+import ColorPanel from './button/ColorPanel.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import SideBar from './part/SideBar.vue'
 import PropertyList from './schema/PropertyList.vue'
@@ -38,7 +38,7 @@ export default {
     name: 'PresetPage',
     components: {
         ChangeButton,
-        ColorButton,
+        ColorPanel,
         DeleteButton,
         SideBar,
         PropertyList,

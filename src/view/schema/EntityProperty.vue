@@ -20,7 +20,7 @@
             <tr>
                 <td class="text-right">color</td>
                 <td>
-                    <ColorButton :color.sync="item.color"></ColorButton>
+                    <ColorPanel :color.sync="item.color"></ColorPanel>
                 </td>
             </tr>
             <tr>
@@ -44,14 +44,14 @@
 
 <script>
 import ChangeButton from '../button/ChangeButton.vue'
-import ColorButton from '../button/ColorButton.vue'
+import ColorPanel from '../button/ColorPanel.vue'
 import EditButton from '../button/EditButton.vue'
 
 export default {
     name: 'EntityProperty',
     components: {
         ChangeButton,
-        ColorButton,
+        ColorPanel,
         EditButton,
     },
     props: {
