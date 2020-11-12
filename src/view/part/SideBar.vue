@@ -5,11 +5,14 @@
             <AddButton :manager="sidebar.manager"></AddButton>
         </div>
 
-        <div class="mb11">
+        <b-input-group class="mb11">
             <b-form-input v-model="sidebar.keyword" placeholder="Search"></b-form-input>
-        </div>
+            <b-input-group-append @click="visible = !visible">
+                <ColorButton :color="sidebar.color"></ColorButton>
+            </b-input-group-append>
+        </b-input-group>
 
-        <div class="mb11">
+        <div v-if="visible" class="mb11">
             <ColorPanel :color.sync="sidebar.color" style="margin: auto;"></ColorPanel>
         </div>
 
@@ -41,6 +44,7 @@
 
 <script>
 import AddButton from '../button/AddButton.vue'
+import ColorButton from '../button/ColorButton.vue'
 import ColorPanel from '../button/ColorPanel.vue'
 import draggable from 'vuedraggable'
 
@@ -48,6 +52,7 @@ export default {
     name: 'SideBar',
     components: {
         AddButton,
+        ColorButton,
         ColorPanel,
         draggable,
     },
@@ -60,6 +65,11 @@ export default {
             type: String,
             required: true,
         },
+    },
+    data() {
+        return {
+            visible: false,
+        }
     },
 }
 </script>
