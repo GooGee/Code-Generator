@@ -2,7 +2,7 @@
     <span
         :style="'background-color:' + color"
         class="color-button"
-        :class="{ active: active, empty: color === '', white: color === '#fff' }"
+        :class="{ active: active, empty: color === '' }"
     ></span>
 </template>
 
@@ -33,8 +33,7 @@ export default {
     margin: 3px;
 }
 
-.color-button.empty,
-.color-button.white {
+.color-button.empty {
     border: solid 1px lightgray;
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 244px;">
+    <div style="width: 200px;">
         <span v-for="item in list" :key="item" @click="$emit('update:color', item)">
             <ColorButton :color="item" :active="item === color"></ColorButton>
         </span>
@@ -22,7 +22,7 @@ export default {
     },
     data() {
         return {
-            list: ['', '#f00', '#f80', '#ff0', '#80f', '#f0f', '#fff', '#0f0', '#0ff', '#00f', '#08f', '#888'],
+            list: ['', '#f00', '#f0f', '#f80', '#ff0', '#0f0', '#0ff', '#00f', '#08f', '#80f'],
         }
     },
 }
