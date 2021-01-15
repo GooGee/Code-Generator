@@ -104,11 +104,13 @@ export default {
             required: true,
         },
     },
-    data() {
-        return {
-            identifierScript: `Layer:${this.item.name}:Script`,
-            identifierTemplate: `Layer:${this.item.name}:Template`,
-        }
+    computed: {
+        identifierScript() {
+            return `Layer:${this.item.name}:Script`
+        },
+        identifierTemplate() {
+            return `Layer:${this.item.name}:Template`
+        },
     },
     methods: {
         saveScript(ok, text) {
