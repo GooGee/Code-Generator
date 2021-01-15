@@ -19,6 +19,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">requireName</td>
+                <td>
+                    <b-form-checkbox v-model="item.requireName" switch></b-form-checkbox>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">color</td>
                 <td>
                     <ColorPanel :color.sync="item.color"></ColorPanel>

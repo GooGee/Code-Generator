@@ -21,6 +21,11 @@ export default {
     methods: {
         render() {
             if (this.entity === null) {
+                if (this.layer.requireName === false) {
+                    const entity = sss.project.entityManager.make('NoName')
+                    this.write(entity)
+                    return
+                }
                 sss.nameDialogue.showInput(`Please input the name`, '', (ok, text) => {
                     if (ok) {
                         if (text === '') {
