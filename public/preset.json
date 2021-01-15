@@ -748,6 +748,9 @@
                 "name": "User",
                 "color": "",
                 "description": "",
+                "routeDomain": "",
+                "routeName": "",
+                "routePrefix": "admin",
                 "script": "function run(data) {\n}\n",
                 "tableName": "user",
                 "fieldManager": {
@@ -950,13 +953,77 @@
                     ]
                 },
                 "routeManager": {
-                    "list": []
+                    "list": [
+                        {
+                            "name": "destroy",
+                            "action": "delete",
+                            "path": "user/{id}",
+                            "middlewareManager": {
+                                "list": [
+                                    {
+                                        "name": "auth"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "index",
+                            "action": "get",
+                            "path": "user",
+                            "middlewareManager": {
+                                "list": [
+                                    {
+                                        "name": "auth"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "show",
+                            "action": "get",
+                            "path": "user/{id}",
+                            "middlewareManager": {
+                                "list": [
+                                    {
+                                        "name": "auth"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "store",
+                            "action": "post",
+                            "path": "user",
+                            "middlewareManager": {
+                                "list": [
+                                    {
+                                        "name": "auth"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "update",
+                            "action": "patch",
+                            "path": "user/{id}",
+                            "middlewareManager": {
+                                "list": [
+                                    {
+                                        "name": "auth"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
                 }
             },
             {
                 "name": "Post",
                 "color": "",
                 "description": "",
+                "routeDomain": "",
+                "routeName": "",
+                "routePrefix": "",
                 "script": "function run(data) {\n}\n",
                 "tableName": "post",
                 "fieldManager": {
@@ -1115,7 +1182,60 @@
                     ]
                 },
                 "routeManager": {
-                    "list": []
+                    "list": [
+                        {
+                            "name": "destroy",
+                            "action": "delete",
+                            "path": "post/{id}",
+                            "middlewareManager": {
+                                "list": [
+                                    {
+                                        "name": "auth"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "index",
+                            "action": "get",
+                            "path": "post",
+                            "middlewareManager": {
+                                "list": []
+                            }
+                        },
+                        {
+                            "name": "show",
+                            "action": "get",
+                            "path": "post/{id}",
+                            "middlewareManager": {
+                                "list": []
+                            }
+                        },
+                        {
+                            "name": "store",
+                            "action": "post",
+                            "path": "post",
+                            "middlewareManager": {
+                                "list": [
+                                    {
+                                        "name": "auth"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "update",
+                            "action": "patch",
+                            "path": "post/{id}",
+                            "middlewareManager": {
+                                "list": [
+                                    {
+                                        "name": "auth"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
                 }
             }
         ]
@@ -1126,6 +1246,7 @@
                 "name": "Channel",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Channel",
@@ -1142,6 +1263,7 @@
                 "name": "Command",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Command",
@@ -1158,6 +1280,7 @@
                 "name": "Controller",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}Controller",
@@ -1174,6 +1297,7 @@
                 "name": "ControllerAPI",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}Controller",
@@ -1190,6 +1314,7 @@
                 "name": "DBFactory",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "",
@@ -1206,6 +1331,7 @@
                 "name": "DBSeeder",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}TableSeeder",
@@ -1222,6 +1348,7 @@
                 "name": "Event",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Event",
@@ -1238,6 +1365,7 @@
                 "name": "Exception",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Exception",
@@ -1254,6 +1382,7 @@
                 "name": "Job",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Job",
@@ -1270,6 +1399,7 @@
                 "name": "Listener",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Listener",
@@ -1286,6 +1416,7 @@
                 "name": "Mail",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Mail",
@@ -1302,6 +1433,7 @@
                 "name": "Middleware",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}",
@@ -1318,6 +1450,7 @@
                 "name": "Migration",
                 "color": "",
                 "original": true,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "Create${entity.name}Table",
@@ -1334,6 +1467,7 @@
                 "name": "Model",
                 "color": "",
                 "original": true,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}",
@@ -1350,6 +1484,7 @@
                 "name": "Notification",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Notification",
@@ -1366,6 +1501,7 @@
                 "name": "Observer",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}Observer",
@@ -1382,6 +1518,7 @@
                 "name": "Policy",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}Policy",
@@ -1398,6 +1535,7 @@
                 "name": "Provider",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Provider",
@@ -1414,6 +1552,7 @@
                 "name": "Repository",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}Repository",
@@ -1430,6 +1569,7 @@
                 "name": "Request",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "Store${entity.name}Request",
@@ -1446,6 +1586,7 @@
                 "name": "Resource",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}Resource",
@@ -1462,6 +1603,7 @@
                 "name": "RouteAPI",
                 "color": "",
                 "original": false,
+                "requireName": false,
                 "single": true,
                 "description": "",
                 "classPattern": "",
@@ -1478,6 +1620,7 @@
                 "name": "RouteWeb",
                 "color": "",
                 "original": false,
+                "requireName": false,
                 "single": true,
                 "description": "",
                 "classPattern": "",
@@ -1494,6 +1637,7 @@
                 "name": "Rule",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": true,
                 "description": "",
                 "classPattern": "${entity.name}Rule",
@@ -1510,6 +1654,7 @@
                 "name": "TestFeature",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}Test",
@@ -1526,6 +1671,7 @@
                 "name": "TestUnit",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "${entity.name}Test",
@@ -1542,6 +1688,7 @@
                 "name": "View",
                 "color": "",
                 "original": false,
+                "requireName": true,
                 "single": false,
                 "description": "",
                 "classPattern": "",
