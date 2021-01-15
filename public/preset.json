@@ -948,6 +948,9 @@
                             "type": "hasMany"
                         }
                     ]
+                },
+                "routeManager": {
+                    "list": []
                 }
             },
             {
@@ -1110,6 +1113,9 @@
                             "type": "belongsTo"
                         }
                     ]
+                },
+                "routeManager": {
+                    "list": []
                 }
             }
         ]
@@ -4539,6 +4545,88 @@
                             "data": {},
                             "tag": "WWW",
                             "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "RouteMethod",
+                "original": true,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "destroy",
+                            "data": {},
+                            "tag": "delete",
+                            "value": "/{id}"
+                        },
+                        {
+                            "name": "index",
+                            "data": {},
+                            "tag": "get",
+                            "value": ""
+                        },
+                        {
+                            "name": "show",
+                            "data": {},
+                            "tag": "get",
+                            "value": "/{id}"
+                        },
+                        {
+                            "name": "store",
+                            "data": {},
+                            "tag": "post",
+                            "value": ""
+                        },
+                        {
+                            "name": "update",
+                            "data": {},
+                            "tag": "patch",
+                            "value": "/{id}"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "RouteRESTful",
+                "original": true,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "destroy",
+                            "data": {},
+                            "tag": "delete",
+                            "value": "/{id}"
+                        },
+                        {
+                            "name": "index",
+                            "data": {},
+                            "tag": "get",
+                            "value": ""
+                        },
+                        {
+                            "name": "show",
+                            "data": {},
+                            "tag": "get",
+                            "value": "/{id}"
+                        },
+                        {
+                            "name": "store",
+                            "data": {},
+                            "tag": "post",
+                            "value": ""
+                        },
+                        {
+                            "name": "update",
+                            "data": {},
+                            "tag": "patch",
+                            "value": "/{id}"
                         }
                     ]
                 }
