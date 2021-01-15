@@ -4630,6 +4630,71 @@
                         }
                     ]
                 }
+            },
+            {
+                "name": "Middleware",
+                "original": true,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "auth",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "auth.basic",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "bindings",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "cache.headers",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "can",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "guest",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "signed",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "throttle",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "verified",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
             }
         ]
     }
