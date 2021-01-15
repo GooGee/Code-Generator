@@ -2,7 +2,10 @@
     <table class="table b-table b-table-caption-top">
         <caption>
             <h3 class="inline mr11">DataBase Schema</h3>
-            <WaitButton @run="read" :waiting="waiting"> Read </WaitButton>
+            <b-button @click="read" :disabled="waiting" variant="outline-success">
+                <b-spinner v-if="waiting" small></b-spinner>
+                Read
+            </b-button>
             <ul class="gray">
                 <li>
                     make sure the PHP
@@ -54,14 +57,10 @@
 </template>
 
 <script>
-import WaitButton from '../button/WaitButton.vue'
 import sss from '@/state.js'
 
 export default {
     name: 'TableList',
-    components: {
-        WaitButton,
-    },
     data() {
         return {
             sss,

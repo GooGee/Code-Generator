@@ -1,16 +1,15 @@
 <template>
-    <WaitButton @run="run" :waiting="waiting"> Edit </WaitButton>
+    <b-button @click="run" :disabled="waiting" variant="outline-success">
+        <b-spinner v-if="waiting" small></b-spinner>
+        Edit
+    </b-button>
 </template>
 
 <script>
-import WaitButton from './WaitButton.vue'
 import sss from '@/state.js'
 
 export default {
     name: 'EditButton',
-    components: {
-        WaitButton,
-    },
     props: {
         identifier: {
             type: String,

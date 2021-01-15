@@ -17,7 +17,10 @@
                         ></DeleteButton>
                         <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
                     </b-button-group>
-                    <WaitButton @run="run" :waiting="waiting"> Run </WaitButton>
+                    <b-button @click="run" :disabled="waiting" variant="outline-success">
+                        <b-spinner v-if="waiting" small></b-spinner>
+                        Run
+                    </b-button>
                     <ul class="gray">
                         <li>
                             make sure the PHP
@@ -70,7 +73,6 @@ import ArgumentList from './schema/ArgumentList.vue'
 import ChangeButton from './button/ChangeButton.vue'
 import ColorPanel from './button/ColorPanel.vue'
 import DeleteButton from './button/DeleteButton.vue'
-import WaitButton from './button/WaitButton.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '../state.js'
 
@@ -81,7 +83,6 @@ export default {
         ChangeButton,
         ColorPanel,
         DeleteButton,
-        WaitButton,
         SideBar,
     },
     data() {
