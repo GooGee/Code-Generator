@@ -25,13 +25,13 @@
 
         <tfoot>
             <tr>
+                <td></td>
                 <td>
                     <select v-model="selected" @change="add($event.target.value)" class="form-control inline wa">
                         <option selected="true" disabled="disabled" value=""> ---- </option>
                         <option v-for="item in actionxx" :value="item" :key="item"> {{ item }} </option>
                     </select>
                 </td>
-                <td></td>
                 <td>
                     <b-button @click="addRESTful" variant="outline-primary"> RESTful </b-button>
                 </td>
