@@ -12,15 +12,33 @@
         <tbody>
             <slot></slot>
             <tr>
+                <td class="text-right">color</td>
+                <td>
+                    <ColorPanel :color.sync="item.color"></ColorPanel>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">tableName</td>
                 <td>
                     <ChangeButton :item="item" name="tableName"></ChangeButton>
                 </td>
             </tr>
             <tr>
-                <td class="text-right">color</td>
+                <td class="text-right">routeDomain</td>
                 <td>
-                    <ColorPanel :color.sync="item.color"></ColorPanel>
+                    <b-form-input v-model="item.routeDomain"></b-form-input>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">routeName</td>
+                <td>
+                    <b-form-input v-model="item.routeName"></b-form-input>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">routePrefix</td>
+                <td>
+                    <b-form-input v-model="item.routePrefix"></b-form-input>
                 </td>
             </tr>
             <tr>

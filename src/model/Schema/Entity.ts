@@ -11,6 +11,9 @@ import idListener from '../Event/ItemDeleteListener'
 export default class Entity extends UniqueItem {
     color: string = ''
     description: string = ''
+    routeDomain: string = ''
+    routeName: string = ''
+    routePrefix: string = ''
     script: string = ''
     tableName: string = ''
     readonly fieldManager = new FieldManager()
