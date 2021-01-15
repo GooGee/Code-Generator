@@ -119,7 +119,7 @@ export default class Bridge {
     editHandler(json: IResponse) {
         console.log('editHandler')
         console.log(json)
-        // this.handle(editMap, json)
+        this.handle(editMap, json)
     }
 
     editUpdate(json: IResponse) {
