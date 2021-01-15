@@ -16,6 +16,7 @@
             <ChangeButton :item="route" name="name"></ChangeButton>
         </td>
         <td>
+            <MiddlewareList :manager="route.middlewareManager"></MiddlewareList>
         </td>
     </tr>
 </template>
@@ -23,12 +24,14 @@
 <script>
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import MiddlewareList from './MiddlewareList.vue'
 
 export default {
     name: 'Route',
     components: {
         ChangeButton,
         DeleteButton,
+        MiddlewareList,
     },
     props: {
         manager: {
