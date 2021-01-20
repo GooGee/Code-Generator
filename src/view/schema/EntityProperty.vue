@@ -78,10 +78,8 @@ export default {
             required: true,
         },
     },
-    data() {
-        return {
-            file: `script/entity-${this.item.name}.js`,
-        }
+    computed: {
+        file: () => `script/entity-${this.item.name}.js`,
     },
     methods: {
         save(ok, text) {
