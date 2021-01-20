@@ -17,6 +17,8 @@ interface IJavaBridge {
     get(json: string): void
     post(json: string): void
 
+    refresh(): void
+
     read(json: string): void
     write(json: string): void
 
@@ -41,6 +43,7 @@ const FileName = 'code-generator.json'
 const CallBack = (ok: boolean, data: any) => { }
 
 export default class Bridge {
+    private refreshCB: Handler = CallBack
     readonly window: CEFW
     readonly listenerxx: Array<Handler> = []
 
@@ -154,6 +157,16 @@ export default class Bridge {
     postHandler(json: IResponse) {
         console.log('postHandler')
         this.handle(postMap, json)
+    }
+
+    refresh(handler: Handler = CallBack) {
+        this.refreshCB = handler
+        this.window.JavaBridge.refresh()
+    }
+
+    refreshHandler() {
+        console.log('refreshHandler')
+        this.refreshCB(true, '')
     }
 
     read(file: string, data: string, handler: Handler = CallBack) {
