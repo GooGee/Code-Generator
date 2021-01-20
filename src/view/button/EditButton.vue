@@ -32,11 +32,20 @@ export default {
             }
 
             this.waiting = true
-            const file = 'storage/code-generator/' + this.file
-            sss.bridge.edit(file, this.content, (ok, text) => {
+            try {
+                const file = 'code-generator/' + this.file
+                sss.bridge.edit(file, this.content, (ok, text) => {
+                    this.waiting = false
+                    this.$emit('save', ok, text)
+                })
+            } catch (error) {
                 this.waiting = false
-                this.$emit('save', ok, text)
-            })
+                this.$root.$bvToast.toast(error.message, {
+                    title: 'i',
+                    variant: 'danger',
+                    solid: true,
+                })
+            }
         },
     },
 }
