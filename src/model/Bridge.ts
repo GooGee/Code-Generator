@@ -105,8 +105,8 @@ export default class Bridge {
         this.write(FileName, project, handler)
     }
 
-    edit(identifier: string, data: string, handler: Handler = CallBack) {
-        const key = identifier
+    edit(file: string, data: string, handler: Handler = CallBack) {
+        const key = file
         editMap.set(key, handler)
         const ddd = {
             key,
@@ -118,7 +118,7 @@ export default class Bridge {
     editHandler(json: IResponse) {
         console.log('editHandler')
         console.log(json)
-        this.handle(editMap, json)
+        // this.handle(editMap, json)
     }
 
     editUpdate(json: IResponse) {
