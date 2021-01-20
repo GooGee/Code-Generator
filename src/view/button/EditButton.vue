@@ -19,11 +19,6 @@ export default {
             type: String,
             required: true,
         },
-        type: {
-            type: String,
-            required: false,
-            default: 'text',
-        },
     },
     data() {
         return {
@@ -38,7 +33,7 @@ export default {
 
             this.waiting = true
             const file = 'storage/code-generator/' + this.file
-            sss.bridge.edit(file, this.type, this.content, (ok, text) => {
+            sss.bridge.edit(file, this.content, (ok, text) => {
                 this.waiting = false
                 this.$emit('save', ok, text)
             })

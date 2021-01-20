@@ -28,7 +28,6 @@
                     <b-button-group class="mr11">
                         <EditButton
                             file="script/validation.js"
-                            type="js"
                             :content="sss.project.validationScript"
                             @save="save"
                         ></EditButton>

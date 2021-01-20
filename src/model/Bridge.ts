@@ -105,12 +105,11 @@ export default class Bridge {
         this.write(FileName, project, handler)
     }
 
-    edit(identifier: string, type: string, data: string, handler: Handler = CallBack) {
+    edit(identifier: string, data: string, handler: Handler = CallBack) {
         const key = identifier
         editMap.set(key, handler)
         const ddd = {
             key,
-            type,
             data
         }
         this.window.JavaBridge.edit(JSON.stringify(ddd))

@@ -58,7 +58,7 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :file="fileScript" type="js" :content="item.script" @save="saveScript" class="mr11" />
+                    <EditButton :file="fileScript" :content="item.script" @save="saveScript" class="mr11" />
                     <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
                         Guide
                     </a>
@@ -67,13 +67,7 @@
             <tr>
                 <td class="text-right">template</td>
                 <td>
-                    <EditButton
-                        :file="fileTemplate"
-                        type="text"
-                        :content="item.template"
-                        @save="saveTemplate"
-                        class="mr11"
-                    />
+                    <EditButton :file="fileTemplate" :content="item.template" @save="saveTemplate" class="mr11" />
                     <a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Document</a>
                 </td>
             </tr>
