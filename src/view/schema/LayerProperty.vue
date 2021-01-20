@@ -12,6 +12,12 @@
         <tbody>
             <slot></slot>
             <tr>
+                <td class="text-right">color</td>
+                <td>
+                    <ColorPanel :color.sync="item.color"></ColorPanel>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">single</td>
                 <td>
                     <b-form-checkbox v-model="item.single" switch class="mr11 wa inline"></b-form-checkbox>
@@ -23,12 +29,6 @@
                 <td class="text-right">requireName</td>
                 <td>
                     <b-form-checkbox v-model="item.requireName" switch></b-form-checkbox>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">color</td>
-                <td>
-                    <ColorPanel :color.sync="item.color"></ColorPanel>
                 </td>
             </tr>
             <tr>
