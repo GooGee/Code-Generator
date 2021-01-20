@@ -1583,6 +1583,23 @@
                 }
             },
             {
+                "name": "RequestUpdate",
+                "color": "",
+                "original": false,
+                "requireName": true,
+                "single": false,
+                "description": "",
+                "classPattern": "Update${entity.name}Request",
+                "filePattern": "Update${entity.name}Request.php",
+                "nsPattern": "${project.ns}\\Http\\Requests",
+                "pathPattern": "app/Http/Requests",
+                "script": "function run(data) {\n    data.model = data.project.getLayer('Model')\n}\n",
+                "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return {{ model.getClassName(entity) }}::RuleList;\n    }\n}\n",
+                "dataManager": {
+                    "list": []
+                }
+            },
+            {
                 "name": "Resource",
                 "color": "",
                 "original": false,
