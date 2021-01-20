@@ -58,7 +58,7 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :identifier="identifierScript" type="js" :content="item.script" @save="saveScript" class="mr11" />
+                    <EditButton :file="fileScript" type="js" :content="item.script" @save="saveScript" class="mr11" />
                     <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
                         Guide
                     </a>
@@ -68,7 +68,7 @@
                 <td class="text-right">template</td>
                 <td>
                     <EditButton
-                        :identifier="identifierTemplate"
+                        :file="fileTemplate"
                         type="text"
                         :content="item.template"
                         @save="saveTemplate"
@@ -106,12 +106,8 @@ export default {
         },
     },
     computed: {
-        identifierScript() {
-            return `Layer:${this.item.name}:Script`
-        },
-        identifierTemplate() {
-            return `Layer:${this.item.name}:Template`
-        },
+        fileScript: () => `script/layer-${this.item.name}.js`,
+        fileTemplate: () => `template/layer-${this.item.name}.txt`,
     },
     methods: {
         saveScript(ok, text) {

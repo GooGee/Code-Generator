@@ -27,7 +27,7 @@
                 <td colspan="2">
                     <b-button-group class="mr11">
                         <EditButton
-                            identifier="Validation:Script"
+                            file="script/validation.js"
                             type="js"
                             :content="sss.project.validationScript"
                             @save="save"

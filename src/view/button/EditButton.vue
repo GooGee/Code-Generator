@@ -11,7 +11,7 @@ import sss from '@/state.js'
 export default {
     name: 'EditButton',
     props: {
-        identifier: {
+        file: {
             type: String,
             required: true,
         },
@@ -21,7 +21,8 @@ export default {
         },
         type: {
             type: String,
-            required: true,
+            required: false,
+            default: 'text',
         },
     },
     data() {
@@ -36,7 +37,8 @@ export default {
             }
 
             this.waiting = true
-            sss.bridge.edit(this.identifier, this.type, this.content, (ok, text) => {
+            const file = 'storage/code-generator/' + this.file
+            sss.bridge.edit(file, this.type, this.content, (ok, text) => {
                 this.waiting = false
                 this.$emit('save', ok, text)
             })

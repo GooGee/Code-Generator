@@ -31,7 +31,7 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton identifier="Project:Script" type="js" :content="item.script" @save="save" class="mr11" />
+                    <EditButton file="script/project.js" type="js" :content="item.script" @save="save" class="mr11" />
                     <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
                         Guide
                     </a>

@@ -44,7 +44,7 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :identifier="identifier" type="js" :content="item.script" @save="save" class="mr11" />
+                    <EditButton :file="file" type="js" :content="item.script" @save="save" class="mr11" />
                     <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
                         Guide
                     </a>
@@ -80,7 +80,7 @@ export default {
     },
     data() {
         return {
-            identifier: `Entity:${this.item.name}:Script`,
+            file: `script/entity-${this.item.name}.js`,
         }
     },
     methods: {
