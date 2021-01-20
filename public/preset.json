@@ -4737,10 +4737,22 @@
                 "propertyManager": {
                     "list": [
                         {
+                            "name": "create",
+                            "data": {},
+                            "tag": "get",
+                            "value": "/create"
+                        },
+                        {
                             "name": "destroy",
                             "data": {},
                             "tag": "delete",
                             "value": "/{id}"
+                        },
+                        {
+                            "name": "edit",
+                            "data": {},
+                            "tag": "get",
+                            "value": "/{id}/edit"
                         },
                         {
                             "name": "index",
