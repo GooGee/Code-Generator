@@ -15,10 +15,11 @@
                 <td class="text-right">single</td>
                 <td>
                     <b-form-checkbox v-model="item.single" switch class="mr11 wa inline"></b-form-checkbox>
-                    <WriteButton v-if="item.single" :layer="item"></WriteButton>
+                    <WriteButton v-if="item.single" :layer="item" class="mr11"></WriteButton>
+                    <span class="gray">if Layer is single, it's not in file list of Entity</span>
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.single">
                 <td class="text-right">requireName</td>
                 <td>
                     <b-form-checkbox v-model="item.requireName" switch></b-form-checkbox>
