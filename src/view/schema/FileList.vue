@@ -2,7 +2,8 @@
     <table class="table b-table b-table-caption-top">
         <caption>
             <h3 class="inline mr11">File</h3>
-            <span>generate PHP file</span>
+            <span class="mr11">generate PHP file</span>
+            <RefreshButton></RefreshButton>
         </caption>
         <thead>
             <tr>
@@ -29,12 +30,14 @@
 </template>
 
 <script>
+import RefreshButton from '../button/RefreshButton.vue'
 import RenderButton from '../button/RenderButton.vue'
 import WriteButton from '../button/WriteButton.vue'
 
 export default {
     name: 'FileList',
     components: {
+        RefreshButton,
         RenderButton,
         WriteButton,
     },
