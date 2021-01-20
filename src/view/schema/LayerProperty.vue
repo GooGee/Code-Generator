@@ -100,8 +100,12 @@ export default {
         },
     },
     computed: {
-        fileScript: () => `script/layer-${this.item.name}.js`,
-        fileTemplate: () => `template/layer-${this.item.name}.txt`,
+        fileScript() {
+            return `script/layer-${this.item.name}.js`
+        },
+        fileTemplate() {
+            return `template/layer-${this.item.name}.txt`
+        },
     },
     methods: {
         saveScript(ok, text) {

@@ -79,7 +79,9 @@ export default {
         },
     },
     computed: {
-        file: () => `script/entity-${this.item.name}.js`,
+        file() {
+            return `script/entity-${this.item.name}.js`
+        },
     },
     methods: {
         save(ok, text) {
