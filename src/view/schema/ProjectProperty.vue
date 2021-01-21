@@ -11,6 +11,12 @@
         </thead>
         <tbody>
             <tr>
+                <td class="text-right">auto save</td>
+                <td>
+                    <b-form-checkbox v-model="item.autoSave" switch></b-form-checkbox>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">name</td>
                 <td>
                     <ChangeButton :item="item" name="name"></ChangeButton>
@@ -23,21 +29,6 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-right">auto save</td>
-                <td>
-                    <b-form-checkbox v-model="item.autoSave" switch></b-form-checkbox>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">script</td>
-                <td>
-                    <EditButton file="script/project.js" :content="item.script" @save="save" class="mr11" />
-                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
-                        Guide
-                    </a>
-                </td>
-            </tr>
-            <tr>
                 <td class="text-right">server</td>
                 <td>
                     <b-form-input v-model="item.server"></b-form-input>
@@ -47,6 +38,15 @@
                 <td class="text-right">dataVersion</td>
                 <td>
                     <b-form-input v-model="item.dataVersion"></b-form-input>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">script</td>
+                <td>
+                    <EditButton file="script/project.js" :content="item.script" @save="save" class="mr11" />
+                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
+                        Guide
+                    </a>
                 </td>
             </tr>
             <tr>
