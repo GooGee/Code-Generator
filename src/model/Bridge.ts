@@ -10,23 +10,14 @@ export interface CEFW extends Window {
 
 interface IJavaBridge {
 
-    load(json: string): void
-
-    edit(json: string): void
-
-    get(json: string): void
-    post(json: string): void
-
-    refresh(): void
-
-    read(json: string): void
-    write(json: string): void
+    call(json: string): void
 
 }
 
 interface IResponse {
     status: number
     message: string
+    action: string
     key: string
     data: any
 }
@@ -55,35 +46,24 @@ export default class Bridge {
         this.listenerxx.push(handler)
     }
 
-    handle(map: Map<string, Handler>, json: IResponse) {
+    call(json: IResponse) {
         console.log(json)
-        if (json === undefined) {
-            return
-        }
-        try {
-            const handler = map.get(json.key)
+        switch (json.action) {
+            case 'load':
+                this.load(json)
+                break;
 
-            if (handler === undefined) {
-                alert(`handler ${json.key} not found`)
-                return
-            }
-
-            if (json.status === StatusOK) {
-                handler(true, json.data)
-                return
-            }
-
-            handler(false, json.message ?? 'Error')
-
-        } catch (error) {
-            console.log(error)
-            alert(error.message)
+            default:
+                break;
         }
     }
 
-    handleError(code: number, text: string) {
-        console.log(code)
-        alert(text)
+    error(json: string) {
+        console.log(json)
+    }
+
+    handle(json: string) {
+        console.log(json)
     }
 
     load(json: IResponse) {
@@ -112,91 +92,65 @@ export default class Bridge {
         const key = file
         editMap.set(key, handler)
         const ddd = {
+            action: 'edit',
             key,
             data
         }
-        this.window.JavaBridge.edit(JSON.stringify(ddd))
-    }
-
-    editHandler(json: IResponse) {
-        console.log('editHandler')
-        console.log(json)
-        // this.handle(editMap, json)
-    }
-
-    editUpdate(json: IResponse) {
-        console.log('editUpdate')
-        this.handle(editMap, json)
+        this.window.JavaBridge.call(JSON.stringify(ddd))
     }
 
     get(route: string, data: string, handler: Handler = CallBack) {
         const key = route
         getMap.set(key, handler)
         const ddd = {
+            action: 'get',
             key,
             data
         }
-        this.window.JavaBridge.get(JSON.stringify(ddd))
-    }
-
-    getHandler(json: IResponse) {
-        console.log('getHandler')
-        this.handle(getMap, json)
+        this.window.JavaBridge.call(JSON.stringify(ddd))
     }
 
     post(route: string, data: string, handler: Handler = CallBack) {
         const key = route
         postMap.set(key, handler)
         const ddd = {
+            action: 'post',
             key,
             data
         }
-        this.window.JavaBridge.post(JSON.stringify(ddd))
-    }
-
-    postHandler(json: IResponse) {
-        console.log('postHandler')
-        this.handle(postMap, json)
+        this.window.JavaBridge.call(JSON.stringify(ddd))
     }
 
     refresh(handler: Handler = CallBack) {
         this.refreshCB = handler
-        this.window.JavaBridge.refresh()
-    }
-
-    refreshHandler() {
-        console.log('refreshHandler')
-        this.refreshCB(true, '')
+        const ddd = {
+            action: 'refresh',
+            key: '',
+            data: ''
+        }
+        this.window.JavaBridge.call(JSON.stringify(ddd))
     }
 
     read(file: string, data: string, handler: Handler = CallBack) {
         const key = file
         readMap.set(key, handler)
         const ddd = {
+            action: 'read',
             key,
             data
         }
-        this.window.JavaBridge.read(JSON.stringify(ddd))
-    }
-
-    readHandler(json: IResponse) {
-        console.log('readHandler')
-        this.handle(readMap, json)
+        this.window.JavaBridge.call(JSON.stringify(ddd))
     }
 
     write(file: string, data: string, handler: Handler = CallBack) {
         const key = file
         writeMap.set(key, handler)
         const ddd = {
+            action: 'write',
             key,
             data
         }
-        this.window.JavaBridge.write(JSON.stringify(ddd))
-    }
-
-    writeHandler(json: IResponse) {
-        console.log('writeHandler')
-        this.handle(writeMap, json)
+        this.window.JavaBridge.call(JSON.stringify(ddd))
     }
 
 }
