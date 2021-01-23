@@ -34,9 +34,9 @@ export default {
             this.waiting = true
             try {
                 const file = 'code-generator/' + this.file
-                sss.bridge.edit(file, this.content, (ok, text) => {
+                sss.route.edit(file, this.content, response => {
                     this.waiting = false
-                    this.$emit('save', ok, text)
+                    this.$emit('save', response.ok, response.data)
                 })
             } catch (error) {
                 this.waiting = false

@@ -81,10 +81,10 @@ export default {
 
             this.waiting = true
             const route = sss.project.server + '/entity/table'
-            sss.bridge.get(route, '', (ok, data) => {
-                if (ok) {
-                    this.data = data
-                    if (data.tables.length === 0) {
+            sss.route.get(route, '', response => {
+                if (response.status === 200) {
+                    this.data = response.data
+                    if (response.data.tables.length === 0) {
                         this.$root.$bvToast.toast('No table found', {
                             title: 'i',
                             variant: 'success',
@@ -96,7 +96,7 @@ export default {
                     return
                 }
 
-                this.$root.$bvToast.toast(data, {
+                this.$root.$bvToast.toast(response.message, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,

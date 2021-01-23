@@ -24,7 +24,7 @@ export default {
 
             this.waiting = true
             try {
-                sss.bridge.refresh(() => {
+                sss.route.refresh(() => {
                     this.waiting = false
                 })
             } catch (error) {

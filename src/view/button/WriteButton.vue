@@ -48,8 +48,8 @@ export default {
             try {
                 const file = this.layer.getFilePath(sss.project, entity)
                 const text = sss.render(this.layer, entity)
-                sss.bridge.write(file, text, (ok, data) => {
-                    if (ok) {
+                sss.route.write(file, text, response => {
+                    if (response.status === 200) {
                         this.$root.$bvToast.toast(file, {
                             title: 'Saved',
                             variant: 'success',
@@ -57,7 +57,7 @@ export default {
                         })
                         return
                     }
-                    this.$root.$bvToast.toast(data, {
+                    this.$root.$bvToast.toast(response.message, {
                         title: 'i',
                         variant: 'danger',
                         solid: true,

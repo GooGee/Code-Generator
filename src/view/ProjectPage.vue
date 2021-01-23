@@ -37,8 +37,8 @@ export default {
     },
     methods: {
         save() {
-            sss.bridge.save(JSON.stringify(sss.project), (ok, data) => {
-                if (ok) {
+            sss.route.save(JSON.stringify(sss.project), response => {
+                if (response.status === 200) {
                     this.$root.$bvToast.toast('OK', {
                         title: 'i',
                         variant: 'success',
@@ -46,7 +46,7 @@ export default {
                     })
                     return
                 }
-                this.$root.$bvToast.toast(data, {
+                this.$root.$bvToast.toast(response.message, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,

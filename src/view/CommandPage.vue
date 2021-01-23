@@ -106,14 +106,14 @@ export default {
                 command: sss.sidebar.item.toString(),
             }
             const route = sss.project.server + '/entity/run'
-            sss.bridge.post(route, JSON.stringify(data), (ok, data) => {
-                if (ok) {
-                    this.result = data
+            sss.route.post(route, JSON.stringify(data), response => {
+                if (response.status === 200) {
+                    this.result = response.data
                     this.waiting = false
                     return
                 }
 
-                this.$root.$bvToast.toast(data, {
+                this.$root.$bvToast.toast(response.message, {
                     title: 'i',
                     variant: 'danger',
                     solid: true,
