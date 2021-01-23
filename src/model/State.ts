@@ -39,8 +39,8 @@ export default class State {
         const manager = new HandlerManager()
         manager.add(ActionEnum.load, 'project', (response) => {
             if (response.status === StatusEnum.OK) {
-                console.log(response.data)
-                this.load(response.data)
+                const project = JSON.parse(response.data)
+                this.load(project)
                 return
             }
             this.create('Project')
