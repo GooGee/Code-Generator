@@ -9,11 +9,18 @@ import Entity from './Schema/Entity'
 import Loader from './Loader/Loader'
 import { IData } from './DataBase/IData'
 import Convertor from './DataBase/Convertor'
-import Bridge, { CEFW } from './Bridge'
 import NameDialogue from './Dialogue/NameDialogue'
+import ICEFW from './Bridge/ICEFW'
+import Bridge from './Bridge/Bridge'
+import HandlerManager from './Bridge/HandlerManager'
+import { ActionEnum } from './Bridge/ActionEnum'
+import { StatusEnum } from './Bridge/StatusEnum'
+import ToJava from './Bridge/ToJava'
+import Route from './Bridge/Route'
 
 export default class State {
     bridge: Bridge
+    route: Route
     preset: Project | null = null
     project: Project | null = null
     sidebar: SideBar | null = null
@@ -27,27 +34,32 @@ export default class State {
     private sidebarLayer: SideBar | null = null
     private sidebarPreset: SideBar | null = null
 
-    constructor(window: CEFW) {
-        this.bridge = new Bridge(window)
-        window.bridge = this.bridge
+    constructor(window: ICEFW) {
 
-        this.bridge.add((ok, data) => {
-            if (ok) {
-                this.load(data)
+        const manager = new HandlerManager()
+        manager.add(ActionEnum.load, 'project', (response) => {
+            if (response.status === StatusEnum.OK) {
+                console.log(response.data)
+                this.load(response.data)
                 return
             }
             this.create('Project')
         })
 
+        const toJava = new ToJava(window, manager)
+        this.route = new Route(toJava)
+        this.bridge = new Bridge(manager)
+        window.bridge = this.bridge
+
         setInterval(() => {
-            if (window.JavaBridge) {
-                if (this.ready) {
+            if (this.ready) {
+                if (window.JavaBridge) {
                     if (this.project!.autoSave) {
-                        this.bridge.save(JSON.stringify(this.project))
+                        this.route.save(JSON.stringify(this.project))
                     }
                 }
             }
-        }, 11222)
+        }, 11122)
 
     }
 
