@@ -2,7 +2,6 @@
     <span
         :style="{ 'background-color': bg, 'border-color': bColor }"
         class="color-button"
-        :class="{ empty: color === '' }"
     ></span>
 </template>
 
@@ -52,16 +51,5 @@ export default {
     width: 33px;
     height: 33px;
     margin: 3px;
-}
-
-.color-button.empty {
-    background: linear-gradient(
-        to top left,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0) calc(50% - 3px),
-        #f00 50%,
-        rgba(0, 0, 0, 0) calc(50% + 3px),
-        rgba(0, 0, 0, 0) 100%
-    );
 }
 </style>
