@@ -1,18 +1,12 @@
-import BaseLoader from './BaseLoader'
-import LoaderV12 from './LoaderV12'
+import UniqueItem from '../Base/UniqueItem'
+import UniqueList from '../Base/UniqueList'
 import Project from '../Schema/Project'
 
 const MinVersion = 12
 
-export default class Loader extends BaseLoader {
-    readonly project: Project
+export default class Loader {
 
-    constructor(project: Project) {
-        super()
-        this.project = project
-    }
-
-    load(source: Project, preset: Project) {
+    static load(source: Project, preset: Project) {
         if (!this.isProject(source)) {
             throw new Error('Unknown data!')
         }
@@ -22,22 +16,37 @@ export default class Loader extends BaseLoader {
         if (version < MinVersion) {
             throw new Error(message)
         }
-        if (version > this.project.version) {
+
+        const project = new Project(source.name)
+        if (version > project.version) {
             throw new Error(message)
         }
 
-        source.version = this.project.version
+        const data = this.loadPreset(source, preset)
+        project.load(data)
 
-        if (version === 12) {
-            const loader = new LoaderV12(this.project)
-            loader.load(source, preset)
-            return
-        }
-
-        this.project.load(source)
+        return project
     }
 
-    private isProject(source: Project) {
+    private static loadPreset(source: Project, preset: Project) {
+        const project = new Project(source.name)
+        source.version = project.version
+        project.load(source)
+        this.addIfNotExist(project.presetManager, preset.presetManager)
+        this.addIfNotExist(project.commandManager, preset.commandManager)
+        this.addIfNotExist(project.layerManager, preset.layerManager)
+        return project
+    }
+
+    private static addIfNotExist(manager: UniqueList<UniqueItem>, preset: UniqueList<UniqueItem>) {
+        preset.list.forEach(data => {
+            if (manager.find(data.name) === undefined) {
+                manager.add(data)
+            }
+        })
+    }
+
+    private static isProject(source: Project) {
         const keys = Object.keys(source)
         const mustContain = ['version', 'entityManager', 'layerManager', 'presetManager']
         return mustContain.every(key => keys.includes(key))

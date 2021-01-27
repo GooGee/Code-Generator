@@ -85,10 +85,7 @@ export default class State {
     }
 
     load(data: Project) {
-        const project = new Project(data.name)
-        const loader = new Loader(project)
-        loader.load(data, this.preset!)
-        this.project = project
+        this.project = Loader.load(data, this.preset!)
         this.prepare()
     }
 
