@@ -4209,6 +4209,71 @@
                 }
             },
             {
+                "name": "Middleware",
+                "original": true,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "auth",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "auth.basic",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "bindings",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "cache.headers",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "can",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "guest",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "signed",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "throttle",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "verified",
+                            "data": {},
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
                 "name": "RegularExpression",
                 "original": true,
                 "color": "",
@@ -4322,6 +4387,100 @@
                             "data": {},
                             "tag": "",
                             "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "RouteMethod",
+                "original": true,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "create",
+                            "data": {},
+                            "tag": "get",
+                            "value": "/create"
+                        },
+                        {
+                            "name": "destroy",
+                            "data": {},
+                            "tag": "delete",
+                            "value": "/{id}"
+                        },
+                        {
+                            "name": "edit",
+                            "data": {},
+                            "tag": "get",
+                            "value": "/{id}/edit"
+                        },
+                        {
+                            "name": "index",
+                            "data": {},
+                            "tag": "get",
+                            "value": ""
+                        },
+                        {
+                            "name": "show",
+                            "data": {},
+                            "tag": "get",
+                            "value": "/{id}"
+                        },
+                        {
+                            "name": "store",
+                            "data": {},
+                            "tag": "post",
+                            "value": ""
+                        },
+                        {
+                            "name": "update",
+                            "data": {},
+                            "tag": "patch",
+                            "value": "/{id}"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "RouteRESTful",
+                "original": true,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "destroy",
+                            "data": {},
+                            "tag": "delete",
+                            "value": "/{id}"
+                        },
+                        {
+                            "name": "index",
+                            "data": {},
+                            "tag": "get",
+                            "value": ""
+                        },
+                        {
+                            "name": "show",
+                            "data": {},
+                            "tag": "get",
+                            "value": "/{id}"
+                        },
+                        {
+                            "name": "store",
+                            "data": {},
+                            "tag": "post",
+                            "value": ""
+                        },
+                        {
+                            "name": "update",
+                            "data": {},
+                            "tag": "patch",
+                            "value": "/{id}"
                         }
                     ]
                 }
@@ -4740,165 +4899,6 @@
                             "name": "uuid",
                             "data": {},
                             "tag": "WWW",
-                            "value": ""
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "RouteMethod",
-                "original": true,
-                "color": "",
-                "description": "",
-                "version": 1,
-                "propertyManager": {
-                    "list": [
-                        {
-                            "name": "create",
-                            "data": {},
-                            "tag": "get",
-                            "value": "/create"
-                        },
-                        {
-                            "name": "destroy",
-                            "data": {},
-                            "tag": "delete",
-                            "value": "/{id}"
-                        },
-                        {
-                            "name": "edit",
-                            "data": {},
-                            "tag": "get",
-                            "value": "/{id}/edit"
-                        },
-                        {
-                            "name": "index",
-                            "data": {},
-                            "tag": "get",
-                            "value": ""
-                        },
-                        {
-                            "name": "show",
-                            "data": {},
-                            "tag": "get",
-                            "value": "/{id}"
-                        },
-                        {
-                            "name": "store",
-                            "data": {},
-                            "tag": "post",
-                            "value": ""
-                        },
-                        {
-                            "name": "update",
-                            "data": {},
-                            "tag": "patch",
-                            "value": "/{id}"
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "RouteRESTful",
-                "original": true,
-                "color": "",
-                "description": "",
-                "version": 1,
-                "propertyManager": {
-                    "list": [
-                        {
-                            "name": "destroy",
-                            "data": {},
-                            "tag": "delete",
-                            "value": "/{id}"
-                        },
-                        {
-                            "name": "index",
-                            "data": {},
-                            "tag": "get",
-                            "value": ""
-                        },
-                        {
-                            "name": "show",
-                            "data": {},
-                            "tag": "get",
-                            "value": "/{id}"
-                        },
-                        {
-                            "name": "store",
-                            "data": {},
-                            "tag": "post",
-                            "value": ""
-                        },
-                        {
-                            "name": "update",
-                            "data": {},
-                            "tag": "patch",
-                            "value": "/{id}"
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "Middleware",
-                "original": true,
-                "color": "",
-                "description": "",
-                "version": 1,
-                "propertyManager": {
-                    "list": [
-                        {
-                            "name": "auth",
-                            "data": {},
-                            "tag": "",
-                            "value": ""
-                        },
-                        {
-                            "name": "auth.basic",
-                            "data": {},
-                            "tag": "",
-                            "value": ""
-                        },
-                        {
-                            "name": "bindings",
-                            "data": {},
-                            "tag": "",
-                            "value": ""
-                        },
-                        {
-                            "name": "cache.headers",
-                            "data": {},
-                            "tag": "",
-                            "value": ""
-                        },
-                        {
-                            "name": "can",
-                            "data": {},
-                            "tag": "",
-                            "value": ""
-                        },
-                        {
-                            "name": "guest",
-                            "data": {},
-                            "tag": "",
-                            "value": ""
-                        },
-                        {
-                            "name": "signed",
-                            "data": {},
-                            "tag": "",
-                            "value": ""
-                        },
-                        {
-                            "name": "throttle",
-                            "data": {},
-                            "tag": "",
-                            "value": ""
-                        },
-                        {
-                            "name": "verified",
-                            "data": {},
-                            "tag": "",
                             "value": ""
                         }
                     ]
