@@ -30,3 +30,26 @@ To generate code, the program will do
 1. render layer template
 
 Except for validation rules, only the validation script will be executed.
+
+
+## Example
+
+define variable
+
+```JavaScript
+function run(data) {
+    // set data.model, so variable `model` can be used in template
+    data.model = data.project.getLayer('Model')
+}
+```
+
+define function
+
+```JavaScript
+function run(data) {
+    // set data.toString, so function `toString` can be called in template
+    data.toString = function(object) {
+        return JSON.stringify(object)
+    }
+}
+```
