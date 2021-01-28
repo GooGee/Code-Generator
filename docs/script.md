@@ -6,7 +6,9 @@ Look like this
 
 ```JavaScript
 function run(data) {
-    // JavaScript code
+    // JavaScript
+    /** @type {DataForScript} */
+    const ddd = data
 }
 ```
 
