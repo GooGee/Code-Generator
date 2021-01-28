@@ -1,6 +1,6 @@
 import nunjucks from 'nunjucks'
 import UniqueItem from './Base/UniqueItem'
-import { JSParameter } from './JSParameter'
+import { DataForScript } from './DataForScript'
 
 nunjucks.configure({ autoescape: false })
 
@@ -45,7 +45,7 @@ export function numberOrQuote(text: any) {
     return text
 }
 
-export function render(template: string, data: JSParameter) {
+export function render(template: string, data: DataForScript) {
     return nunjucks.renderString(template, data)
 }
 
@@ -56,7 +56,7 @@ export function run(code: string, data: object) {
     }
 }
 
-export function runAndRender(data: JSParameter) {
+export function runAndRender(data: DataForScript) {
     let message = 'Failed to run script of project'
     try {
         run(data.project.script, data)
