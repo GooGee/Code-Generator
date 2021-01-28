@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "doc": "typedoc --tsconfig"
+    "doc": "typedoc --tsconfig",
+    "dts": "tsc"
   },
   "dependencies": {
     "bootstrap-vue": "^2.17.3",

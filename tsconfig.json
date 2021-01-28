@@ -1,9 +1,12 @@
 {
     "compilerOptions": {
+        "declaration": true,
+        "emitDeclarationOnly": true,
         "esModuleInterop": true,
         "module": "commonjs",
         "moduleResolution": "node",
         "noImplicitReturns": true,
+        "outFile": "index.js",
         "sourceMap": true,
         "strict": true,
         "target": "es2015",
