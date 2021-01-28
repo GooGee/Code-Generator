@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "doc": "typedoc --tsconfig",
-    "dts": "tsc"
+    "dts": "tsc --declaration --emitDeclarationOnly --outFile index.js"
   },
   "dependencies": {
     "bootstrap-vue": "^2.17.3",
