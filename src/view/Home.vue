@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-center" style="margin-top: 11%;">
+        <div class="text-center" style="margin-top: 5%;">
             <img v-if="loading" alt="loading" src="@/assets/loading.svg" class="mb11" />
             <img v-else alt="logo" src="@/assets/logo.svg" style="width: 222px;" />
             <h1>Code Generator</h1>
