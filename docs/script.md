@@ -17,7 +17,7 @@ function run(data) {
 
 - function must be on the first line
 - [parameter doc](https://googee.github.io/Code-Generator/docs/model/interfaces/jsparameter.html)
-- do not change anything in data.project, data.layer, data.entity
+- do not change anything in `data.project`, `data.layer`, `data.entity`
 - function will be called before render template
 - properties of "data" will be available in template
 
@@ -36,22 +36,28 @@ Except for validation rules, only the validation script will be executed.
 
 ## Example
 
-define variable
-
 ```JavaScript
 function run(data) {
-    // set data.model, so variable `model` can be used in template
+
+    // define variable `model`
     data.model = data.project.getLayer('Model')
-}
-```
 
-define function
-
-```JavaScript
-function run(data) {
-    // set data.toString, so function `toString` can be called in template
+    // define function `toString`
     data.toString = function(object) {
         return JSON.stringify(object)
     }
 }
 ```
+
+in template
+
+```
+{{ model.name }}
+
+{{ toString(model) }}
+```
+
+
+[Document](https://googee.github.io/Code-Generator/docs/model/index.html)
+
+[Template](https://mozilla.github.io/nunjucks/templating.html)
