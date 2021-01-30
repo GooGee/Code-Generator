@@ -24,17 +24,18 @@
                                 @deleted="sss.sidebar.item = null"
                             ></DeleteButton>
                             <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
+                            <CloneButton :manager="sss.sidebar.manager" :item="sss.sidebar.item"></CloneButton>
                         </b-button-group>
                     </td>
                 </tr>
             </LayerProperty>
-
         </div>
     </div>
 </template>
 
 <script>
 import ChangeButton from './button/ChangeButton.vue'
+import CloneButton from './button/CloneButton.vue'
 import DataList from './schema/DataList.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import LayerProperty from './schema/LayerProperty.vue'
@@ -45,6 +46,7 @@ export default {
     name: 'LayerPage',
     components: {
         ChangeButton,
+        CloneButton,
         DataList,
         DeleteButton,
         LayerProperty,

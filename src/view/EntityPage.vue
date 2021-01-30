@@ -46,6 +46,7 @@
                                 @deleted="sss.sidebar.item = null"
                             ></DeleteButton>
                             <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
+                            <CloneButton :manager="sss.sidebar.manager" :item="sss.sidebar.item"></CloneButton>
                         </b-button-group>
                     </td>
                 </tr>
@@ -63,6 +64,7 @@
 <script>
 import CastList from './schema/CastList.vue'
 import ChangeButton from './button/ChangeButton.vue'
+import CloneButton from './button/CloneButton.vue'
 import DataList from './schema/DataList.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import Faker from './schema/Faker.vue'
@@ -81,6 +83,7 @@ export default {
     components: {
         CastList,
         ChangeButton,
+        CloneButton,
         DataList,
         DeleteButton,
         Faker,
