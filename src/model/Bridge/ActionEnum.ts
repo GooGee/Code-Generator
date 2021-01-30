@@ -5,5 +5,6 @@ export enum ActionEnum {
     post = 'post',
     read = 'read',
     refresh = 'refresh',
+    save = 'save',
     write = 'write',
 }

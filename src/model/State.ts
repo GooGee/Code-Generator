@@ -45,6 +45,11 @@ export default class State {
             }
             this.create('Project')
         })
+        manager.add(ActionEnum.save, 'project', (response) => {
+            if (response.status === StatusEnum.OK) {
+                this.route.save(JSON.stringify(this.project))
+            }
+        })
 
         const toJava = new ToJava(window, manager)
         this.route = new Route(toJava)
