@@ -758,7 +758,7 @@
                 "routeDomain": "",
                 "routeName": "",
                 "routePrefix": "admin",
-                "script": "function run(data) {\n}\n",
+                "script": "",
                 "tableName": "user",
                 "fieldManager": {
                     "list": [
@@ -1031,7 +1031,7 @@
                 "routeDomain": "",
                 "routeName": "",
                 "routePrefix": "",
-                "script": "function run(data) {\n}\n",
+                "script": "",
                 "tableName": "post",
                 "fieldManager": {
                     "list": [
