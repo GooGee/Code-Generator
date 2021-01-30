@@ -6,11 +6,11 @@
 
         <div v-if="sss.sidebar.item" class="col-9">
             <b-nav tabs class="mt11">
-                <b-nav-item @click="tab = 'File'" :active="tab === 'File'"> File </b-nav-item>
-                <b-nav-item @click="tab = 'Field'" :active="tab === 'Field'"> Field </b-nav-item>
                 <b-nav-item @click="tab = 'Cast'" :active="tab === 'Cast'"> Cast </b-nav-item>
                 <b-nav-item @click="tab = 'Data'" :active="tab === 'Data'"> Data </b-nav-item>
                 <b-nav-item @click="tab = 'Faker'" :active="tab === 'Faker'"> Faker </b-nav-item>
+                <b-nav-item @click="tab = 'Field'" :active="tab === 'Field'"> Field </b-nav-item>
+                <b-nav-item @click="tab = 'File'" :active="tab === 'File'"> File </b-nav-item>
                 <b-nav-item @click="tab = 'Index'" :active="tab === 'Index'"> Index </b-nav-item>
                 <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
                 <b-nav-item @click="tab = 'Relation'" :active="tab === 'Relation'"> Relation </b-nav-item>
@@ -18,20 +18,20 @@
                 <b-nav-item @click="tab = 'Validation'" :active="tab === 'Validation'"> Validation </b-nav-item>
             </b-nav>
 
+            <CastList v-if="tab === 'Cast'"></CastList>
+
+            <DataList v-if="tab === 'Data'" :manager="sss.sidebar.item.dataManager"></DataList>
+
+            <Faker v-if="tab === 'Faker'"></Faker>
+
+            <FieldList v-if="tab === 'Field'"></FieldList>
+
             <FileList
                 v-if="tab === 'File'"
                 :layerxx="layerxx"
                 :project="sss.project"
                 :entity="sss.sidebar.item"
             ></FileList>
-
-            <FieldList v-if="tab === 'Field'"></FieldList>
-
-            <CastList v-if="tab === 'Cast'"></CastList>
-
-            <DataList v-if="tab === 'Data'" :manager="sss.sidebar.item.dataManager"></DataList>
-
-            <Faker v-if="tab === 'Faker'"></Faker>
 
             <IndexList v-if="tab === 'Index'"></IndexList>
 

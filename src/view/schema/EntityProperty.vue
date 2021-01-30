@@ -24,6 +24,15 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">script</td>
+                <td>
+                    <EditButton :file="file" :content="item.script" @save="save" class="mr11" />
+                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
+                        Guide
+                    </a>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">routeDomain</td>
                 <td>
                     <b-form-input v-model="item.routeDomain"></b-form-input>
@@ -39,15 +48,6 @@
                 <td class="text-right">routePrefix</td>
                 <td>
                     <b-form-input v-model="item.routePrefix"></b-form-input>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">script</td>
-                <td>
-                    <EditButton :file="file" :content="item.script" @save="save" class="mr11" />
-                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
-                        Guide
-                    </a>
                 </td>
             </tr>
             <tr>

@@ -32,6 +32,22 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">script</td>
+                <td>
+                    <EditButton :file="fileScript" :content="item.script" @save="saveScript" class="mr11" />
+                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
+                        Guide
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">template</td>
+                <td>
+                    <EditButton :file="fileTemplate" :content="item.template" @save="saveTemplate" class="mr11" />
+                    <a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Document</a>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">class name</td>
                 <td>
                     <b-form-input v-model="item.classPattern"></b-form-input>
@@ -53,22 +69,6 @@
                 <td class="text-right">path pattern</td>
                 <td>
                     <b-form-input v-model="item.pathPattern"></b-form-input>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">script</td>
-                <td>
-                    <EditButton :file="fileScript" :content="item.script" @save="saveScript" class="mr11" />
-                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
-                        Guide
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">template</td>
-                <td>
-                    <EditButton :file="fileTemplate" :content="item.template" @save="saveTemplate" class="mr11" />
-                    <a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Document</a>
                 </td>
             </tr>
             <tr>
