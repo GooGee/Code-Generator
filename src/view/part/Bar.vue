@@ -1,5 +1,5 @@
 <template>
-    <b-navbar id="bar" type="dark" variant="primary">
+    <b-navbar id="bar" fixed="top"  type="dark" variant="primary">
         <div class="container">
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
