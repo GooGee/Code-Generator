@@ -20,7 +20,7 @@ export default class Layer extends UniqueItem {
     filePattern: string = ''
     nsPattern: string = ''
     pathPattern: string = ''
-    script: string = ''
+    script: string = 'function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n'
     template: string = ''
     readonly dataManager = new PresetManager()
 
