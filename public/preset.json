@@ -47,7 +47,14 @@
                 "description": "Displays help for a command",
                 "value": "",
                 "argumentManager": {
-                    "list": []
+                    "list": [
+                        {
+                            "name": "--version",
+                            "included": true,
+                            "value": "",
+                            "description": "Display this application version"
+                        }
+                    ]
                 }
             },
             {
@@ -73,7 +80,7 @@
             {
                 "name": "migrate",
                 "original": true,
-                "color": "#f00",
+                "color": "#ff0",
                 "description": "Run the database migrations",
                 "value": "",
                 "argumentManager": {
@@ -473,7 +480,7 @@
             {
                 "name": "migrate:fresh",
                 "original": true,
-                "color": "",
+                "color": "#ff0",
                 "description": "Drop all tables and re-run all migrations",
                 "value": "",
                 "argumentManager": {
@@ -483,7 +490,7 @@
             {
                 "name": "migrate:install",
                 "original": true,
-                "color": "",
+                "color": "#ff0",
                 "description": "Create the migration repository",
                 "value": "",
                 "argumentManager": {
@@ -493,7 +500,7 @@
             {
                 "name": "migrate:refresh",
                 "original": true,
-                "color": "",
+                "color": "#ff0",
                 "description": "Reset and re-run all migrations",
                 "value": "",
                 "argumentManager": {
@@ -503,7 +510,7 @@
             {
                 "name": "migrate:reset",
                 "original": true,
-                "color": "",
+                "color": "#ff0",
                 "description": "Rollback all database migrations",
                 "value": "",
                 "argumentManager": {
@@ -513,7 +520,7 @@
             {
                 "name": "migrate:rollback",
                 "original": true,
-                "color": "",
+                "color": "#ff0",
                 "description": "Rollback the last database migration",
                 "value": "",
                 "argumentManager": {
@@ -523,7 +530,7 @@
             {
                 "name": "migrate:status",
                 "original": true,
-                "color": "",
+                "color": "#ff0",
                 "description": "Show the status of each migration",
                 "value": "",
                 "argumentManager": {
