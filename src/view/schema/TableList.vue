@@ -18,6 +18,9 @@
                     is running
                 </li>
                 <li>
+                    and database is configured in .env file
+                </li>
+                <li>
                     to change the server URL, go to Property tab
                 </li>
             </ul>
@@ -42,7 +45,7 @@
             </tr>
             <tr>
                 <td>
-                    <span class="mr11">if name exists</span>
+                    <span class="mr11">if table exists</span>
                     <b-form-radio v-model="skip" :value="true" class="inline mr11">Skip</b-form-radio>
                     <b-form-radio v-model="skip" :value="false" class="inline">Replace</b-form-radio>
                 </td>
