@@ -1,10 +1,10 @@
 import NameItem from '../Base/NameItem'
-import { CommandManager } from './Command'
+import { ArtisanManager } from './Artisan'
 import { EntityManager } from './Entity'
 import { LayerManager } from './Layer'
 import { PresetManager } from './Preset'
 
-const Version = 13
+const Version = 14
 
 export default class Project extends NameItem {
     version = Version
@@ -16,7 +16,7 @@ export default class Project extends NameItem {
     server: string = 'http://localhost'
     validationScript: string = ''
 
-    readonly commandManager = new CommandManager()
+    readonly artisanManager = new ArtisanManager()
     readonly entityManager = new EntityManager()
     readonly layerManager = new LayerManager()
     readonly presetManager = new PresetManager()
