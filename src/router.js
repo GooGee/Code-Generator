@@ -14,9 +14,9 @@ export default new Router({
             component: require('@/view/Home').default,
         },
         {
-            path: '/command',
-            name: 'command',
-            component: require('@/view/CommandPage').default,
+            path: '/artisan',
+            name: 'artisan',
+            component: require('@/view/ArtisanPage').default,
         },
         {
             path: '/entity',

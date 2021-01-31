@@ -9,7 +9,7 @@
                         <b-nav-item to="/project" active-class="active"> Project </b-nav-item>
                         <b-nav-item to="/entity" active-class="active"> Entity </b-nav-item>
                         <b-nav-item to="/layer" active-class="active"> Layer </b-nav-item>
-                        <b-nav-item to="/command" active-class="active"> Command </b-nav-item>
+                        <b-nav-item to="/artisan" active-class="active"> Artisan </b-nav-item>
                         <b-nav-item to="/preset" active-class="active"> Preset </b-nav-item>
                     </template>
                 </b-navbar-nav>

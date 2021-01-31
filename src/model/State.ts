@@ -94,7 +94,7 @@ export default class State {
         this.prepare()
     }
 
-    showCommand() {
+    showArtisan() {
         this.sidebar = this.sidebarCommand
     }
 

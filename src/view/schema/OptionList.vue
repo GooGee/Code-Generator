@@ -50,7 +50,7 @@ import DeleteButton from '../button/DeleteButton.vue'
 import draggable from 'vuedraggable'
 
 export default {
-    name: 'ArgumentList',
+    name: 'OptionList',
     components: {
         AddButton,
         ChangeButton,
