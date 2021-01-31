@@ -33,7 +33,7 @@ export default class Loader {
         source.version = project.version
         project.load(source)
         this.addIfNotExist(project.presetManager, preset.presetManager)
-        this.addIfNotExist(project.commandManager, preset.commandManager)
+        this.addIfNotExist(project.artisanManager, preset.artisanManager)
         this.addIfNotExist(project.layerManager, preset.layerManager)
         return project
     }

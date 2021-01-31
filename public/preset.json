@@ -8,7 +8,7 @@
     "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
     "server": "http://localhost",
     "validationScript": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const integerManager = ddd.project.getPreset('FieldTypeInteger').propertyManager\n    const numericManager = ddd.project.getPreset('FieldTypeNumeric').propertyManager\n    const ruleManager = ddd.project.getPreset('ValidationRule').propertyManager\n    const nameSet = new Set()\n    ruleManager.list.forEach(rule => {\n        if (rule.tag === 'WWW') {\n            nameSet.add(rule.name)\n        }\n    })\n\n    const addField = function(field, name) {\n        const found = field.ruleManager.find(name)\n        if (found) {\n            return found\n        }\n        const rule = field.ruleManager.make(name)\n        field.ruleManager.add(rule)\n        return rule\n    }\n\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.included === false) {\n            return\n        }\n        if (field.isIncrement) {\n            return\n        }\n\n        addField(field, 'required')\n\n        if (field.type === 'boolean') {\n            addField(field, 'boolean')\n            return\n        }\n        if (integerManager.find(field.type)) {\n            addField(field, 'integer')\n            return\n        }\n        if (numericManager.find(field.type)) {\n            addField(field, 'numeric')\n            return\n        }\n        if (field.type === 'char' || field.type === 'string') {\n            if (field.length) {\n                const max = addField(field, 'max')\n                max.value = field.length\n            }\n        }\n\n        if (nameSet.has(field.name)) {\n            addField(field, field.name)\n        }\n    })\n}\n",
-    "commandManager": {
+    "artisanManager": {
         "list": [
             {
                 "name": "clear-compiled",
@@ -16,7 +16,7 @@
                 "color": "#f00",
                 "description": "Remove the compiled class file",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -26,7 +26,7 @@
                 "color": "#f00",
                 "description": "Put the application into maintenance mode",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -36,7 +36,7 @@
                 "color": "#f00",
                 "description": "Display the current framework environment",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -46,7 +46,7 @@
                 "color": "#f00",
                 "description": "Displays help for a command",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": [
                         {
                             "name": "--version",
@@ -63,7 +63,7 @@
                 "color": "#f00",
                 "description": "Display an inspiring quote",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -73,7 +73,7 @@
                 "color": "#f00",
                 "description": "Lists commands",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -83,7 +83,7 @@
                 "color": "#ff0",
                 "description": "Run the database migrations",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -93,7 +93,7 @@
                 "color": "#f00",
                 "description": "Cache the framework bootstrap files",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -103,7 +103,7 @@
                 "color": "#f00",
                 "description": "Swap the front-end scaffolding for the application",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -113,7 +113,7 @@
                 "color": "#f00",
                 "description": "Serve the application on the PHP development server",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -123,7 +123,7 @@
                 "color": "#f00",
                 "description": "Interact with your application",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -133,7 +133,7 @@
                 "color": "#f00",
                 "description": "Bring the application out of maintenance mode",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -143,7 +143,7 @@
                 "color": "",
                 "description": "Flush expired password reset tokens",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -153,7 +153,7 @@
                 "color": "",
                 "description": "Flush the application cache",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -163,7 +163,7 @@
                 "color": "",
                 "description": "Remove an item from the cache",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -173,7 +173,7 @@
                 "color": "",
                 "description": "Create a migration for the cache database table",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -183,7 +183,7 @@
                 "color": "",
                 "description": "Create a cache file for faster configuration loading",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -193,7 +193,7 @@
                 "color": "",
                 "description": "Remove the configuration cache file",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -203,7 +203,7 @@
                 "color": "",
                 "description": "Seed the database with records",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -213,7 +213,7 @@
                 "color": "",
                 "description": "Drop all tables, views, and types",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -223,7 +223,7 @@
                 "color": "",
                 "description": "Discover and cache the application's events and listeners",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -233,7 +233,7 @@
                 "color": "",
                 "description": "Clear all cached events and listeners",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -243,7 +243,7 @@
                 "color": "",
                 "description": "Generate the missing events and listeners based on registration",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -253,7 +253,7 @@
                 "color": "",
                 "description": "List the application's events and listeners",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -263,7 +263,7 @@
                 "color": "",
                 "description": "Set the application key",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -273,7 +273,7 @@
                 "color": "#f80",
                 "description": "Create a new channel class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -283,7 +283,7 @@
                 "color": "#f80",
                 "description": "Create a new Artisan command",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -293,7 +293,7 @@
                 "color": "#f80",
                 "description": "Create a new controller class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -303,7 +303,7 @@
                 "color": "#f80",
                 "description": "Create a new event class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -313,7 +313,7 @@
                 "color": "#f80",
                 "description": "Create a new custom exception class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -323,7 +323,7 @@
                 "color": "#f80",
                 "description": "Create a new model factory",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -333,7 +333,7 @@
                 "color": "#f80",
                 "description": "Create a new job class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -343,7 +343,7 @@
                 "color": "#f80",
                 "description": "Create a new event listener class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -353,7 +353,7 @@
                 "color": "#f80",
                 "description": "Create a new email class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -363,7 +363,7 @@
                 "color": "#f80",
                 "description": "Create a new middleware class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -373,7 +373,7 @@
                 "color": "#f80",
                 "description": "Create a new migration file",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -383,7 +383,7 @@
                 "color": "#f80",
                 "description": "Create a new Eloquent model class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -393,7 +393,7 @@
                 "color": "#f80",
                 "description": "Create a new notification class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -403,7 +403,7 @@
                 "color": "#f80",
                 "description": "Create a new observer class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -413,7 +413,7 @@
                 "color": "#f80",
                 "description": "Create a new policy class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -423,7 +423,7 @@
                 "color": "#f80",
                 "description": "Create a new service provider class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -433,7 +433,7 @@
                 "color": "#f80",
                 "description": "Create a new form request class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -443,7 +443,7 @@
                 "color": "#f80",
                 "description": "Create a new resource",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -453,7 +453,7 @@
                 "color": "#f80",
                 "description": "Create a new validation rule",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -463,7 +463,7 @@
                 "color": "#f80",
                 "description": "Create a new seeder class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -473,7 +473,7 @@
                 "color": "#f80",
                 "description": "Create a new test class",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -483,7 +483,7 @@
                 "color": "#ff0",
                 "description": "Drop all tables and re-run all migrations",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -493,7 +493,7 @@
                 "color": "#ff0",
                 "description": "Create the migration repository",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -503,7 +503,7 @@
                 "color": "#ff0",
                 "description": "Reset and re-run all migrations",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -513,7 +513,7 @@
                 "color": "#ff0",
                 "description": "Rollback all database migrations",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -523,7 +523,7 @@
                 "color": "#ff0",
                 "description": "Rollback the last database migration",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -533,7 +533,7 @@
                 "color": "#ff0",
                 "description": "Show the status of each migration",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -543,7 +543,7 @@
                 "color": "",
                 "description": "Create a migration for the notifications table",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -553,7 +553,7 @@
                 "color": "",
                 "description": "Remove the cached bootstrap files",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -563,7 +563,7 @@
                 "color": "",
                 "description": "Rebuild the cached package manifest",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -573,7 +573,7 @@
                 "color": "",
                 "description": "List all of the failed queue jobs",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -583,7 +583,7 @@
                 "color": "",
                 "description": "Create a migration for the failed queue jobs database table",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -593,7 +593,7 @@
                 "color": "",
                 "description": "Flush all of the failed queue jobs",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -603,7 +603,7 @@
                 "color": "",
                 "description": "Delete a failed queue job",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -613,7 +613,7 @@
                 "color": "",
                 "description": "Listen to a given queue",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -623,7 +623,7 @@
                 "color": "",
                 "description": "Restart queue worker daemons after their current job",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -633,7 +633,7 @@
                 "color": "",
                 "description": "Retry a failed queue job",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -643,7 +643,7 @@
                 "color": "",
                 "description": "Create a migration for the queue jobs database table",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -653,7 +653,7 @@
                 "color": "",
                 "description": "Start processing jobs on the queue as a daemon",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -663,7 +663,7 @@
                 "color": "",
                 "description": "Create a route cache file for faster route registration",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -673,7 +673,7 @@
                 "color": "",
                 "description": "Remove the route cache file",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -683,7 +683,7 @@
                 "color": "",
                 "description": "List all registered routes",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -693,7 +693,7 @@
                 "color": "",
                 "description": "Run the scheduled commands",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -703,7 +703,7 @@
                 "color": "",
                 "description": "Create a migration for the session database table",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -713,7 +713,7 @@
                 "color": "",
                 "description": "Create a symbolic link from \"public/storage\" to \"storage/app/public\"",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -723,7 +723,7 @@
                 "color": "",
                 "description": "Publish any publishable assets from vendor packages",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -733,7 +733,7 @@
                 "color": "",
                 "description": "Compile all of the application's Blade templates",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             },
@@ -743,7 +743,7 @@
                 "color": "",
                 "description": "Clear all compiled view files",
                 "value": "",
-                "argumentManager": {
+                "optionManager": {
                     "list": []
                 }
             }

@@ -29,7 +29,7 @@ export default class State {
     readonly listDialogue = new ListDialogue()
     readonly nameDialogue = new NameDialogue()
 
-    private sidebarCommand: SideBar | null = null
+    private sidebarArtisan: SideBar | null = null
     private sidebarEntity: SideBar | null = null
     private sidebarLayer: SideBar | null = null
     private sidebarPreset: SideBar | null = null
@@ -69,7 +69,7 @@ export default class State {
     }
 
     private prepare() {
-        this.sidebarCommand = new SideBar(this.project!.commandManager)
+        this.sidebarArtisan = new SideBar(this.project!.artisanManager)
         this.sidebarEntity = new SideBar(this.project!.entityManager)
         this.sidebarLayer = new SideBar(this.project!.layerManager)
         this.sidebarPreset = new SideBar(this.project!.presetManager)
@@ -95,7 +95,7 @@ export default class State {
     }
 
     showArtisan() {
-        this.sidebar = this.sidebarCommand
+        this.sidebar = this.sidebarArtisan
     }
 
     showEntity() {

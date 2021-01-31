@@ -5,7 +5,7 @@
         </div>
 
         <div v-if="sss.sidebar.item" class="col-9">
-            <OptionList :manager="sss.sidebar.item.argumentManager">
+            <OptionList :manager="sss.sidebar.item.optionManager">
                 <template slot="caption">
                     <h2 v-if="sss.sidebar.item.original" class="inline mr11">artisan {{ sss.sidebar.item.name }}</h2>
                     <b-button-group v-else class="mr11">
