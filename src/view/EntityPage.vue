@@ -39,15 +39,15 @@
                 <tr>
                     <td class="text-right">name</td>
                     <td>
-                        <b-button-group>
+                        <b-button-group class="mr11">
                             <DeleteButton
                                 :manager="sss.sidebar.manager"
                                 :item="sss.sidebar.item"
                                 @deleted="sss.sidebar.item = null"
                             ></DeleteButton>
                             <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
-                            <CloneButton :manager="sss.sidebar.manager" :item="sss.sidebar.item"></CloneButton>
                         </b-button-group>
+                        <CloneButton :manager="sss.sidebar.manager" :item="sss.sidebar.item"></CloneButton>
                     </td>
                 </tr>
             </EntityProperty>

@@ -17,15 +17,15 @@
                     <td class="text-right">name</td>
                     <td>
                         <span v-if="sss.sidebar.item.original">{{ sss.sidebar.item.name }}</span>
-                        <b-button-group v-else>
+                        <b-button-group v-else class="mr11">
                             <DeleteButton
                                 :manager="sss.sidebar.manager"
                                 :item="sss.sidebar.item"
                                 @deleted="sss.sidebar.item = null"
                             ></DeleteButton>
                             <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
-                            <CloneButton :manager="sss.sidebar.manager" :item="sss.sidebar.item"></CloneButton>
                         </b-button-group>
+                        <CloneButton :manager="sss.sidebar.manager" :item="sss.sidebar.item"></CloneButton>
                     </td>
                 </tr>
             </LayerProperty>
