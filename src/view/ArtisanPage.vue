@@ -5,39 +5,45 @@
         </div>
 
         <div v-if="sss.sidebar.item" class="col-9">
-            <OptionList :manager="sss.sidebar.item.optionManager">
-                <template slot="caption">
-                    <h2 v-if="sss.sidebar.item.original" class="inline mr11">artisan {{ sss.sidebar.item.name }}</h2>
-                    <b-button-group v-else class="mr11">
-                        artisan
-                        <DeleteButton
-                            :manager="sss.sidebar.manager"
-                            :item="sss.sidebar.item"
-                            @deleted="sss.sidebar.item = null"
-                        ></DeleteButton>
-                        <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
-                    </b-button-group>
-                    <b-button @click="run" :disabled="waiting" variant="outline-success">
-                        <b-spinner v-if="waiting" small></b-spinner>
-                        Run
-                    </b-button>
-                    <ul class="gray">
-                        <li>
-                            make sure the PHP
-                            <a href="https://packagist.org/packages/googee/entity" target="_blank"> package </a>
-                            is installed
-                        </li>
-                        <li>
-                            and the server
-                            <a :href="sss.project.server" target="_blank">{{ sss.project.server }}</a>
-                            is running
-                        </li>
-                        <li>
-                            to change the server URL, go to page
-                            <router-link to="/project">Project</router-link>
-                        </li>
-                    </ul>
-                </template>
+            <div>
+                <h2 v-if="sss.sidebar.item.original" class="inline mr11">artisan {{ sss.sidebar.item.name }}</h2>
+                <b-button-group v-else class="mr11">
+                    artisan
+                    <DeleteButton
+                        :manager="sss.sidebar.manager"
+                        :item="sss.sidebar.item"
+                        @deleted="sss.sidebar.item = null"
+                    ></DeleteButton>
+                    <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
+                </b-button-group>
+                <b-button @click="run" :disabled="waiting" variant="outline-success">
+                    <b-spinner v-if="waiting" small></b-spinner>
+                    Run
+                </b-button>
+                <ul class="gray">
+                    <li>
+                        make sure the PHP
+                        <a href="https://packagist.org/packages/googee/entity" target="_blank"> package </a>
+                        is installed
+                    </li>
+                    <li>
+                        and the server
+                        <a :href="sss.project.server" target="_blank">{{ sss.project.server }}</a>
+                        is running
+                    </li>
+                    <li>
+                        to change the server URL, go to page
+                        <router-link to="/project">Project</router-link>
+                    </li>
+                </ul>
+            </div>
+
+            <b-nav tabs class="mt11">
+                <b-nav-item @click="tab = 'Option'" :active="tab === 'Option'"> Option </b-nav-item>
+                <b-nav-item @click="tab = 'Output'" :active="tab === 'Output'"> Output </b-nav-item>
+            </b-nav>
+
+            <OptionList v-if="tab === 'Option'" :manager="sss.sidebar.item.optionManager">
                 <template slot="body">
                     <tr>
                         <td class="text-right">{{ sss.sidebar.item.name }}</td>
@@ -51,17 +57,13 @@
                             ></b-form-input>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="text-right">color</td>
-                        <td colspan="2">
-                            <ColorPanel :color.sync="sss.sidebar.item.color"></ColorPanel>
-                        </td>
-                    </tr>
                 </template>
             </OptionList>
 
-            <div>
-                <p>Output</p>
+            <div v-if="tab === 'Output'">
+                <div class="mtb11">
+                    <ColorPanel :color.sync="sss.sidebar.item.color"></ColorPanel>
+                </div>
                 <b-form-textarea v-model="result" rows="22" spellcheck="false" readonly></b-form-textarea>
             </div>
         </div>
@@ -89,6 +91,7 @@ export default {
         return {
             sss,
             waiting: false,
+            tab: 'Option',
             result: '',
         }
     },
