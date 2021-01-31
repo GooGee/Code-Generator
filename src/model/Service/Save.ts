@@ -4,10 +4,12 @@ import { ActionEnum } from '../Bridge/ActionEnum'
 import IHandler from '../Bridge/IHandler'
 import Route from '../Bridge/Route'
 
+const CGFolder = 'code-generator'
+const BackupFolder = CGFolder + '/backup'
+const FileName = CGFolder + '/data.json'
+
 export default class Save {
     private static last = ''
-
-    static readonly FileName = 'code-generator/data.json'
 
     static run(project: Project, route: Route, handler?: IHandler) {
         const text = JSON.stringify(project)
@@ -19,11 +21,17 @@ export default class Save {
         }
 
         this.last = text
-        route.write(Save.FileName, text, handler)
+        route.move(FileName, this.makeName())
+        route.write(FileName, text, handler)
     }
 
     private static get fake() {
-        return new Response(ActionEnum.write, Save.FileName, '', 'Nothing changed', 200)
+        return new Response(ActionEnum.write, FileName, '', 'Nothing changed', 200)
+    }
+
+    private static makeName() {
+        const dt = new Date().toISOString().substr(0, 19).replace('T', ' ').replace(':', '.').replace(':', '.')
+        return BackupFolder + '/data.' + dt + '.json'
     }
 
 }

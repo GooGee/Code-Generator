@@ -23,6 +23,10 @@ export default class Route {
         this.call(ActionEnum.get, route, data, handler)
     }
 
+    move(file: string, destination: string, handler?: IHandler) {
+        this.call(ActionEnum.move, file, destination, handler)
+    }
+
     post(route: string, data: string, handler?: IHandler) {
         this.call(ActionEnum.post, route, data, handler)
     }
