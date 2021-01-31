@@ -36,15 +36,7 @@ export default class Route {
     }
 
     save(project: Project, handler?: IHandler) {
-        const text = Save.run(project)
-        if (text) {
-            this.write(Save.FileName, text, handler)
-            return
-        }
-
-        if (handler) {
-            handler(Save.fake)
-        }
+        Save.run(project, this, handler)
     }
 
     write(file: string, data: string, handler?: IHandler) {
