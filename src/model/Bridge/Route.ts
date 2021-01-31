@@ -1,8 +1,8 @@
+import Project from '../Schema/Project'
+import Save from '../Service/Save'
 import { ActionEnum } from './ActionEnum'
 import IHandler from './IHandler'
 import ToJava from './ToJava'
-
-const FileName = 'code-generator.json'
 
 export default class Route {
     readonly service: ToJava
@@ -35,8 +35,16 @@ export default class Route {
         this.call(ActionEnum.refresh, '', '', handler)
     }
 
-    save(project: string, handler?: IHandler) {
-        this.write(FileName, project, handler)
+    save(project: Project, handler?: IHandler) {
+        const text = Save.run(project)
+        if (text) {
+            this.write(Save.FileName, text, handler)
+            return
+        }
+
+        if (handler) {
+            handler(Save.fake)
+        }
     }
 
     write(file: string, data: string, handler?: IHandler) {

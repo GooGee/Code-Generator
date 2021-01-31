@@ -37,18 +37,11 @@ export default {
     },
     methods: {
         save() {
-            sss.route.save(JSON.stringify(sss.project), response => {
-                if (response.status === 200) {
-                    this.$root.$bvToast.toast('OK', {
-                        title: 'i',
-                        variant: 'success',
-                        solid: true,
-                    })
-                    return
-                }
+            sss.route.save(sss.project, response => {
+                const color = response.status === 200 ? 'success' : 'danger'
                 this.$root.$bvToast.toast(response.message, {
                     title: 'i',
-                    variant: 'danger',
+                    variant: color,
                     solid: true,
                 })
             })

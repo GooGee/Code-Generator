@@ -45,22 +45,23 @@ export default class State {
             }
             this.create('Project')
         })
-        manager.add(ActionEnum.save, 'project', (response) => {
-            if (response.status === StatusEnum.OK) {
-                this.route.save(JSON.stringify(this.project))
-            }
-        })
 
         const toJava = new ToJava(window, manager)
         this.route = new Route(toJava)
         this.bridge = new Bridge(manager)
         window.bridge = this.bridge
 
+        manager.add(ActionEnum.save, 'project', (response) => {
+            if (response.status === StatusEnum.OK) {
+                this.route.save(this.project!)
+            }
+        })
+
         setInterval(() => {
             if (this.ready) {
                 if (window.JavaBridge) {
                     if (this.project!.autoSave) {
-                        this.route.save(JSON.stringify(this.project))
+                        this.route.save(this.project!)
                     }
                 }
             }
