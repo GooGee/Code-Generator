@@ -16,7 +16,7 @@
                 <tr>
                     <td class="text-right">name</td>
                     <td>
-                        <span v-if="sss.sidebar.item.original">{{ sss.sidebar.item.name }}</span>
+                        <span v-if="sss.sidebar.item.original" class="mr11">{{ sss.sidebar.item.name }}</span>
                         <b-button-group v-else class="mr11">
                             <DeleteButton
                                 :manager="sss.sidebar.manager"
