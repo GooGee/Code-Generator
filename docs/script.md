@@ -58,7 +58,7 @@ in template
 ```
 
 
-[Data Structure](https://googee.github.io/Code-Generator/docs200/structure.html)
+[Data Structure](https://googee.github.io/Code-Generator/docs/structure.html)
 
 [Document](https://googee.github.io/Code-Generator/docs200/model/index.html)
 
