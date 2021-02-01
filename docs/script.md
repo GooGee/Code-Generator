@@ -16,7 +16,7 @@ function run(data) {
 ## Notice
 
 - function must be on the first line
-- [parameter doc](https://googee.github.io/Code-Generator/docs/model/interfaces/jsparameter.html)
+- [parameter doc](https://googee.github.io/Code-Generator/docs200/model/interfaces/dataforscript.html)
 - do not change anything in `data.project`, `data.layer`, `data.entity`
 - function will be called before render template
 - properties of "data" will be available in template
@@ -58,6 +58,8 @@ in template
 ```
 
 
-[Document](https://googee.github.io/Code-Generator/docs/model/index.html)
+[Data Structure](https://googee.github.io/Code-Generator/docs200/structure.html)
+
+[Document](https://googee.github.io/Code-Generator/docs200/model/index.html)
 
 [Template](https://mozilla.github.io/nunjucks/templating.html)
