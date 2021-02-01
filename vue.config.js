@@ -11,6 +11,7 @@ module.exports = {
     publicPath: '',
     productionSourceMap: false,
     chainWebpack: config => {
+        config.optimization.minimize(false)
         config.resolve.extensions.merge(['.ts']).end()
         config.module
             .rule('ts')
