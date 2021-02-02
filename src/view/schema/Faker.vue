@@ -46,14 +46,37 @@
                 </td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <b-button-group class="mr11">
+                        <EditButton file="script/faker.js" :content="sss.project.fakerScript" @save="save"></EditButton>
+                        <b-button @click="run" variant="outline-primary"> Run </b-button>
+                    </b-button-group>
+                    <ScriptGuide></ScriptGuide>
+                </td>
+                <td></td>
+            </tr>
+        </tfoot>
     </table>
 </template>
 
 <script>
 import sss from '@/state.js'
+import EditButton from '../button/EditButton.vue'
+import ScriptGuide from './ScriptGuide.vue'
 
 export default {
     name: 'Faker',
+    components: {
+        EditButton,
+        ScriptGuide,
+    },
+    data() {
+        return {
+            sss,
+        }
+    },
     computed: {
         manager() {
             return sss.sidebar.item.fieldManager
@@ -65,6 +88,22 @@ export default {
                 return seed.value
             }
             return '+'
+        },
+        run() {
+            try {
+                sss.setFaker(sss.sidebar.item)
+            } catch (error) {
+                this.$root.$bvToast.toast(error.message, {
+                    title: 'i',
+                    variant: 'danger',
+                    solid: true,
+                })
+            }
+        },
+        save(ok, text) {
+            if (ok) {
+                sss.project.fakerScript = text
+            }
         },
         setMethod(field) {
             const list = sss.getPreset('FakerMethod').propertyManager.list

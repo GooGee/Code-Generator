@@ -1,9 +1,7 @@
-import lodash from 'lodash'
 import Project from './Schema/Project'
 import SideBar from './SideBar'
 import InputDialogue from './Dialogue/InputDialogue'
 import ListDialogue from './Dialogue/ListDialogue'
-import { run, runAndRender } from './Text'
 import Layer from './Schema/Layer'
 import Entity from './Schema/Entity'
 import Loader from './Loader/Loader'
@@ -13,6 +11,7 @@ import NameDialogue from './Dialogue/NameDialogue'
 import ICEFW from './Bridge/ICEFW'
 import Route from './Bridge/Route'
 import Start from './Service/Start'
+import RunScript from './Service/RunScript'
 
 export default class State {
     route: Route
@@ -89,22 +88,15 @@ export default class State {
     }
 
     render(layer: Layer, entity: Entity) {
-        const data = {
-            project: this.project!,
-            layer,
-            entity,
-            lodash,
-        }
-        return runAndRender(data)
+        RunScript.runAndRender(this.project!, layer, entity)
+    }
+
+    setFaker(entity: Entity) {
+        RunScript.runFaker(this.project!, entity)
     }
 
     setValidation(entity: Entity) {
-        const data = {
-            project: this.project,
-            entity,
-            lodash,
-        }
-        run(this.project!.validationScript, data)
+        RunScript.runValidation(this.project!, entity)
     }
 
     get ready() {

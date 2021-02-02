@@ -12,6 +12,7 @@ export default class Project extends NameItem {
     autoSave: boolean = false
     dataVersion = '1.0'
     description: string = ''
+    fakerScript: string = ''
     script: string = ''
     server: string = 'http://localhost'
     validationScript: string = ''
