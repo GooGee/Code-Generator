@@ -12,6 +12,7 @@ export default class Route {
     }
 
     call(action: ActionEnum, key: string, data: string, handler?: IHandler) {
+        console.log(`${action} ${key}`)
         this.service.send(action, key, data, handler)
     }
 

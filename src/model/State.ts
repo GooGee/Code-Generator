@@ -88,7 +88,7 @@ export default class State {
     }
 
     render(layer: Layer, entity: Entity) {
-        RunScript.runAndRender(this.project!, layer, entity)
+        return RunScript.runAndRender(this.project!, layer, entity)
     }
 
     setFaker(entity: Entity) {
