@@ -33,19 +33,5 @@ export default {
             sss,
         }
     },
-    created() {
-        fetch('preset.json')
-            .then(response => response.json())
-            .then(json => {
-                sss.preset = json
-            })
-            .catch(error => {
-                this.$root.$bvToast.toast(error.message, {
-                    title: 'i',
-                    variant: 'danger',
-                    solid: true,
-                })
-            })
-    },
 }
 </script>
