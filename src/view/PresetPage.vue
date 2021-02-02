@@ -8,7 +8,7 @@
             <PropertyList :manager="sss.sidebar.item.propertyManager">
                 <div>
                     <h2 v-if="sss.sidebar.item.original">{{ sss.sidebar.item.name }}</h2>
-                    <b-button-group v-else>
+                    <b-button-group v-else class="mb11">
                         <DeleteButton
                             :manager="sss.sidebar.manager"
                             :item="sss.sidebar.item"
