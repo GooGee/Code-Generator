@@ -11,15 +11,10 @@ import { IData } from './DataBase/IData'
 import Convertor from './DataBase/Convertor'
 import NameDialogue from './Dialogue/NameDialogue'
 import ICEFW from './Bridge/ICEFW'
-import Bridge from './Bridge/Bridge'
-import HandlerManager from './Bridge/HandlerManager'
-import { ActionEnum } from './Bridge/ActionEnum'
-import { StatusEnum } from './Bridge/StatusEnum'
-import ToJava from './Bridge/ToJava'
 import Route from './Bridge/Route'
+import Start from './Service/Start'
 
 export default class State {
-    bridge: Bridge
     route: Route
     preset: Project | null = null
     project: Project | null = null
@@ -35,38 +30,7 @@ export default class State {
     private sidebarPreset: SideBar | null = null
 
     constructor(window: ICEFW) {
-
-        const manager = new HandlerManager()
-        manager.add(ActionEnum.load, 'project', (response) => {
-            if (response.status === StatusEnum.OK) {
-                const project = JSON.parse(response.data)
-                this.load(project)
-                return
-            }
-            this.create('Project')
-        })
-
-        const toJava = new ToJava(window, manager)
-        this.route = new Route(toJava)
-        this.bridge = new Bridge(manager)
-        window.bridge = this.bridge
-
-        manager.add(ActionEnum.save, 'project', (response) => {
-            if (response.status === StatusEnum.OK) {
-                this.route.save(this.project!)
-            }
-        })
-
-        setInterval(() => {
-            if (this.ready) {
-                if (window.JavaBridge) {
-                    if (this.project!.autoSave) {
-                        this.route.save(this.project!)
-                    }
-                }
-            }
-        }, 11122)
-
+        this.route = Start.run(this, window)
     }
 
     private prepare() {
