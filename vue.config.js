@@ -11,7 +11,12 @@ module.exports = {
     publicPath: '',
     productionSourceMap: false,
     chainWebpack: config => {
-        config.optimization.minimize(false)
+        config.optimization.minimizer('terser').tap(args => {
+            const { terserOptions } = args[0]
+            terserOptions.keep_classnames = true
+            terserOptions.keep_fnames = true
+            return args
+        })
         config.resolve.extensions.merge(['.ts']).end()
         config.module
             .rule('ts')
