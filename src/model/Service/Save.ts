@@ -9,9 +9,12 @@ const BackupFolder = CGFolder + '/backup'
 const FileName = CGFolder + '/data.json'
 
 export default class Save {
-    private static last = ''
+    static last = ''
 
     static run(project: Project, route: Route, handler?: IHandler) {
+        if (project === null) {
+            return
+        }
         const text = JSON.stringify(project)
         if (text === this.last) {
             if (handler) {
