@@ -27,9 +27,7 @@
                 <td class="text-right">script</td>
                 <td>
                     <EditButton :file="file" :content="item.script" @save="save" class="mr11" />
-                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
-                        Guide
-                    </a>
+                    <ScriptGuide></ScriptGuide>
                 </td>
             </tr>
             <tr>
@@ -64,6 +62,7 @@
 import ChangeButton from '../button/ChangeButton.vue'
 import ColorPanel from '../button/ColorPanel.vue'
 import EditButton from '../button/EditButton.vue'
+import ScriptGuide from './ScriptGuide.vue'
 
 export default {
     name: 'EntityProperty',
@@ -71,6 +70,7 @@ export default {
         ChangeButton,
         ColorPanel,
         EditButton,
+        ScriptGuide,
     },
     props: {
         item: {

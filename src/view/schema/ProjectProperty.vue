@@ -32,9 +32,7 @@
                 <td class="text-right">script</td>
                 <td>
                     <EditButton file="script/project.js" :content="item.script" @save="save" class="mr11" />
-                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
-                        Guide
-                    </a>
+                    <ScriptGuide></ScriptGuide>
                 </td>
             </tr>
             <tr>
@@ -62,12 +60,14 @@
 <script>
 import ChangeButton from '../button/ChangeButton.vue'
 import EditButton from '../button/EditButton.vue'
+import ScriptGuide from './ScriptGuide.vue'
 
 export default {
     name: 'ProjectProperty',
     components: {
         ChangeButton,
         EditButton,
+        ScriptGuide,
     },
     props: {
         item: {

@@ -33,9 +33,7 @@
                         ></EditButton>
                         <b-button @click="run" variant="outline-primary"> Run </b-button>
                     </b-button-group>
-                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
-                        Guide
-                    </a>
+                    <ScriptGuide></ScriptGuide>
                 </td>
                 <td>
                     <b-button @click="clear" variant="outline-danger"> Clear All </b-button>
@@ -48,6 +46,7 @@
 <script>
 import EditButton from '../button/EditButton.vue'
 import RuleTab from './RuleTab.vue'
+import ScriptGuide from './ScriptGuide.vue'
 import sss from '@/state.js'
 
 export default {
@@ -55,6 +54,7 @@ export default {
     components: {
         EditButton,
         RuleTab,
+        ScriptGuide,
     },
     data() {
         return {

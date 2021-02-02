@@ -34,9 +34,7 @@
                 <td class="text-right">script</td>
                 <td>
                     <EditButton :file="fileScript" :content="item.script" @save="saveScript" class="mr11" />
-                    <a href="https://github.com/googee/Code-Generator/blob/main/docs/script.md" target="_blank">
-                        Guide
-                    </a>
+                    <ScriptGuide></ScriptGuide>
                 </td>
             </tr>
             <tr>
@@ -84,12 +82,14 @@
 import ColorPanel from '../button/ColorPanel.vue'
 import EditButton from '../button/EditButton.vue'
 import WriteButton from '../button/WriteButton.vue'
+import ScriptGuide from './ScriptGuide.vue'
 
 export default {
     name: 'LayerProperty',
     components: {
         ColorPanel,
         EditButton,
+        ScriptGuide,
         WriteButton,
     },
     props: {
