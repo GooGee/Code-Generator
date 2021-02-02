@@ -16,7 +16,7 @@ import Start from './Service/Start'
 
 export default class State {
     route: Route
-    preset: Project | null = null
+    readonly preset: Project
     project: Project | null = null
     sidebar: SideBar | null = null
 
@@ -29,7 +29,8 @@ export default class State {
     private sidebarLayer: SideBar | null = null
     private sidebarPreset: SideBar | null = null
 
-    constructor(window: ICEFW) {
+    constructor(window: ICEFW, preset: Project) {
+        this.preset = preset
         this.route = Start.run(this, window)
     }
 
@@ -42,12 +43,12 @@ export default class State {
     }
 
     convert(data: IData, skip: boolean) {
-        const convertor = new Convertor(this.project!, this.preset!, skip)
+        const convertor = new Convertor(this.project!, this.preset, skip)
         convertor.convert(data)
     }
 
     create(name: string) {
-        const preset = this.preset!
+        const preset = this.preset
         preset.name = name
         this.project = new Project(name)
         this.project.load(preset)
@@ -55,7 +56,7 @@ export default class State {
     }
 
     load(data: Project) {
-        this.project = Loader.load(data, this.preset!)
+        this.project = Loader.load(data, this.preset)
         this.prepare()
     }
 
@@ -104,10 +105,6 @@ export default class State {
             lodash,
         }
         run(this.project!.validationScript, data)
-    }
-
-    get loading() {
-        return this.preset === null
     }
 
     get ready() {

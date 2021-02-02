@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="text-center" style="margin-top: 11%;">
-            <img v-if="loading" alt="loading" src="@/assets/loading.svg" class="mb11" />
-            <img v-else alt="logo" src="@/assets/logo.svg" style="width: 222px;" />
+            <img v-if="sss.ready" alt="logo" src="@/assets/logo.svg" style="width: 222px;" />
+            <img v-else alt="loading" src="@/assets/loading.svg" class="mb11" />
             <h1>Code Generator</h1>
             <p>{{ version }}</p>
         </div>
@@ -14,13 +14,9 @@ import sss from '../state.js'
 
 export default {
     name: 'Home',
-    computed: {
-        loading() {
-            return sss.project === null
-        },
-    }, 
     data() {
         return {
+            sss,
             version: process.env.VUE_APP_VERSION,
         }
     },
