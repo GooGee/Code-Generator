@@ -4,7 +4,6 @@ import { FieldManager } from './Field'
 import { IndexManager } from './Index'
 import { PresetManager } from './Preset'
 import { RelationManager } from './Relation'
-import { RouteManager } from './Route'
 import ncListener from '../Event/NameChangeListener'
 import idListener from '../Event/ItemDeleteListener'
 
@@ -20,7 +19,6 @@ export default class Entity extends UniqueItem {
     readonly indexManager = new IndexManager()
     readonly dataManager = new PresetManager()
     readonly relationManager = new RelationManager()
-    readonly routeManager = new RouteManager()
 
     constructor(name: string) {
         super(name)

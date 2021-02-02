@@ -14,7 +14,6 @@
                 <b-nav-item @click="tab = 'Index'" :active="tab === 'Index'"> Index </b-nav-item>
                 <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
                 <b-nav-item @click="tab = 'Relation'" :active="tab === 'Relation'"> Relation </b-nav-item>
-                <b-nav-item @click="tab = 'Route'" :active="tab === 'Route'"> Route </b-nav-item>
                 <b-nav-item @click="tab = 'Validation'" :active="tab === 'Validation'"> Validation </b-nav-item>
             </b-nav>
 
@@ -54,8 +53,6 @@
 
             <RelationList v-if="tab === 'Relation'"></RelationList>
 
-            <RouteList v-if="tab === 'Route'"></RouteList>
-
             <ValidationList v-if="tab === 'Validation'"></ValidationList>
         </div>
     </div>
@@ -73,7 +70,6 @@ import FileList from './schema/FileList.vue'
 import IndexList from './schema/IndexList.vue'
 import EntityProperty from './schema/EntityProperty.vue'
 import RelationList from './schema/RelationList.vue'
-import RouteList from './schema/RouteList.vue'
 import ValidationList from './schema/ValidationList.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '../state.js'
@@ -92,7 +88,6 @@ export default {
         IndexList,
         EntityProperty,
         RelationList,
-        RouteList,
         ValidationList,
         SideBar,
     },

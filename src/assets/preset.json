@@ -958,70 +958,6 @@
                             "type": "hasMany"
                         }
                     ]
-                },
-                "routeManager": {
-                    "list": [
-                        {
-                            "name": "destroy",
-                            "action": "delete",
-                            "path": "user/{id}",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "index",
-                            "action": "get",
-                            "path": "user",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "show",
-                            "action": "get",
-                            "path": "user/{id}",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "store",
-                            "action": "post",
-                            "path": "user",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "update",
-                            "action": "patch",
-                            "path": "user/{id}",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        }
-                    ]
                 }
             },
             {
@@ -1185,62 +1121,6 @@
                             "name": "user",
                             "parameter": "User::class",
                             "type": "belongsTo"
-                        }
-                    ]
-                },
-                "routeManager": {
-                    "list": [
-                        {
-                            "name": "destroy",
-                            "action": "delete",
-                            "path": "post/{id}",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "index",
-                            "action": "get",
-                            "path": "post",
-                            "middlewareManager": {
-                                "list": []
-                            }
-                        },
-                        {
-                            "name": "show",
-                            "action": "get",
-                            "path": "post/{id}",
-                            "middlewareManager": {
-                                "list": []
-                            }
-                        },
-                        {
-                            "name": "store",
-                            "action": "post",
-                            "path": "post",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "update",
-                            "action": "patch",
-                            "path": "post/{id}",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
                         }
                     ]
                 }
@@ -1634,8 +1514,8 @@
                 "filePattern": "api.php",
                 "nsPattern": "",
                 "pathPattern": "routes",
-                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const layerController = ddd.project.getLayer('ControllerAPI')\n    const controllerNS = 'App\\\\Http\\\\Controllers'\n    ddd.routexx = []\n    ddd.project.entityManager.list.forEach(entity => {\n        const ns = layerController.getNameSpace(ddd.project, entity)\n        let namespace = ''\n        if (ns !== controllerNS) {\n            namespace = ns.replace(controllerNS + '\\\\', '')\n        }\n        const routexx = []\n        entity.routeManager.list.forEach(route => {\n            const controller = layerController.getClassName(entity)\n            let routeName = ''\n            if (route.routeName) {\n                routeName = `->name('${route.routeName}')`\n            }\n            const list = route.middlewareManager.list.map(mw => mw.name)\n            let middleware = ''\n            if (list.length) {\n                middleware = `->middleware(['${list.join(\"', '\")}'])`\n            }\n            const text = `Route::${route.action}('${route.path}', '${controller}@${route.name}')${routeName}${middleware};`\n            routexx.push(text)\n        })\n        if (routexx.length) {\n            const list = []\n            if (namespace) {\n                list.push(`'namespace' => '${namespace}'`)\n            }\n            if (entity.routeDomain) {\n                list.push(`'domain' => '${entity.routeDomain}'`)\n            }\n            if (entity.routeName) {\n                list.push(`'name' => '${entity.routeName}'`)\n            }\n            if (entity.routePrefix) {\n                list.push(`'prefix' => '${entity.routePrefix}'`)\n            }\n            routexx.splice(0, 0, `Route::group([${list.join(', ')}], function () {`)\n            ddd.routexx.push(`${routexx.join('\\n    ')}\\n});`)\n        }\n    })\n}\n",
-                "template": "<?php\n\n{% for route in routexx %}\n{{ route }}\n{% endfor %}\n",
+                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                "template": "",
                 "dataManager": {
                     "list": []
                 }
@@ -1651,8 +1531,8 @@
                 "filePattern": "web.php",
                 "nsPattern": "",
                 "pathPattern": "routes",
-                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const layerController = ddd.project.getLayer('ControllerAPI')\n    const controllerNS = 'App\\\\Http\\\\Controllers'\n    ddd.routexx = []\n    ddd.project.entityManager.list.forEach(entity => {\n        const ns = layerController.getNameSpace(ddd.project, entity)\n        let namespace = ''\n        if (ns !== controllerNS) {\n            namespace = ns.replace(controllerNS + '\\\\', '')\n        }\n        const routexx = []\n        entity.routeManager.list.forEach(route => {\n            const controller = layerController.getClassName(entity)\n            let routeName = ''\n            if (route.routeName) {\n                routeName = `->name('${route.routeName}')`\n            }\n            const list = route.middlewareManager.list.map(mw => mw.name)\n            let middleware = ''\n            if (list.length) {\n                middleware = `->middleware(['${list.join(\"', '\")}'])`\n            }\n            const text = `Route::${route.action}('${route.path}', '${controller}@${route.name}')${routeName}${middleware};`\n            routexx.push(text)\n        })\n        if (routexx.length) {\n            const list = []\n            if (namespace) {\n                list.push(`'namespace' => '${namespace}'`)\n            }\n            if (entity.routeDomain) {\n                list.push(`'domain' => '${entity.routeDomain}'`)\n            }\n            if (entity.routeName) {\n                list.push(`'name' => '${entity.routeName}'`)\n            }\n            if (entity.routePrefix) {\n                list.push(`'prefix' => '${entity.routePrefix}'`)\n            }\n            routexx.splice(0, 0, `Route::group([${list.join(', ')}], function () {`)\n            ddd.routexx.push(`${routexx.join('\\n    ')}\\n});`)\n        }\n    })\n}\n",
-                "template": "<?php\n\n{% for route in routexx %}\n{{ route }}\n{% endfor %}\n",
+                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                "template": "",
                 "dataManager": {
                     "list": []
                 }
@@ -4513,100 +4393,6 @@
                             "data": {},
                             "tag": "",
                             "value": ""
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "RouteMethod",
-                "original": true,
-                "color": "",
-                "description": "",
-                "version": 1,
-                "propertyManager": {
-                    "list": [
-                        {
-                            "name": "create",
-                            "data": {},
-                            "tag": "get",
-                            "value": "/create"
-                        },
-                        {
-                            "name": "destroy",
-                            "data": {},
-                            "tag": "delete",
-                            "value": "/{id}"
-                        },
-                        {
-                            "name": "edit",
-                            "data": {},
-                            "tag": "get",
-                            "value": "/{id}/edit"
-                        },
-                        {
-                            "name": "index",
-                            "data": {},
-                            "tag": "get",
-                            "value": ""
-                        },
-                        {
-                            "name": "show",
-                            "data": {},
-                            "tag": "get",
-                            "value": "/{id}"
-                        },
-                        {
-                            "name": "store",
-                            "data": {},
-                            "tag": "post",
-                            "value": ""
-                        },
-                        {
-                            "name": "update",
-                            "data": {},
-                            "tag": "patch",
-                            "value": "/{id}"
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "RouteRESTful",
-                "original": true,
-                "color": "",
-                "description": "",
-                "version": 1,
-                "propertyManager": {
-                    "list": [
-                        {
-                            "name": "destroy",
-                            "data": {},
-                            "tag": "delete",
-                            "value": "/{id}"
-                        },
-                        {
-                            "name": "index",
-                            "data": {},
-                            "tag": "get",
-                            "value": ""
-                        },
-                        {
-                            "name": "show",
-                            "data": {},
-                            "tag": "get",
-                            "value": "/{id}"
-                        },
-                        {
-                            "name": "store",
-                            "data": {},
-                            "tag": "post",
-                            "value": ""
-                        },
-                        {
-                            "name": "update",
-                            "data": {},
-                            "tag": "patch",
-                            "value": "/{id}"
                         }
                     ]
                 }
