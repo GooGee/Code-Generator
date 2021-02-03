@@ -8,7 +8,7 @@
 Intuitive and efficient code generator for Laravel.
 [PHPStorm plugin](https://plugins.jetbrains.com/plugin/15276-laravel-code-generator)
 
-[Script guide](https://github.com/GooGee/Code-Generator/blob/main/docs/script.md)
+[Script guide](https://github.com/GooGee/Code-Generator-Page/blob/gh-pages/docs/script.md)
 
 ![GUI](https://github.com/GooGee/Code-Generator/raw/main/image/file.png)
 
