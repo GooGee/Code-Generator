@@ -13,6 +13,9 @@ export default class Start {
     static run(state: State, window: ICEFW) {
 
         const manager = new HandlerManager()
+        manager.add(ActionEnum.error, '*', (response) => {
+            alert(response.message)
+        })
         manager.add(ActionEnum.load, 'project', (response) => {
             if (response.status === StatusEnum.OK) {
                 const project = JSON.parse(response.data)

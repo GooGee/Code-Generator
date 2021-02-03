@@ -26,6 +26,7 @@ export default class Bridge {
                 handler(response)
             } catch (error) {
                 console.error(error)
+                alert(error)
             }
         } else {
             console.error('No handler')
