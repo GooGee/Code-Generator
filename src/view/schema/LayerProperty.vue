@@ -41,7 +41,7 @@
                 <td class="text-right">template</td>
                 <td>
                     <EditButton :file="fileTemplate" :content="item.template" @save="saveTemplate" class="mr11" />
-                    <a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Document</a>
+                    <OpenButton file="https://mozilla.github.io/nunjucks/templating.html">Document</OpenButton>
                 </td>
             </tr>
             <tr>
@@ -81,6 +81,7 @@
 <script>
 import ColorPanel from '../button/ColorPanel.vue'
 import EditButton from '../button/EditButton.vue'
+import OpenButton from '../button/OpenButton.vue'
 import WriteButton from '../button/WriteButton.vue'
 import ScriptGuide from './ScriptGuide.vue'
 
@@ -89,6 +90,7 @@ export default {
     components: {
         ColorPanel,
         EditButton,
+        OpenButton,
         ScriptGuide,
         WriteButton,
     },

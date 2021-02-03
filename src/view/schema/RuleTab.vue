@@ -34,7 +34,7 @@
                         <ul class="list-unstyled">
                             <li v-for="rule in list" :key="rule.name" class="mt11">
                                 <b-button @click="add(rule)" variant="outline-primary" class="mr11"> + </b-button>
-                                <a :href="link(rule)" target="_blank">{{ rule.name }}</a>
+                                <OpenButton :file="link(rule)">{{ rule.name }}</OpenButton>
                             </li>
                         </ul>
                     </b-tab>
@@ -56,12 +56,14 @@
 
 <script>
 import draggable from 'vuedraggable'
+import OpenButton from '../button/OpenButton.vue'
 import Rule from './Rule.vue'
 
 export default {
     name: 'RuleTab',
     components: {
         draggable,
+        OpenButton,
         Rule,
     },
     props: {

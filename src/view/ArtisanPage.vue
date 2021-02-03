@@ -23,7 +23,7 @@
                 <ul class="gray">
                     <li>
                         make sure the PHP
-                        <a href="https://packagist.org/packages/googee/entity" target="_blank"> package </a>
+                        <OpenButton file="https://packagist.org/packages/googee/entity">package</OpenButton>
                         is installed
                     </li>
                     <li>
@@ -75,6 +75,7 @@ import OptionList from './schema/OptionList.vue'
 import ChangeButton from './button/ChangeButton.vue'
 import ColorPanel from './button/ColorPanel.vue'
 import DeleteButton from './button/DeleteButton.vue'
+import OpenButton from './button/OpenButton.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '../state.js'
 
@@ -85,6 +86,7 @@ export default {
         ChangeButton,
         ColorPanel,
         DeleteButton,
+        OpenButton,
         SideBar,
     },
     data() {
