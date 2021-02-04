@@ -64,6 +64,7 @@ import ValidationList from './schema/ValidationList.vue'
 import SideBar from './part/SideBar.vue'
 import TabBar from './part/TabBar.vue'
 import sss from '../state.js'
+import menu from '../menu.js'
 
 export default {
     name: 'EntityPage',
@@ -87,7 +88,7 @@ export default {
         return {
             sss,
             tab: 'File',
-            tabxx: ['Cast', 'Data', 'Faker', 'Field', 'File', 'Index', 'Property', 'Relation', 'Validation'],
+            tabxx: menu.entity,
         }
     },
     created() {
