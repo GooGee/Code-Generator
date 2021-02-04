@@ -1,11 +1,11 @@
 <template>
-    <b-navbar id="bar" fixed="top"  type="dark" variant="primary">
+    <b-navbar id="bar" fixed="top" type="dark" variant="primary">
         <div class="container">
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
                     <b-nav-item to="/" exact active-class="active"> Home </b-nav-item>
 
-                    <template v-if="ready">
+                    <template v-if="sss.ready">
                         <b-nav-item to="/project" active-class="active"> Project </b-nav-item>
                         <b-nav-item to="/entity" active-class="active"> Entity </b-nav-item>
                         <b-nav-item to="/layer" active-class="active"> Layer </b-nav-item>
@@ -19,13 +19,14 @@
 </template>
 
 <script>
+import sss from '@/state.js'
+
 export default {
     name: 'Bar',
-    props: {
-        ready: {
-            type: Boolean,
-            required: true,
-        },
+    data() {
+        return {
+            sss
+        }
     },
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div id="app" style="margin-bottom: 33px;">
-        <Bar :ready="sss.ready"></Bar>
+        <Bar></Bar>
         <div class="container-fluid" style="margin-top: 55px;">
             <router-view></router-view>
         </div>
