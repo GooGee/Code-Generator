@@ -1,5 +1,5 @@
 import Project from './Schema/Project'
-import SideBar from './SideBar'
+import SideBar from './Service/SideBar'
 import InputDialogue from './Dialogue/InputDialogue'
 import ListDialogue from './Dialogue/ListDialogue'
 import Layer from './Schema/Layer'
