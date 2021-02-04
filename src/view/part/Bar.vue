@@ -6,11 +6,17 @@
                     <b-nav-item to="/" exact active-class="active"> Home </b-nav-item>
 
                     <template v-if="sss.ready">
-                        <b-nav-item to="/project" active-class="active"> Project </b-nav-item>
-                        <b-nav-item to="/entity" active-class="active"> Entity </b-nav-item>
-                        <b-nav-item to="/layer" active-class="active"> Layer </b-nav-item>
-                        <b-nav-item to="/artisan" active-class="active"> Artisan </b-nav-item>
-                        <b-nav-item to="/preset" active-class="active"> Preset </b-nav-item>
+                        <b-nav-item v-for="item in sss.menuxx" :key="item.name" :to="item.path" active-class="active">
+                            {{ item.name }}
+                        </b-nav-item>
+                    </template>
+                </b-navbar-nav>
+
+                <!-- Right aligned nav items -->
+                <b-navbar-nav class="ml-auto">
+                    <template v-if="sss.ready">
+                        <b-nav-item v-if="sss.oapi" @click="sss.oapi = false" to="/entity">Generator</b-nav-item>
+                        <b-nav-item v-else @click="sss.oapi = true" to="/oapi">OpenAPI</b-nav-item>
                     </template>
                 </b-navbar-nav>
             </b-collapse>
@@ -25,7 +31,7 @@ export default {
     name: 'Bar',
     data() {
         return {
-            sss
+            sss,
         }
     },
 }
