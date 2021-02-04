@@ -11,12 +11,16 @@ import ICEFW from './Bridge/ICEFW'
 import Route from './Bridge/Route'
 import Start from './Service/Start'
 import RunScript from './Service/RunScript'
+import { MenuData } from './Service/Menu'
 
 export default class State {
+    oapi: boolean = false
     route: Route
     readonly preset: Project
     project: Project | null = null
     sidebar: SideBar | null = null
+
+    readonly menu: MenuData
 
     readonly inputDialogue = new InputDialogue()
     readonly listDialogue = new ListDialogue()
@@ -24,9 +28,17 @@ export default class State {
 
     readonly sidebarManager = new SideBarManager()
 
-    constructor(window: ICEFW, preset: Project) {
+    constructor(window: ICEFW, preset: Project, menu: MenuData) {
         this.preset = preset
         this.route = Start.run(this, window)
+        this.menu = menu
+    }
+
+    get menuxx() {
+        if (this.oapi) {
+            return this.menu.oapi
+        }
+        return this.menu.generator
     }
 
     convert(data: IData, skip: boolean) {
