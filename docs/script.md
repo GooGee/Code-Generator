@@ -17,9 +17,9 @@ function run(data) {
 
 - function must be on the first line
 - [DataForScript doc](https://googee.github.io/Code-Generator-Page/docs200/model/interfaces/dataforscript.html)
-- do not change anything in `data.project`, `data.layer`, `data.entity`
-- function will be called before render template
-- properties of "data" will be available in template
+- do not change anything in `data.project`, `data.layer`, `data.entity`, `data.lodash`
+- function will be executed before render template
+- and members in `data` will be available in template
 
 
 ## Execute Order
