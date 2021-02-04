@@ -7,6 +7,8 @@ import ICEFW from '../Bridge/ICEFW'
 import Route from '../Bridge/Route'
 import State from '../State'
 import Save from './Save'
+import Loader from '../Loader/Loader'
+import Project from '../Schema/Project'
 
 export default class Start {
 
@@ -19,11 +21,14 @@ export default class Start {
         manager.add(ActionEnum.load, 'project', (response) => {
             if (response.status === StatusEnum.OK) {
                 const project = JSON.parse(response.data)
-                state.load(project)
+                state.project = Loader.load(project, state.preset)
+                this.ready(state)
                 Save.last = response.data
                 return
             }
-            state.create('Project')
+            state.project = new Project('ProjectName')
+            state.project.load(state.preset)
+            this.ready(state)
         })
 
         const toJava = new ToJava(window, manager)
@@ -47,6 +52,11 @@ export default class Start {
         }, 11122)
 
         return route
+    }
+
+    private static ready(state: State) {
+        state.sidebarManager.bind(state.project!)
+        state.showEntity()
     }
 
 }

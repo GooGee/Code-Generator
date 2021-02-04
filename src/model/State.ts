@@ -1,10 +1,9 @@
 import Project from './Schema/Project'
-import SideBar from './Service/SideBar'
+import SideBar, { SideBarEnum, SideBarManager } from './Service/SideBar'
 import InputDialogue from './Dialogue/InputDialogue'
 import ListDialogue from './Dialogue/ListDialogue'
 import Layer from './Schema/Layer'
 import Entity from './Schema/Entity'
-import Loader from './Loader/Loader'
 import { IData } from './DataBase/IData'
 import Convertor from './DataBase/Convertor'
 import NameDialogue from './Dialogue/NameDialogue'
@@ -23,22 +22,11 @@ export default class State {
     readonly listDialogue = new ListDialogue()
     readonly nameDialogue = new NameDialogue()
 
-    private sidebarArtisan: SideBar | null = null
-    private sidebarEntity: SideBar | null = null
-    private sidebarLayer: SideBar | null = null
-    private sidebarPreset: SideBar | null = null
+    readonly sidebarManager = new SideBarManager()
 
     constructor(window: ICEFW, preset: Project) {
         this.preset = preset
         this.route = Start.run(this, window)
-    }
-
-    private prepare() {
-        this.sidebarArtisan = new SideBar(this.project!.artisanManager)
-        this.sidebarEntity = new SideBar(this.project!.entityManager)
-        this.sidebarLayer = new SideBar(this.project!.layerManager)
-        this.sidebarPreset = new SideBar(this.project!.presetManager)
-        this.showEntity()
     }
 
     convert(data: IData, skip: boolean) {
@@ -46,33 +34,20 @@ export default class State {
         convertor.convert(data)
     }
 
-    create(name: string) {
-        const preset = this.preset
-        preset.name = name
-        this.project = new Project(name)
-        this.project.load(preset)
-        this.prepare()
-    }
-
-    load(data: Project) {
-        this.project = Loader.load(data, this.preset)
-        this.prepare()
-    }
-
     showArtisan() {
-        this.sidebar = this.sidebarArtisan
+        this.sidebar = this.sidebarManager.get(SideBarEnum.Artisan)
     }
 
     showEntity() {
-        this.sidebar = this.sidebarEntity
+        this.sidebar = this.sidebarManager.get(SideBarEnum.Entity)
     }
 
     showLayer() {
-        this.sidebar = this.sidebarLayer
+        this.sidebar = this.sidebarManager.get(SideBarEnum.Layer)
     }
 
     showPreset() {
-        this.sidebar = this.sidebarPreset
+        this.sidebar = this.sidebarManager.get(SideBarEnum.Preset)
     }
 
     getEntity(name: string) {
