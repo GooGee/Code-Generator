@@ -3,7 +3,7 @@ import UniqueList from '../Base/UniqueList'
 import Entity from './Entity'
 import { PresetManager } from './Preset'
 import Project from './Project'
-import { exeText } from '../Text'
+import { exeText } from '../Service/Text'
 
 export enum LayerEnum {
     Migration = 'Migration',

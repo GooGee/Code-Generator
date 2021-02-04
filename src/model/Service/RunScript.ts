@@ -2,7 +2,7 @@ import lodash from 'lodash'
 import Entity from '../Schema/Entity'
 import Layer from '../Schema/Layer'
 import Project from '../Schema/Project'
-import { run, runAndRender } from '../Text'
+import { run, runAndRender } from './Text'
 
 export default class RunScript {
 

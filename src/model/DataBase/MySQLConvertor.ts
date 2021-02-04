@@ -2,7 +2,7 @@ import DBConvertor from './DBConvertor'
 import { ITableMySQL, IFieldMySQL, IIndexMySQL } from './IData'
 import Entity from '../Schema/Entity'
 import { IndexTypeEnum } from '../Schema/Index'
-import { numberOrQuote } from '../Text'
+import { numberOrQuote } from '../Service/Text'
 
 export default class MySQLConvertor extends DBConvertor {
     getPresetKeyOfFieldType() {
