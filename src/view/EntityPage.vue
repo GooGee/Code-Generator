@@ -5,17 +5,7 @@
         </div>
 
         <div v-if="sss.sidebar.item" class="col-9">
-            <b-nav tabs class="mt11">
-                <b-nav-item @click="tab = 'Cast'" :active="tab === 'Cast'"> Cast </b-nav-item>
-                <b-nav-item @click="tab = 'Data'" :active="tab === 'Data'"> Data </b-nav-item>
-                <b-nav-item @click="tab = 'Faker'" :active="tab === 'Faker'"> Faker </b-nav-item>
-                <b-nav-item @click="tab = 'Field'" :active="tab === 'Field'"> Field </b-nav-item>
-                <b-nav-item @click="tab = 'File'" :active="tab === 'File'"> File </b-nav-item>
-                <b-nav-item @click="tab = 'Index'" :active="tab === 'Index'"> Index </b-nav-item>
-                <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
-                <b-nav-item @click="tab = 'Relation'" :active="tab === 'Relation'"> Relation </b-nav-item>
-                <b-nav-item @click="tab = 'Validation'" :active="tab === 'Validation'"> Validation </b-nav-item>
-            </b-nav>
+            <TabBar :tab="tab" :list="tabxx" @show="show" class="mt11"></TabBar>
 
             <CastList v-if="tab === 'Cast'"></CastList>
 
@@ -72,6 +62,7 @@ import EntityProperty from './schema/EntityProperty.vue'
 import RelationList from './schema/RelationList.vue'
 import ValidationList from './schema/ValidationList.vue'
 import SideBar from './part/SideBar.vue'
+import TabBar from './part/TabBar.vue'
 import sss from '../state.js'
 
 export default {
@@ -90,11 +81,13 @@ export default {
         RelationList,
         ValidationList,
         SideBar,
+        TabBar,
     },
     data() {
         return {
             sss,
             tab: 'File',
+            tabxx: ['Cast', 'Data', 'Faker', 'Field', 'File', 'Index', 'Property', 'Relation', 'Validation'],
         }
     },
     created() {
@@ -103,6 +96,11 @@ export default {
     computed: {
         layerxx() {
             return sss.project.layerManager.list.filter(layer => layer.single === false)
+        },
+    },
+    methods: {
+        show(tab) {
+            this.tab = tab
         },
     },
 }
