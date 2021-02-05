@@ -1,4 +1,5 @@
 import NameItem from '../Base/NameItem'
+import Document from '../OAPI/Document'
 import { ArtisanManager } from './Artisan'
 import { EntityManager } from './Entity'
 import { LayerManager } from './Layer'
@@ -21,6 +22,8 @@ export default class Project extends NameItem {
     readonly entityManager = new EntityManager()
     readonly layerManager = new LayerManager()
     readonly presetManager = new PresetManager()
+
+    readonly document: Document = new Document()
 
     get fileName() {
         return this.name + '.json'

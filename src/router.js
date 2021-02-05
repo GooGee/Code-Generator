@@ -39,6 +39,11 @@ export default new Router({
             component: require('@/view/ProjectPage').default,
         },
         {
+            path: '/oapi',
+            name: 'oapi',
+            component: require('@/view/OpenAPI').default,
+        },
+        {
             path: '*',
             redirect: '/',
         },

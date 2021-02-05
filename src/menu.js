@@ -7,7 +7,7 @@ export default {
         { name: 'Preset', path: '/preset' },
     ],
     oapi: [
-        { name: 'OpenAPI', path: '/openapi' },
+        { name: 'OpenAPI', path: '/oapi' },
         { name: 'Preset', path: '/preset' },
         { name: 'Example', path: '/example' },
         { name: 'Header', path: '/header' },
