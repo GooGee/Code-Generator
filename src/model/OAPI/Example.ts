@@ -1,8 +1,8 @@
-import IKeyValue from "../Base/IKeyValue"
-import UniqueItem from "../Base/UniqueItem"
-import UniqueList from "../Base/UniqueList"
+import OAPIItem from './OAPIItem'
+import OAPIManager from "./OAPIManager"
 
-export default class Example extends UniqueItem {
+export default class Example extends OAPIItem {
+    color: string = ''
     description: string = ''
     externalValue: string = ''
     summary: string = ''
@@ -18,17 +18,9 @@ export default class Example extends UniqueItem {
     }
 }
 
-export class ExampleManager extends UniqueList<Example> {
+export class ExampleManager extends OAPIManager<Example> {
 
     constructor() {
         super(Example)
-    }
-
-    toOAPI() {
-        const map: IKeyValue = {}
-        this.list.forEach(item => {
-            map[item.name] = item.toOAPI()
-        })
-        return map
     }
 }
