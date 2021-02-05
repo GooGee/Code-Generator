@@ -62,6 +62,10 @@ export default class State {
         this.sidebar = this.sidebarManager.get(SideBarEnum.Preset)
     }
 
+    show(sb: SideBarEnum){
+        this.sidebar = this.sidebarManager.get(sb)
+    }
+
     getEntity(name: string) {
         return this.project!.getEntity(name)
     }
