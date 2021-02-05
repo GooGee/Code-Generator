@@ -44,6 +44,11 @@ export default new Router({
             component: require('@/view/OpenAPI').default,
         },
         {
+            path: '/example',
+            name: 'example',
+            component: require('@/view/oapi/Example').default,
+        },
+        {
             path: '*',
             redirect: '/',
         },

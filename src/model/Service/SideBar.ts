@@ -33,6 +33,7 @@ export enum SideBarEnum {
     Entity = 'Entity',
     Layer = 'Layer',
     Preset = 'Preset',
+    Example = 'Example',
 }
 
 export class SideBarManager {
@@ -43,6 +44,8 @@ export class SideBarManager {
         this.map.set(SideBarEnum.Entity, new SideBar(project.entityManager))
         this.map.set(SideBarEnum.Layer, new SideBar(project.layerManager))
         this.map.set(SideBarEnum.Preset, new SideBar(project.presetManager))
+
+        this.map.set(SideBarEnum.Example, new SideBar(project.document.component.exampleManager))
     }
 
     get(name: SideBarEnum) {
