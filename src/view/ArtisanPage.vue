@@ -106,7 +106,7 @@ export default {
 
             this.waiting = true
             const data = {
-                artisan: sss.sidebar.item.toString(),
+                command: sss.sidebar.item.toString(),
             }
             const route = sss.project.server + '/entity/run'
             sss.route.post(route, JSON.stringify(data), response => {
