@@ -1,7 +1,6 @@
-import IKeyValue from "../Base/IKeyValue"
-import UniqueItem from "../Base/UniqueItem"
-import UniqueList from "../Base/UniqueList"
-import Schema from "./Schema"
+import OAPIItem from './OAPIItem'
+import OAPIManager from './OAPIManager'
+import Reference from './Reference'
 
 export enum Location {
     cookie = 'cookie',
@@ -10,15 +9,16 @@ export enum Location {
     query = 'query',
 }
 
-export default class Parameter extends UniqueItem {
+export default class Parameter extends OAPIItem {
     allowEmptyValue: boolean = false
+    color: string = ''
     deprecated: boolean = false
     description: string = ''
     example: string = ''
     location: Location
     name2: string = ''
     required: boolean = true
-    readonly schema = new Schema(this.name)
+    readonly schema = new Reference(this.name)
 
     constructor(name: string, location: Location = Location.cookie) {
         super(name)
@@ -26,8 +26,8 @@ export default class Parameter extends UniqueItem {
         this.location = location
     }
 
-    toOAPI(location: Location) {
-        if (location === Location.header) {
+    toOAPI() {
+        if (this.location === Location.header) {
             return {
                 required: this.required,
                 description: this.description,
@@ -45,7 +45,7 @@ export default class Parameter extends UniqueItem {
     }
 }
 
-export class ParameterManager extends UniqueList<Parameter> {
+export class ParameterManager extends OAPIManager<Parameter> {
     readonly location: Location
 
     constructor(location: Location) {
@@ -56,13 +56,5 @@ export class ParameterManager extends UniqueList<Parameter> {
     make(name: string, location: Location = this.location) {
         const item = new Parameter(name, location)
         return item
-    }
-
-    toOAPI() {
-        const map: IKeyValue = {}
-        this.list.forEach(item => {
-            map[item.name] = item.toOAPI(this.location)
-        })
-        return map
     }
 }

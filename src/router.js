@@ -61,6 +61,11 @@ export default new Router({
             component: require('@/view/oapi/Example').default,
         },
         {
+            path: '/header',
+            name: 'header',
+            component: require('@/view/oapi/HeaderPage').default,
+        },
+        {
             path: '*',
             redirect: '/',
         },

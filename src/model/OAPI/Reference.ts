@@ -15,7 +15,7 @@ export enum ReferenceType {
 export default class Reference extends UniqueItem {
     type: ReferenceType
 
-    constructor(name: string, type: ReferenceType) {
+    constructor(name: string, type: ReferenceType = ReferenceType.schemas) {
         super(name)
         this.type = type
     }
