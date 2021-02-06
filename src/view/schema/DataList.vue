@@ -3,12 +3,12 @@
         <div class="col-3">
             <div class="text-center mtb11">
                 <h3 class="inline gray mr11">Data</h3>
-                <AddButton :manager="manager"></AddButton>
+                <AddButton :manager="sss.sidebar.item.dataManager"></AddButton>
             </div>
 
-            <draggable v-model="manager.list" group="data">
+            <draggable v-model="sss.sidebar.item.dataManager.list" group="data">
                 <div
-                    v-for="one in manager.list"
+                    v-for="one in sss.sidebar.item.dataManager.list"
                     :key="one.name"
                     @click="item = one"
                     :class="Object.is(item, one) ? 'active' : ''"
@@ -22,7 +22,7 @@
         <div class="col-9">
             <PropertyList v-if="item" :manager="item.propertyManager">
                 <b-button-group class="mb11">
-                    <DeleteButton :manager="manager" :item="item" @deleted="item = null"></DeleteButton>
+                    <DeleteButton :manager="sss.sidebar.item.dataManager" :item="item" @deleted="item = null"></DeleteButton>
                     <ChangeButton :item="item" name="name"></ChangeButton>
                 </b-button-group>
                 <b-form-input v-model="item.description" placeholder="description"></b-form-input>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import sss from '@/state.js'
 import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
@@ -49,14 +50,9 @@ export default {
     },
     data() {
         return {
+            sss,
             item: null,
         }
-    },
-    props: {
-        manager: {
-            type: Object,
-            required: true,
-        },
     },
 }
 </script>

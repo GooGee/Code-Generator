@@ -1,7 +1,12 @@
 <template>
     <b-nav tabs>
-        <b-nav-item v-for="item in list" :key="item" :active="tab === item" @click="$emit('show', item)">
-            {{ item }}
+        <b-nav-item
+            v-for="item in route.children"
+            :key="item.path"
+            :to="route.path + '/' + item.path"
+            exact-active-class="active"
+        >
+            {{ item.path }}
         </b-nav-item>
     </b-nav>
 </template>
@@ -10,14 +15,9 @@
 export default {
     name: 'TabBar',
     props: {
-        list: {
-            type: Array,
+        route: {
+            type: Object,
             required: true,
-        },
-        tab: {
-            type: String,
-            required: false,
-            default: 'name',
         },
     },
 }
