@@ -7,6 +7,7 @@ import { ServerManager } from "./Server"
 import { SecurityManager } from "./Security"
 import { TagManager } from "./Tag"
 import { dataTypeList, simpleTypeList } from './DataType'
+import { ReferenceType } from './Reference'
 
 const Version = '3.0.3'
 
@@ -26,6 +27,35 @@ export default class Document extends Item {
 
     get simpleTypeList() {
         return simpleTypeList
+    }
+
+    getManager(type: ReferenceType) {
+        switch (type) {
+            case ReferenceType.examples:
+                return this.component.exampleManager
+
+            case ReferenceType.headers:
+                return this.component.headerManager
+
+            case ReferenceType.links:
+                return this.component.linkManager
+
+            case ReferenceType.parameters:
+                return this.component.parameterManager
+
+            case ReferenceType.requestBodies:
+                return this.component.requestBodyManager
+
+            case ReferenceType.responses:
+                return this.component.responseManager
+
+            case ReferenceType.schemas:
+                return this.component.schemaManager
+
+            default:
+                break
+        }
+        throw new Error('Unknown ReferenceType: ' + type)
     }
 
     toOAPI() {

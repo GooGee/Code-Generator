@@ -14,17 +14,11 @@ export default {
             type: Object,
             required: true,
         },
-        type: {
-            type: String,
-            required: false,
-            default: 'schemas',
-        },
     },
     methods: {
         show() {
-            const manager = sss.project.document.component.schemaManager
-            const list = manager.list.filter(schema => schema.type === this.type)
-            sss.listDialogue.showList(list, 'Select a ' + this.type, () => {
+            const manager = sss.project.document.getManager(this.reference.type)
+            sss.listDialogue.showList(manager.list, 'Select a ' + this.reference.type, () => {
                 const selected = sss.listDialogue.selected
                 this.reference.name = selected.name
             })

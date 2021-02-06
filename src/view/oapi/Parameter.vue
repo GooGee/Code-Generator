@@ -15,7 +15,11 @@
                 <tr>
                     <td class="text-right">in</td>
                     <td>
-                        <b-form-select v-model="sss.sidebar.item.location" :options="locationxx"></b-form-select>
+                        <b-form-select
+                            v-model="sss.sidebar.item.location"
+                            :options="locationxx"
+                            class="wa"
+                        ></b-form-select>
                     </td>
                 </tr>
             </Header>
