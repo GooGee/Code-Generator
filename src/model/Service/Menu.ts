@@ -12,5 +12,4 @@ export default class Menu {
 export class MenuData {
     readonly generator: Menu[] = []
     readonly oapi: Menu[] = []
-    readonly entity: string[] = []
 }

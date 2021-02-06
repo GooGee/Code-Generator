@@ -22,6 +22,18 @@ export default new Router({
             path: '/entity',
             name: 'entity',
             component: require('@/view/EntityPage').default,
+            children: [
+                { path: '', redirect: 'file' },
+                { path: 'cast', component: require('@/view/schema/CastList').default },
+                { path: 'data', component: require('@/view/schema/DataList').default },
+                { path: 'faker', component: require('@/view/schema/Faker').default },
+                { path: 'field', component: require('@/view/schema/FieldList').default },
+                { path: 'file', component: require('@/view/schema/FileList').default },
+                { path: 'index', component: require('@/view/schema/IndexList').default },
+                { path: 'property', component: require('@/view/schema/EntityProperty').default },
+                { path: 'relation', component: require('@/view/schema/RelationList').default },
+                { path: 'validation', component: require('@/view/schema/ValidationList').default },
+            ],
         },
         {
             path: '/layer',

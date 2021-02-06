@@ -21,5 +21,4 @@ export default {
         { name: 'Tag', path: '/tag' },
         { name: 'Path', path: '/path' },
     ],
-    entity: ['Cast', 'Data', 'Faker', 'Field', 'File', 'Index', 'Property', 'Relation', 'Validation'],
 }
