@@ -5002,5 +5002,460 @@
                 }
             }
         ]
+    },
+    "document": {
+        "info": {
+            "contact": {
+                "name": "",
+                "url": "",
+                "email": ""
+            },
+            "description": "",
+            "license": {
+                "name": "",
+                "url": ""
+            },
+            "termsOfService": "",
+            "title": "API",
+            "version": "0.0.1"
+        },
+        "component": {
+            "callbackManager": {
+                "list": []
+            },
+            "exampleManager": {
+                "list": [
+                    {
+                        "name": "Response",
+                        "description": "",
+                        "externalValue": "",
+                        "summary": "",
+                        "value": "code: 0\nmessage: ok"
+                    },
+                    {
+                        "name": "Response404",
+                        "description": "",
+                        "externalValue": "",
+                        "summary": "",
+                        "value": "code: 2\nmessage: Not Found"
+                    },
+                    {
+                        "name": "Response422",
+                        "description": "",
+                        "externalValue": "",
+                        "summary": "",
+                        "value": "code: 1\nmessage: An error occurred"
+                    }
+                ]
+            },
+            "headerManager": {
+                "list": []
+            },
+            "linkManager": {
+                "list": []
+            },
+            "parameterManager": {
+                "list": [
+                    {
+                        "name": "id",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "description": "",
+                        "example": "",
+                        "name2": "id",
+                        "required": true,
+                        "schema": {
+                            "name": "id",
+                            "type": "integer",
+                            "format": "",
+                            "example": "",
+                            "itemType": "string",
+                            "required": true,
+                            "operationManager": {
+                                "list": []
+                            },
+                            "reference": {
+                                "name": "Schema",
+                                "type": "schemas"
+                            },
+                            "schemaManager": {
+                                "list": []
+                            }
+                        },
+                        "location": "path"
+                    },
+                    {
+                        "name": "-id",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "description": "",
+                        "example": "",
+                        "name2": "-id",
+                        "required": true,
+                        "schema": {
+                            "name": "-id",
+                            "type": "integer",
+                            "format": "",
+                            "example": "",
+                            "itemType": "string",
+                            "required": true,
+                            "operationManager": {
+                                "list": []
+                            },
+                            "reference": {
+                                "name": "Schema",
+                                "type": "schemas"
+                            },
+                            "schemaManager": {
+                                "list": []
+                            }
+                        },
+                        "location": "query"
+                    },
+                    {
+                        "name": "page",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "description": "",
+                        "example": "",
+                        "name2": "page",
+                        "required": true,
+                        "schema": {
+                            "name": "title",
+                            "type": "integer",
+                            "format": "",
+                            "example": "",
+                            "itemType": "string",
+                            "required": true,
+                            "operationManager": {
+                                "list": []
+                            },
+                            "reference": {
+                                "name": "Schema",
+                                "type": "schemas"
+                            },
+                            "schemaManager": {
+                                "list": []
+                            }
+                        },
+                        "location": "path"
+                    },
+                    {
+                        "name": "-page",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "description": "",
+                        "example": "",
+                        "name2": "-page",
+                        "required": true,
+                        "schema": {
+                            "name": "-title",
+                            "type": "integer",
+                            "format": "",
+                            "example": "",
+                            "itemType": "string",
+                            "required": true,
+                            "operationManager": {
+                                "list": []
+                            },
+                            "reference": {
+                                "name": "Schema",
+                                "type": "schemas"
+                            },
+                            "schemaManager": {
+                                "list": []
+                            }
+                        },
+                        "location": "query"
+                    }
+                ]
+            },
+            "requestBodyManager": {
+                "list": []
+            },
+            "responseManager": {
+                "list": [
+                    {
+                        "name": "Response",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "list": [
+                                {
+                                    "name": "application/json",
+                                    "schema": {
+                                        "name": "Schema",
+                                        "type": "reference",
+                                        "format": "",
+                                        "example": "",
+                                        "itemType": "string",
+                                        "required": true,
+                                        "operationManager": {
+                                            "list": []
+                                        },
+                                        "reference": {
+                                            "name": "Response",
+                                            "type": "schemas"
+                                        },
+                                        "schemaManager": {
+                                            "list": []
+                                        }
+                                    },
+                                    "exampleManager": {
+                                        "list": [
+                                            {
+                                                "name": "Response",
+                                                "type": "examples"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Response404",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "list": [
+                                {
+                                    "name": "application/json",
+                                    "schema": {
+                                        "name": "Schema",
+                                        "type": "reference",
+                                        "format": "",
+                                        "example": "",
+                                        "itemType": "string",
+                                        "required": true,
+                                        "operationManager": {
+                                            "list": []
+                                        },
+                                        "reference": {
+                                            "name": "Response",
+                                            "type": "schemas"
+                                        },
+                                        "schemaManager": {
+                                            "list": []
+                                        }
+                                    },
+                                    "exampleManager": {
+                                        "list": [
+                                            {
+                                                "name": "Response404",
+                                                "type": "examples"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Response422",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "list": [
+                                {
+                                    "name": "application/json",
+                                    "schema": {
+                                        "name": "Schema",
+                                        "type": "reference",
+                                        "format": "",
+                                        "example": "",
+                                        "itemType": "string",
+                                        "required": true,
+                                        "operationManager": {
+                                            "list": []
+                                        },
+                                        "reference": {
+                                            "name": "Response",
+                                            "type": "schemas"
+                                        },
+                                        "schemaManager": {
+                                            "list": []
+                                        }
+                                    },
+                                    "exampleManager": {
+                                        "list": [
+                                            {
+                                                "name": "Response422",
+                                                "type": "examples"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "schemaManager": {
+                "list": [
+                    {
+                        "name": "Response",
+                        "type": "object",
+                        "format": "",
+                        "example": "",
+                        "itemType": "string",
+                        "required": true,
+                        "operationManager": {
+                            "list": []
+                        },
+                        "reference": {
+                            "name": "Schema",
+                            "type": "schemas"
+                        },
+                        "schemaManager": {
+                            "list": [
+                                {
+                                    "name": "code",
+                                    "type": "integer",
+                                    "format": "",
+                                    "example": "",
+                                    "itemType": "string",
+                                    "required": true,
+                                    "operationManager": {
+                                        "list": []
+                                    },
+                                    "reference": {
+                                        "name": "Schema",
+                                        "type": "schemas"
+                                    },
+                                    "schemaManager": {
+                                        "list": []
+                                    }
+                                },
+                                {
+                                    "name": "message",
+                                    "type": "string",
+                                    "format": "",
+                                    "example": "",
+                                    "itemType": "string",
+                                    "required": true,
+                                    "operationManager": {
+                                        "list": []
+                                    },
+                                    "reference": {
+                                        "name": "Schema",
+                                        "type": "schemas"
+                                    },
+                                    "schemaManager": {
+                                        "list": []
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "ArrayOfBoolean",
+                        "type": "array",
+                        "format": "",
+                        "example": "",
+                        "itemType": "boolean",
+                        "required": true,
+                        "operationManager": {
+                            "list": []
+                        },
+                        "reference": {
+                            "name": "",
+                            "type": "schemas"
+                        },
+                        "schemaManager": {
+                            "list": []
+                        }
+                    },
+                    {
+                        "name": "ArrayOfInteger",
+                        "type": "array",
+                        "format": "",
+                        "example": "",
+                        "itemType": "integer",
+                        "required": true,
+                        "operationManager": {
+                            "list": []
+                        },
+                        "reference": {
+                            "name": "",
+                            "type": "schemas"
+                        },
+                        "schemaManager": {
+                            "list": []
+                        }
+                    },
+                    {
+                        "name": "ArrayOfNumber",
+                        "type": "array",
+                        "format": "",
+                        "example": "",
+                        "itemType": "number",
+                        "required": true,
+                        "operationManager": {
+                            "list": []
+                        },
+                        "reference": {
+                            "name": "",
+                            "type": "schemas"
+                        },
+                        "schemaManager": {
+                            "list": []
+                        }
+                    },
+                    {
+                        "name": "ArrayOfString",
+                        "type": "array",
+                        "format": "",
+                        "example": "",
+                        "itemType": "string",
+                        "required": true,
+                        "operationManager": {
+                            "list": []
+                        },
+                        "reference": {
+                            "name": "",
+                            "type": "schemas"
+                        },
+                        "schemaManager": {
+                            "list": []
+                        }
+                    }
+                ]
+            },
+            "securitySchemeManager": {
+                "list": []
+            }
+        },
+        "externalDocs": {
+            "description": "",
+            "url": ""
+        },
+        "pathManager": {
+            "list": []
+        },
+        "securityManager": {
+            "list": []
+        },
+        "serverManager": {
+            "list": []
+        },
+        "tagManager": {
+            "list": []
+        }
     }
 }
