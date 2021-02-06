@@ -79,7 +79,7 @@
 
 <script>
 import sss from '../state.js'
-import External from './oapi/External.vue'
+import External from './oapi/specification/External.vue'
 import TabList from './part/TabList.vue'
 
 export default {
