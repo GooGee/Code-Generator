@@ -1813,6 +1813,60 @@
                 }
             },
             {
+                "name": "DataFormat",
+                "custom": false,
+                "description": "",
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "int32",
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "int64",
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "float",
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "name": "double",
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "name": "byte",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "binary",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "date",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "date-time",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "password",
+                            "tag": "string",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
                 "name": "FakerNameMap",
                 "original": false,
                 "color": "",
@@ -4167,6 +4221,40 @@
                 }
             },
             {
+                "name": "HttpStatus",
+                "custom": false,
+                "description": "",
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "200",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "401",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "403",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "404",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "422",
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
                 "name": "IncrementMySQL",
                 "original": true,
                 "color": "",
@@ -4249,6 +4337,40 @@
                             "name": "tinyInteger",
                             "data": {},
                             "tag": "tinyIncrements",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "MediaType",
+                "custom": false,
+                "description": "",
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "application/json",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "application/xml",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "multipart/form-data",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "text/plain",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "name": "*/*",
+                            "tag": "",
                             "value": ""
                         }
                     ]
