@@ -42,5 +42,8 @@ export default {
             locationxx: ['cookie', 'path', 'query'],
         }
     },
+    created() {
+        sss.show('Parameter')
+    },
 }
 </script>
