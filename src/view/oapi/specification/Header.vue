@@ -20,7 +20,7 @@
             <tr>
                 <td class="text-right">schema</td>
                 <td>
-                    <Reference :reference="item.schema"></Reference>
+                    <SimpleType :schema="item.schema"></SimpleType>
                 </td>
             </tr>
             <tr>
@@ -63,14 +63,14 @@
 <script>
 import ChangeButton from '@/view/button/ChangeButton.vue'
 import DeleteButton from '@/view/button/DeleteButton.vue'
-import Reference from './Reference.vue'
+import SimpleType from './SimpleType.vue'
 
 export default {
     name: 'Header',
     components: {
         ChangeButton,
         DeleteButton,
-        Reference,
+        SimpleType,
     },
     props: {
         item: {
