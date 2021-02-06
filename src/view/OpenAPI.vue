@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-9 offset-3">
-            <TabBar :tab="tab" :list="tabxx" @show="show" class="mt11"></TabBar>
+            <TabList :tab="tab" :list="tabxx" @show="show" class="mt11"></TabList>
 
             <table v-if="tab === tabxx[0]"  class="table">
                 <tbody>
@@ -80,13 +80,13 @@
 <script>
 import sss from '../state.js'
 import External from './oapi/External.vue'
-import TabBar from './part/TabBar.vue'
+import TabList from './part/TabList.vue'
 
 export default {
     name: 'OpenAPI',
     components: {
         External,
-        TabBar,
+        TabList,
     },
     data() {
         return {
