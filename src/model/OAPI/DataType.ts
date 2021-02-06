@@ -12,12 +12,13 @@ export enum DataType {
     string = 'string',
 }
 
-const list = Object.values(DataType).map(one => {
+export const dataTypeList = Object.values(DataType).map(one => {
     return { name: one }
 })
-export function dataTypeList() {
-    return list
-}
+
+export const simpleTypeList = dataTypeList.filter(type => {
+    return ['boolean', 'integer', 'number', 'reference', 'string'].includes(type.name)
+})
 
 export function isComposition(type: DataType) {
     return ['allOf', 'anyOf', 'oneOf'].includes(type)

@@ -6,6 +6,7 @@ import { PathManager } from "./Path"
 import { ServerManager } from "./Server"
 import { SecurityManager } from "./Security"
 import { TagManager } from "./Tag"
+import { dataTypeList, simpleTypeList } from './DataType'
 
 const Version = '3.0.3'
 
@@ -27,6 +28,14 @@ export default class Document extends Item {
     readonly securityManager = new SecurityManager
     readonly serverManager = new ServerManager
     readonly tagManager = new TagManager
+
+    get dataTypeList() {
+        return dataTypeList
+    }
+
+    get simpleTypeList() {
+        return simpleTypeList
+    }
 
     toOAPI() {
         return {
