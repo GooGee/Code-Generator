@@ -1,9 +1,9 @@
-import IKeyValue from "../Base/IKeyValue"
-import UniqueItem from "../Base/UniqueItem"
-import UniqueList from "../Base/UniqueList"
 import { MediaTypeManager } from "./MediaType"
+import OAPIItem from './OAPIItem'
+import OAPIManager from './OAPIManager'
 
-export default class RequestBody extends UniqueItem {
+export default class RequestBody extends OAPIItem {
+    color: string = ''
     required: boolean = true
     description: string = ''
     readonly mediaTypeManager = new MediaTypeManager
@@ -17,17 +17,9 @@ export default class RequestBody extends UniqueItem {
     }
 }
 
-export class RequestBodyManager extends UniqueList<RequestBody> {
+export class RequestBodyManager extends OAPIManager<RequestBody> {
 
     constructor() {
         super(RequestBody)
-    }
-
-    toOAPI() {
-        const map: IKeyValue = {}
-        this.list.forEach(item => {
-            map[item.name] = item.toOAPI()
-        })
-        return map
     }
 }

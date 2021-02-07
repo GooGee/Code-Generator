@@ -71,6 +71,11 @@ export default new Router({
             component: require('@/view/oapi/Parameter').default,
         },
         {
+            path: '/request',
+            name: 'request',
+            component: require('@/view/oapi/RequestBody').default,
+        },
+        {
             path: '*',
             redirect: '/',
         },
