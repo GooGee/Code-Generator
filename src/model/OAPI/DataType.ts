@@ -1,29 +1,28 @@
 
-export enum DataType {
+export enum ComplexType {
     allOf = 'allOf',
     anyOf = 'anyOf',
+    object = 'object',
+    oneOf = 'oneOf',
+}
+
+export enum SimpleType {
     array = 'array',
     boolean = 'boolean',
     integer = 'integer',
     number = 'number',
-    object = 'object',
-    oneOf = 'oneOf',
     reference = 'reference',
     string = 'string',
 }
 
-export const dataTypeList = Object.values(DataType).map(one => {
+const typexx = { ...ComplexType, ...SimpleType }
+
+export type DataType = typeof typexx
+
+export const dataTypeList = Object.values(typexx).map(one => {
     return { name: one }
 })
 
-export const simpleTypeList = dataTypeList.filter(type => {
-    return ['boolean', 'integer', 'number', 'reference', 'string'].includes(type.name)
+export const simpleTypeList = Object.values(SimpleType).map(one => {
+    return { name: one }
 })
-
-export function isComposition(type: DataType) {
-    return ['allOf', 'anyOf', 'oneOf'].includes(type)
-}
-
-export function isPrimitive(type: DataType) {
-    return ['boolean', 'integer', 'number', 'string'].includes(type)
-}

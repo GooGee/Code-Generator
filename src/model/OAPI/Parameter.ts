@@ -1,6 +1,6 @@
 import OAPIItem from './OAPIItem'
 import OAPIManager from './OAPIManager'
-import Schema from './Schema'
+import SchemaSimple from './SchemaSimple'
 
 export enum Location {
     cookie = 'cookie',
@@ -18,7 +18,7 @@ export default class Parameter extends OAPIItem {
     location: Location
     name2: string = ''
     required: boolean = true
-    readonly schema = new Schema(this.name)
+    readonly schema = new SchemaSimple(this.name)
 
     constructor(name: string, location: Location = Location.cookie) {
         super(name)

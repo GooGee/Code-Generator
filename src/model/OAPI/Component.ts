@@ -1,11 +1,11 @@
 import Item from "../Base/Item"
+import { CallBackManager } from "./CallBack"
 import { ExampleManager } from "./Example"
 import { LinkManager } from "./Link"
 import { ParameterManager, Location } from "./Parameter"
 import { RequestBodyManager } from "./RequestBody"
 import { ResponseManager } from "./Response"
-import { SchemaManager } from "./Schema"
-import { CallBackManager } from "./CallBack"
+import { SchemaManager } from './SchemaComplex'
 import { SecuritySchemeManager } from "./SecurityScheme"
 
 export default class Component extends Item {

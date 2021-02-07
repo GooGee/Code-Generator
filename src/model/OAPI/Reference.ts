@@ -1,6 +1,5 @@
-import IKeyValue from "../Base/IKeyValue"
-import UniqueItem from "../Base/UniqueItem"
-import UniqueList from "../Base/UniqueList"
+import OAPIItem from './OAPIItem'
+import OAPIManager from './OAPIManager'
 
 export enum ReferenceType {
     examples = 'examples',
@@ -12,7 +11,7 @@ export enum ReferenceType {
     schemas = 'schemas',
 }
 
-export default class Reference extends UniqueItem {
+export default class Reference extends OAPIItem {
     type: ReferenceType
 
     constructor(name: string, type: ReferenceType = ReferenceType.schemas) {
@@ -31,7 +30,7 @@ export default class Reference extends UniqueItem {
     }
 }
 
-export class ReferenceManager extends UniqueList<Reference> {
+export class ReferenceManager extends OAPIManager<Reference> {
     readonly referenceType: ReferenceType
 
     constructor(type: ReferenceType) {
@@ -42,13 +41,5 @@ export class ReferenceManager extends UniqueList<Reference> {
     make(name: string, type: ReferenceType = this.referenceType) {
         const item = new Reference(name, type)
         return item
-    }
-
-    toOAPI() {
-        const map: IKeyValue = {}
-        this.list.forEach(item => {
-            map[item.name] = item.toOAPI()
-        })
-        return map
     }
 }

@@ -1,12 +1,12 @@
 import IKeyValue from "../Base/IKeyValue"
 import UniqueItem from "../Base/UniqueItem"
 import UniqueList from "../Base/UniqueList"
-import Schema from "./Schema"
 import { EncodingManager } from "./Encoding"
 import { ReferenceManager, ReferenceType } from "./Reference"
+import SchemaSimple from './SchemaSimple'
 
 export default class MediaType extends UniqueItem {
-    readonly schema = new Schema('Schema')
+    readonly schema = new SchemaSimple('Schema')
     readonly exampleManager = new ReferenceManager(ReferenceType.examples)
     // readonly encodingManager = new EncodingManager
 
