@@ -13,7 +13,7 @@
             <tr>
                 <td class="text-right">schema</td>
                 <td>
-                    <SimpleType :schema="item.schema"></SimpleType>
+                    <SchemaSimple :schema="item.schema"></SchemaSimple>
                 </td>
             </tr>
             <tr>
@@ -29,14 +29,14 @@
 <script>
 import DeleteButton from '@/view/button/DeleteButton.vue'
 import ReferenceList from './ReferenceList.vue'
-import SimpleType from './SimpleType.vue'
+import SchemaSimple from './SchemaSimple.vue'
 
 export default {
     name: 'MediaType',
     components: {
         DeleteButton,
         ReferenceList,
-        SimpleType,
+        SchemaSimple,
     },
     props: {
         manager: {

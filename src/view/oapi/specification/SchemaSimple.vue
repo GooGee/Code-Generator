@@ -22,7 +22,7 @@ import sss from '@/state.js'
 import Reference from './Reference.vue'
 
 export default {
-    name: 'SimpleType',
+    name: 'SchemaSimple',
     components: {
         Reference,
     },
