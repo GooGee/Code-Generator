@@ -3,7 +3,7 @@
         <div class="col-9 offset-3">
             <TabList :tab="tab" :list="tabxx" @show="show" class="mt11"></TabList>
 
-            <table v-if="tab === tabxx[0]"  class="table">
+            <table v-if="tab === tabxx[0].name" class="table">
                 <tbody>
                     <tr>
                         <td class="text-right" width="222px">title</td>
@@ -32,7 +32,7 @@
                 </tbody>
             </table>
 
-            <table v-if="tab === tabxx[1]" class="table">
+            <table v-if="tab === tabxx[1].name" class="table">
                 <tbody>
                     <tr>
                         <td class="text-right">name</td>
@@ -55,7 +55,7 @@
                 </tbody>
             </table>
 
-            <table v-if="tab === tabxx[2]" class="table">
+            <table v-if="tab === tabxx[2].name" class="table">
                 <tbody>
                     <tr>
                         <td class="text-right">name</td>
@@ -72,7 +72,7 @@
                 </tbody>
             </table>
 
-            <External v-if="tab === tabxx[3]" :item="externalDocs"></External>
+            <External v-if="tab === tabxx[3].name" :item="externalDocs"></External>
         </div>
     </div>
 </template>
@@ -94,7 +94,13 @@ export default {
             info: sss.project.document.info,
             externalDocs: sss.project.document.externalDocs,
             tab: 'Info',
-            tabxx: ['Info', 'Contact', 'License', 'ExternalDocs'],
+            tabxx: [
+                //
+                { name: 'Info' },
+                { name: 'Contact' },
+                { name: 'License' },
+                { name: 'ExternalDocs' },
+            ],
         }
     },
     methods: {

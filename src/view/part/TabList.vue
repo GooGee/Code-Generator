@@ -1,7 +1,7 @@
 <template>
     <b-nav tabs>
-        <b-nav-item v-for="item in list" :key="item" :active="tab === item" @click="$emit('show', item)">
-            {{ item }}
+        <b-nav-item v-for="item in list" :key="item.name" :active="tab === item.name" @click="$emit('show', item.name)">
+            {{ item.name }}
         </b-nav-item>
     </b-nav>
 </template>
