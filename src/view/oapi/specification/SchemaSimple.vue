@@ -1,5 +1,7 @@
 <template>
     <div>
+        <ArrayLabel :schema="schema" class="mr11"></ArrayLabel>
+
         <select v-model="schema.type" class="form-control inline wa mr11">
             <option v-for="type in typexx" :value="type.name" :key="type.name"> {{ type.name }} </option>
         </select>
@@ -19,11 +21,13 @@
 
 <script>
 import sss from '@/state.js'
+import ArrayLabel from './ArrayLabel.vue'
 import Reference from './Reference.vue'
 
 export default {
     name: 'SchemaSimple',
     components: {
+        ArrayLabel,
         Reference,
     },
     props: {
