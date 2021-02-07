@@ -7,7 +7,6 @@ export enum ComplexType {
 }
 
 export enum SimpleType {
-    array = 'array',
     boolean = 'boolean',
     integer = 'integer',
     number = 'number',

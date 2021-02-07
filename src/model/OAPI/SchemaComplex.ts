@@ -8,7 +8,7 @@ export default class SchemaComplex extends Schema {
     type: ComplexType = ComplexType.object
     readonly schemaManager = new SchemaSimpleManager
 
-    toOAPI() {
+    makeData() {
         if (this.type === ComplexType.object) {
             const data: IKeyValue = {
                 type: this.type,
