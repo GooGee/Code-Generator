@@ -1,10 +1,10 @@
 import { MediaTypeManager } from "./MediaType"
+import OAPIItem from './OAPIItem'
+import OAPIManager from './OAPIManager'
 import { ReferenceManager, ReferenceType } from "./Reference"
-import IKeyValue from "../Base/IKeyValue"
-import UniqueItem from "../Base/UniqueItem"
-import UniqueList from "../Base/UniqueList"
 
-export default class Response extends UniqueItem {
+export default class Response extends OAPIItem {
+    color: string = ''
     description: string = ''
     readonly headerManager = new ReferenceManager(ReferenceType.headers)
     readonly linkManager = new ReferenceManager(ReferenceType.links)
@@ -20,17 +20,10 @@ export default class Response extends UniqueItem {
     }
 }
 
-export class ResponseManager extends UniqueList<Response> {
+export class ResponseManager extends OAPIManager<Response> {
 
     constructor() {
         super(Response)
     }
 
-    toOAPI() {
-        const map: IKeyValue = {}
-        this.list.forEach(item => {
-            map[item.name] = item.toOAPI()
-        })
-        return map
-    }
 }

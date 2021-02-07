@@ -36,6 +36,8 @@ export enum SideBarEnum {
     Example = 'Example',
     Header = 'Header',
     Parameter = 'Parameter',
+    Request = 'Request',
+    Response = 'Response',
 }
 
 export class SideBarManager {
@@ -50,6 +52,8 @@ export class SideBarManager {
         this.map.set(SideBarEnum.Example, new SideBar(project.document.component.exampleManager))
         this.map.set(SideBarEnum.Header, new SideBar(project.document.component.headerManager))
         this.map.set(SideBarEnum.Parameter, new SideBar(project.document.component.parameterManager))
+        this.map.set(SideBarEnum.Request, new SideBar(project.document.component.requestBodyManager))
+        this.map.set(SideBarEnum.Response, new SideBar(project.document.component.responseManager))
     }
 
     get(name: SideBarEnum) {
