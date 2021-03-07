@@ -36,16 +36,6 @@ export default class Start {
             }
         })
 
-        setInterval(() => {
-            if (state.ready) {
-                if (window.JavaBridge) {
-                    if (state.project!.autoSave) {
-                        route.save(state.project!)
-                    }
-                }
-            }
-        }, 11122)
-
         return route
     }
 

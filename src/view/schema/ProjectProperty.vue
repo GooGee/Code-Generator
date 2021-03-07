@@ -11,12 +11,6 @@
         </thead>
         <tbody>
             <tr>
-                <td class="text-right">auto save</td>
-                <td>
-                    <b-form-checkbox v-model="item.autoSave" switch></b-form-checkbox>
-                </td>
-            </tr>
-            <tr>
                 <td class="text-right">name</td>
                 <td>
                     <ChangeButton :item="item" name="name"></ChangeButton>
@@ -50,7 +44,7 @@
             <tr>
                 <td class="text-right">description</td>
                 <td>
-                    <b-form-textarea v-model="item.description" rows="11"></b-form-textarea>
+                    <b-form-textarea v-model="item.description" rows="3"></b-form-textarea>
                 </td>
             </tr>
         </tbody>

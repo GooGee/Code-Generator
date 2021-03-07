@@ -71,7 +71,7 @@
             <tr>
                 <td class="text-right">description</td>
                 <td>
-                    <b-form-textarea v-model="item.description" rows="11"></b-form-textarea>
+                    <b-form-textarea v-model="item.description" rows="3"></b-form-textarea>
                 </td>
             </tr>
         </tbody>
