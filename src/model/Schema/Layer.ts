@@ -1,6 +1,6 @@
-import UniqueItem from '../Base/UniqueItem'
 import UniqueList from '../Base/UniqueList'
 import Entity from './Entity'
+import Node from './Node'
 import { PresetManager } from './Preset'
 import Project from './Project'
 import { exeText } from '../Text'
@@ -10,7 +10,7 @@ export enum LayerEnum {
     Model = 'Model',
 }
 
-export default class Layer extends UniqueItem {
+export default class Layer extends Node {
     color: string = ''
     original: boolean = false
     requireName: boolean = true
