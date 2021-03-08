@@ -9,7 +9,7 @@
             <ul class="gray">
                 <li>
                     make sure the PHP
-                    <a href="https://packagist.org/packages/googee/entity" target="_blank"> package </a>
+                    <OpenButton file="https://packagist.org/packages/googee/entity">package</OpenButton>
                     is installed
                 </li>
                 <li>
@@ -61,9 +61,13 @@
 
 <script>
 import sss from '@/state.js'
+import OpenButton from '../button/OpenButton.vue'
 
 export default {
     name: 'TableList',
+    components: {
+        OpenButton,
+    },
     data() {
         return {
             sss,

@@ -2,7 +2,7 @@
     <table class="table b-table b-table-caption-top">
         <caption>
             <h3 class="inline mr11">Faker</h3>
-            <a href="https://github.com/fzaninotto/Faker" target="_blank">GitHub</a>
+            <OpenButton file="https://github.com/fzaninotto/Faker">GitHub</OpenButton>
         </caption>
         <thead>
             <tr>
@@ -64,12 +64,14 @@
 <script>
 import sss from '@/state.js'
 import EditButton from '../button/EditButton.vue'
+import OpenButton from '../button/OpenButton.vue'
 import ScriptGuide from './ScriptGuide.vue'
 
 export default {
     name: 'Faker',
     components: {
         EditButton,
+        OpenButton,
         ScriptGuide,
     },
     data() {
