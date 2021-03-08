@@ -17,12 +17,6 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-right">ns</td>
-                <td>
-                    <ChangeButton :item="item" name="ns"></ChangeButton>
-                </td>
-            </tr>
-            <tr>
                 <td class="text-right">script</td>
                 <td>
                     <EditButton file="script/project.js" :content="item.script" @save="save" class="mr11" />

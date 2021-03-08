@@ -8,7 +8,6 @@ const Version = 14
 
 export default class Project extends NameItem {
     version = Version
-    ns = 'App'
     dataVersion = '1.0'
     description: string = ''
     fakerScript: string = ''
