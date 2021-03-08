@@ -12,6 +12,7 @@
   "dependencies": {
     "bootstrap-vue": "^2.17.3",
     "core-js": "^3.6.5",
+    "he-tree-vue": "^2.0.7",
     "lodash": "^4.17.20",
     "nunjucks": "^3.2.2",
     "strict-event-emitter-types": "^2.0.0",
