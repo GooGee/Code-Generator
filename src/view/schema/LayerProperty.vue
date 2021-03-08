@@ -5,7 +5,7 @@
         </caption>
         <thead>
             <tr>
-                <th class="text-right" style="width: 122px;">name</th>
+                <th class="text-right" style="width: 122px">name</th>
                 <th>value</th>
             </tr>
         </thead>
@@ -17,40 +17,40 @@
                     <ColorPanel :color.sync="item.color"></ColorPanel>
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.isLayer">
                 <td class="text-right">single</td>
                 <td>
                     <b-form-checkbox v-model="item.single" switch class="mr11 wa inline"></b-form-checkbox>
                     <WriteButton v-if="item.single" :layer="item" class="mr11"></WriteButton>
                 </td>
             </tr>
-            <tr v-if="item.single">
+            <tr v-if="item.isLayer && item.single">
                 <td class="text-right">requireName</td>
                 <td>
                     <b-form-checkbox v-model="item.requireName" switch></b-form-checkbox>
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.isLayer">
                 <td class="text-right">script</td>
                 <td>
                     <EditButton :file="fileScript" :content="item.script" @save="saveScript" class="mr11" />
                     <ScriptGuide></ScriptGuide>
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.isLayer">
                 <td class="text-right">template</td>
                 <td>
                     <EditButton :file="fileTemplate" :content="item.template" @save="saveTemplate" class="mr11" />
                     <OpenButton file="https://mozilla.github.io/nunjucks/templating.html">Document</OpenButton>
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.isLayer">
                 <td class="text-right">class name</td>
                 <td>
                     <b-form-input v-model="item.classPattern"></b-form-input>
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.isLayer">
                 <td class="text-right">file name</td>
                 <td>
                     <b-form-input v-model="item.filePattern"></b-form-input>
@@ -62,7 +62,7 @@
                     <b-form-input v-model="item.nsPattern"></b-form-input>
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.isLayer">
                 <td class="text-right">path pattern</td>
                 <td>
                     <b-form-input v-model="item.pathPattern"></b-form-input>

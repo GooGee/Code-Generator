@@ -1,18 +1,21 @@
 <template>
     <div class="row">
-        <div class="col-3">
-            <SideBar :sidebar="sss.sidebar" title="Layer"></SideBar>
+        <div class="col-6">
+            <TreeBar @show="show" :sidebar="sss.sidebar" :folder="folder"></TreeBar>
         </div>
 
-        <div v-if="sss.sidebar.item" class="col-9">
+        <div v-if="sss.sidebar.item" class="col-6">
             <b-nav tabs class="mt11">
                 <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
                 <b-nav-item @click="tab = 'Data'" :active="tab === 'Data'"> Data </b-nav-item>
             </b-nav>
 
-            <DataList v-if="tab === 'Data'" :manager="sss.sidebar.item.dataManager"></DataList>
+            <DataList
+                v-if="tab === 'Data' && sss.sidebar.item.isLayer"
+                :manager="sss.sidebar.item.dataManager"
+            ></DataList>
 
-            <LayerProperty v-if="tab === 'Property'" :item="sss.sidebar.item">
+            <LayerProperty v-if="tab === 'Property'" :key="sss.sidebar.item.name" :item="sss.sidebar.item">
                 <tr>
                     <td class="text-right">name</td>
                     <td>
@@ -25,7 +28,11 @@
                             ></DeleteButton>
                             <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
                         </b-button-group>
-                        <CloneButton :manager="sss.sidebar.manager" :item="sss.sidebar.item"></CloneButton>
+                        <CloneButton
+                            v-if="sss.sidebar.item.isLayer"
+                            :manager="sss.sidebar.manager"
+                            :item="sss.sidebar.item"
+                        ></CloneButton>
                     </td>
                 </tr>
             </LayerProperty>
@@ -39,7 +46,7 @@ import CloneButton from './button/CloneButton.vue'
 import DataList from './schema/DataList.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import LayerProperty from './schema/LayerProperty.vue'
-import SideBar from './part/SideBar.vue'
+import TreeBar from './part/TreeBar.vue'
 import sss from '../state.js'
 
 export default {
@@ -50,16 +57,22 @@ export default {
         DataList,
         DeleteButton,
         LayerProperty,
-        SideBar,
+        TreeBar,
     },
     data() {
         return {
             sss,
             tab: 'Property',
+            folder: sss.getProject().folder,
         }
     },
     created() {
         sss.showLayer()
+    },
+    methods: {
+        show(item) {
+            sss.sidebar.item = item
+        },
     },
 }
 </script>
