@@ -34,7 +34,6 @@ export default class Loader {
         project.load(source)
         this.addIfNotExist(project.presetManager, preset.presetManager)
         this.addIfNotExist(project.artisanManager, preset.artisanManager)
-        this.addIfNotExist(project.layerManager, preset.layerManager)
         return project
     }
 
@@ -48,7 +47,7 @@ export default class Loader {
 
     private static isProject(source: Project) {
         const keys = Object.keys(source)
-        const mustContain = ['version', 'entityManager', 'layerManager', 'presetManager']
+        const mustContain = ['version', 'artisanManager', 'entityManager', 'presetManager']
         return mustContain.every(key => keys.includes(key))
     }
 }

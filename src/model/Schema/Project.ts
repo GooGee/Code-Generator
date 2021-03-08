@@ -2,7 +2,6 @@ import NameItem from '../Base/NameItem'
 import { ArtisanManager } from './Artisan'
 import { EntityManager } from './Entity'
 import Folder from './Folder'
-import { LayerManager } from './Layer'
 import { PresetManager } from './Preset'
 
 const Version = 14
@@ -20,19 +19,14 @@ export default class Project extends NameItem {
     readonly artisanManager = new ArtisanManager()
     readonly entityManager = new EntityManager()
     readonly folder = new Folder('/')
-    readonly layerManager = new LayerManager()
     readonly presetManager = new PresetManager()
-
-    get fileName() {
-        return this.name + '.json'
-    }
 
     getEntity(name: string) {
         return this.entityManager.find(name)
     }
 
     getLayer(name: string) {
-        return this.layerManager.find(name)
+        return this.folder.find(name)
     }
 
     getPreset(name: string) {

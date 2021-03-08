@@ -36,7 +36,7 @@ export default class State {
     private prepare() {
         this.sidebarArtisan = new SideBar(this.project!.artisanManager)
         this.sidebarEntity = new SideBar(this.project!.entityManager)
-        this.sidebarLayer = new SideBar(this.project!.layerManager)
+        this.sidebarLayer = new SideBar(this.project!.presetManager)
         this.sidebarPreset = new SideBar(this.project!.presetManager)
         this.showEntity()
     }
@@ -81,6 +81,10 @@ export default class State {
 
     getLayer(name: string) {
         return this.project!.getLayer(name)
+    }
+
+    getProject() {
+        return this.project!
     }
 
     getPreset(name: string) {

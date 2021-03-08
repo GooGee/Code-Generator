@@ -1,8 +1,6 @@
 import UniqueItem from '../Base/UniqueItem'
 import UniqueList from '../Base/UniqueList'
 import Entity from './Entity'
-import { LayerEnum } from './Layer'
-import Project from './Project'
 
 export default class Relation extends UniqueItem {
     type: string
@@ -19,14 +17,9 @@ export class RelationManager extends UniqueList<Relation> {
         super(Relation)
     }
 
-    link(entity: Entity, project: Project) {
+    link(entity: Entity) {
         const relation = this.make(entity.snakeCase)
-        const model = project.layerManager.find(LayerEnum.Model)
-        if (model) {
-            const name = model.getClassName(entity)
-            relation.parameter = `${name}::class`
-            return relation
-        }
-        throw new Error('Model layer is missing!')
+        relation.parameter = `${entity.name}::class`
+        return relation
     }
 }
