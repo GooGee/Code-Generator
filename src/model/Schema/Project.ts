@@ -1,6 +1,7 @@
 import NameItem from '../Base/NameItem'
 import { ArtisanManager } from './Artisan'
 import { EntityManager } from './Entity'
+import Folder from './Folder'
 import { LayerManager } from './Layer'
 import { PresetManager } from './Preset'
 
@@ -18,6 +19,7 @@ export default class Project extends NameItem {
 
     readonly artisanManager = new ArtisanManager()
     readonly entityManager = new EntityManager()
+    readonly folder = new Folder('/')
     readonly layerManager = new LayerManager()
     readonly presetManager = new PresetManager()
 
