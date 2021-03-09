@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <slot></slot>
-            <tr>
+            <tr v-if="item.isLayer">
                 <td class="text-right">color</td>
                 <td>
                     <ColorPanel :color.sync="item.color"></ColorPanel>

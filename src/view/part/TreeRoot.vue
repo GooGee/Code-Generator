@@ -1,19 +1,16 @@
 <template>
     <div>
         <div>
-            <span @click="expand" class="btn-expand">
-                {{ expanded ? '+' : '-' }}
+            <span @click="expandAll" class="btn-expand">
+                {{ expanded ? '-' : '+' }}
             </span>
             <AddButton :manager="root.folderManager" class="btn-outline-warning btn-sm"></AddButton>
         </div>
 
         <Tree :value="root.folderManager.list">
-            <span slot-scope="{ node, path, tree }">
-                <span v-if="node.isLayer" class="btn-layer"> | </span>
-                <span v-else @click="tree.toggleFold(node, path)" class="btn-expand">
-                    {{ node.$folded ? '+' : '-' }}
-                </span>
-                <span @click="$emit('show', node)" class="pointer mr11">{{ node.name }}</span>
+            <span slot-scope="{ node, path, tree }" class="node-item">
+                <span :class="node.isLayer ? 'node-layer' : 'node-folder'"> | </span>
+                <span @click="expand(node, path, tree)" class="pointer mr11">{{ node.name }}</span>
 
                 <span v-if="node.isLayer"></span>
                 <b-button-group v-else>
@@ -47,12 +44,16 @@ export default {
         }
     },
     methods: {
-        expand() {
+        expand(node, path, tree) {
+            tree.toggleFold(node, path)
+            this.$emit('show', node)
+        },
+        expandAll() {
             this.expanded = !this.expanded
             if (this.expanded) {
-                foldAll(this.root.folderManager.list)
-            } else {
                 unfoldAll(this.root.folderManager.list)
+            } else {
+                foldAll(this.root.folderManager.list)
             }
         },
     },
@@ -66,17 +67,21 @@ export default {
     display: inline-block;
     font-size: x-large;
     font-weight: bold;
-    height: 33px;
+    height: 44px;
     text-align: center;
     width: 33px;
 }
 
-.btn-expand:hover {
+.node-folder {
     color: orange;
 }
 
-.btn-layer {
+.node-item {
+    display: inline-block;
+    height: 44px;
+}
+
+.node-layer {
     color: dodgerblue;
-    margin-left: 25px;
 }
 </style>

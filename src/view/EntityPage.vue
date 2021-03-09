@@ -107,7 +107,7 @@ export default {
     },
     computed: {
         layerxx() {
-            return sss.project.folder.getAll().filter(layer => layer.single === false)
+            return sss.project.folder.all.filter(layer => layer.single === false)
         },
     },
 }
