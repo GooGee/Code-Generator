@@ -4,7 +4,7 @@ import { EntityManager } from './Entity'
 import Folder from './Folder'
 import { PresetManager } from './Preset'
 
-const Version = 14
+const Version = 15
 
 export default class Project extends NameItem {
     version = Version
@@ -24,8 +24,8 @@ export default class Project extends NameItem {
         return this.entityManager.find(name)
     }
 
-    getLayer(name: string) {
-        return this.folder.find(name)
+    getLayer(path: string, layer: string) {
+        return this.folder.find(path.split('/'), layer)
     }
 
     getPreset(name: string) {

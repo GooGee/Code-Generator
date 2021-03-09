@@ -19,20 +19,22 @@ export default class Folder extends Node {
         })
     }
 
-    find(name: string) {
-        let found = this.layerManager.list.find((item) => item.name === name)
-        if (found) {
-            return found
+    find(namexx: string[], layer: string) {
+        if (namexx.length === 0) {
+            return undefined
         }
 
-        this.folderManager.list.every(item => {
-            found = item.find(name)
-            if (found) {
-                return false
+        let folder: Folder = this
+        for (let index = 0; index < namexx.length; index++) {
+            const name = namexx[index]
+            const found = folder.folderManager.find(name)
+            if (found === undefined) {
+                return undefined
             }
-            return true
-        })
-        return found
+            folder = found
+        }
+
+        return folder.layerManager.list.find((item) => item.name === layer)
     }
 
     findLayer(layer: Layer) {

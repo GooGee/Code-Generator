@@ -79,8 +79,8 @@ export default class State {
         return this.project!.getEntity(name)
     }
 
-    getLayer(name: string) {
-        return this.project!.getLayer(name)
+    getLayer(path: string, layer: string) {
+        return this.project!.getLayer(path, layer)
     }
 
     getProject() {
