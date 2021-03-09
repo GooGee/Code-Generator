@@ -3,15 +3,21 @@ import { filter } from '../Text'
 import Layer, { LayerManager } from './Layer'
 import Node from './Node'
 
-interface Filter {
+interface Action {
     (layer: Layer): void
 }
 
 export default class Folder extends Node {
     isLayer = false
-    nsPattern: string = ''
     readonly folderManager = new FolderManager()
     readonly layerManager = new LayerManager()
+
+    each(folder: Folder, action: Action) {
+        folder.layerManager.list.forEach(action)
+        folder.folderManager.list.forEach(item => {
+            this.each(item, action)
+        })
+    }
 
     find(name: string) {
         let found = this.layerManager.list.find((item) => item.name === name)
@@ -29,32 +35,28 @@ export default class Folder extends Node {
         return found
     }
 
-    getAll() {
-        const list: Layer[] = []
-        this.getList(this, (item) => list.push(item))
-        return list
-    }
+    findLayer(layer: Layer) {
+        const found = this.layerManager.list.find((item) => Object.is(layer, item))
+        if (found) {
+            return [this]
+        }
 
-    getColorList(color: string) {
-        const list: Layer[] = []
-        this.getList(this, item => {
-            if (item.color === color) {
-                list.push(item)
+        let list: Folder[] = []
+        this.folderManager.list.every(item => {
+            list = item.findLayer(layer)
+            if (list.length) {
+                list.push(this)
+                return false
             }
+            return true
         })
         return list
     }
 
-    getList(folder: Folder, filter: Filter) {
-        folder.layerManager.list.forEach(filter)
-        folder.folderManager.list.forEach(item => {
-            this.getList(item, filter)
-        })
-    }
-
-    getSearchList(word: string) {
-        const list: Layer[] = this.getAll()
-        return filter(word, list)
+    get all() {
+        const list: Layer[] = []
+        this.each(this, (item) => list.push(item))
+        return list
     }
 
     get children() {
