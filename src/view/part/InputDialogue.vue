@@ -6,7 +6,7 @@
         @ok="close(true)"
         @cancel="close(false)"
     >
-        <b-form-textarea v-model="dialogue.text" rows="16" spellcheck="false"></b-form-textarea>
+        <b-form-textarea v-model="dialogue.text" rows="11" spellcheck="false"></b-form-textarea>
     </b-modal>
 </template>
 

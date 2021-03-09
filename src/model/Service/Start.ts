@@ -19,9 +19,13 @@ export default class Start {
         manager.add(ActionEnum.load, 'project', (response) => {
             if (response.status === StatusEnum.OK) {
                 if (response.data) {
-                    const project = JSON.parse(response.data)
-                    state.load(project)
-                    Save.last = response.data
+                    try {
+                        const project = JSON.parse(response.data)
+                        state.load(project)
+                        Save.last = response.data
+                    } catch (error) {
+                        state.error = error
+                    }
                     return
                 }
             }

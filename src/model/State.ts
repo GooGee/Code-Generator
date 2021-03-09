@@ -14,6 +14,7 @@ import Start from './Service/Start'
 import RunScript from './Service/RunScript'
 
 export default class State {
+    error = null
     route: Route
     readonly preset: Project
     project: Project | null = null
