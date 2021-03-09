@@ -58,8 +58,13 @@ export default class Layer extends Node {
             entity,
             layer: this,
         }
-        const text = this.nsPattern.split('\\').join('/')
-        return exeText(text, data)
+        const folderxx = project.folder.findLayer(this)
+        folderxx.pop() // remove root
+        const list = folderxx.reverse().map(item => item.nsPattern)
+        if (this.nsPattern) {
+            list.push(this.nsPattern)
+        }
+        return exeText(list.join('/'), data)
             .split('/')
             .join('\\')
     }
@@ -70,7 +75,13 @@ export default class Layer extends Node {
             entity,
             layer: this,
         }
-        return exeText(this.pathPattern, data)
+        const folderxx = project.folder.findLayer(this)
+        folderxx.pop() // remove root
+        const list = folderxx.reverse().map(item => item.name)
+        if (this.pathPattern) {
+            list.push(this.pathPattern)
+        }
+        return exeText(list.join('/'), data)
     }
 }
 
