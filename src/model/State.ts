@@ -12,6 +12,16 @@ import ICEFW from './Bridge/ICEFW'
 import Route from './Bridge/Route'
 import Start from './Service/Start'
 import RunScript from './Service/RunScript'
+import Folder from './Schema/Folder'
+
+class FakeManager {
+
+    constructor(readonly folder: Folder) { }
+
+    get list() {
+        return this.folder.all
+    }
+}
 
 export default class State {
     error = null
@@ -37,7 +47,8 @@ export default class State {
     private prepare() {
         this.sidebarArtisan = new SideBar(this.project!.artisanManager)
         this.sidebarEntity = new SideBar(this.project!.entityManager)
-        this.sidebarLayer = new SideBar(this.project!.presetManager)
+        const layerManager = new FakeManager(this.project!.folder)
+        this.sidebarLayer = new SideBar(layerManager as any)
         this.sidebarPreset = new SideBar(this.project!.presetManager)
         this.showEntity()
     }

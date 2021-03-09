@@ -15,7 +15,17 @@
             <ColorPanel :color.sync="sidebar.color" style="margin: auto"></ColorPanel>
         </div>
 
-        <div v-if="sidebar.keyword || sidebar.color"></div>
+        <div v-if="sidebar.keyword || sidebar.color" class="list-group">
+            <div
+                v-for="item in sidebar.list"
+                :key="item.name"
+                @click="$emit('show', item)"
+                :class="Object.is(sidebar.item, item) ? 'active' : ''"
+                class="list-group-item list-group-item-action"
+            >
+                {{ item.name }}
+            </div>
+        </div>
 
         <TreeRoot v-else v-on="$listeners" :root="folder"></TreeRoot>
     </div>
