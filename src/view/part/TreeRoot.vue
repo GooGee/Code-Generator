@@ -45,7 +45,11 @@ export default {
     },
     methods: {
         expand(node, path, tree) {
-            tree.toggleFold(node, path)
+            if (node.isLayer) {
+                //
+            } else {
+                tree.toggleFold(node, path)
+            }
             this.$emit('show', node)
         },
         expandAll() {

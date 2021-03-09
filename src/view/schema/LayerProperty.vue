@@ -99,16 +99,37 @@ export default {
             type: Object,
             required: true,
         },
-    },
-    computed: {
-        fileScript() {
-            return `script/layer-${this.item.name}.js`
+        project: {
+            type: Object,
+            required: true,
         },
-        fileTemplate() {
-            return `template/layer-${this.item.name}.txt`
+    },
+    data() {
+        return {
+            fileScript: this.getScript(),
+            fileTemplate: this.getTemplate(),
+        }
+    },
+    watch: {
+        item() {
+            this.fileScript = this.getScript()
+            this.fileTemplate = this.getTemplate()
         },
     },
     methods: {
+        getHash() {
+            if (this.item.isLayer) {
+                const entity = { name: 'code' }
+                return this.item.getPathHash(this.project, entity)
+            }
+            return ''
+        },
+        getScript() {
+            return `script/${this.getHash()}.${this.item.name}.js`
+        },
+        getTemplate() {
+            return `template/${this.getHash()}.${this.item.name}.txt`
+        },
         saveScript(ok, text) {
             if (ok) {
                 this.item.script = text

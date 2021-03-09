@@ -52,6 +52,11 @@ export default class Layer extends Node {
         return this.getNameSpace(project, entity) + '\\' + this.getClassName(entity)
     }
 
+    getPathHash(project: Project, entity: Entity) {
+        const path = this.getPath(project, entity)
+        return btoa(path).split('/').join('-')
+    }
+
     getNameSpace(project: Project, entity: Entity) {
         const data = {
             project,

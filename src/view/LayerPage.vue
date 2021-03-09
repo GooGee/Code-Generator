@@ -4,35 +4,28 @@
             <TreeBar @show="show" :sidebar="sss.sidebar" :folder="folder"></TreeBar>
         </div>
 
-        <div v-if="sss.sidebar.item" class="col-6">
+        <div v-if="item" class="col-6">
             <b-nav tabs class="mt11">
                 <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
                 <b-nav-item @click="tab = 'Data'" :active="tab === 'Data'"> Data </b-nav-item>
             </b-nav>
 
-            <DataList
-                v-if="tab === 'Data' && sss.sidebar.item.isLayer"
-                :manager="sss.sidebar.item.dataManager"
-            ></DataList>
+            <DataList v-if="tab === 'Data' && item.isLayer" :manager="item.dataManager"></DataList>
 
-            <LayerProperty v-if="tab === 'Property'" :key="sss.sidebar.item.name" :item="sss.sidebar.item">
+            <LayerProperty v-if="tab === 'Property'" :key="item.name" :item="item" :project="sss.project">
                 <tr>
                     <td class="text-right">name</td>
                     <td>
-                        <span v-if="sss.sidebar.item.original" class="mr11">{{ sss.sidebar.item.name }}</span>
+                        <span v-if="item.original" class="mr11">{{ item.name }}</span>
                         <b-button-group v-else class="mr11">
                             <DeleteButton
                                 :manager="sss.sidebar.manager"
-                                :item="sss.sidebar.item"
-                                @deleted="sss.sidebar.item = null"
+                                :item="item"
+                                @deleted="item = null"
                             ></DeleteButton>
-                            <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
+                            <ChangeButton :item="item" name="name"></ChangeButton>
                         </b-button-group>
-                        <CloneButton
-                            v-if="sss.sidebar.item.isLayer"
-                            :manager="sss.sidebar.manager"
-                            :item="sss.sidebar.item"
-                        ></CloneButton>
+                        <CloneButton v-if="item.isLayer" :manager="sss.sidebar.manager" :item="item"></CloneButton>
                     </td>
                 </tr>
             </LayerProperty>
@@ -62,6 +55,7 @@ export default {
     data() {
         return {
             sss,
+            item: null,
             tab: 'Property',
             folder: sss.getProject().folder,
         }
@@ -71,7 +65,7 @@ export default {
     },
     methods: {
         show(item) {
-            sss.sidebar.item = item
+            this.item = item
         },
     },
 }
