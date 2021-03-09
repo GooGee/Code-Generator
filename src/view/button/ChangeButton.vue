@@ -21,14 +21,18 @@ export default {
         change() {
             sss.nameDialogue.showInput(`Please input the ${this.name}`, this.item[this.name], (ok, text) => {
                 if (ok) {
-                    if (text === '') {
-                        this.$root.$bvToast.toast(`${this.name} cannot be empty`, {
+                    try {
+                        if (text === '') {
+                            throw new Error(`${this.name} cannot be empty`)
+                        } else {
+                            this.item[this.name] = text
+                        }
+                    } catch (error) {
+                        this.$root.$bvToast.toast(error.message, {
                             title: 'i',
                             variant: 'danger',
                             solid: true,
                         })
-                    } else {
-                        this.item[this.name] = text
                     }
                 }
             })
