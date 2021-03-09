@@ -3,7 +3,7 @@ import ItemList from './ItemList'
 
 export default class Item {
     // ignore the Vue Observer
-    protected static IgnoreList: Array<string> = ['__ob__']
+    protected static IgnoreList: Array<string> = ['__ob__', '$folded']
     protected static IncludeList: Array<string> = []
 
     get ignoreList(): Array<string> {

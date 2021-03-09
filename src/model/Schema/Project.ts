@@ -17,7 +17,7 @@ export default class Project extends NameItem {
 
     readonly artisanManager = new ArtisanManager()
     readonly entityManager = new EntityManager()
-    readonly folder = new Folder('/')
+    readonly folder = new Folder('')
     readonly presetManager = new PresetManager()
 
     getEntity(name: string) {
