@@ -9,14 +9,22 @@
 
         <Tree :value="root.folderManager.list">
             <span slot-scope="{ node, path, tree }" class="node-item">
-                <span :class="node.isLayer ? 'node-layer' : 'node-folder'"> | </span>
-                <span @click="expand(node, path, tree)" class="pointer mr11">{{ node.name }}</span>
+                <span :class="node.isLayer ? 'text-primary' : 'text-warning'"> | </span>
+                <span
+                    @click="expand(node, path, tree)"
+                    :class="{ 'text-primary': Object.is(node, selected) }"
+                    class="pointer mr11"
+                >
+                    {{ node.name }}
+                </span>
 
                 <span v-if="node.isLayer"></span>
-                <b-button-group v-else>
-                    <AddButton :manager="node.folderManager" class="btn-outline-warning btn-sm"></AddButton>
-                    <AddButton :manager="node.layerManager" class="btn-sm"></AddButton>
-                </b-button-group>
+                <template v-else>
+                    <b-button-group v-if="Object.is(node, selected)">
+                        <AddButton :manager="node.folderManager" class="btn-outline-warning btn-sm"></AddButton>
+                        <AddButton :manager="node.layerManager" class="btn-sm"></AddButton>
+                    </b-button-group>
+                </template>
             </span>
         </Tree>
     </div>
@@ -41,10 +49,12 @@ export default {
     data() {
         return {
             expanded: true,
+            selected: null,
         }
     },
     methods: {
         expand(node, path, tree) {
+            this.selected = node
             if (node.isLayer) {
                 //
             } else {
@@ -76,16 +86,12 @@ export default {
     width: 33px;
 }
 
-.node-folder {
+.btn-expand:hover {
     color: orange;
 }
 
 .node-item {
     display: inline-block;
     height: 44px;
-}
-
-.node-layer {
-    color: dodgerblue;
 }
 </style>
