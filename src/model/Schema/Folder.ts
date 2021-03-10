@@ -1,9 +1,8 @@
 import UniqueList from '../Base/UniqueList'
-import { filter } from '../Text'
 import Layer, { LayerManager } from './Layer'
 import Node from './Node'
 
-interface Action {
+interface ActionLayer {
     (layer: Layer): void
 }
 
@@ -12,10 +11,10 @@ export default class Folder extends Node {
     readonly folderManager = new FolderManager()
     readonly layerManager = new LayerManager()
 
-    each(folder: Folder, action: Action) {
+    static eachLayer(folder: Folder, action: ActionLayer) {
         folder.layerManager.list.forEach(action)
         folder.folderManager.list.forEach(item => {
-            this.each(item, action)
+            this.eachLayer(item, action)
         })
     }
 
@@ -57,7 +56,7 @@ export default class Folder extends Node {
 
     get all() {
         const list: Layer[] = []
-        this.each(this, (item) => list.push(item))
+        Folder.eachLayer(this, (item) => list.push(item))
         return list
     }
 
