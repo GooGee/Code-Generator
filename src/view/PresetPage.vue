@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-        <div class="col-3">
+        <div class="col-4 col-xl-3">
             <SideBar :sidebar="sss.sidebar" title="Preset"></SideBar>
         </div>
 
-        <div v-if="sss.sidebar.item" class="col-9">
+        <div v-if="sss.sidebar.item" class="col-8 col-xl-9">
             <PropertyList :manager="sss.sidebar.item.propertyManager">
                 <div>
                     <h2 v-if="sss.sidebar.item.original">{{ sss.sidebar.item.name }}</h2>

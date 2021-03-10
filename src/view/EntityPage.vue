@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-        <div class="col-3">
+        <div class="col-4 col-xl-3">
             <SideBar :sidebar="sss.sidebar" title="Entity"></SideBar>
         </div>
 
-        <div v-if="sss.sidebar.item" class="col-9">
+        <div v-if="sss.sidebar.item" class="col-8 col-xl-9">
             <b-nav tabs class="mt11">
                 <b-nav-item @click="tab = 'Cast'" :active="tab === 'Cast'"> Cast </b-nav-item>
                 <b-nav-item @click="tab = 'Data'" :active="tab === 'Data'"> Data </b-nav-item>

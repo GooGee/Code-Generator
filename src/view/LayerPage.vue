@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-        <div class="col-6">
+        <div class="col-5 col-lg-4">
             <TreeBar @show="show" :sidebar="sss.sidebar" :folder="folder"></TreeBar>
         </div>
 
-        <div v-if="item" class="col-6">
+        <div v-if="item" class="col-7 col-lg-8">
             <b-nav tabs class="mt11">
                 <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
                 <b-nav-item @click="tab = 'Data'" :active="tab === 'Data'"> Data </b-nav-item>
