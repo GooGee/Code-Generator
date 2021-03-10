@@ -1,8 +1,6 @@
 {
     "name": "Project",
-    "version": 14,
-    "ns": "App",
-    "autoSave": false,
+    "version": 15,
     "dataVersion": "1.0",
     "description": "",
     "fakerScript": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const nameManager = ddd.project.getPreset('FakerNameMap').propertyManager\n    const propertyManager = ddd.project.getPreset('FakerProperty').propertyManager\n    const typeManager = ddd.project.getPreset('FakerTypeMap').propertyManager\n\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.included === false) {\n            return\n        }\n        if (field.isIncrement) {\n            return\n        }\n        if (field.seed.value) {\n            return\n        }\n\n        let found = nameManager.find(field.name)\n        if (found) {\n            /**\n             * if `field.name` found in preset `FakerNameMap`\n             * them set `field.seed`\n             * `found.tag` is one of [method, property, raw]\n             * `found.value` is one of [name in FakerMethod, name in FakerProperty, PHP expression]\n             */\n            field.seed.type = found.tag\n            field.seed.value = found.value\n            return\n        }\n\n        found = typeManager.find(field.type)\n        if (found) {\n            /**\n             * if `field.type` found in preset `FakerTypeMap`\n             * them set `field.seed`\n             * `found.tag` is one of [method, property, raw]\n             * `found.value` is one of [name in FakerMethod, name in FakerProperty, PHP expression]\n             */\n            field.seed.type = found.tag\n            field.seed.value = found.value\n            return\n        }\n\n        found = propertyManager.find(field.name)\n        if (found) {\n            /**\n             * if `field.name` found in preset `FakerProperty`\n             * them set `field.seed`\n             */\n            field.seed.type = 'property'\n            field.seed.value = found.name\n        }\n\n    })\n}\n",
@@ -1247,6 +1245,1102 @@
                 }
             }
         ]
+    },
+    "folder": {
+        "name": "",
+        "description": "",
+        "isLayer": false,
+        "nsPattern": "",
+        "folderManager": {
+            "list": [
+                {
+                    "name": "app",
+                    "description": "",
+                    "isLayer": false,
+                    "nsPattern": "App",
+                    "folderManager": {
+                        "list": [
+                            {
+                                "name": "Broadcasting",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Broadcasting",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Channel",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Channel",
+                                            "filePattern": "${entity.name}Channel.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.user = ddd.project.getEntity('User')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, user) }};\n\nclass {{ layer.getClassName(entity) }}\n{\n    /**\n     * Create a new channel instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Authenticate the user's access to the channel.\n     *\n     * @param  User $user\n     * @return array|bool\n     */\n    public function join(User $user)\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Console",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Console",
+                                "folderManager": {
+                                    "list": [
+                                        {
+                                            "name": "Commands",
+                                            "description": "",
+                                            "isLayer": false,
+                                            "nsPattern": "Commands",
+                                            "folderManager": {
+                                                "list": []
+                                            },
+                                            "layerManager": {
+                                                "list": [
+                                                    {
+                                                        "name": "Command",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": true,
+                                                        "classPattern": "${entity.name}Command",
+                                                        "filePattern": "${entity.name}Command.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Console\\Command;\n\nclass {{ layer.getClassName(entity) }} extends Command\n{\n    /**\n     * The name and signature of the console command.\n     *\n     * @var string\n     */\n    protected $signature = 'command:name';\n\n    /**\n     * The console command description.\n     *\n     * @var string\n     */\n    protected $description = 'Command description';\n\n    /**\n     * Create a new command instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        parent::__construct();\n    }\n\n    /**\n     * Execute the console command.\n     *\n     * @return mixed\n     */\n    public function handle()\n    {\n        //\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "layerManager": {
+                                    "list": []
+                                }
+                            },
+                            {
+                                "name": "Events",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Events",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Event",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}Event",
+                                            "filePattern": "${entity.name}Event.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    /**\n     * Create a new event instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('channel-name');\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Exceptions",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Exceptions",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Exception",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Exception",
+                                            "filePattern": "${entity.name}Exception.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Exception;\n\nclass {{ layer.getClassName(entity) }} extends Exception\n{\n    //\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Http",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Http",
+                                "folderManager": {
+                                    "list": [
+                                        {
+                                            "name": "Controllers",
+                                            "description": "",
+                                            "isLayer": false,
+                                            "nsPattern": "Controllers",
+                                            "folderManager": {
+                                                "list": []
+                                            },
+                                            "layerManager": {
+                                                "list": [
+                                                    {
+                                                        "name": "Controller",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "${entity.name}Controller",
+                                                        "filePattern": "${entity.name}Controller.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'Request')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse {{ request.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    protected $routePath = '{{ entity.snakeCase }}';\n    protected $viewPath = '{{ entity.snakeCase }}';\n\n    /**\n     * Display a listing of the resource.\n     *\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function index()\n    {\n        $page = {{ model.getClassName(entity) }}::query()->paginate();\n        return view(\"$this->viewPath.index\", compact('page'));\n    }\n\n    /**\n     * Show the form for creating a new resource.\n     *\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function create()\n    {\n        $item = new {{ model.getClassName(entity) }}();\n        $item->_token = csrf_token();\n        $item->_uri = \"/$this->routePath\";\n        return view(\"$this->viewPath.edit\", compact('item'));\n    }\n\n    /**\n     * Store a newly created resource in storage.\n     *\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function store({{ request.getClassName(entity) }} $request)\n    {\n        $item = new {{ model.getClassName(entity) }};\n        $item->fill($request->validated());\n        $item->save();\n        return redirect(\"/$this->routePath/$item->id\");\n    }\n\n    /**\n     * Display the specified resource.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function show($id)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        return view(\"$this->viewPath.show\", compact('item'));\n    }\n\n    /**\n     * Show the form for editing the specified resource.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function edit($id)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        $item->_token = csrf_token();\n        $item->_method = 'PATCH';\n        $item->_uri = \"/$this->routePath/$item->id\";\n        return view(\"$this->viewPath.edit\", compact('item'));\n    }\n\n    /**\n     * Update the specified resource in storage.\n     *\n     * @param int $id\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function update($id, {{ request.getClassName(entity) }} $request)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        $item->update($request->validated());\n        return redirect(\"/$this->routePath/$item->id\");\n    }\n\n    /**\n     * Remove the specified resource from storage.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function destroy($id)\n    {\n        {{ model.getClassName(entity) }}::destroy($id);\n        return redirect(\"/$this->routePath\");\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "ControllerAPI",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "${entity.name}Controller",
+                                                        "filePattern": "${entity.name}Controller.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'Request')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse {{ request.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n\n    /**\n     * Display a listing of the resource.\n     *\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function index()\n    {\n        $page = {{ model.getClassName(entity) }}::query()->paginate();\n        return response()->json(compact('page'));\n    }\n\n    /**\n     * Store a newly created resource in storage.\n     *\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function store({{ request.getClassName(entity) }} $request)\n    {\n        $item = new {{ model.getClassName(entity) }};\n        $item->fill($request->validated());\n        $item->save();\n        return response()->json(compact('item'));\n    }\n\n    /**\n     * Display the specified resource.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function show($id)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        return response()->json(compact('item'));\n    }\n\n    /**\n     * Update the specified resource in storage.\n     *\n     * @param int $id\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function update($id, {{ request.getClassName(entity) }} $request)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        $item->update($request->validated());\n        return response()->json(compact('item'));\n    }\n\n    /**\n     * Remove the specified resource from storage.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function destroy($id)\n    {\n        $count = {{ model.getClassName(entity) }}::destroy($id);\n        if ($count) {\n            return response()->json('OK');\n        }\n        return response()->json('Resource already deleted!', 410);\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "name": "Middleware",
+                                            "description": "",
+                                            "isLayer": false,
+                                            "nsPattern": "Middleware",
+                                            "folderManager": {
+                                                "list": []
+                                            },
+                                            "layerManager": {
+                                                "list": [
+                                                    {
+                                                        "name": "Middleware",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": true,
+                                                        "classPattern": "${entity.name}",
+                                                        "filePattern": "${entity.name}.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Closure;\n\nclass {{ layer.getClassName(entity) }}\n{\n    /**\n     * Handle an incoming request.\n     *\n     * @param  \\Illuminate\\Http\\Request  $request\n     * @param  \\Closure  $next\n     * @return mixed\n     */\n    public function handle($request, Closure $next)\n    {\n        return $next($request);\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "name": "Requests",
+                                            "description": "",
+                                            "isLayer": false,
+                                            "nsPattern": "Requests",
+                                            "folderManager": {
+                                                "list": []
+                                            },
+                                            "layerManager": {
+                                                "list": [
+                                                    {
+                                                        "name": "Request",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Store${entity.name}Request",
+                                                        "filePattern": "Store${entity.name}Request.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return {{ model.getClassName(entity) }}::RuleList;\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "RequestUpdate",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Update${entity.name}Request",
+                                                        "filePattern": "Update${entity.name}Request.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return {{ model.getClassName(entity) }}::RuleList;\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "layerManager": {
+                                    "list": []
+                                }
+                            },
+                            {
+                                "name": "Jobs",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Jobs",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Job",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Job",
+                                            "filePattern": "${entity.name}Job.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Bus\\Queueable;\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Foundation\\Bus\\Dispatchable;\nuse Illuminate\\Queue\\InteractsWithQueue;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }} implements ShouldQueue\n{\n    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;\n\n    /**\n     * Create a new job instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Execute the job.\n     *\n     * @return void\n     */\n    public function handle()\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Listeners",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Listeners",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Listener",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Listener",
+                                            "filePattern": "${entity.name}Listener.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.event = ddd.project.getLayer('app/Events', 'Event')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ event.getFullName(project, entity) }};\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Queue\\InteractsWithQueue;\n\nclass {{ layer.getClassName(entity) }}\n{\n    /**\n     * Create the event listener.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Handle the event.\n     *\n     * @param  {{ event.getClassName(entity) }} $event\n     * @return void\n     */\n    public function handle({{ event.getClassName(entity) }} $event)\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Mails",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Mails",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Mail",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Mail",
+                                            "filePattern": "${entity.name}Mail.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Bus\\Queueable;\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Mail\\Mailable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }} extends Mailable\n{\n    use Queueable, SerializesModels;\n\n    /**\n     * Create a new message instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Build the message.\n     *\n     * @return $this\n     */\n    public function build()\n    {\n        return $this->view('view.name');\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Models",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Models",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Model",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": true,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}",
+                                            "filePattern": "${entity.name}.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const castManager = ddd.project.getPreset('CastPHP').propertyManager\n    const typeManager = ddd.project.getPreset('FieldType').propertyManager\n    ddd.phptype = field => {\n        if (field.cast) {\n            const found = castManager.find(field.cast)\n            if (found) {\n                return found.value\n            }\n        }\n\n        if (['created_at', 'updated_at', 'deleted_at'].includes(field.name)) {\n            return '\\\\Illuminate\\\\Support\\\\Carbon'\n        }\n\n        const found = typeManager.find(field.type)\n        if (found) {\n            return found.tag\n        }\n\n        return 'mixed'\n    }\n\n    ddd.ruleText = field => {\n        if (field.ruleManager.list.length) {\n            const list = field.ruleManager.list.map(rule => {\n                return rule.value ? `${rule.name}:${rule.value}` : rule.name\n            })\n            return `['${list.join(\"', '\")}']`\n        }\n        return '[]'\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Notifications\\Notifiable;\nuse Illuminate\\Foundation\\Auth\\User as Authenticatable;\nuse Illuminate\\Database\\Eloquent\\Model;\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n * {% for field in entity.fieldManager.list %}\n * @property {{ phptype(field) }} ${{ field.name }}{% endfor %}\n */\nclass {{ layer.getClassName(entity) }} extends {% if entity.name === 'User' %}Authenticatable{% else %}Model{% endif %}\n{\n{% if entity.name === 'User' %}    use Notifiable;\n{% endif %}\n    /**\n     * The table associated with the model.\n     *\n     * @var string\n     */\n    protected $table = '{{ entity.tableName }}';\n\n    /**\n     * The primary key for the model.\n     *\n     * @var string\n     */\n    protected $primaryKey = '{{ entity.primaryKey }}';\n\n    /**\n     * Indicates if the IDs are auto-incrementing.\n     *\n     * @var bool\n     */\n    public $incrementing = {{ entity.fieldManager.hasIncrement }};\n\n    /**\n     * Indicates if the model should be timestamped.\n     *\n     * @var bool\n     */\n    public $timestamps = {{ entity.hasTimeStamp}};\n\n    /**\n     * The attributes that are mass assignable.\n     *\n     * @var array\n     */\n    protected $fillable = [\n{% for field in entity.fieldManager.list | selectattr('fillable') %}\n        '{{ field.name }}',\n{% endfor %}\n    ];\n\n    /**\n     * The attributes that should be hidden for arrays.\n     *\n     * @var array\n     */\n    protected $hidden = [\n{% for field in entity.fieldManager.list | selectattr('hidden') %}\n        '{{ field.name }}',\n{% endfor %}\n    ];\n\n    /**\n     * The attributes that should be cast to native types.\n     *\n     * @var array\n     */\n    protected $casts = [\n{% for field in entity.fieldManager.list | selectattr('cast') %}\n        '{{ field.name }}' => '{{ field.cast }}',\n{% endfor %}\n    ];\n\n    const RuleList = [\n{% for field in entity.fieldManager.list | selectattr('included') %}\n        '{{ field.name }}' => {{ ruleText(field) }},\n{% endfor %}\n    ];\n\n{% for relation in entity.relationManager.list %}\n    public function {{ relation.name }}()\n    {\n        return $this->{{ relation.type }}({{ relation.parameter }});\n    }\n{% endfor %}\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Notifications",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Notifications",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Notification",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Notification",
+                                            "filePattern": "${entity.name}Notification.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Bus\\Queueable;\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Notifications\\Messages\\MailMessage;\nuse Illuminate\\Notifications\\Notification;\n\nclass {{ layer.getClassName(entity) }} extends Notification\n{\n    use Queueable;\n\n    /**\n     * Create a new notification instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Get the notification's delivery channels.\n     *\n     * @param  mixed  $notifiable\n     * @return array\n     */\n    public function via($notifiable)\n    {\n        return ['mail'];\n    }\n\n    /**\n     * Get the mail representation of the notification.\n     *\n     * @param  mixed  $notifiable\n     * @return \\Illuminate\\Notifications\\Messages\\MailMessage\n     */\n    public function toMail($notifiable)\n    {\n        return (new MailMessage)\n                    ->line('The introduction to the notification.')\n                    ->action('Notification Action', url('/'))\n                    ->line('Thank you for using our application!');\n    }\n\n    /**\n     * Get the array representation of the notification.\n     *\n     * @param  mixed  $notifiable\n     * @return array\n     */\n    public function toArray($notifiable)\n    {\n        return [\n            //\n        ];\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Observers",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Observers",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Observer",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}Observer",
+                                            "filePattern": "${entity.name}Observer.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }}\n{\n    /**\n     * Handle the item \"created\" event.\n     *\n     * @param  {{ model.getClassName(entity) }} $item\n     * @return void\n     */\n    public function created({{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n\n    /**\n     * Handle the item \"updated\" event.\n     *\n     * @param  {{ model.getClassName(entity) }} $item\n     * @return void\n     */\n    public function updated({{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n\n    /**\n     * Handle the item \"deleted\" event.\n     *\n     * @param  {{ model.getClassName(entity) }} $item\n     * @return void\n     */\n    public function deleted({{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n\n    /**\n     * Handle the item \"restored\" event.\n     *\n     * @param  {{ model.getClassName(entity) }} $item\n     * @return void\n     */\n    public function restored({{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n\n    /**\n     * Handle the item \"force deleted\" event.\n     *\n     * @param  {{ model.getClassName(entity) }} $item\n     * @return void\n     */\n    public function forceDeleted({{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Policies",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Policies",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Policy",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}Policy",
+                                            "filePattern": "${entity.name}Policy.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.user = ddd.project.getEntity('User')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse {{ model.getFullName(project, user) }};\nuse Illuminate\\Auth\\Access\\HandlesAuthorization;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use HandlesAuthorization;\n\n    /**\n     * Determine whether the user can view any item.\n     *\n     * @param  User $user\n     * @return mixed\n     */\n    public function viewAny(User $user)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can view the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function view(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can create item.\n     *\n     * @param User $user\n     * @return mixed\n     */\n    public function create(User $user)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can update the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function update(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return $user->id === $item->user_id;\n    }\n\n    /**\n     * Determine whether the user can delete the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function delete(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return $user->id === $item->user_id;\n    }\n\n    /**\n     * Determine whether the user can restore the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function restore(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n\n    /**\n     * Determine whether the user can permanently delete the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function forceDelete(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Providers",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Providers",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Provider",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Provider",
+                                            "filePattern": "${entity.name}Provider.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Support\\ServiceProvider;\n\nclass {{ layer.getClassName(entity) }} extends ServiceProvider\n{\n    /**\n     * Register services.\n     *\n     * @return void\n     */\n    public function register()\n    {\n        //\n    }\n\n    /**\n     * Bootstrap services.\n     *\n     * @return void\n     */\n    public function boot()\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Repositories",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Repositories",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Repository",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}Repository",
+                                            "filePattern": "${entity.name}Repository.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n *\n * @method {{ model.getClassName(entity) }}|null find($id)\n * @method {{ model.getClassName(entity) }} findOrFail($id)\n */\nclass {{ layer.getClassName(entity) }} extends BaseRepository\n{\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Resources",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Resources",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Resource",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}Resource",
+                                            "filePattern": "${entity.name}Resource.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Http\\Resources\\Json\\JsonResource;\n\nclass {{ layer.getClassName(entity) }} extends JsonResource\n{\n    /**\n     * Transform the resource into an array.\n     *\n     * @param \\Illuminate\\Http\\Request $request\n     * @return array\n     */\n    public function toArray($request)\n    {\n        return [\n{% for field in entity.fieldManager.list %}{% if field.hidden === false %}\n            '{{ field.name }}' => $this->{{ field.name }},\n{% endif %}{% endfor %}\n        ];\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Rules",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Rules",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Rule",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Rule",
+                                            "filePattern": "${entity.name}Rule.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Contracts\\Validation\\Rule;\n\nclass {{ layer.getClassName(entity) }} implements Rule\n{\n    /**\n     * Create a new rule instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Determine if the validation rule passes.\n     *\n     * @param  string  $attribute\n     * @param  mixed  $value\n     * @return bool\n     */\n    public function passes($attribute, $value)\n    {\n        //\n    }\n\n    /**\n     * Get the validation error message.\n     *\n     * @return string\n     */\n    public function message()\n    {\n        return 'The validation error message.';\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "layerManager": {
+                        "list": []
+                    }
+                },
+                {
+                    "name": "database",
+                    "description": "",
+                    "isLayer": false,
+                    "nsPattern": "",
+                    "folderManager": {
+                        "list": [
+                            {
+                                "name": "factories",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Factory",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "",
+                                            "filePattern": "${entity.name}Factory.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n\n    ddd.seedText = seed => {\n        const list = ['$faker']\n        if (seed.unique) {\n            list.push('unique()')\n        }\n\n        if (seed.type === 'property') {\n            list.push(seed.value)\n            return list.join('->')\n        }\n\n        if (seed.type === 'method') {\n            list.push(`${seed.value}(${seed.parameter})`)\n            return list.join('->')\n        }\n\n        return seed.value\n    }\n}\n",
+                                            "template": "<?php\n\n/** @var \\Illuminate\\Database\\Eloquent\\Factory $factory */\n\nuse {{ model.getFullName(project, entity) }};\nuse Faker\\Generator as Faker;\nuse Illuminate\\Support\\Str;\n\n/*\n|--------------------------------------------------------------------------\n| Model Factories\n|--------------------------------------------------------------------------\n|\n| This directory should contain each of the model factory definitions for\n| your application. Factories provide a convenient way to generate new\n| model instances for testing / seeding your application's database.\n|\n*/\n\n$factory->define({{ model.getClassName(entity) }}::class, function (Faker $faker) {\n    static $index = 0;\n    $index += 1;\n    return [\n{% for field in entity.fieldManager.list %}{% if field.seed.value !== '' %}\n        '{{ field.name }}' => {{ seedText(field.seed) }},\n{% endif %}{% endfor %}\n    ];\n});\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "migrations",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Migration",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": true,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "Create${entity.name}Table",
+                                            "filePattern": "0000_00_00_000000_create_${entity.tableName}_table.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.fieldText = function(field) {\n        const list = ['$table']\n\n        if (field.length) {\n            list.push(`${field.type}('${field.name}', ${field.length})`)\n        } else {\n            list.push(`${field.type}('${field.name}')`)\n        }\n\n        if (field.collation) {\n            list.push(`collation(${field.collation})`)\n        }\n\n        if (field.comment) {\n            list.push(`comment(${field.comment})`)\n        }\n\n        if (field.value) {\n            list.push(`default(${field.value})`)\n        }\n\n        if (field.allowNull) {\n            list.push('nullable()')\n        }\n\n        if (field.useCurrent) {\n            list.push('useCurrent()')\n        }\n\n        if (field.unsigned) {\n            list.push('unsigned()')\n        }\n\n        return list.join('->')\n    }\n\n    ddd.indexText = function(index) {\n        const text = index.fieldManager.list.map(field => field.name).join(\"', '\")\n        return `$table->${index.type}(['${text}'])`\n    }\n}\n",
+                                            "template": "<?php\n\nuse Illuminate\\Support\\Facades\\Schema;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Database\\Migrations\\Migration;\n\nclass {{ layer.getClassName(entity) }} extends Migration\n{\n    /**\n     * Run the migrations.\n     *\n     * @return void\n     */\n    public function up()\n    {\n        Schema::create('{{ entity.tableName }}', function (Blueprint $table) {\n{% for field in entity.fieldManager.list %}\n            {{ fieldText(field) }};\n{% endfor %}\n{% for field in entity.indexManager.list %}\n            {{ indexText(field) }};\n{% endfor %}\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     *\n     * @return void\n     */\n    public function down()\n    {\n        Schema::dropIfExists('{{ entity.tableName }}');\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "seeds",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Seeder",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}TableSeeder",
+                                            "filePattern": "${entity.name}TableSeeder.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                            "template": "<?php\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Database\\Seeder;\n\nclass {{ layer.getClassName(entity) }} extends Seeder\n{\n    /**\n     * Run the database seeds.\n     *\n     * @return void\n     */\n    public function run()\n    {\n        factory({{ model.getClassName(entity) }}::class, 1)->create();\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "layerManager": {
+                        "list": []
+                    }
+                },
+                {
+                    "name": "resources",
+                    "description": "",
+                    "isLayer": false,
+                    "nsPattern": "",
+                    "folderManager": {
+                        "list": [
+                            {
+                                "name": "views",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "edit",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "",
+                                            "filePattern": "edit.blade.php",
+                                            "pathPattern": "${entity.snakeCase}",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        },
+                                        {
+                                            "name": "index",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "",
+                                            "filePattern": "index.blade.php",
+                                            "pathPattern": "${entity.snakeCase}",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        },
+                                        {
+                                            "name": "show",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "",
+                                            "filePattern": "show.blade.php",
+                                            "pathPattern": "${entity.snakeCase}",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "layerManager": {
+                        "list": []
+                    }
+                },
+                {
+                    "name": "routes",
+                    "description": "",
+                    "isLayer": false,
+                    "nsPattern": "",
+                    "folderManager": {
+                        "list": []
+                    },
+                    "layerManager": {
+                        "list": [
+                            {
+                                "name": "RouteAPI",
+                                "description": "",
+                                "isLayer": true,
+                                "nsPattern": "",
+                                "color": "",
+                                "original": false,
+                                "requireName": false,
+                                "single": true,
+                                "classPattern": "",
+                                "filePattern": "api.php",
+                                "pathPattern": "",
+                                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const layerController = ddd.project.getLayer('app/Http/Controllers', 'ControllerAPI')\n    const controllerNS = 'App\\\\Http\\\\Controllers'\n    ddd.routexx = []\n    ddd.project.entityManager.list.forEach(entity => {\n        const ns = layerController.getNameSpace(ddd.project, entity)\n        let namespace = ''\n        if (ns !== controllerNS) {\n            namespace = ns.replace(controllerNS + '\\\\', '')\n        }\n        const routexx = []\n        entity.routeManager.list.forEach(route => {\n            const controller = layerController.getClassName(entity)\n            let routeName = ''\n            if (route.routeName) {\n                routeName = `->name('${route.routeName}')`\n            }\n            const list = route.middlewareManager.list.map(mw => mw.name)\n            let middleware = ''\n            if (list.length) {\n                middleware = `->middleware(['${list.join(\"', '\")}'])`\n            }\n            const text = `Route::${route.action}('${route.path}', '${controller}@${route.name}')${routeName}${middleware};`\n            routexx.push(text)\n        })\n        if (routexx.length) {\n            const list = []\n            if (namespace) {\n                list.push(`'namespace' => '${namespace}'`)\n            }\n            if (entity.routeDomain) {\n                list.push(`'domain' => '${entity.routeDomain}'`)\n            }\n            if (entity.routeName) {\n                list.push(`'name' => '${entity.routeName}'`)\n            }\n            if (entity.routePrefix) {\n                list.push(`'prefix' => '${entity.routePrefix}'`)\n            }\n            routexx.splice(0, 0, `Route::group([${list.join(', ')}], function () {`)\n            ddd.routexx.push(`${routexx.join('\\n    ')}\\n});`)\n        }\n    })\n}\n",
+                                "template": "<?php\n\nuse Illuminate\\Http\\Request;\n\n/*\n|--------------------------------------------------------------------------\n| API Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register API routes for your application. These\n| routes are loaded by the RouteServiceProvider within a group which\n| is assigned the \"api\" middleware group. Enjoy building your API!\n|\n*/\n\nRoute::middleware('auth:api')->get('/user', function (Request $request) {\n    return $request->user();\n});\n\n{% for route in routexx %}\n{{ route }}\n{% endfor %}\n",
+                                "dataManager": {
+                                    "list": []
+                                }
+                            },
+                            {
+                                "name": "RouteWeb",
+                                "description": "",
+                                "isLayer": true,
+                                "nsPattern": "",
+                                "color": "",
+                                "original": false,
+                                "requireName": false,
+                                "single": true,
+                                "classPattern": "",
+                                "filePattern": "web.php",
+                                "pathPattern": "",
+                                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const layerController = ddd.project.getLayer('app/Http/Controllers', 'ControllerAPI')\n    const controllerNS = 'App\\\\Http\\\\Controllers'\n    ddd.routexx = []\n    ddd.project.entityManager.list.forEach(entity => {\n        const ns = layerController.getNameSpace(ddd.project, entity)\n        let namespace = ''\n        if (ns !== controllerNS) {\n            namespace = ns.replace(controllerNS + '\\\\', '')\n        }\n        const routexx = []\n        entity.routeManager.list.forEach(route => {\n            const controller = layerController.getClassName(entity)\n            let routeName = ''\n            if (route.routeName) {\n                routeName = `->name('${route.routeName}')`\n            }\n            const list = route.middlewareManager.list.map(mw => mw.name)\n            let middleware = ''\n            if (list.length) {\n                middleware = `->middleware(['${list.join(\"', '\")}'])`\n            }\n            const text = `Route::${route.action}('${route.path}', '${controller}@${route.name}')${routeName}${middleware};`\n            routexx.push(text)\n        })\n        if (routexx.length) {\n            const list = []\n            if (namespace) {\n                list.push(`'namespace' => '${namespace}'`)\n            }\n            if (entity.routeDomain) {\n                list.push(`'domain' => '${entity.routeDomain}'`)\n            }\n            if (entity.routeName) {\n                list.push(`'name' => '${entity.routeName}'`)\n            }\n            if (entity.routePrefix) {\n                list.push(`'prefix' => '${entity.routePrefix}'`)\n            }\n            routexx.splice(0, 0, `Route::group([${list.join(', ')}], function () {`)\n            ddd.routexx.push(`${routexx.join('\\n    ')}\\n});`)\n        }\n    })\n}\n",
+                                "template": "<?php\n\n/*\n|--------------------------------------------------------------------------\n| Web Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register web routes for your application. These\n| routes are loaded by the RouteServiceProvider within a group which\n| contains the \"web\" middleware group. Now create something great!\n|\n*/\n\nRoute::get('/', function () {\n    return view('welcome');\n});\n\n{% for route in routexx %}\n{{ route }}\n{% endfor %}\n",
+                                "dataManager": {
+                                    "list": []
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "tests",
+                    "description": "",
+                    "isLayer": false,
+                    "nsPattern": "Tests",
+                    "folderManager": {
+                        "list": [
+                            {
+                                "name": "Feature",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Feature",
+                                "folderManager": {
+                                    "list": [
+                                        {
+                                            "name": "API",
+                                            "description": "",
+                                            "isLayer": false,
+                                            "nsPattern": "API",
+                                            "folderManager": {
+                                                "list": []
+                                            },
+                                            "layerManager": {
+                                                "list": [
+                                                    {
+                                                        "name": "TestAPI",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "#f00",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": true,
+                                                        "classPattern": "${entity.name}Test",
+                                                        "filePattern": "${entity.name}Test.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Foundation\\Testing\\RefreshDatabase;\nuse Illuminate\\Foundation\\Testing\\WithFaker;\nuse PHPUnit\\Framework\\TestCase;\n\nclass {{ layer.getClassName(entity) }} extends TestCase\n{\n    /**\n     * A basic test example.\n     *\n     * @return void\n     */\n    public function testTrue()\n    {\n        $this->assertTrue(true);\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "Base",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "${entity.name}",
+                                                        "color": "#f00",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Base${entity.name}Test",
+                                                        "filePattern": "Base${entity.name}Test.php",
+                                                        "pathPattern": "${entity.name}",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Foundation\\Testing\\RefreshDatabase;\nuse Illuminate\\Foundation\\Testing\\WithFaker;\nuse Tests\\TestCase;\n\nabstract class {{ layer.getClassName(entity) }} extends TestCase\n{\n\n    protected $fields = [\n{% for field in entity.fieldManager.list %}\n        '{{ field.name }}',\n{% endfor %}\n    ];\n\n    protected function getURI(string $path = '')\n    {\n        $uri = \"/{{ entity.snakeCase }}\";\n        if ($path) {\n            $uri = $uri . '/' . $path;\n        }\n        return $uri;\n    }\n\n    /**\n     * @param array $attributes\n     * @return {{ model.getClassName(entity) }}\n     */\n    protected function make(array $attributes = [])\n    {\n        $item = factory({{ model.getClassName(entity) }}::class)->make($attributes);\n        return $item;\n    }\n\n    /**\n     * @param array $attributes\n     * @return {{ model.getClassName(entity) }}\n     */\n    protected function makeSave(array $attributes = [])\n    {\n        $item = $this->make($attributes);\n        $item->save();\n        return $item;\n    }\n\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "Destroy",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "${entity.name}",
+                                                        "color": "#f00",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Destroy${entity.name}Test",
+                                                        "filePattern": "Destroy${entity.name}Test.php",
+                                                        "pathPattern": "${entity.name}",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'Base')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n\n    public function testDelete()\n    {\n        $user = $this->login();\n        $item = $this->makeSave(['user_id' => $user->id]);\n        $response = $this->deleteJson($this->getURI($item->id));\n        $response->assertSuccessful();\n    }\n\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "Index",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "${entity.name}",
+                                                        "color": "#f00",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Index${entity.name}Test",
+                                                        "filePattern": "Index${entity.name}Test.php",
+                                                        "pathPattern": "${entity.name}",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'Base')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function testIndex()\n    {\n        $response = $this->getJson($this->getURI());\n        $response->assertSuccessful();\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "Show",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "${entity.name}",
+                                                        "color": "#f00",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Show${entity.name}Test",
+                                                        "filePattern": "Show${entity.name}Test.php",
+                                                        "pathPattern": "${entity.name}",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'Base')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function testShow()\n    {\n        $user = $this->login();\n        $item = $this->makeSave(['user_id' => $user->id]);\n        $response = $this->getJson($this->getURI($item->id));\n        $response->assertSuccessful();\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "Store",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "${entity.name}",
+                                                        "color": "#f00",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Store${entity.name}Test",
+                                                        "filePattern": "Store${entity.name}Test.php",
+                                                        "pathPattern": "${entity.name}",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'Base')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function testStore()\n    {\n        $user = $this->login();\n        $item = $this->make();\n        $response = $this->postJson($this->getURI(), $item->toArray());\n        $response->assertSuccessful();\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "Update",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "${entity.name}",
+                                                        "color": "#f00",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Update${entity.name}Test",
+                                                        "filePattern": "Update${entity.name}Test.php",
+                                                        "pathPattern": "${entity.name}",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'Base')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function testUpdate()\n    {\n        $user = $this->login();\n        $item = $this->makeSave(['user_id' => $user->id]);\n        $response = $this->patchJson($this->getURI($item->id), $item->toArray());\n        $response->assertSuccessful();\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "TestFeature",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#f00",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Test",
+                                            "filePattern": "${entity.name}Test.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Foundation\\Testing\\RefreshDatabase;\nuse Illuminate\\Foundation\\Testing\\WithFaker;\nuse PHPUnit\\Framework\\TestCase;\n\nclass {{ layer.getClassName(entity) }} extends TestCase\n{\n    /**\n     * A basic test example.\n     *\n     * @return void\n     */\n    public function testTrue()\n    {\n        $this->assertTrue(true);\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "Unit",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Unit",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "TestUnit",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#f00",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": true,
+                                            "classPattern": "${entity.name}Test",
+                                            "filePattern": "${entity.name}Test.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse PHPUnit\\Framework\\TestCase;\n\nclass {{ layer.getClassName(entity) }} extends TestCase\n{\n    /**\n     * A basic test example.\n     *\n     * @return void\n     */\n    public function testTrue()\n    {\n        $this->assertTrue(true);\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "layerManager": {
+                        "list": []
+                    }
+                }
+            ]
+        },
+        "layerManager": {
+            "list": []
+        }
     },
     "presetManager": {
         "list": [
