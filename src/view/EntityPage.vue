@@ -11,6 +11,7 @@
                 <b-nav-item @click="tab = 'Faker'" :active="tab === 'Faker'"> Faker </b-nav-item>
                 <b-nav-item @click="tab = 'Field'" :active="tab === 'Field'"> Field </b-nav-item>
                 <b-nav-item @click="tab = 'File'" :active="tab === 'File'"> File </b-nav-item>
+                <b-nav-item @click="tab = 'HTML'" :active="tab === 'HTML'"> HTML </b-nav-item>
                 <b-nav-item @click="tab = 'Index'" :active="tab === 'Index'"> Index </b-nav-item>
                 <b-nav-item @click="tab = 'Property'" :active="tab === 'Property'"> Property </b-nav-item>
                 <b-nav-item @click="tab = 'Relation'" :active="tab === 'Relation'"> Relation </b-nav-item>
@@ -32,6 +33,8 @@
                 :project="sss.project"
                 :entity="sss.sidebar.item"
             ></FileList>
+
+            <HtmlList v-if="tab === 'HTML'"></HtmlList>
 
             <IndexList v-if="tab === 'Index'"></IndexList>
 
@@ -70,6 +73,7 @@ import DeleteButton from './button/DeleteButton.vue'
 import Faker from './schema/Faker.vue'
 import FieldList from './schema/FieldList.vue'
 import FileList from './schema/FileList.vue'
+import HtmlList from './schema/HtmlList.vue'
 import IndexList from './schema/IndexList.vue'
 import EntityProperty from './schema/EntityProperty.vue'
 import RelationList from './schema/RelationList.vue'
@@ -89,6 +93,7 @@ export default {
         Faker,
         FieldList,
         FileList,
+        HtmlList,
         IndexList,
         EntityProperty,
         RelationList,
