@@ -769,6 +769,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -793,6 +796,9 @@
                             "comment": "",
                             "fillable": true,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": true,
                             "length": "",
                             "useCurrent": false,
@@ -817,6 +823,9 @@
                             "comment": "",
                             "fillable": true,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": true,
                             "length": "",
                             "useCurrent": false,
@@ -841,6 +850,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": true,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": true,
                             "length": "",
                             "useCurrent": false,
@@ -865,6 +877,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": true,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -889,6 +904,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -913,6 +931,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -1042,6 +1063,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -1066,6 +1090,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -1090,6 +1117,9 @@
                             "comment": "",
                             "fillable": true,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": true,
                             "length": "",
                             "useCurrent": false,
@@ -1119,6 +1149,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -1143,6 +1176,9 @@
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
+                            "htmlEdit": "",
+                            "htmlIndex": "",
+                            "htmlShow": "",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -2021,8 +2057,8 @@
                                             "classPattern": "",
                                             "filePattern": "edit.blade.php",
                                             "pathPattern": "${entity.snakeCase}",
-                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
-                                            "template": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    ddd.list = []\n    const htmlManager = ddd.project.getPreset('FieldHTML').propertyManager\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.htmlEdit === '') {\n            return\n        }\n        const found = htmlManager.find(field.htmlEdit)\n        if (found) {\n            const text = ddd.text.runText(found.value, {field})\n            ddd.list.push({\n                name: field.name,\n                html: text,\n            })\n        }\n    })\n}\n",
+                                            "template": "\n<form action=\"/{{ entity.snakeCase }}\" method=\"POST\">\n\n<table class=\"table\">\n    <tbody>\n{% for item in list %}\n        <tr>\n            <td class=\"text-right\">{{ item.name }}</td>\n            <td>{{ item.html }}</td>\n        </tr>\n{% endfor %}\n    </tbody>\n</table>\n\n</form>\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -2039,8 +2075,8 @@
                                             "classPattern": "",
                                             "filePattern": "index.blade.php",
                                             "pathPattern": "${entity.snakeCase}",
-                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
-                                            "template": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    ddd.list = []\n    const htmlManager = ddd.project.getPreset('FieldHTML').propertyManager\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.htmlEdit === '') {\n            return\n        }\n        const found = htmlManager.find(field.htmlIndex)\n        if (found) {\n            const text = ddd.text.runText(found.value, {field})\n            ddd.list.push({\n                name: field.name,\n                html: text,\n            })\n        }\n    })\n}\n",
+                                            "template": "\n<table class=\"table\">\n    <thead>\n        <tr>\n{% for item in list %}\n            <td>{{ item.name }}</td>\n{% endfor %}\n        </tr>\n    </thead>\n    <tbody>\n        <tr v-for=\"item in list\" :key=\"item\">\n{% for item in list %}\n            <td>{{ item.html }}</td>\n{% endfor %}\n        </tr>\n    </tbody>\n</table>\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -2057,8 +2093,8 @@
                                             "classPattern": "",
                                             "filePattern": "show.blade.php",
                                             "pathPattern": "${entity.snakeCase}",
-                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
-                                            "template": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    ddd.list = []\n    const htmlManager = ddd.project.getPreset('FieldHTML').propertyManager\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.htmlEdit === '') {\n            return\n        }\n        const found = htmlManager.find(field.htmlShow)\n        if (found) {\n            const text = ddd.text.runText(found.value, {field})\n            ddd.list.push({\n                name: field.name,\n                html: text,\n            })\n        }\n    })\n}\n",
+                                            "template": "\n<table class=\"table\">\n    <tbody>\n{% for item in list %}\n        <tr>\n            <td class=\"text-right\">{{ item.name }}</td>\n            <td>{{ item.html }}</td>\n        </tr>\n{% endfor %}\n    </tbody>\n</table>\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -3494,6 +3530,95 @@
                 "version": 1,
                 "propertyManager": {
                     "list": []
+                }
+            },
+            {
+                "name": "FieldHTML",
+                "original": true,
+                "color": "",
+                "description": "for entity HTML",
+                "version": 1,
+                "propertyManager": {
+                    "list": [
+                        {
+                            "name": "check",
+                            "data": {},
+                            "tag": "",
+                            "value": "<label v-for=\"option in options\" :key=\"option\">     <input v-model=\"item.${field.name}\" :value=\"option\" class=\"form-control\" type=\"checkbox\" />     <span v-text=\"option\"></span> </label>"
+                        },
+                        {
+                            "name": "h1",
+                            "data": {},
+                            "tag": "",
+                            "value": "<h1 v-text=\"item.${field.name}\"></h1>"
+                        },
+                        {
+                            "name": "h2",
+                            "data": {},
+                            "tag": "",
+                            "value": "<h2 v-text=\"item.${field.name}\"></h2>"
+                        },
+                        {
+                            "name": "h3",
+                            "data": {},
+                            "tag": "",
+                            "value": "<h3 v-text=\"item.${field.name}\"></h3>"
+                        },
+                        {
+                            "name": "h4",
+                            "data": {},
+                            "tag": "",
+                            "value": "<h4 v-text=\"item.${field.name}\"></h4>"
+                        },
+                        {
+                            "name": "p",
+                            "data": {},
+                            "tag": "",
+                            "value": "<p v-text=\"item.${field.name}\"></p>"
+                        },
+                        {
+                            "name": "radio",
+                            "data": {},
+                            "tag": "",
+                            "value": "<label v-for=\"option in options\" :key=\"option\">     <input v-model=\"item.${field.name}\" :value=\"option\" class=\"form-control\" type=\"radio\" />     <span v-text=\"option\"></span> </label>"
+                        },
+                        {
+                            "name": "radio01",
+                            "data": {},
+                            "tag": "",
+                            "value": "<label>     <input v-model=\"item.${field.name}\" :value=\"0\" class=\"form-control\" type=\"radio\" /> 0 </label> <label>     <input v-model=\"item.${field.name}\" :value=\"1\" class=\"form-control\" type=\"radio\" /> 1 </label>"
+                        },
+                        {
+                            "name": "radioTrueFalse",
+                            "data": {},
+                            "tag": "",
+                            "value": "<label>     <input v-model=\"item.${field.name}\" :value=\"true\" class=\"form-control\" type=\"radio\" /> true </label> <label>     <input v-model=\"item.${field.name}\" :value=\"false\" class=\"form-control\" type=\"radio\" /> false </label>"
+                        },
+                        {
+                            "name": "select",
+                            "data": {},
+                            "tag": "",
+                            "value": "<select v-model=\"item.${field.name}\" class=\"form-control\">     <option v-for=\"option in options\" :key=\"option\" :value=\"option\" v-text=\"option\"></option> </select>"
+                        },
+                        {
+                            "name": "span",
+                            "data": {},
+                            "tag": "",
+                            "value": "<span v-text=\"item.${field.name}\"></span>"
+                        },
+                        {
+                            "name": "text",
+                            "data": {},
+                            "tag": "",
+                            "value": "<input v-model=\"item.${field.name}\" class=\"form-control\" type=\"text\" />"
+                        },
+                        {
+                            "name": "textarea",
+                            "data": {},
+                            "tag": "",
+                            "value": "<textarea v-model=\"item.${field.name}\" class=\"form-control\"></textarea>"
+                        }
+                    ]
                 }
             },
             {

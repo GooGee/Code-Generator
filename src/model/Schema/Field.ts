@@ -11,6 +11,9 @@ export default class Field extends UniqueItem {
     comment: string = ''
     fillable: boolean = true
     hidden: boolean = false
+    htmlEdit = ''
+    htmlIndex = ''
+    htmlShow = ''
     included: boolean = true
     length: number | string = ''
     type: string
