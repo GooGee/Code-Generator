@@ -11,7 +11,7 @@ export function addQuote(text: any, quote: string = "'") {
     return `${quote}${text}${quote}`
 }
 
-export function exeText(text: string, data: Object): string {
+export function runText(text: string, data: Object): string {
     const names = Object.keys(data)
     const values = Object.values(data)
     return new Function(...names, `return \`${text}\`;`)(...values)

@@ -3,7 +3,7 @@ import Entity from './Entity'
 import Node from './Node'
 import { PresetManager } from './Preset'
 import Project from './Project'
-import { exeText } from '../Text'
+import { runText } from '../Text'
 
 export enum LayerEnum {
     Migration = 'Migration',
@@ -29,7 +29,7 @@ export default class Layer extends Node {
             entity,
             layer: this,
         }
-        return exeText(this.classPattern, data)
+        return runText(this.classPattern, data)
     }
 
     getData(name: string) {
@@ -41,7 +41,7 @@ export default class Layer extends Node {
             entity,
             layer: this,
         }
-        return exeText(this.filePattern, data)
+        return runText(this.filePattern, data)
     }
 
     getFilePath(project: Project, entity: Entity) {
@@ -69,7 +69,7 @@ export default class Layer extends Node {
         if (this.nsPattern) {
             list.push(this.nsPattern)
         }
-        return exeText(list.join('/'), data)
+        return runText(list.join('/'), data)
             .split('/')
             .join('\\')
     }
@@ -86,7 +86,7 @@ export default class Layer extends Node {
         if (this.pathPattern) {
             list.push(this.pathPattern)
         }
-        return exeText(list.join('/'), data)
+        return runText(list.join('/'), data)
     }
 }
 

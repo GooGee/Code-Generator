@@ -2,7 +2,7 @@ import lodash from 'lodash'
 import Entity from '../Schema/Entity'
 import Layer from '../Schema/Layer'
 import Project from '../Schema/Project'
-import { run, runAndRender } from '../Text'
+import * as text from '../Text'
 
 export default class RunScript {
 
@@ -12,8 +12,9 @@ export default class RunScript {
             layer,
             entity,
             lodash,
+            text,
         }
-        return runAndRender(data)
+        return text.runAndRender(data)
     }
 
     static runFaker(project: Project, entity: Entity) {
@@ -22,7 +23,7 @@ export default class RunScript {
             entity,
             lodash,
         }
-        run(project.fakerScript, data)
+        text.run(project.fakerScript, data)
     }
 
     static runValidation(project: Project, entity: Entity) {
@@ -31,7 +32,7 @@ export default class RunScript {
             entity,
             lodash,
         }
-        run(project.validationScript, data)
+        text.run(project.validationScript, data)
     }
 
 }
