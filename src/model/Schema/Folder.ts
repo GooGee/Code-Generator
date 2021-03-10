@@ -6,6 +6,10 @@ interface ActionLayer {
     (layer: Layer): void
 }
 
+interface ActionFolder {
+    (layer: Folder, path: string): void
+}
+
 export default class Folder extends Node {
     isLayer = false
     readonly folderManager = new FolderManager()
@@ -15,6 +19,14 @@ export default class Folder extends Node {
         folder.layerManager.list.forEach(action)
         folder.folderManager.list.forEach(item => {
             this.eachLayer(item, action)
+        })
+    }
+
+    static eachFolder(folder: Folder, parent: string, action: ActionFolder) {
+        const path = parent ? `${parent}/${folder.name}` : folder.name
+        action(folder, path)
+        folder.folderManager.list.forEach(item => {
+            this.eachFolder(item, path, action)
         })
     }
 
@@ -52,6 +64,16 @@ export default class Folder extends Node {
             return true
         })
         return list
+    }
+
+    toMap() {
+        const map = new Map<string, Layer>()
+        Folder.eachFolder(this, '', (item, path) => {
+            item.layerManager.list.forEach(layer => {
+                map.set(`${path}/${layer.name}`, layer)
+            })
+        })
+        return map
     }
 
     get all() {
