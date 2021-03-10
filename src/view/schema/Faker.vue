@@ -2,6 +2,7 @@
     <table class="table b-table b-table-caption-top">
         <caption>
             <h3 class="inline mr11">Faker</h3>
+            <span>for /database/factories</span>
             <OpenButton file="https://github.com/fzaninotto/Faker">GitHub</OpenButton>
         </caption>
         <thead>

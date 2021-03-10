@@ -8,8 +8,8 @@
             </b-button>
             <ul class="gray">
                 <li>
-                    make sure the PHP
-                    <OpenButton file="https://packagist.org/packages/googee/entity">package</OpenButton>
+                    make sure the
+                    <OpenButton file="https://packagist.org/packages/googee/entity">PHP package</OpenButton>
                     is installed
                 </li>
                 <li>
