@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 200px;">
+    <div>
         <span v-for="item in list" :key="item" @click="$emit('update:color', item)">
             <ColorButton :color="item" :active="item === color"></ColorButton>
         </span>

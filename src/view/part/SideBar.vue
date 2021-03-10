@@ -13,7 +13,7 @@
         </b-input-group>
 
         <div v-if="visible" class="mb11">
-            <ColorPanel :color.sync="sidebar.color" style="margin: auto;"></ColorPanel>
+            <ColorPanel :color.sync="sidebar.color" style="margin: auto; width: 200px;"></ColorPanel>
         </div>
 
         <div v-if="sidebar.keyword || sidebar.color" class="list-group">
