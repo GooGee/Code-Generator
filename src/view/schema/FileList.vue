@@ -13,16 +13,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="layer in layerxx" :key="layer.name">
-                <td>{{ layer.name }}</td>
-                <td>{{ layer.getClassName(entity) }}</td>
+            <tr v-for="name in layerxx" :key="name">
+                <td>{{ name }}</td>
+                <td>{{ map.get(name).getClassName(entity) }}</td>
                 <td>
                     <b-button-group class="mr11">
-                        <WriteButton :entity="entity" :layer="layer"></WriteButton>
-                        <RenderButton :entity="entity" :layer="layer"></RenderButton>
+                        <WriteButton :entity="entity" :layer="map.get(name)"></WriteButton>
+                        <RenderButton :entity="entity" :layer="map.get(name)"></RenderButton>
                     </b-button-group>
 
-                    <span>{{ layer.getFileName(entity) }}</span>
+                    <span>{{ map.get(name).getFileName(entity) }}</span>
                 </td>
             </tr>
         </tbody>
@@ -42,8 +42,8 @@ export default {
         WriteButton,
     },
     props: {
-        layerxx: {
-            type: Array,
+        map: {
+            type: Map,
             required: true,
         },
         project: {
@@ -54,6 +54,20 @@ export default {
             type: Object,
             required: true,
         },
+    },
+    created() {
+        Array.from(this.map.keys()).forEach((name) => {
+            const layer = this.map.get(name)
+            if (layer.single) {
+                return
+            }
+            this.layerxx.push(name)
+        })
+    },
+    data() {
+        return {
+            layerxx: [],
+        }
     },
 }
 </script>

@@ -29,7 +29,7 @@
 
             <FileList
                 v-if="tab === 'File'"
-                :layerxx="layerxx"
+                :map="map"
                 :project="sss.project"
                 :entity="sss.sidebar.item"
             ></FileList>
@@ -105,15 +105,13 @@ export default {
         return {
             sss,
             tab: 'File',
+            map: null,
         }
     },
     created() {
         sss.showEntity()
-    },
-    computed: {
-        layerxx() {
-            return sss.project.folder.all.filter(layer => layer.single === false)
-        },
+        this.map = sss.project.folder.toMap()
+        // console.log(Array.from(this.map.keys()))
     },
 }
 </script>
