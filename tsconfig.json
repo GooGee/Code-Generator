@@ -19,6 +19,6 @@
     ],
     "typedocOptions": {
         "mode": "file",
-        "out": "docs200/model"
+        "out": "docs300/model"
     }
 }
