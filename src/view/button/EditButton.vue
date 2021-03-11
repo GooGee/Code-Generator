@@ -39,7 +39,11 @@ export default {
                     if (response.status === 200) {
                         this.$emit('save', response.status === 200, response.data)
                     } else {
-                        alert(response.message)
+                        this.$root.$bvToast.toast(response.message, {
+                            title: 'i',
+                            variant: 'danger',
+                            solid: true,
+                        })
                     }
                 })
             } catch (error) {
