@@ -3,7 +3,7 @@ import Entity from './Entity'
 import Node from './Node'
 import { PresetManager } from './Preset'
 import Project from './Project'
-import { runText } from '../Text'
+import { runText, script } from '../Text'
 
 export enum LayerEnum {
     Migration = 'Migration',
@@ -20,7 +20,7 @@ export default class Layer extends Node {
     filePattern: string = ''
     nsPattern: string = ''
     pathPattern: string = ''
-    script: string = 'function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n'
+    script: string = script
     template: string = ''
     readonly dataManager = new PresetManager()
 

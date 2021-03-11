@@ -7,6 +7,7 @@ import { RelationManager } from './Relation'
 import { RouteManager } from './Route'
 import ncListener from '../Event/NameChangeListener'
 import idListener from '../Event/ItemDeleteListener'
+import { script } from '../Text'
 
 export default class Entity extends UniqueItem {
     color: string = ''
@@ -14,7 +15,7 @@ export default class Entity extends UniqueItem {
     routeDomain: string = ''
     routeName: string = ''
     routePrefix: string = ''
-    script: string = ''
+    script: string = script
     tableName: string = ''
     readonly fieldManager = new FieldManager()
     readonly indexManager = new IndexManager()
