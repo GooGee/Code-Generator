@@ -1,9 +1,13 @@
 <template>
     <table class="table b-table b-table-caption-top">
         <caption>
-            <h3 class="inline mr11">File</h3>
-            <span class="mr11">generate PHP file</span>
-            <RefreshButton></RefreshButton>
+            <div class="mb11">
+                <h3 class="inline mr11">File</h3>
+                <span class="mr11">generate PHP file</span>
+                <RefreshButton></RefreshButton>
+            </div>
+
+            <ColorPanel :color.sync="color"></ColorPanel>
         </caption>
         <thead>
             <tr>
@@ -13,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="name in layerxx" :key="name">
+            <tr v-for="name in list" :key="name">
                 <td>{{ name }}</td>
                 <td>{{ map.get(name).getClassName(entity) }}</td>
                 <td>
@@ -30,6 +34,7 @@
 </template>
 
 <script>
+import ColorPanel from '../button/ColorPanel.vue'
 import RefreshButton from '../button/RefreshButton.vue'
 import RenderButton from '../button/RenderButton.vue'
 import WriteButton from '../button/WriteButton.vue'
@@ -37,6 +42,7 @@ import WriteButton from '../button/WriteButton.vue'
 export default {
     name: 'FileList',
     components: {
+        ColorPanel,
         RefreshButton,
         RenderButton,
         WriteButton,
@@ -66,8 +72,28 @@ export default {
     },
     data() {
         return {
+            color: '',
             layerxx: [],
         }
+    },
+    computed: {
+        list() {
+            if (this.color === '') {
+                return this.layerxx
+            }
+
+            const list = []
+            Array.from(this.map.keys()).forEach((name) => {
+                const layer = this.map.get(name)
+                if (layer.single) {
+                    return
+                }
+                if (this.color === layer.color) {
+                    list.push(name)
+                }
+            })
+            return list
+        },
     },
 }
 </script>
