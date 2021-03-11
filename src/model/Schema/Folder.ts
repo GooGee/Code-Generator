@@ -137,4 +137,10 @@ export class FolderManager extends UniqueList<Folder> {
     constructor() {
         super(Folder)
     }
+
+    make(name: string) {
+        const item = super.make(name)
+        item.nsPattern = item.name
+        return item
+    }
 }
