@@ -29,10 +29,16 @@
                         <b-form-input v-model="field.seed.value"></b-form-input>
                     </div>
                     <div v-else class="form-inline">
-                        <b-form-checkbox v-model="field.seed.unique" class="mr11"> Unique </b-form-checkbox>
+                        <b-form-checkbox v-model="field.seed.unique" class="mr11">
+                            Unique
+                        </b-form-checkbox>
 
                         <template v-if="'method' === field.seed.type">
-                            <b-button @click="setMethod(field)" variant="outline-primary" class="mr11">
+                            <b-button
+                                @click="setMethod(field)"
+                                variant="outline-primary"
+                                class="mr11"
+                            >
                                 {{ plus(field.seed) }}
                             </b-button>
                             (
@@ -51,7 +57,11 @@
             <tr>
                 <td colspan="2">
                     <b-button-group class="mr11">
-                        <EditButton file="script/faker.js" :content="sss.project.fakerScript" @save="save"></EditButton>
+                        <EditButton
+                            file="script/faker.js"
+                            :content="sss.project.fakerScript"
+                            :callback="save"
+                        ></EditButton>
                         <b-button @click="run" variant="outline-primary"> Run </b-button>
                     </b-button-group>
                     <ScriptGuide></ScriptGuide>
@@ -78,6 +88,11 @@ export default {
     data() {
         return {
             sss,
+            save: (ok, text) => {
+                if (ok) {
+                    sss.project.fakerScript = text
+                }
+            },
         }
     },
     computed: {
@@ -101,11 +116,6 @@ export default {
                     variant: 'danger',
                     solid: true,
                 })
-            }
-        },
-        save(ok, text) {
-            if (ok) {
-                sss.project.fakerScript = text
             }
         },
         setMethod(field) {

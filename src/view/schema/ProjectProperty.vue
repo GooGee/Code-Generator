@@ -5,7 +5,7 @@
         </caption>
         <thead>
             <tr>
-                <th class="text-right" style="width: 222px;">name</th>
+                <th class="text-right" style="width: 222px">name</th>
                 <th>value</th>
             </tr>
         </thead>
@@ -19,7 +19,12 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton file="script/project.js" :content="item.script" @save="save" class="mr11" />
+                    <EditButton
+                        file="script/project.js"
+                        :content="item.script"
+                        :callback="save"
+                        class="mr11"
+                    />
                     <ScriptGuide></ScriptGuide>
                 </td>
             </tr>
@@ -63,12 +68,14 @@ export default {
             required: true,
         },
     },
-    methods: {
-        save(ok, text) {
-            if (ok) {
-                this.item.script = text
-            }
-        },
+    data() {
+        return {
+            save: (ok, text) => {
+                if (ok) {
+                    this.item.script = text
+                }
+            },
+        }
     },
 }
 </script>

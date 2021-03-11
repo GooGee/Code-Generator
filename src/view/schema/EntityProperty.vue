@@ -5,7 +5,7 @@
         </caption>
         <thead>
             <tr>
-                <th class="text-right" style="width: 111px;">name</th>
+                <th class="text-right" style="width: 111px">name</th>
                 <th>value</th>
             </tr>
         </thead>
@@ -26,7 +26,7 @@
             <tr>
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :file="file" :content="item.script" @save="save" class="mr11" />
+                    <EditButton :file="file" :content="item.script" :callback="save" class="mr11" />
                     <ScriptGuide></ScriptGuide>
                 </td>
             </tr>
@@ -83,12 +83,14 @@ export default {
             return `script/entity-${this.item.name}.js`
         },
     },
-    methods: {
-        save(ok, text) {
-            if (ok) {
-                this.item.script = text
-            }
-        },
+    data() {
+        return {
+            save: (ok, text) => {
+                if (ok) {
+                    this.item.script = text
+                }
+            },
+        }
     },
 }
 </script>

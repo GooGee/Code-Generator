@@ -12,7 +12,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="field in manager.list" :key="field.name" :class="{ disabled: !field.included }">
+            <tr
+                v-for="field in manager.list"
+                :key="field.name"
+                :class="{ disabled: !field.included }"
+            >
                 <td>
                     <b-form-checkbox v-model="field.included"> {{ field.name }} </b-form-checkbox>
                 </td>
@@ -29,7 +33,7 @@
                         <EditButton
                             file="script/validation.js"
                             :content="sss.project.validationScript"
-                            @save="save"
+                            :callback="save"
                         ></EditButton>
                         <b-button @click="run" variant="outline-primary"> Run </b-button>
                     </b-button-group>
@@ -61,6 +65,11 @@ export default {
             sss,
             rulexx: sss.getPreset('ValidationRule').propertyManager.list,
             rexx: sss.getPreset('RegularExpression').propertyManager.list,
+            save: (ok, text) => {
+                if (ok) {
+                    sss.project.validationScript = text
+                }
+            },
         }
     },
     computed: {
@@ -80,11 +89,6 @@ export default {
                 })
             }
         },
-        save(ok, text) {
-            if (ok) {
-                sss.project.validationScript = text
-            }
-        },
         clear() {
             this.$bvModal
                 .msgBoxConfirm('Are you sure?', {
@@ -93,14 +97,14 @@ export default {
                     footerClass: 'border-top-0',
                     centered: true,
                 })
-                .then(value => {
+                .then((value) => {
                     if (value) {
-                        this.manager.list.forEach(field => {
+                        this.manager.list.forEach((field) => {
                             field.ruleManager.clear()
                         })
                     }
                 })
-                .catch(error => {
+                .catch((error) => {
                     this.$root.$bvToast.toast(error.message, {
                         title: 'i',
                         variant: 'danger',

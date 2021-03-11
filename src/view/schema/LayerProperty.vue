@@ -20,7 +20,11 @@
             <tr v-if="item.isLayer">
                 <td class="text-right">single</td>
                 <td>
-                    <b-form-checkbox v-model="item.single" switch class="mr11 wa inline"></b-form-checkbox>
+                    <b-form-checkbox
+                        v-model="item.single"
+                        switch
+                        class="mr11 wa inline"
+                    ></b-form-checkbox>
                     <WriteButton v-if="item.single" :layer="item" class="mr11"></WriteButton>
                 </td>
             </tr>
@@ -33,15 +37,27 @@
             <tr v-if="item.isLayer">
                 <td class="text-right">script</td>
                 <td>
-                    <EditButton :file="fileScript" :content="item.script" @save="saveScript" class="mr11" />
+                    <EditButton
+                        :file="fileScript"
+                        :content="item.script"
+                        :callback="saveScript"
+                        class="mr11"
+                    />
                     <ScriptGuide></ScriptGuide>
                 </td>
             </tr>
             <tr v-if="item.isLayer">
                 <td class="text-right">template</td>
                 <td>
-                    <EditButton :file="fileTemplate" :content="item.template" @save="saveTemplate" class="mr11" />
-                    <OpenButton file="https://mozilla.github.io/nunjucks/templating.html">Document</OpenButton>
+                    <EditButton
+                        :file="fileTemplate"
+                        :content="item.template"
+                        :callback="saveTemplate"
+                        class="mr11"
+                    />
+                    <OpenButton file="https://mozilla.github.io/nunjucks/templating.html"
+                        >Document</OpenButton
+                    >
                 </td>
             </tr>
             <tr v-if="item.isLayer">
@@ -108,6 +124,16 @@ export default {
         return {
             fileScript: this.getScript(),
             fileTemplate: this.getTemplate(),
+            saveScript: (ok, text) => {
+                if (ok) {
+                    this.item.script = text
+                }
+            },
+            saveTemplate: (ok, text) => {
+                if (ok) {
+                    this.item.template = text
+                }
+            },
         }
     },
     watch: {
@@ -129,16 +155,6 @@ export default {
         },
         getTemplate() {
             return `layer/${this.getHash()}/${this.item.name}.txt`
-        },
-        saveScript(ok, text) {
-            if (ok) {
-                this.item.script = text
-            }
-        },
-        saveTemplate(ok, text) {
-            if (ok) {
-                this.item.template = text
-            }
         },
     },
 }

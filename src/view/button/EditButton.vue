@@ -19,6 +19,11 @@ export default {
             type: String,
             required: true,
         },
+        callback: {
+            type: Function,
+            required: false,
+            default: null,
+        },
     },
     data() {
         return {
@@ -37,7 +42,9 @@ export default {
                 sss.route.edit(file, this.content, (response) => {
                     this.waiting = false
                     if (response.status === 200) {
-                        this.$emit('save', response.status === 200, response.data)
+                        if (this.callback) {
+                            this.callback(response.status === 200, response.data)
+                        }
                     } else {
                         this.$root.$bvToast.toast(response.message, {
                             title: 'i',
