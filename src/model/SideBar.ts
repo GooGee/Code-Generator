@@ -5,6 +5,7 @@ import UniqueList from './Base/UniqueList'
 export default class SideBar {
     readonly manager: UniqueList<IUniqueItemWithColor> | null = null
     color: string = ''
+    otherColor: string = ''
     item: IUniqueItemWithColor | null = null
     keyword: string = ''
 

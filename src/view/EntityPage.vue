@@ -32,6 +32,7 @@
                 :map="map"
                 :project="sss.project"
                 :entity="sss.sidebar.item"
+                :color.sync="sss.sidebar.otherColor"
             ></FileList>
 
             <HtmlList v-if="tab === 'HTML'"></HtmlList>

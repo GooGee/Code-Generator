@@ -7,7 +7,7 @@
                 <RefreshButton></RefreshButton>
             </div>
 
-            <ColorPanel :color.sync="color"></ColorPanel>
+            <ColorPanel :color="color" v-on="$listeners"></ColorPanel>
         </caption>
         <thead>
             <tr>
@@ -60,6 +60,10 @@ export default {
             type: Object,
             required: true,
         },
+        color: {
+            type: String,
+            required: true,
+        },
     },
     created() {
         Array.from(this.map.keys()).forEach((name) => {
@@ -72,7 +76,6 @@ export default {
     },
     data() {
         return {
-            color: '',
             layerxx: [],
         }
     },
