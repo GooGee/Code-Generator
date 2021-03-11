@@ -71,6 +71,7 @@ export default {
     methods: {
         show(item) {
             this.item = item
+            sss.sidebar.item = item
         },
         remove() {
             this.$bvModal
