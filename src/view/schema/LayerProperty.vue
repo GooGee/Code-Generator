@@ -125,10 +125,10 @@ export default {
             return ''
         },
         getScript() {
-            return `script/${this.getHash()}.${this.item.name}.js`
+            return `layer/${this.getHash()}/${this.item.name}.js`
         },
         getTemplate() {
-            return `template/${this.getHash()}.${this.item.name}.txt`
+            return `layer/${this.getHash()}/${this.item.name}.txt`
         },
         saveScript(ok, text) {
             if (ok) {
