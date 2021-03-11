@@ -6,9 +6,9 @@
         <thead>
             <tr>
                 <th></th>
-                <th>Action</th>
+                <th>HTTP Method</th>
                 <th>Path</th>
-                <th>Method</th>
+                <th>Controller Method</th>
                 <th>Middleware</th>
             </tr>
         </thead>

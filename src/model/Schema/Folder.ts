@@ -66,6 +66,46 @@ export default class Folder extends Node {
         return list
     }
 
+    remove(item: Folder | Layer) {
+        if (item.isLayer) {
+            this.removeLayer(item as Layer)
+        } else {
+            this.removeFolder(item as Folder)
+        }
+    }
+
+    removeFolder(folder: Folder) {
+        const none = this.folderManager.list.every(item => {
+            if (Object.is(folder, item)) {
+                return false
+            }
+            return true
+        })
+        if (none) {
+            this.folderManager.list.forEach(item => {
+                item.removeFolder(folder)
+            })
+        } else {
+            this.folderManager.remove(folder)
+        }
+    }
+
+    removeLayer(layer: Layer) {
+        const none = this.layerManager.list.every(item => {
+            if (Object.is(layer, item)) {
+                return false
+            }
+            return true
+        })
+        if (none) {
+            this.folderManager.list.forEach(item => {
+                item.removeLayer(layer)
+            })
+        } else {
+            this.layerManager.remove(layer)
+        }
+    }
+
     toMap() {
         const map = new Map<string, Layer>()
         Folder.eachFolder(this, '', (item, path) => {
