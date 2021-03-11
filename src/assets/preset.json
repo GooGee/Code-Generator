@@ -980,68 +980,7 @@
                     ]
                 },
                 "routeManager": {
-                    "list": [
-                        {
-                            "name": "destroy",
-                            "action": "delete",
-                            "path": "user/{id}",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "index",
-                            "action": "get",
-                            "path": "user",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "show",
-                            "action": "get",
-                            "path": "user/{id}",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "store",
-                            "action": "post",
-                            "path": "user",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "name": "update",
-                            "action": "patch",
-                            "path": "user/{id}",
-                            "middlewareManager": {
-                                "list": [
-                                    {
-                                        "name": "auth"
-                                    }
-                                ]
-                            }
-                        }
-                    ]
+                    "list": []
                 }
             },
             {
@@ -1455,7 +1394,7 @@
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "",
-                                                        "color": "",
+                                                        "color": "#f0f",
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
@@ -1473,7 +1412,7 @@
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "",
-                                                        "color": "",
+                                                        "color": "#f0f",
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
@@ -1535,7 +1474,7 @@
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "",
-                                                        "color": "",
+                                                        "color": "#f0f",
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
@@ -1553,7 +1492,7 @@
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "",
-                                                        "color": "",
+                                                        "color": "#f0f",
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
@@ -1683,7 +1622,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#f0f",
                                             "original": true,
                                             "requireName": true,
                                             "single": false,
@@ -1944,7 +1883,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#f00",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
@@ -1975,7 +1914,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#f0f",
                                             "original": true,
                                             "requireName": true,
                                             "single": false,
@@ -2050,7 +1989,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#80f",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
@@ -2068,7 +2007,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#80f",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
@@ -2086,7 +2025,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#80f",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
@@ -3544,7 +3483,7 @@
                             "name": "check",
                             "data": {},
                             "tag": "",
-                            "value": "<label v-for=\"option in options\" :key=\"option\">     <input v-model=\"item.${field.name}\" :value=\"option\" class=\"form-control\" type=\"checkbox\" />     <span v-text=\"option\"></span> </label>"
+                            "value": "<label v-for=\"option in options\" :key=\"option\">\n    <input v-model=\"item.${field.name}\" :value=\"option\" class=\"form-control\" type=\"checkbox\" />\n    <span v-text=\"option\"></span>\n</label>"
                         },
                         {
                             "name": "h1",
@@ -3580,25 +3519,25 @@
                             "name": "radio",
                             "data": {},
                             "tag": "",
-                            "value": "<label v-for=\"option in options\" :key=\"option\">     <input v-model=\"item.${field.name}\" :value=\"option\" class=\"form-control\" type=\"radio\" />     <span v-text=\"option\"></span> </label>"
+                            "value": "<label v-for=\"option in options\" :key=\"option\">\n    <input v-model=\"item.${field.name}\" :value=\"option\" class=\"form-control\" type=\"radio\" />\n    <span v-text=\"option\"></span>\n</label>"
                         },
                         {
                             "name": "radio01",
                             "data": {},
                             "tag": "",
-                            "value": "<label>     <input v-model=\"item.${field.name}\" :value=\"0\" class=\"form-control\" type=\"radio\" /> 0 </label> <label>     <input v-model=\"item.${field.name}\" :value=\"1\" class=\"form-control\" type=\"radio\" /> 1 </label>"
+                            "value": "<label>\n    <input v-model=\"item.${field.name}\" :value=\"0\" class=\"form-control\" type=\"radio\" /> 0 </label>\n<label>\n    <input v-model=\"item.${field.name}\" :value=\"1\" class=\"form-control\" type=\"radio\" /> 1 </label>"
                         },
                         {
                             "name": "radioTrueFalse",
                             "data": {},
                             "tag": "",
-                            "value": "<label>     <input v-model=\"item.${field.name}\" :value=\"true\" class=\"form-control\" type=\"radio\" /> true </label> <label>     <input v-model=\"item.${field.name}\" :value=\"false\" class=\"form-control\" type=\"radio\" /> false </label>"
+                            "value": "<label>\n    <input v-model=\"item.${field.name}\" :value=\"true\" class=\"form-control\" type=\"radio\" /> true </label>\n<label>\n    <input v-model=\"item.${field.name}\" :value=\"false\" class=\"form-control\" type=\"radio\" /> false </label>"
                         },
                         {
                             "name": "select",
                             "data": {},
                             "tag": "",
-                            "value": "<select v-model=\"item.${field.name}\" class=\"form-control\">     <option v-for=\"option in options\" :key=\"option\" :value=\"option\" v-text=\"option\"></option> </select>"
+                            "value": "<select v-model=\"item.${field.name}\" class=\"form-control\">\n    <option v-for=\"option in options\" :key=\"option\" :value=\"option\" v-text=\"option\"></option>\n</select>"
                         },
                         {
                             "name": "span",
