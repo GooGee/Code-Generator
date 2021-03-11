@@ -5,7 +5,9 @@
         </caption>
         <thead>
             <tr>
-                <th @click="sort('name')" :aria-sort="sortText('name')">name</th>
+                <th @click="sort('name')" :aria-sort="sortText('name')" style="min-width: 222px">
+                    name
+                </th>
                 <th @click="sort('value')" :aria-sort="sortText('value')">value</th>
                 <th>tag</th>
             </tr>
