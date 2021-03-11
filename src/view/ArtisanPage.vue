@@ -115,6 +115,11 @@ export default {
                 if (response.status === 200) {
                     this.result = response.data
                     this.waiting = false
+                    this.$root.$bvToast.toast(response.message, {
+                        title: 'i',
+                        variant: 'success',
+                        solid: true,
+                    })
                     return
                 }
 

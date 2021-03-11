@@ -24,8 +24,13 @@ export default {
 
             this.waiting = true
             try {
-                sss.route.refresh(() => {
+                sss.route.refresh((response) => {
                     this.waiting = false
+                    this.$root.$bvToast.toast(response.message, {
+                        title: 'i',
+                        variant: 'success',
+                        solid: true,
+                    })
                 })
             } catch (error) {
                 this.waiting = false
