@@ -50,6 +50,7 @@ export default {
                     item.name = value
                 }
                 this.manager.add(item)
+                this.$emit('added', item)
             } catch (error) {
                 this.$root.$bvToast.toast(error.message, {
                     title: 'i',

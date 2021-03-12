@@ -4,7 +4,11 @@
             <span @click="expandAll" class="btn-expand">
                 {{ expanded ? '-' : '+' }}
             </span>
-            <AddButton :manager="root.folderManager" class="btn-outline-warning btn-sm"></AddButton>
+            <AddButton
+                @added="sort(root.folderManager)"
+                :manager="root.folderManager"
+                class="btn-outline-warning btn-sm"
+            ></AddButton>
         </div>
 
         <Tree :value="root.folderManager.list">
@@ -21,8 +25,16 @@
                 <span v-if="node.isLayer"></span>
                 <template v-else>
                     <b-button-group v-if="Object.is(node, selected)">
-                        <AddButton :manager="node.folderManager" class="btn-outline-warning btn-sm"></AddButton>
-                        <AddButton :manager="node.layerManager" class="btn-sm"></AddButton>
+                        <AddButton
+                            @added="sort(node.folderManager)"
+                            :manager="node.folderManager"
+                            class="btn-outline-warning btn-sm"
+                        ></AddButton>
+                        <AddButton
+                            @added="sort(node.layerManager)"
+                            :manager="node.layerManager"
+                            class="btn-sm"
+                        ></AddButton>
                     </b-button-group>
                 </template>
             </span>
@@ -69,6 +81,9 @@ export default {
             } else {
                 foldAll(this.root.folderManager.list)
             }
+        },
+        sort(manager) {
+            manager.sort()
         },
     },
 }
