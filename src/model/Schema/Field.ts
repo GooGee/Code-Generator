@@ -7,7 +7,6 @@ import listener from '../Event/ItemDeleteListener'
 export default class Field extends UniqueItem {
     allowNull: boolean = false
     cast: string = ''
-    collation: string = ''
     comment: string = ''
     fillable: boolean = true
     hidden: boolean = false

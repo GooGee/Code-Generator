@@ -11,14 +11,6 @@
         </template>
 
         <div v-if="editing">
-            <span> Collation: </span>
-            <b-form-input v-model="field.collation"></b-form-input>
-        </div>
-        <div v-else>
-            <span v-if="field.collation"> Collation: {{ field.comment }} </span>
-        </div>
-
-        <div v-if="editing">
             <span> Comment: </span>
             <b-form-input v-model="field.comment"></b-form-input>
         </div>
