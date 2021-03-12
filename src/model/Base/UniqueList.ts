@@ -42,4 +42,8 @@ export default class UniqueList<T extends UniqueItem> extends ItemList<T> {
             this.add(iii)
         })
     }
+
+    sort() {
+        this.list.sort((aaa, bbb) => aaa.name.localeCompare(bbb.name))
+    }
 }
