@@ -28,11 +28,6 @@
                             <b-button @click="remove" variant="outline-danger"> - </b-button>
                             <ChangeButton :item="item" name="name"></ChangeButton>
                         </b-button-group>
-                        <CloneButton
-                            v-if="item.isLayer"
-                            :manager="sss.sidebar.manager"
-                            :item="item"
-                        ></CloneButton>
                     </td>
                 </tr>
             </LayerProperty>
@@ -42,7 +37,6 @@
 
 <script>
 import ChangeButton from './button/ChangeButton.vue'
-import CloneButton from './button/CloneButton.vue'
 import DataList from './schema/DataList.vue'
 import LayerProperty from './schema/LayerProperty.vue'
 import TreeBar from './part/TreeBar.vue'
@@ -52,7 +46,6 @@ export default {
     name: 'LayerPage',
     components: {
         ChangeButton,
-        CloneButton,
         DataList,
         LayerProperty,
         TreeBar,
