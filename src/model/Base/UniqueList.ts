@@ -22,6 +22,7 @@ export default class UniqueList<T extends UniqueItem> extends ItemList<T> {
     add(item: T) {
         this.throwIfExist(item.name)
         super.add(item)
+        this.list.sort((aaa, bbb) => aaa.name.localeCompare(bbb.name))
     }
 
     find(name: string) {
