@@ -8,6 +8,7 @@ import { RouteManager } from './Route'
 import ncListener from '../Event/NameChangeListener'
 import idListener from '../Event/ItemDeleteListener'
 import { script } from '../Text'
+import { MiddlewareManager } from './Middleware'
 
 export default class Entity extends UniqueItem {
     color: string = ''
@@ -20,6 +21,7 @@ export default class Entity extends UniqueItem {
     readonly fieldManager = new FieldManager()
     readonly indexManager = new IndexManager()
     readonly dataManager = new PresetManager()
+    readonly middlewareManager = new MiddlewareManager()
     readonly relationManager = new RelationManager()
     readonly routeManager = new RouteManager()
 

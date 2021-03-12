@@ -1,5 +1,7 @@
 <template>
     <div>
+        <slot></slot>
+
         <b-button-group v-for="mw in manager.list" :key="mw.name" class="inline mr11">
             <DeleteButton :manager="manager" :item="mw"></DeleteButton>
             <b-button variant="outline-secondary"> {{ mw.name }} </b-button>

@@ -1,7 +1,10 @@
 <template>
     <table class="table b-table b-table-caption-top">
         <caption>
-            <h3 class="inline mr11">Route</h3>
+            <h3>Route</h3>
+            <MiddlewareList :manager="sss.sidebar.item.middlewareManager">
+                <span class="mr11">Middleware</span>
+            </MiddlewareList>
         </caption>
         <thead>
             <tr>
@@ -27,9 +30,15 @@
             <tr>
                 <td></td>
                 <td>
-                    <select v-model="selected" @change="add($event.target.value)" class="form-control inline wa">
-                        <option selected="true" disabled="disabled" value=""> ---- </option>
-                        <option v-for="item in actionxx" :value="item" :key="item"> {{ item }} </option>
+                    <select
+                        v-model="selected"
+                        @change="add($event.target.value)"
+                        class="form-control inline wa"
+                    >
+                        <option selected="true" disabled="disabled" value="">----</option>
+                        <option v-for="item in actionxx" :value="item" :key="item">
+                            {{ item }}
+                        </option>
                     </select>
                 </td>
                 <td>
@@ -46,6 +55,7 @@
 
 <script>
 import draggable from 'vuedraggable'
+import MiddlewareList from './MiddlewareList.vue'
 import Route from './Route.vue'
 import SelectButton from '../button/SelectButton.vue'
 import sss from '@/state.js'
@@ -54,6 +64,7 @@ export default {
     name: 'RouteList',
     components: {
         draggable,
+        MiddlewareList,
         Route,
         SelectButton,
     },
@@ -64,6 +75,7 @@ export default {
     },
     data() {
         return {
+            sss,
             actionxx: ['delete', 'get', 'options', 'patch', 'post', 'put'],
             routexx: sss.getPreset('RouteMethod').propertyManager.list,
             selected: '',
@@ -80,7 +92,7 @@ export default {
             this.make(item.tag, path, item.name)
         },
         addRESTful() {
-            sss.getPreset('RouteRESTful').propertyManager.list.forEach(item => {
+            sss.getPreset('RouteRESTful').propertyManager.list.forEach((item) => {
                 const path = sss.sidebar.item.snakeCase + item.value
                 this.make(item.tag, path, item.name)
             })
