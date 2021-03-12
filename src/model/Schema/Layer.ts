@@ -5,6 +5,8 @@ import { PresetManager } from './Preset'
 import Project from './Project'
 import { runText, script } from '../Text'
 
+const FileExtension = '.php'
+
 export enum LayerEnum {
     Migration = 'Migration',
     Model = 'Model',
@@ -93,5 +95,12 @@ export default class Layer extends Node {
 export class LayerManager extends UniqueList<Layer> {
     constructor() {
         super(Layer)
+    }
+
+    make(name: string) {
+        const item = super.make(name)
+        item.classPattern = item.name
+        item.filePattern = item.name + FileExtension
+        return item
     }
 }
