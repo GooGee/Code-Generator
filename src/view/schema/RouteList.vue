@@ -8,10 +8,10 @@
         </caption>
         <thead>
             <tr>
-                <th></th>
+                <th style="min-width: 222px;">Controller Method</th>
                 <th>HTTP Method</th>
                 <th>Path</th>
-                <th>Controller Method</th>
+                <th>Route Name</th>
                 <th>Middleware</th>
             </tr>
         </thead>
@@ -28,7 +28,9 @@
 
         <tfoot>
             <tr>
-                <td></td>
+                <td>
+                    <SelectButton :list="routexx" :callback="addRoute"></SelectButton>
+                </td>
                 <td>
                     <select
                         v-model="selected"
@@ -44,9 +46,7 @@
                 <td>
                     <b-button @click="addRESTful" variant="outline-primary"> RESTful </b-button>
                 </td>
-                <td>
-                    <SelectButton :list="routexx" :callback="addRoute"></SelectButton>
-                </td>
+                <td></td>
                 <td></td>
             </tr>
         </tfoot>

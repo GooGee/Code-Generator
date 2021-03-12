@@ -2,18 +2,21 @@
     <tr>
         <td>
             <span class="drag-handle"> ✥ </span>
-            <DeleteButton :manager="manager" :item="route" class="mr11"></DeleteButton>
+            <b-button-group>
+                <DeleteButton :manager="manager" :item="route"></DeleteButton>
+                <ChangeButton :item="route" name="name"></ChangeButton>
+            </b-button-group>
         </td>
         <td>
             <select v-model="route.action" class="form-control inline wa">
-                <option v-for="item in actionxx" :value="item" :key="item"> {{ item }} </option>
+                <option v-for="item in actionxx" :value="item" :key="item">{{ item }}</option>
             </select>
         </td>
         <td>
             <b-form-input v-model="route.path"></b-form-input>
         </td>
         <td>
-            <ChangeButton :item="route" name="name"></ChangeButton>
+            <b-form-input v-model="route.routeName"></b-form-input>
         </td>
         <td>
             <MiddlewareList :manager="route.middlewareManager"></MiddlewareList>

@@ -5,6 +5,7 @@ import { MiddlewareManager } from './Middleware'
 export default class Route extends UniqueItem {
     action: string = ''
     path: string = ''
+    routeName: string = ''
     readonly middlewareManager = new MiddlewareManager()
 }
 
