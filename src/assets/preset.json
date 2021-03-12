@@ -1,6 +1,7 @@
 {
     "name": "Project",
     "version": 15,
+    "apiVersion": "v1",
     "dataVersion": "1.0",
     "description": "",
     "fakerScript": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const nameManager = ddd.project.getPreset('FakerNameMap').propertyManager\n    const propertyManager = ddd.project.getPreset('FakerProperty').propertyManager\n    const typeManager = ddd.project.getPreset('FakerTypeMap').propertyManager\n\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.included === false) {\n            return\n        }\n        if (field.isIncrement) {\n            return\n        }\n        if (field.seed.value) {\n            return\n        }\n\n        let found = nameManager.find(field.name)\n        if (found) {\n            /**\n             * if `field.name` found in preset `FakerNameMap`\n             * them set `field.seed`\n             * `found.tag` is one of [method, property, raw]\n             * `found.value` is one of [name in FakerMethod, name in FakerProperty, PHP expression]\n             */\n            field.seed.type = found.tag\n            field.seed.value = found.value\n            return\n        }\n\n        found = typeManager.find(field.type)\n        if (found) {\n            /**\n             * if `field.type` found in preset `FakerTypeMap`\n             * them set `field.seed`\n             * `found.tag` is one of [method, property, raw]\n             * `found.value` is one of [name in FakerMethod, name in FakerProperty, PHP expression]\n             */\n            field.seed.type = found.tag\n            field.seed.value = found.value\n            return\n        }\n\n        found = propertyManager.find(field.name)\n        if (found) {\n            /**\n             * if `field.name` found in preset `FakerProperty`\n             * them set `field.seed`\n             */\n            field.seed.type = 'property'\n            field.seed.value = found.name\n        }\n\n    })\n}\n",
@@ -757,7 +758,7 @@
                 "routeDomain": "",
                 "routeName": "",
                 "routePrefix": "admin",
-                "script": "",
+                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
                 "tableName": "user",
                 "fieldManager": {
                     "list": [
@@ -765,7 +766,6 @@
                             "name": "id",
                             "allowNull": false,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
@@ -792,7 +792,6 @@
                             "name": "name",
                             "allowNull": false,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": true,
                             "hidden": false,
@@ -819,7 +818,6 @@
                             "name": "email",
                             "allowNull": false,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": true,
                             "hidden": false,
@@ -846,7 +844,6 @@
                             "name": "password",
                             "allowNull": false,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": true,
@@ -873,7 +870,6 @@
                             "name": "remember_token",
                             "allowNull": true,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": true,
@@ -900,7 +896,6 @@
                             "name": "created_at",
                             "allowNull": true,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
@@ -927,7 +922,6 @@
                             "name": "updated_at",
                             "allowNull": true,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
@@ -970,6 +964,9 @@
                 "dataManager": {
                     "list": []
                 },
+                "middlewareManager": {
+                    "list": []
+                },
                 "relationManager": {
                     "list": [
                         {
@@ -990,7 +987,7 @@
                 "routeDomain": "",
                 "routeName": "",
                 "routePrefix": "",
-                "script": "",
+                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
                 "tableName": "post",
                 "fieldManager": {
                     "list": [
@@ -998,7 +995,6 @@
                             "name": "id",
                             "allowNull": false,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
@@ -1025,7 +1021,6 @@
                             "name": "user_id",
                             "allowNull": false,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
@@ -1052,7 +1047,6 @@
                             "name": "text",
                             "allowNull": false,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": true,
                             "hidden": false,
@@ -1084,7 +1078,6 @@
                             "name": "created_at",
                             "allowNull": true,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
@@ -1111,7 +1104,6 @@
                             "name": "updated_at",
                             "allowNull": true,
                             "cast": "",
-                            "collation": "",
                             "comment": "",
                             "fillable": false,
                             "hidden": false,
@@ -1153,6 +1145,9 @@
                 "dataManager": {
                     "list": []
                 },
+                "middlewareManager": {
+                    "list": []
+                },
                 "relationManager": {
                     "list": [
                         {
@@ -1166,8 +1161,9 @@
                     "list": [
                         {
                             "name": "destroy",
-                            "action": "delete",
+                            "method": "delete",
                             "path": "post/{id}",
+                            "routeName": "",
                             "middlewareManager": {
                                 "list": [
                                     {
@@ -1178,24 +1174,27 @@
                         },
                         {
                             "name": "index",
-                            "action": "get",
+                            "method": "get",
                             "path": "post",
+                            "routeName": "",
                             "middlewareManager": {
                                 "list": []
                             }
                         },
                         {
                             "name": "show",
-                            "action": "get",
+                            "method": "get",
                             "path": "post/{id}",
+                            "routeName": "",
                             "middlewareManager": {
                                 "list": []
                             }
                         },
                         {
                             "name": "store",
-                            "action": "post",
+                            "method": "post",
                             "path": "post",
+                            "routeName": "",
                             "middlewareManager": {
                                 "list": [
                                     {
@@ -1206,8 +1205,9 @@
                         },
                         {
                             "name": "update",
-                            "action": "patch",
+                            "method": "patch",
                             "path": "post/{id}",
+                            "routeName": "",
                             "middlewareManager": {
                                 "list": [
                                     {
@@ -2069,8 +2069,8 @@
                                 "classPattern": "",
                                 "filePattern": "api.php",
                                 "pathPattern": "",
-                                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const layerController = ddd.project.getLayer('app/Http/Controllers', 'ControllerAPI')\n    const controllerNS = 'App\\\\Http\\\\Controllers'\n    ddd.routexx = []\n    ddd.project.entityManager.list.forEach(entity => {\n        const ns = layerController.getNameSpace(ddd.project, entity)\n        let namespace = ''\n        if (ns !== controllerNS) {\n            namespace = ns.replace(controllerNS + '\\\\', '')\n        }\n        const routexx = []\n        entity.routeManager.list.forEach(route => {\n            const controller = layerController.getClassName(entity)\n            let routeName = ''\n            if (route.routeName) {\n                routeName = `->name('${route.routeName}')`\n            }\n            const list = route.middlewareManager.list.map(mw => mw.name)\n            let middleware = ''\n            if (list.length) {\n                middleware = `->middleware(['${list.join(\"', '\")}'])`\n            }\n            const text = `Route::${route.action}('${route.path}', '${controller}@${route.name}')${routeName}${middleware};`\n            routexx.push(text)\n        })\n        if (routexx.length) {\n            const list = []\n            if (namespace) {\n                list.push(`'namespace' => '${namespace}'`)\n            }\n            if (entity.routeDomain) {\n                list.push(`'domain' => '${entity.routeDomain}'`)\n            }\n            if (entity.routeName) {\n                list.push(`'name' => '${entity.routeName}'`)\n            }\n            if (entity.routePrefix) {\n                list.push(`'prefix' => '${entity.routePrefix}'`)\n            }\n            routexx.splice(0, 0, `Route::group([${list.join(', ')}], function () {`)\n            ddd.routexx.push(`${routexx.join('\\n    ')}\\n});`)\n        }\n    })\n}\n",
-                                "template": "<?php\n\nuse Illuminate\\Http\\Request;\n\n/*\n|--------------------------------------------------------------------------\n| API Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register API routes for your application. These\n| routes are loaded by the RouteServiceProvider within a group which\n| is assigned the \"api\" middleware group. Enjoy building your API!\n|\n*/\n\nRoute::middleware('auth:api')->get('/user', function (Request $request) {\n    return $request->user();\n});\n\n{% for route in routexx %}\n{{ route }}\n{% endfor %}\n",
+                                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    const layerController = ddd.project.getLayer('app/Http/Controllers', 'ControllerAPI')\n    ddd.nsxx = []\n    ddd.groupxx = []\n    ddd.project.entityManager.list.forEach(entity => {\n        const routexx = []\n        const controller = layerController.getClassName(entity)\n        entity.routeManager.list.forEach(route => {\n            let routeName = ''\n            if (route.routeName) {\n                routeName = `->name('${route.routeName}')`\n            }\n\n            let middleware = ''\n            if (route.middlewareManager.list.length) {\n                const list = route.middlewareManager.list.map(mw => mw.name)\n                middleware = `->middleware(['${list.join(\"', '\")}'])`\n            }\n\n            const text = `Route::${route.method}('${route.path}', [${controller}::class, '${route.name}'])${routeName + middleware};`\n            routexx.push(text)\n        })\n\n        if (routexx.length) {\n            const ns = layerController.getFullName(ddd.project, entity)\n            ddd.nsxx.push(ns)\n\n            const list = []\n            if (entity.routeDomain) {\n                list.push(`domain('${entity.routeDomain}')->`)\n            }\n\n            if (entity.routeName) {\n                list.push(`name('${entity.routeName}')->`)\n            }\n\n            let prefix = ddd.project.apiVersion\n            if (entity.routePrefix) {\n                prefix = prefix + '/' + entity.routePrefix\n            }\n            if (prefix) {\n                list.push(`prefix('${prefix}')->`)\n            }\n\n            const namexx = entity.middlewareManager.list.map(mw => mw.name)\n            const mw = namexx.length ? `'${namexx.join(\"', '\")}'` : ''\n            list.push(`middleware([${mw}])->`)\n\n            const text = `Route::${list.join('')}group(function () {\\n    ${routexx.join('\\n    ')}\\n});`\n            ddd.groupxx.push(text)\n        }\n    })\n}\n",
+                                "template": "<?php\n\n{% for ns in nsxx %}\nuse {{ ns }};\n{% endfor %}\n\nuse Illuminate\\Http\\Request;\n\n/*\n|--------------------------------------------------------------------------\n| API Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register API routes for your application. These\n| routes are loaded by the RouteServiceProvider within a group which\n| is assigned the \"api\" middleware group. Enjoy building your API!\n|\n*/\n\nRoute::middleware('auth:api')->get('/user', function (Request $request) {\n    return $request->user();\n});\n\n{% for route in groupxx %}\n{{ route }}\n{% endfor %}\n",
                                 "dataManager": {
                                     "list": []
                                 }
@@ -2087,8 +2087,8 @@
                                 "classPattern": "",
                                 "filePattern": "web.php",
                                 "pathPattern": "",
-                                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    const layerController = ddd.project.getLayer('app/Http/Controllers', 'ControllerAPI')\n    const controllerNS = 'App\\\\Http\\\\Controllers'\n    ddd.routexx = []\n    ddd.project.entityManager.list.forEach(entity => {\n        const ns = layerController.getNameSpace(ddd.project, entity)\n        let namespace = ''\n        if (ns !== controllerNS) {\n            namespace = ns.replace(controllerNS + '\\\\', '')\n        }\n        const routexx = []\n        entity.routeManager.list.forEach(route => {\n            const controller = layerController.getClassName(entity)\n            let routeName = ''\n            if (route.routeName) {\n                routeName = `->name('${route.routeName}')`\n            }\n            const list = route.middlewareManager.list.map(mw => mw.name)\n            let middleware = ''\n            if (list.length) {\n                middleware = `->middleware(['${list.join(\"', '\")}'])`\n            }\n            const text = `Route::${route.action}('${route.path}', '${controller}@${route.name}')${routeName}${middleware};`\n            routexx.push(text)\n        })\n        if (routexx.length) {\n            const list = []\n            if (namespace) {\n                list.push(`'namespace' => '${namespace}'`)\n            }\n            if (entity.routeDomain) {\n                list.push(`'domain' => '${entity.routeDomain}'`)\n            }\n            if (entity.routeName) {\n                list.push(`'name' => '${entity.routeName}'`)\n            }\n            if (entity.routePrefix) {\n                list.push(`'prefix' => '${entity.routePrefix}'`)\n            }\n            routexx.splice(0, 0, `Route::group([${list.join(', ')}], function () {`)\n            ddd.routexx.push(`${routexx.join('\\n    ')}\\n});`)\n        }\n    })\n}\n",
-                                "template": "<?php\n\n/*\n|--------------------------------------------------------------------------\n| Web Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register web routes for your application. These\n| routes are loaded by the RouteServiceProvider within a group which\n| contains the \"web\" middleware group. Now create something great!\n|\n*/\n\nRoute::get('/', function () {\n    return view('welcome');\n});\n\n{% for route in routexx %}\n{{ route }}\n{% endfor %}\n",
+                                "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    const layerController = ddd.project.getLayer('app/Http/Controllers', 'ControllerAPI')\n    ddd.nsxx = []\n    ddd.groupxx = []\n    ddd.project.entityManager.list.forEach(entity => {\n        const routexx = []\n        const controller = layerController.getClassName(entity)\n        entity.routeManager.list.forEach(route => {\n            let routeName = ''\n            if (route.routeName) {\n                routeName = `->name('${route.routeName}')`\n            }\n\n            let middleware = ''\n            if (route.middlewareManager.list.length) {\n                const list = route.middlewareManager.list.map(mw => mw.name)\n                middleware = `->middleware(['${list.join(\"', '\")}'])`\n            }\n\n            const text = `Route::${route.method}('${route.path}', [${controller}::class, '${route.name}'])${routeName + middleware};`\n            routexx.push(text)\n        })\n\n        if (routexx.length) {\n            const ns = layerController.getFullName(ddd.project, entity)\n            ddd.nsxx.push(ns)\n\n            const list = []\n            if (entity.routeDomain) {\n                list.push(`domain('${entity.routeDomain}')->`)\n            }\n\n            if (entity.routeName) {\n                list.push(`name('${entity.routeName}')->`)\n            }\n\n            let prefix = ddd.project.apiVersion\n            if (entity.routePrefix) {\n                prefix = prefix + '/' + entity.routePrefix\n            }\n            if (prefix) {\n                list.push(`prefix('${prefix}')->`)\n            }\n\n            const namexx = entity.middlewareManager.list.map(mw => mw.name)\n            const mw = namexx.length ? `'${namexx.join(\"', '\")}'` : ''\n            list.push(`middleware([${mw}])->`)\n\n            const text = `Route::${list.join('')}group(function () {\\n    ${routexx.join('\\n    ')}\\n});`\n            ddd.groupxx.push(text)\n        }\n    })\n}\n",
+                                "template": "<?php\n\n{% for ns in nsxx %}\nuse {{ ns }};\n{% endfor %}\n\n/*\n|--------------------------------------------------------------------------\n| Web Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register web routes for your application. These\n| routes are loaded by the RouteServiceProvider within a group which\n| contains the \"web\" middleware group. Now create something great!\n|\n*/\n\nRoute::get('/', function () {\n    return view('welcome');\n});\n\n{% for route in groupxx %}\n{{ route }}\n{% endfor %}\n",
                                 "dataManager": {
                                     "list": []
                                 }
