@@ -1,6 +1,6 @@
-import { filter } from './Service/Text'
-import IUniqueItemWithColor from './Base/IUniqueItemWithColor'
-import UniqueList from './Base/UniqueList'
+import { filter } from './Text'
+import IUniqueItemWithColor from '../Base/IUniqueItemWithColor'
+import UniqueList from '../Base/UniqueList'
 
 export default class SideBar {
     readonly manager: UniqueList<IUniqueItemWithColor> | null = null
