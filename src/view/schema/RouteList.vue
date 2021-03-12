@@ -20,7 +20,7 @@
             <Route
                 v-for="route in manager.list"
                 :route="route"
-                :actionxx="actionxx"
+                :methodxx="methodxx"
                 :manager="manager"
                 :key="route.name"
             ></Route>
@@ -38,7 +38,7 @@
                         class="form-control inline wa"
                     >
                         <option selected="true" disabled="disabled" value="">----</option>
-                        <option v-for="item in actionxx" :value="item" :key="item">
+                        <option v-for="item in methodxx" :value="item" :key="item">
                             {{ item }}
                         </option>
                     </select>
@@ -76,7 +76,7 @@ export default {
     data() {
         return {
             sss,
-            actionxx: ['delete', 'get', 'options', 'patch', 'post', 'put'],
+            methodxx: ['delete', 'get', 'options', 'patch', 'post', 'put'],
             routexx: sss.getPreset('RouteMethod').propertyManager.list,
             selected: '',
         }
@@ -97,10 +97,10 @@ export default {
                 this.make(item.tag, path, item.name)
             })
         },
-        make(action, path, method) {
+        make(method, path, name) {
             try {
-                const route = this.manager.make(method)
-                route.action = action
+                const route = this.manager.make(name)
+                route.method = method
                 route.path = path
                 this.manager.add(route)
             } catch (error) {

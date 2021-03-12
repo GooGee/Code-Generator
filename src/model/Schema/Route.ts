@@ -3,7 +3,7 @@ import UniqueList from '../Base/UniqueList'
 import { MiddlewareManager } from './Middleware'
 
 export default class Route extends UniqueItem {
-    action: string = ''
+    method: string = ''
     path: string = ''
     routeName: string = ''
     readonly middlewareManager = new MiddlewareManager()

@@ -8,8 +8,8 @@
             </b-button-group>
         </td>
         <td>
-            <select v-model="route.action" class="form-control inline wa">
-                <option v-for="item in actionxx" :value="item" :key="item">{{ item }}</option>
+            <select v-model="route.method" class="form-control inline wa">
+                <option v-for="item in methodxx" :value="item" :key="item">{{ item }}</option>
             </select>
         </td>
         <td>
@@ -45,7 +45,7 @@ export default {
             type: Object,
             required: true,
         },
-        actionxx: {
+        methodxx: {
             type: Array,
             required: true,
         },
