@@ -1,5 +1,5 @@
 import Dialogue from './Dialogue'
-import { filter } from '../Text'
+import { filter } from '../Service/Text'
 import Item from '../Base/Item'
 import UniqueItem from '../Base/UniqueItem'
 

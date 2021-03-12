@@ -7,7 +7,7 @@ import { RelationManager } from './Relation'
 import { RouteManager } from './Route'
 import ncListener from '../Event/NameChangeListener'
 import idListener from '../Event/ItemDeleteListener'
-import { script } from '../Text'
+import { script } from '../Service/Text'
 import { MiddlewareManager } from './Middleware'
 
 export default class Entity extends UniqueItem {

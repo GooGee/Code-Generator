@@ -3,7 +3,7 @@ import Entity from './Entity'
 import Node from './Node'
 import { PresetManager } from './Preset'
 import Project from './Project'
-import { runText, script } from '../Text'
+import { runText, script } from '../Service/Text'
 
 const FileExtension = '.php'
 

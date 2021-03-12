@@ -1,6 +1,6 @@
 import nunjucks from 'nunjucks'
-import UniqueItem from './Base/UniqueItem'
-import { DataForScript } from './DataForScript'
+import UniqueItem from '../Base/UniqueItem'
+import { DataForScript } from '../DataForScript'
 
 nunjucks.configure({ autoescape: false })
 

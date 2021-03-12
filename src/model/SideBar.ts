@@ -1,4 +1,4 @@
-import { filter } from './Text'
+import { filter } from './Service/Text'
 import IUniqueItemWithColor from './Base/IUniqueItemWithColor'
 import UniqueList from './Base/UniqueList'
 
