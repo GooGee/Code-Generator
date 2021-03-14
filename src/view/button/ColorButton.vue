@@ -1,6 +1,7 @@
 <template>
     <span
-        :style="{ 'background-color': bg, 'border-color': bColor }"
+        :style="{ 'background-color': bg, 'border-color': border }"
+        :class="{ active: active }"
         class="color-button"
     ></span>
 </template>
@@ -29,12 +30,9 @@ export default {
             }
             return '#fff'
         },
-        bColor() {
+        border() {
             if (this.color === '') {
-                if (this.active) {
-                    return '#333'
-                }
-                return '#eee'
+                return '#333'
             }
             return this.color
         },
@@ -45,11 +43,17 @@ export default {
 <style>
 .color-button {
     display: inline-block;
-    border: solid 4px lightgray;
     border-radius: 50%;
+    border-style: solid;
+    border-width: 4px;
     cursor: pointer;
     width: 33px;
     height: 33px;
     margin: 3px;
+    opacity: 0.2;
+}
+
+.color-button.active {
+    opacity: 1;
 }
 </style>
