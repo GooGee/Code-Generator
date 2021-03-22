@@ -1068,9 +1068,9 @@
                             },
                             "seed": {
                                 "unique": false,
-                                "type": "method",
-                                "value": "sentences",
-                                "parameter": "3"
+                                "type": "property",
+                                "value": "paragraph",
+                                "parameter": ""
                             },
                             "type": "string"
                         },
