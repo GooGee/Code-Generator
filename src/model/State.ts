@@ -15,8 +15,7 @@ import RunScript from './Service/RunScript'
 import Folder from './Schema/Folder'
 
 class FakeManager {
-
-    constructor(readonly folder: Folder) { }
+    constructor(readonly folder: Folder) {}
 
     get list() {
         return this.folder.all
@@ -25,6 +24,7 @@ class FakeManager {
 
 export default class State {
     error = null
+    ide = ''
     route: Route
     readonly preset: Project
     project: Project | null = null
@@ -113,6 +113,10 @@ export default class State {
 
     setValidation(entity: Entity) {
         RunScript.runValidation(this.project!, entity)
+    }
+
+    get inBrowser() {
+        return this.ide === ''
     }
 
     get ready() {

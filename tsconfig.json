@@ -12,6 +12,7 @@
         ]
     },
     "include": [
+        "./src/helper/**/*",
         "./src/model/**/*"
     ],
     "exclude": [

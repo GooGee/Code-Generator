@@ -1,7 +1,7 @@
 <template>
-    <div id="app" style="margin-bottom: 33px;">
+    <div id="app" style="margin-bottom: 33px">
         <Bar :ready="sss.ready"></Bar>
-        <div class="container-fluid" style="margin-top: 55px;">
+        <div class="container-fluid" style="margin-top: 55px">
             <router-view></router-view>
         </div>
         <InputDialogue></InputDialogue>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import makeBridge from './helper/makeBridge'
 import Bar from './view/part/Bar.vue'
 import InputDialogue from './view/part/InputDialogue.vue'
 import ListDialogue from './view/part/ListDialogue.vue'
@@ -32,6 +33,16 @@ export default {
         return {
             sss,
         }
+    },
+    created() {
+        const sp = new URLSearchParams(window.location.search)
+        const ide = sp.get('ide')
+        if (ide === null) {
+            makeBridge(window)
+            return
+        }
+
+        sss.ide = ide
     },
 }
 </script>

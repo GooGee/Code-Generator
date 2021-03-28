@@ -12,7 +12,7 @@
             <div>or delete folder `code-generator` and restart IDE</div>
         </div>
 
-        <p v-if="isDev" class="mt11">
+        <p v-if="sss.inBrowser" class="mt11">
             <span @click="add" class="btn btn-outline-primary"> New </span>
         </p>
     </div>
@@ -27,34 +27,18 @@ export default {
         return {
             sss,
             version: process.env.VUE_APP_VERSION,
-            isDev: process.env.NODE_ENV === 'development',
         }
     },
     methods: {
         add() {
-            function setJavaBridge(cefw) {
-                cefw.JavaBridge = {
-                    call(text) {
-                        const json = JSON.parse(text)
-                        console.log(json.data)
-                        json.data = ''
-                        json.status = 400
-                        json.message = 'Echo OK'
-                        cefw.bridge.call(json)
-                    },
-                }
-
-                const response = {
-                    action: 'load',
-                    key: 'project',
-                    data: '',
-                    message: '',
-                    status: 200,
-                }
-                cefw.bridge.call(response)
+            const response = {
+                action: 'load',
+                key: 'project',
+                data: '',
+                message: '',
+                status: 200,
             }
-
-            setJavaBridge(window)
+            window.bridge.call(response)
         },
     },
 }
