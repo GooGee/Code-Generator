@@ -8,7 +8,20 @@
 Intuitive and efficient code generator for Laravel.
 [PHPStorm plugin](https://plugins.jetbrains.com/plugin/15276-laravel-generator)
 
-![GUI](https://github.com/GooGee/Code-Generator/raw/main/image/file.png)
+[demo](https://GooGee.github.io/Code-Generator-Page/dist300)
+
+
+## Generate files
+
+![GUI](https://github.com/GooGee/Code-Generator/raw/main/image/file.gif)
+
+## Convert database schema to Laravel Migration
+
+![GUI](https://github.com/GooGee/Entity-Builder/raw/main/image/schema.gif)
+
+## Create migration
+
+![GUI](https://github.com/GooGee/Code-Generator/raw/main/image/table.gif)
 
 
 ## Project setup
