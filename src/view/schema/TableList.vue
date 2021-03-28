@@ -9,7 +9,9 @@
             <ul class="gray">
                 <li>
                     make sure the
-                    <OpenButton file="https://packagist.org/packages/googee/entity">PHP package</OpenButton>
+                    <OpenButton file="https://packagist.org/packages/googee/entity">
+                        PHP package
+                    </OpenButton>
                     is installed
                 </li>
                 <li>
@@ -17,12 +19,8 @@
                     <a :href="sss.project.server" target="_blank">{{ sss.project.server }}</a>
                     is running
                 </li>
-                <li>
-                    and database is configured in .env file
-                </li>
-                <li>
-                    to change the server URL, go to Property tab
-                </li>
+                <li>and database is configured in .env file</li>
+                <li>to change the server URL, go to Property tab</li>
             </ul>
         </caption>
         <tbody>
@@ -46,13 +44,19 @@
             <tr>
                 <td>
                     <span class="mr11">if table exists</span>
-                    <b-form-radio v-model="skip" :value="true" class="inline mr11">Skip</b-form-radio>
-                    <b-form-radio v-model="skip" :value="false" class="inline">Replace</b-form-radio>
+                    <b-form-radio v-model="skip" :value="true" class="inline mr11">
+                        Skip
+                    </b-form-radio>
+                    <b-form-radio v-model="skip" :value="false" class="inline">
+                        Replace
+                    </b-form-radio>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <b-button @click="convert" variant="outline-primary"> Import selected table </b-button>
+                    <b-button @click="convert" variant="outline-primary">
+                        Import selected table
+                    </b-button>
                 </td>
             </tr>
         </tfoot>
@@ -88,13 +92,14 @@ export default {
 
             this.waiting = true
             const route = sss.project.server + '/entity/table'
-            sss.route.get(route, '', response => {
+            sss.route.get(route, '', (response) => {
                 if (response.status === 200) {
                     this.data = response.data
                     if (response.data.tables.length === 0) {
                         this.$root.$bvToast.toast('No table found', {
                             title: 'i',
                             variant: 'success',
+                            autoHideDelay: 1222,
                             solid: true,
                         })
                     }
@@ -121,6 +126,7 @@ export default {
                 this.$root.$bvToast.toast('Table imported', {
                     title: 'i',
                     variant: 'success',
+                    autoHideDelay: 1222,
                     solid: true,
                 })
             } catch (error) {
@@ -132,7 +138,7 @@ export default {
             }
         },
         select(value) {
-            this.data.tables.forEach(table => {
+            this.data.tables.forEach((table) => {
                 table.included = value
             })
         },

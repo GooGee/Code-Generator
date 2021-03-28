@@ -29,6 +29,7 @@ export default {
                     this.$root.$bvToast.toast(response.message, {
                         title: 'i',
                         variant: 'success',
+                        autoHideDelay: 1222,
                         solid: true,
                     })
                 })

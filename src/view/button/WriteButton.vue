@@ -48,11 +48,12 @@ export default {
             try {
                 const file = this.layer.getFilePath(sss.project, entity)
                 const text = sss.render(this.layer, entity)
-                sss.route.write(file, text, response => {
+                sss.route.write(file, text, (response) => {
                     if (response.status === 200) {
                         this.$root.$bvToast.toast(file, {
                             title: 'Saved',
                             variant: 'success',
+                            autoHideDelay: 1222,
                             solid: true,
                         })
                         return

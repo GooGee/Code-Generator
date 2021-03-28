@@ -6,7 +6,9 @@
 
         <div v-if="sss.sidebar.item" class="col-8 col-xl-9">
             <div>
-                <h2 v-if="sss.sidebar.item.original" class="inline mr11">artisan {{ sss.sidebar.item.name }}</h2>
+                <h2 v-if="sss.sidebar.item.original" class="inline mr11">
+                    artisan {{ sss.sidebar.item.name }}
+                </h2>
                 <b-button-group v-else class="mr11">
                     artisan
                     <DeleteButton
@@ -23,7 +25,9 @@
                 <ul class="gray">
                     <li>
                         make sure the
-                        <OpenButton file="https://packagist.org/packages/googee/entity">PHP package</OpenButton>
+                        <OpenButton file="https://packagist.org/packages/googee/entity">
+                            PHP package
+                        </OpenButton>
                         is installed
                     </li>
                     <li>
@@ -64,7 +68,12 @@
                 <div class="mtb11">
                     <ColorPanel :color.sync="sss.sidebar.item.color"></ColorPanel>
                 </div>
-                <b-form-textarea v-model="result" rows="22" spellcheck="false" readonly></b-form-textarea>
+                <b-form-textarea
+                    v-model="result"
+                    rows="22"
+                    spellcheck="false"
+                    readonly
+                ></b-form-textarea>
             </div>
         </div>
     </div>
@@ -111,13 +120,14 @@ export default {
                 command: sss.sidebar.item.toString(),
             }
             const route = sss.project.server + '/entity/run'
-            sss.route.post(route, JSON.stringify(data), response => {
+            sss.route.post(route, JSON.stringify(data), (response) => {
                 if (response.status === 200) {
                     this.result = response.data
                     this.waiting = false
                     this.$root.$bvToast.toast(response.message, {
                         title: 'i',
                         variant: 'success',
+                        autoHideDelay: 1222,
                         solid: true,
                     })
                     return
