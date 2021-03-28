@@ -4,7 +4,7 @@ import { DataForScript } from '../DataForScript'
 
 nunjucks.configure({ autoescape: false })
 
-export const script = 'function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n'
+export const script = 'function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of this Entity\n     */\n}\n'
 
 export function addQuote(text: any, quote: string = "'") {
     if (hasQuote(text)) {
