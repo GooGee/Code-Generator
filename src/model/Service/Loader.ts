@@ -2,7 +2,7 @@ import UniqueItem from '../Base/UniqueItem'
 import UniqueList from '../Base/UniqueList'
 import Project from '../Schema/Project'
 
-const MinVersion = 15
+const MinVersion = 20
 
 export default class Loader {
 

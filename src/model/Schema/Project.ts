@@ -4,7 +4,7 @@ import { EntityManager } from './Entity'
 import Folder from './Folder'
 import { PresetManager } from './Preset'
 
-const Version = 15
+const Version = 20
 
 export default class Project extends NameItem {
     version = Version
