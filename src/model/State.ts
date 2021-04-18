@@ -28,6 +28,7 @@ export default class State {
     route: Route
     readonly preset: Project
     project: Project | null = null
+    data: Project | null = null
     sidebar: SideBar | null = null
 
     readonly inputDialogue = new InputDialogue()
@@ -68,6 +69,11 @@ export default class State {
 
     load(data: Project) {
         this.project = Loader.load(data, this.preset)
+        this.prepare()
+    }
+
+    upgrade() {
+        this.project = Loader.upgrade(this.data!, this.preset)
         this.prepare()
     }
 

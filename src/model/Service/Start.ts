@@ -9,18 +9,17 @@ import State from '../State'
 import Save from './Save'
 
 export default class Start {
-
     static run(state: State, window: ICEFW) {
-
         const manager = new HandlerManager()
-        manager.add(ActionEnum.error, '*', (response) => {
+        manager.add(ActionEnum.error, '*', response => {
             alert(response.message)
         })
-        manager.add(ActionEnum.load, 'project', (response) => {
+        manager.add(ActionEnum.load, 'project', response => {
             if (response.status === StatusEnum.OK) {
                 if (response.data) {
                     try {
                         const project = JSON.parse(response.data)
+                        state.data = project
                         state.load(project)
                         Save.last = response.data
                     } catch (error) {
@@ -36,7 +35,7 @@ export default class Start {
         const route = new Route(toJava)
         window.bridge = new Bridge(manager)
 
-        manager.add(ActionEnum.save, 'project', (response) => {
+        manager.add(ActionEnum.save, 'project', response => {
             if (response.status === StatusEnum.OK) {
                 route.save(state.project!)
             }
@@ -44,5 +43,4 @@ export default class Start {
 
         return route
     }
-
 }
