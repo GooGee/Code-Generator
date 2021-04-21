@@ -1,8 +1,8 @@
 import Route from '../Bridge/Route'
-import { CGFolder } from './File'
+import { getPath } from './File'
 
 const FileName = 'index.d.ts'
-const LocalFile = CGFolder + '/' + FileName
+const LocalFile = getPath(FileName)
 
 export default function(route: Route) {
     fetch(FileName)

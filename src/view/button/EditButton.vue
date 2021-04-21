@@ -7,6 +7,7 @@
 
 <script>
 import sss from '@/state.js'
+import { getPath } from '@/model/Service/File.ts'
 
 export default {
     name: 'EditButton',
@@ -38,7 +39,7 @@ export default {
 
             this.waiting = true
             try {
-                const file = 'code-generator/' + this.file
+                const file = getPath(this.file)
                 sss.route.edit(file, this.content, (response) => {
                     this.waiting = false
                     if (response.status === 200) {
