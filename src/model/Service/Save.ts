@@ -3,8 +3,8 @@ import Response from '../Bridge/Response'
 import { ActionEnum } from '../Bridge/ActionEnum'
 import IHandler from '../Bridge/IHandler'
 import Route from '../Bridge/Route'
+import { CGFolder } from './File'
 
-const CGFolder = 'code-generator'
 const BackupFolder = CGFolder + '/backup'
 const FileName = CGFolder + '/data.json'
 
