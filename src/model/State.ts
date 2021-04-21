@@ -13,6 +13,7 @@ import Route from './Bridge/Route'
 import Start from './Service/Start'
 import RunScript from './Service/RunScript'
 import Folder from './Schema/Folder'
+import SaveDTS from './Service/SaveDTS'
 
 class FakeManager {
     constructor(readonly folder: Folder) {}
@@ -52,6 +53,7 @@ export default class State {
         this.sidebarLayer = new SideBar(layerManager as any)
         this.sidebarPreset = new SideBar(this.project!.presetManager)
         this.showEntity()
+        SaveDTS(this.route)
     }
 
     convert(data: IData, skip: boolean) {

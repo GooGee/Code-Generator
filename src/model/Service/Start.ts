@@ -11,6 +11,10 @@ import Save from './Save'
 export default class Start {
     static run(state: State, window: ICEFW) {
         const manager = new HandlerManager()
+        const toJava = new ToJava(window, manager)
+        const route = new Route(toJava)
+        window.bridge = new Bridge(manager)
+
         manager.add(ActionEnum.error, '*', response => {
             alert(response.message)
         })
@@ -30,11 +34,6 @@ export default class Start {
             }
             state.create('Project')
         })
-
-        const toJava = new ToJava(window, manager)
-        const route = new Route(toJava)
-        window.bridge = new Bridge(manager)
-
         manager.add(ActionEnum.save, 'project', response => {
             if (response.status === StatusEnum.OK) {
                 route.save(state.project!)
