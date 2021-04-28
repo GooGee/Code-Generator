@@ -9,7 +9,7 @@
                     name
                 </th>
                 <th @click="sort('value')" :aria-sort="sortText('value')">value</th>
-                <th>tag</th>
+                <th @click="sort('tag')" :aria-sort="sortText('tag')">tag</th>
             </tr>
         </thead>
 
