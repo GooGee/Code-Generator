@@ -6,7 +6,7 @@
         </caption>
         <thead>
             <tr>
-                <th class="text-right">name</th>
+                <th class="text-right">field</th>
                 <th>edit</th>
                 <th>index</th>
                 <th>show</th>

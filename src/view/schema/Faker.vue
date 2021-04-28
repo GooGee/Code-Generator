@@ -67,6 +67,7 @@
                     <ScriptGuide></ScriptGuide>
                 </td>
                 <td></td>
+                <td></td>
             </tr>
         </tfoot>
     </table>
