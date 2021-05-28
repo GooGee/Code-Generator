@@ -1,3 +1,8 @@
+.cpt {
+    vertical-align: bottom;
+    line-height: 44px;
+}
+
 .drag-handle {
     font-size: x-large;
     cursor: all-scroll;

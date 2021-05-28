@@ -7,7 +7,9 @@
                 <RefreshButton></RefreshButton>
             </div>
 
-            <ColorPanel :color="color" v-on="$listeners"></ColorPanel>
+            <ColorPanel :color="color" v-on="$listeners">
+                <span class="inline mr11 cpt">Layer with color: </span>
+            </ColorPanel>
         </caption>
         <thead>
             <tr>
