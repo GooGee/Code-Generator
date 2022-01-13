@@ -40,13 +40,14 @@ export default {
             this.waiting = true
             try {
                 const file = getPath(this.file)
-                sss.route.edit(file, this.content, (response) => {
+                sss.route.edit(file, this.content, response => {
                     this.waiting = false
                     if (response.status === 200) {
                         if (this.callback) {
                             this.callback(response.status === 200, response.data)
                         }
                     } else {
+                        console.log(this.content)
                         this.$root.$bvToast.toast(response.message, {
                             title: 'i',
                             variant: 'danger',
@@ -56,6 +57,7 @@ export default {
                 })
             } catch (error) {
                 this.waiting = false
+                console.log(this.content)
                 this.$root.$bvToast.toast(error.message, {
                     title: 'i',
                     variant: 'danger',

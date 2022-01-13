@@ -55,9 +55,9 @@
                         :callback="saveTemplate"
                         class="mr11"
                     />
-                    <OpenButton file="https://mozilla.github.io/nunjucks/templating.html"
-                        >Document</OpenButton
-                    >
+                    <OpenButton file="https://mozilla.github.io/nunjucks/templating.html">
+                        Document
+                    </OpenButton>
                 </td>
             </tr>
             <tr v-if="item.isLayer">
