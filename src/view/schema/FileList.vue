@@ -14,14 +14,12 @@
         <thead>
             <tr>
                 <th>Layer</th>
-                <th>Class name</th>
                 <th>File name</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="name in list" :key="name">
                 <td>{{ name }}</td>
-                <td>{{ map.get(name).getClassName(entity) }}</td>
                 <td>
                     <b-button-group class="mr11">
                         <WriteButton :entity="entity" :layer="map.get(name)"></WriteButton>
