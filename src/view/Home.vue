@@ -16,7 +16,8 @@
         </div>
 
         <p v-if="sss.inBrowser" class="mt11">
-            <span @click="add" class="btn btn-outline-primary"> New </span>
+            <span @click="add" class="btn btn-outline-primary mr11"> New </span>
+            <span v-if="local" @click="log" class="btn btn-outline-primary"> log </span>
         </p>
     </div>
 </template>
@@ -28,8 +29,14 @@ export default {
     name: 'Home',
     data() {
         return {
+            local: false,
             sss,
             version: process.env.VUE_APP_VERSION,
+        }
+    },
+    created() {
+        if (window.location.hostname === 'localhost') {
+            this.local = true
         }
     },
     methods: {
@@ -43,6 +50,9 @@ export default {
             }
             window.bridge.call(response)
         },
+        log() {
+            console.log(JSON.stringify(sss.project))
+        },
         upgrade() {
             this.$bvModal
                 .msgBoxConfirm('This will abandon all data in Layer page, Continue?', {
@@ -51,13 +61,13 @@ export default {
                     footerClass: 'border-top-0',
                     centered: true,
                 })
-                .then((value) => {
+                .then(value => {
                     if (value) {
                         sss.upgrade()
                         sss.error = null
                     }
                 })
-                .catch((error) => {
+                .catch(error => {
                     this.$root.$bvToast.toast(error.message, {
                         title: 'i',
                         variant: 'danger',
