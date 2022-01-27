@@ -4014,6 +4014,24 @@
                             "value": ""
                         },
                         {
+                            "name": "foreignId",
+                            "data": {},
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "foreignIdFor",
+                            "data": {},
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "foreignUuid",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
                             "name": "geometry",
                             "data": {},
                             "tag": "string",
@@ -4023,6 +4041,12 @@
                             "name": "geometryCollection",
                             "data": {},
                             "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "id",
+                            "data": {},
+                            "tag": "integer",
                             "value": ""
                         },
                         {
@@ -4098,12 +4122,6 @@
                             "value": ""
                         },
                         {
-                            "name": "uuidMorphs",
-                            "data": {},
-                            "tag": "string",
-                            "value": ""
-                        },
-                        {
                             "name": "multiLineString",
                             "data": {},
                             "tag": "string",
@@ -4122,6 +4140,24 @@
                             "value": ""
                         },
                         {
+                            "name": "nullableMorphs",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "nullableTimestamps",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "nullableUuidMorphs",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
                             "name": "point",
                             "data": {},
                             "tag": "string",
@@ -4129,6 +4165,12 @@
                         },
                         {
                             "name": "polygon",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "rememberToken",
                             "data": {},
                             "tag": "string",
                             "value": ""
@@ -4152,6 +4194,18 @@
                             "value": ""
                         },
                         {
+                            "name": "softDeletes",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "softDeletesTz",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
                             "name": "string",
                             "data": {},
                             "tag": "string",
@@ -4170,19 +4224,31 @@
                             "value": ""
                         },
                         {
-                            "name": "timeTz",
-                            "data": {},
-                            "tag": "string",
-                            "value": ""
-                        },
-                        {
                             "name": "timestamp",
                             "data": {},
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "name": "timestamps",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "timestampsTz",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
                             "name": "timestampTz",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "timeTz",
                             "data": {},
                             "tag": "string",
                             "value": ""
@@ -4200,7 +4266,55 @@
                             "value": ""
                         },
                         {
+                            "name": "tinyText",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "unsignedBigInteger",
+                            "data": {},
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "unsignedDecimal",
+                            "data": {},
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "unsignedInteger",
+                            "data": {},
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "unsignedMediumInteger",
+                            "data": {},
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "unsignedSmallInteger",
+                            "data": {},
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "name": "unsignedTinyInteger",
+                            "data": {},
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
                             "name": "uuid",
+                            "data": {},
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "name": "uuidMorphs",
                             "data": {},
                             "tag": "string",
                             "value": ""
