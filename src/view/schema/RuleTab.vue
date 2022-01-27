@@ -33,7 +33,9 @@
                     >
                         <ul class="list-unstyled">
                             <li v-for="rule in list" :key="rule.name" class="mt11">
-                                <b-button @click="add(rule)" variant="outline-primary" class="mr11"> + </b-button>
+                                <b-button @click="add(rule)" variant="outline-primary" class="mr11">
+                                    +
+                                </b-button>
                                 <OpenButton :file="link(rule)">{{ rule.name }}</OpenButton>
                             </li>
                         </ul>
@@ -113,9 +115,14 @@ export default {
             }
         },
         link(rule) {
-            const uri = 'https://laravel.com/docs/6.0/validation'
-            if (rule.name === 'sometimes') {
-                return uri + '#conditionally-adding-rules'
+            const map = new Map([
+                ['sometimes', '#validating-when-present'],
+                ['multiple_of', '#multiple-of'],
+            ])
+            const uri = 'https://laravel.com/docs/9.x/validation'
+            const found = map.get(rule.name)
+            if (found) {
+                return uri + found
             }
             const name = rule.name.replace('_', '-')
             return `${uri}#rule-${name}`
