@@ -2413,7 +2413,7 @@
                 "name": "CastPHP",
                 "original": true,
                 "color": "",
-                "description": "for Cast in Model",
+                "description": "for Cast in Model (value is used in type comment)",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -4326,7 +4326,7 @@
                 "name": "FieldTypeInteger",
                 "original": true,
                 "color": "",
-                "description": "for Field Validation",
+                "description": "for Field Validation (if field type found in this list, then add rule integer)",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -4397,7 +4397,7 @@
                 "name": "FieldTypeNumeric",
                 "original": true,
                 "color": "",
-                "description": "for Field Validation",
+                "description": "for Field Validation (if field type found in this list, then add rule numeric)",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -4486,7 +4486,7 @@
                 "name": "FieldTypeMySQL",
                 "original": true,
                 "color": "",
-                "description": "MySQL type (tag is FieldType)",
+                "description": "MySQL type (tag is FieldType. used to convert MySQL type to Laravel type)",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -4719,7 +4719,7 @@
                 "name": "FieldTypePGSQL",
                 "original": true,
                 "color": "",
-                "description": "PostgreSQL type (tag is FieldType)",
+                "description": "PostgreSQL type (tag is FieldType. used to convert PostgreSQL type to Laravel type)",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -4976,7 +4976,7 @@
                 "name": "FieldTypeWithParameter",
                 "original": true,
                 "color": "",
-                "description": "for Migration",
+                "description": "for Migration (show parameter/length input box)",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -5141,7 +5141,7 @@
                 "name": "Middleware",
                 "original": true,
                 "color": "",
-                "description": "",
+                "description": "for Route",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -5324,7 +5324,7 @@
                 "name": "RouteMethod",
                 "original": true,
                 "color": "",
-                "description": "",
+                "description": "for Route",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -5377,7 +5377,7 @@
                 "name": "RouteRESTful",
                 "original": true,
                 "color": "",
-                "description": "",
+                "description": "for Route",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -5418,7 +5418,7 @@
                 "name": "ValidationNameMap",
                 "original": false,
                 "color": "",
-                "description": "for Field Validation, tag is name in ValidationRule",
+                "description": "for Field Validation (tag is name in ValidationRule)",
                 "version": 1,
                 "propertyManager": {
                     "list": [
