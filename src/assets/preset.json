@@ -5338,6 +5338,12 @@
                             "value": ""
                         },
                         {
+                            "name": "accepted_if",
+                            "data": {},
+                            "tag": "WWW",
+                            "value": ""
+                        },
+                        {
                             "name": "active_url",
                             "data": {},
                             "tag": "WWW",
@@ -5416,6 +5422,12 @@
                             "value": ""
                         },
                         {
+                            "name": "current_password",
+                            "data": {},
+                            "tag": "Field",
+                            "value": ""
+                        },
+                        {
                             "name": "date",
                             "data": {},
                             "tag": "Date",
@@ -5431,6 +5443,18 @@
                             "name": "date_format",
                             "data": {},
                             "tag": "Date",
+                            "value": ""
+                        },
+                        {
+                            "name": "declined",
+                            "data": {},
+                            "tag": "WWW",
+                            "value": ""
+                        },
+                        {
+                            "name": "declined_if",
+                            "data": {},
+                            "tag": "WWW",
                             "value": ""
                         },
                         {
@@ -5476,6 +5500,18 @@
                             "value": ""
                         },
                         {
+                            "name": "enum",
+                            "data": {},
+                            "tag": "Content",
+                            "value": ""
+                        },
+                        {
+                            "name": "exclude",
+                            "data": {},
+                            "tag": "Require",
+                            "value": ""
+                        },
+                        {
                             "name": "exclude_if",
                             "data": {},
                             "tag": "Require",
@@ -5483,6 +5519,12 @@
                         },
                         {
                             "name": "exclude_unless",
+                            "data": {},
+                            "tag": "Require",
+                            "value": ""
+                        },
+                        {
+                            "name": "exclude_without",
                             "data": {},
                             "tag": "Require",
                             "value": ""
@@ -5578,15 +5620,15 @@
                             "value": ""
                         },
                         {
-                            "name": "max",
+                            "name": "mac",
                             "data": {},
-                            "tag": "Size",
+                            "tag": "WWW",
                             "value": ""
                         },
                         {
-                            "name": "mimetypes",
+                            "name": "max",
                             "data": {},
-                            "tag": "File",
+                            "tag": "Size",
                             "value": ""
                         },
                         {
@@ -5596,9 +5638,21 @@
                             "value": ""
                         },
                         {
+                            "name": "mimetypes",
+                            "data": {},
+                            "tag": "File",
+                            "value": ""
+                        },
+                        {
                             "name": "min",
                             "data": {},
                             "tag": "Size",
+                            "value": ""
+                        },
+                        {
+                            "name": "multiple_of",
+                            "data": {},
+                            "tag": "Content",
                             "value": ""
                         },
                         {
@@ -5635,6 +5689,30 @@
                             "name": "present",
                             "data": {},
                             "tag": "Other",
+                            "value": ""
+                        },
+                        {
+                            "name": "prohibited",
+                            "data": {},
+                            "tag": "Require",
+                            "value": ""
+                        },
+                        {
+                            "name": "prohibited_if",
+                            "data": {},
+                            "tag": "Require",
+                            "value": ""
+                        },
+                        {
+                            "name": "prohibited_unless",
+                            "data": {},
+                            "tag": "Require",
+                            "value": ""
+                        },
+                        {
+                            "name": "prohibits",
+                            "data": {},
+                            "tag": "Require",
                             "value": ""
                         },
                         {
