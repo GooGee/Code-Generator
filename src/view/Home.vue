@@ -3,7 +3,7 @@
         <img v-if="sss.ready" alt="logo" src="@/assets/logo.svg" style="width: 222px" />
         <img v-else alt="loading" src="@/assets/loading.svg" class="mb11" />
         <h1>Code Generator</h1>
-        <p>{{ version }}</p>
+        <p>{{ version }} for Laravel 9</p>
 
         <div v-if="sss.error">
             <p class="red">Data is not compatible with this version!</p>
