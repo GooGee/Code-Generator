@@ -3805,9 +3805,9 @@
                                 "length": "",
                                 "unsigned": false,
                                 "value": "",
-                                "type": "timestamp"
+                                "type": "timestampTz"
                             },
-                            "tag": "timestamp",
+                            "tag": "timestampTz",
                             "value": ""
                         },
                         {
@@ -3822,9 +3822,9 @@
                                 "length": "",
                                 "unsigned": false,
                                 "value": "",
-                                "type": "timestamp"
+                                "type": "timestampTz"
                             },
-                            "tag": "timestamp",
+                            "tag": "timestampTz",
                             "value": ""
                         },
                         {
@@ -3839,9 +3839,9 @@
                                 "length": "",
                                 "unsigned": false,
                                 "value": "",
-                                "type": "timestamp"
+                                "type": "timestampTz"
                             },
-                            "tag": "timestamp",
+                            "tag": "timestampTz",
                             "value": ""
                         },
                         {
@@ -3919,7 +3919,7 @@
                         {
                             "name": "timestamp",
                             "data": {},
-                            "tag": "timestamp",
+                            "tag": "timestampTz",
                             "value": ""
                         },
                         {
@@ -3927,7 +3927,7 @@
                             "data": {
                                 "useCurrent": true
                             },
-                            "tag": "timestamp",
+                            "tag": "timestampTz",
                             "value": ""
                         }
                     ]
