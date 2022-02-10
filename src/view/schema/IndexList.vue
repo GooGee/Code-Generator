@@ -23,9 +23,9 @@
                 </td>
                 <td>
                     <select v-model="index.type" class="form-control">
-                        <option value="primary">primary</option>
-                        <option value="unique">unique</option>
-                        <option value="index">index</option>
+                        <option v-for="item in IndexTypeList" :key="item" :value="item">
+                            {{ item }}
+                        </option>
                     </select>
                 </td>
                 <td>
@@ -70,6 +70,11 @@ export default {
         manager() {
             return sss.sidebar.item.indexManager
         },
+    },
+    data(){
+        return {
+            IndexTypeList: sss.IndexTypeList,
+        }
     },
     methods: {
         addField(index) {

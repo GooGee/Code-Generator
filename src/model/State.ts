@@ -14,6 +14,7 @@ import Start from './Service/Start'
 import RunScript from './Service/RunScript'
 import Folder from './Schema/Folder'
 import SaveDTS from './Service/SaveDTS'
+import { IndexTypeList } from './Schema/Index'
 
 class FakeManager {
     constructor(readonly folder: Folder) {}
@@ -31,6 +32,7 @@ export default class State {
     project: Project | null = null
     data: Project | null = null
     sidebar: SideBar | null = null
+    readonly IndexTypeList = IndexTypeList
 
     readonly inputDialogue = new InputDialogue()
     readonly listDialogue = new ListDialogue()

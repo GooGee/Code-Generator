@@ -2,10 +2,13 @@ import UniqueItem from '../Base/UniqueItem'
 import UniqueList from '../Base/UniqueList'
 
 export enum IndexTypeEnum {
+    fullText = 'fullText',
     index = 'index',
     primary = 'primary',
     unique = 'unique',
 }
+
+export const IndexTypeList = Object.keys(IndexTypeEnum)
 
 export default class Index extends UniqueItem {
     type: IndexTypeEnum
@@ -23,10 +26,10 @@ export class IndexManager extends UniqueList<Index> {
     }
 
     get primaryIndex() {
-        return this.list.find((index) => index.type === 'primary')
+        return this.list.find(index => index.type === 'primary')
     }
 
     get uniqueIndexList() {
-        return this.list.filter((index) => index.type === 'unique')
+        return this.list.filter(index => index.type === 'unique')
     }
 }
