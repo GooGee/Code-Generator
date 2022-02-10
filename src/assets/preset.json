@@ -999,8 +999,8 @@
                             "fillable": false,
                             "hidden": false,
                             "htmlEdit": "",
-                            "htmlIndex": "",
-                            "htmlShow": "",
+                            "htmlIndex": "span",
+                            "htmlShow": "span",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -1025,8 +1025,8 @@
                             "fillable": false,
                             "hidden": false,
                             "htmlEdit": "",
-                            "htmlIndex": "",
-                            "htmlShow": "",
+                            "htmlIndex": "span",
+                            "htmlShow": "span",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -1050,9 +1050,9 @@
                             "comment": "",
                             "fillable": true,
                             "hidden": false,
-                            "htmlEdit": "",
-                            "htmlIndex": "",
-                            "htmlShow": "",
+                            "htmlEdit": "textarea",
+                            "htmlIndex": "span",
+                            "htmlShow": "span",
                             "included": true,
                             "length": "",
                             "useCurrent": false,
@@ -1082,8 +1082,8 @@
                             "fillable": false,
                             "hidden": false,
                             "htmlEdit": "",
-                            "htmlIndex": "",
-                            "htmlShow": "",
+                            "htmlIndex": "span",
+                            "htmlShow": "span",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -1108,8 +1108,8 @@
                             "fillable": false,
                             "hidden": false,
                             "htmlEdit": "",
-                            "htmlIndex": "",
-                            "htmlShow": "",
+                            "htmlIndex": "span",
+                            "htmlShow": "span",
                             "included": false,
                             "length": "",
                             "useCurrent": false,
@@ -1296,7 +1296,7 @@
                                                         "filePattern": "${entity.name}Command.php",
                                                         "pathPattern": "",
                                                         "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Console\\Command;\n\nclass {{ layer.getClassName(entity) }} extends Command\n{\n    /**\n     * The name and signature of the console command.\n     *\n     * @var string\n     */\n    protected $signature = 'command:name';\n\n    /**\n     * The console command description.\n     *\n     * @var string\n     */\n    protected $description = 'Command description';\n\n    /**\n     * Create a new command instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        parent::__construct();\n    }\n\n    /**\n     * Execute the console command.\n     *\n     * @return mixed\n     */\n    public function handle()\n    {\n        //\n    }\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Console\\Command;\n\nclass {{ layer.getClassName(entity) }} extends Command\n{\n    /**\n     * The name and signature of the console command.\n     *\n     * @var string\n     */\n    protected $signature = 'command:name';\n\n    /**\n     * The console command description.\n     *\n     * @var string\n     */\n    protected $description = 'Command description';\n\n    /**\n     * Create a new command instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        parent::__construct();\n    }\n\n    /**\n     * Execute the console command.\n     *\n     * @return int\n     */\n    public function handle()\n    {\n        return 0;\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
@@ -1328,7 +1328,7 @@
                                             "color": "",
                                             "original": false,
                                             "requireName": true,
-                                            "single": false,
+                                            "single": true,
                                             "classPattern": "${entity.name}Event",
                                             "filePattern": "${entity.name}Event.php",
                                             "pathPattern": "",
@@ -1813,7 +1813,7 @@
                                             "filePattern": "${entity.name}Policy.php",
                                             "pathPattern": "",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.user = ddd.project.getEntity('User')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse {{ model.getFullName(project, user) }};\nuse Illuminate\\Auth\\Access\\HandlesAuthorization;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use HandlesAuthorization;\n\n    /**\n     * Determine whether the user can view any item.\n     *\n     * @param  User $user\n     * @return mixed\n     */\n    public function viewAny(User $user)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can view the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function view(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can create item.\n     *\n     * @param User $user\n     * @return mixed\n     */\n    public function create(User $user)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can update the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function update(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return $user->id === $item->user_id;\n    }\n\n    /**\n     * Determine whether the user can delete the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function delete(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return $user->id === $item->user_id;\n    }\n\n    /**\n     * Determine whether the user can restore the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function restore(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n\n    /**\n     * Determine whether the user can permanently delete the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return mixed\n     */\n    public function forceDelete(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        //\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse {{ model.getFullName(project, user) }};\nuse Illuminate\\Auth\\Access\\HandlesAuthorization;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use HandlesAuthorization;\n\n    /**\n     * Determine whether the user can view any item.\n     *\n     * @param  User $user\n     * @return \\Illuminate\\Auth\\Access\\Response|bool\n     */\n    public function viewAny(User $user)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can view the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return \\Illuminate\\Auth\\Access\\Response|bool\n     */\n    public function view(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can create item.\n     *\n     * @param User $user\n     * @return \\Illuminate\\Auth\\Access\\Response|bool\n     */\n    public function create(User $user)\n    {\n        return true;\n    }\n\n    /**\n     * Determine whether the user can update the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return \\Illuminate\\Auth\\Access\\Response|bool\n     */\n    public function update(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return $user->id === $item->user_id;\n    }\n\n    /**\n     * Determine whether the user can delete the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return \\Illuminate\\Auth\\Access\\Response|bool\n     */\n    public function delete(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return $user->id === $item->user_id;\n    }\n\n    /**\n     * Determine whether the user can restore the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return \\Illuminate\\Auth\\Access\\Response|bool\n     */\n    public function restore(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return false;\n    }\n\n    /**\n     * Determine whether the user can permanently delete the item.\n     *\n     * @param User $user\n     * @param {{ model.getClassName(entity) }} $item\n     * @return \\Illuminate\\Auth\\Access\\Response|bool\n     */\n    public function forceDelete(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        return false;\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1906,7 +1906,7 @@
                                             "filePattern": "${entity.name}Resource.php",
                                             "pathPattern": "",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Http\\Resources\\Json\\JsonResource;\n\nclass {{ layer.getClassName(entity) }} extends JsonResource\n{\n    /**\n     * Transform the resource into an array.\n     *\n     * @param \\Illuminate\\Http\\Request $request\n     * @return array\n     */\n    public function toArray($request)\n    {\n        return [\n{% for field in entity.fieldManager.list %}{% if field.hidden === false %}\n            '{{ field.name }}' => $this->{{ field.name }},\n{% endif %}{% endfor %}\n        ];\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Http\\Resources\\Json\\JsonResource;\n\nclass {{ layer.getClassName(entity) }} extends JsonResource\n{\n    /**\n     * Transform the resource into an array.\n     *\n     * @param \\Illuminate\\Http\\Request $request\n     * @return array|\\Illuminate\\Contracts\\Support\\Arrayable|\\JsonSerializable\n     */\n    public function toArray($request)\n    {\n        return [\n{% for field in entity.fieldManager.list %}{% if field.hidden === false %}\n            '{{ field.name }}' => $this->{{ field.name }},\n{% endif %}{% endfor %}\n        ];\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -2008,7 +2008,7 @@
                                             "original": true,
                                             "requireName": true,
                                             "single": false,
-                                            "classPattern": "Create${entity.name}Table",
+                                            "classPattern": "",
                                             "filePattern": "0000_00_00_000000_create_${entity.tableName}_table.php",
                                             "pathPattern": "",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * make PHP statement of creating field in Migration\n     * @param {Field} field\n     * @returns {string}\n     */\n    function setText(field) {\n        const list = ['$table']\n\n        if (field.length) {\n            list.push(`${field.type}('${field.name}', ${field.length})`)\n        } else {\n            list.push(`${field.type}('${field.name}')`)\n        }\n\n        if (field.collation) {\n            list.push(`collation(${field.collation})`)\n        }\n\n        if (field.comment) {\n            list.push(`comment(${field.comment})`)\n        }\n\n        if (field.value) {\n            list.push(`default(${field.value})`)\n        }\n\n        if (field.allowNull) {\n            list.push('nullable()')\n        }\n\n        if (field.useCurrent) {\n            list.push('useCurrent()')\n        }\n\n        if (field.unsigned) {\n            list.push('unsigned()')\n        }\n\n        return list.join('->')\n    }\n\n    ddd.fieldText = setText\n\n    ddd.indexText = function (index) {\n        const text = index.fieldManager.list.map(field => field.name).join(\"', '\")\n        return `$table->${index.type}(['${text}'])`\n    }\n}\n",
@@ -2104,7 +2104,7 @@
                                             "classPattern": "",
                                             "filePattern": "index.blade.php",
                                             "pathPattern": "${entity.snakeCase}",
-                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    ddd.list = []\n    const htmlManager = ddd.project.getPreset('FieldHTML').propertyManager\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.htmlEdit === '') {\n            return\n        }\n        const found = htmlManager.find(field.htmlIndex)\n        if (found) {\n            const text = ddd.text.runText(found.value, {field})\n            ddd.list.push({\n                name: field.name,\n                html: text,\n            })\n        }\n    })\n}\n",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    ddd.list = []\n    const htmlManager = ddd.project.getPreset('FieldHTML').propertyManager\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.htmlIndex === '') {\n            return\n        }\n        const found = htmlManager.find(field.htmlIndex)\n        if (found) {\n            const text = ddd.text.runText(found.value, {field})\n            ddd.list.push({\n                name: field.name,\n                html: text,\n            })\n        }\n    })\n}\n",
                                             "template": "\n<table class=\"table\">\n    <thead>\n        <tr>\n{% for item in list %}\n            <th>{{ item.name }}</th>\n{% endfor %}\n        </tr>\n    </thead>\n    <tbody>\n        <tr v-for=\"item in list\" :key=\"item\">\n{% for item in list %}\n            <td>{{ item.html }}</td>\n{% endfor %}\n        </tr>\n    </tbody>\n</table>\n",
                                             "dataManager": {
                                                 "list": []
@@ -2122,7 +2122,7 @@
                                             "classPattern": "",
                                             "filePattern": "show.blade.php",
                                             "pathPattern": "${entity.snakeCase}",
-                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    ddd.list = []\n    const htmlManager = ddd.project.getPreset('FieldHTML').propertyManager\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.htmlEdit === '') {\n            return\n        }\n        const found = htmlManager.find(field.htmlShow)\n        if (found) {\n            const text = ddd.text.runText(found.value, {field})\n            ddd.list.push({\n                name: field.name,\n                html: text,\n            })\n        }\n    })\n}\n",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    ddd.list = []\n    const htmlManager = ddd.project.getPreset('FieldHTML').propertyManager\n    ddd.entity.fieldManager.list.forEach(field => {\n        if (field.htmlShow === '') {\n            return\n        }\n        const found = htmlManager.find(field.htmlShow)\n        if (found) {\n            const text = ddd.text.runText(found.value, {field})\n            ddd.list.push({\n                name: field.name,\n                html: text,\n            })\n        }\n    })\n}\n",
                                             "template": "\n<table class=\"table\">\n    <tbody>\n{% for item in list %}\n        <tr>\n            <td class=\"text-right\">{{ item.name }}</td>\n            <td>{{ item.html }}</td>\n        </tr>\n{% endfor %}\n    </tbody>\n</table>\n",
                                             "dataManager": {
                                                 "list": []
