@@ -5842,6 +5842,12 @@
                             "value": ""
                         },
                         {
+                            "name": "required_array_keys",
+                            "data": {},
+                            "tag": "Other",
+                            "value": ""
+                        },
+                        {
                             "name": "required_if",
                             "data": {},
                             "tag": "Require",
