@@ -1424,6 +1424,42 @@
                                 "layerManager": {
                                     "list": [
                                         {
+                                            "name": "Created",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#00f",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}CreatedEvent",
+                                            "filePattern": "${entity.name}CreatedEvent.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('crud-channel');\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        },
+                                        {
+                                            "name": "Deleted",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#00f",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}DeletedEvent",
+                                            "filePattern": "${entity.name}DeletedEvent.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('crud-channel');\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        },
+                                        {
                                             "name": "Event",
                                             "description": "",
                                             "isLayer": true,
@@ -1437,6 +1473,24 @@
                                             "pathPattern": "",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
                                             "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    /**\n     * Create a new event instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('channel-name');\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        },
+                                        {
+                                            "name": "Updated",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#00f",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}UpdatedEvent",
+                                            "filePattern": "${entity.name}UpdatedEvent.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('crud-channel');\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
