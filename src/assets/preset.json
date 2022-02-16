@@ -2101,6 +2101,37 @@
                                         }
                                     ]
                                 }
+                            },
+                            {
+                                "name": "Schema",
+                                "description": "",
+                                "isLayer": false,
+                                "nsPattern": "Schema",
+                                "folderManager": {
+                                    "list": []
+                                },
+                                "layerManager": {
+                                    "list": [
+                                        {
+                                            "name": "Schema",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#f00",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "Schema",
+                                            "filePattern": "Schema.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of this Entity\n     */\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }}\n{\n\n    /**\n     * @return string[]\n     */\n    public static function structure(): array\n    {\n        return [\n{% for field in entity.fieldManager.list %}\n            '{{ field.name }}',\n{% endfor %}\n        ];\n    }\n\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        }
+                                    ]
+                                }
                             }
                         ]
                     },
