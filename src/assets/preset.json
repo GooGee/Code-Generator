@@ -1504,7 +1504,7 @@
                                                         "classPattern": "${entity.name}Controller",
                                                         "filePattern": "${entity.name}Controller.php",
                                                         "pathPattern": "",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'Request')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'CreateItemRequest')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse App\\Http\\Controllers\\Controller;\nuse {{ request.getFullName(project, entity) }};\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    protected $routePath = '{{ entity.snakeCase }}';\n    protected $viewPath = '{{ entity.snakeCase }}';\n\n    /**\n     * Display a listing of the resource.\n     *\n     * @return \\Illuminate\\Contracts\\View\\View\n     */\n    public function index()\n    {\n        $page = {{ model.getClassName(entity) }}::query()->paginate();\n        return view(\"$this->viewPath.index\", compact('page'));\n    }\n\n    /**\n     * Show the form for creating a new resource.\n     *\n     * @return \\Illuminate\\Contracts\\View\\View\n     */\n    public function create()\n    {\n        $item = new {{ model.getClassName(entity) }}();\n        $item->_token = csrf_token();\n        $item->_uri = \"/$this->routePath\";\n        return view(\"$this->viewPath.edit\", compact('item'));\n    }\n\n    /**\n     * Store a newly created resource in storage.\n     *\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Routing\\Redirector\n     */\n    public function store({{ request.getClassName(entity) }} $request)\n    {\n        $item = new {{ model.getClassName(entity) }};\n        $item->fill($request->validated());\n        $item->save();\n        return redirect(\"/$this->routePath/$item->id\");\n    }\n\n    /**\n     * Display the specified resource.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Contracts\\View\\View\n     */\n    public function show($id)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        return view(\"$this->viewPath.show\", compact('item'));\n    }\n\n    /**\n     * Show the form for editing the specified resource.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Contracts\\View\\View\n     */\n    public function edit($id)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        $item->_token = csrf_token();\n        $item->_method = 'PATCH';\n        $item->_uri = \"/$this->routePath/$item->id\";\n        return view(\"$this->viewPath.edit\", compact('item'));\n    }\n\n    /**\n     * Update the specified resource in storage.\n     *\n     * @param int $id\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Routing\\Redirector\n     */\n    public function update($id, {{ request.getClassName(entity) }} $request)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        $item->update($request->validated());\n        return redirect(\"/$this->routePath/$item->id\");\n    }\n\n    /**\n     * Remove the specified resource from storage.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Routing\\Redirector\n     */\n    public function destroy($id)\n    {\n        {{ model.getClassName(entity) }}::destroy($id);\n        return redirect(\"/$this->routePath\");\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
@@ -1522,14 +1522,14 @@
                                                         "classPattern": "${entity.name}Controller",
                                                         "filePattern": "${entity.name}Controller.php",
                                                         "pathPattern": "",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'Request')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'CreateItemRequest')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse App\\Http\\Controllers\\Controller;\nuse {{ request.getFullName(project, entity) }};\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n\n    /**\n     * Display a listing of the resource.\n     *\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function index()\n    {\n        $page = {{ model.getClassName(entity) }}::query()->paginate();\n        return response()->json(compact('page'));\n    }\n\n    /**\n     * Store a newly created resource in storage.\n     *\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function store({{ request.getClassName(entity) }} $request)\n    {\n        $item = new {{ model.getClassName(entity) }};\n        $item->fill($request->validated());\n        $item->save();\n        return response()->json(compact('item'));\n    }\n\n    /**\n     * Display the specified resource.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function show($id)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        return response()->json(compact('item'));\n    }\n\n    /**\n     * Update the specified resource in storage.\n     *\n     * @param int $id\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function update($id, {{ request.getClassName(entity) }} $request)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        $item->update($request->validated());\n        return response()->json(compact('item'));\n    }\n\n    /**\n     * Remove the specified resource from storage.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function destroy($id)\n    {\n        $count = {{ model.getClassName(entity) }}::destroy($id);\n        if ($count) {\n            return response()->json('OK');\n        }\n        return response()->json('Resource already deleted!', 410);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
                                                     },
                                                     {
-                                                        "name": "DeleteOneController",
+                                                        "name": "DeleteController",
                                                         "description": "Single Action Controller\ndelete /path/{id}",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1537,17 +1537,17 @@
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
-                                                        "classPattern": "DeleteOne${entity.name}Controller",
-                                                        "filePattern": "DeleteOne${entity.name}Controller.php",
+                                                        "classPattern": "Delete${entity.name}Controller",
+                                                        "filePattern": "Delete${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse App\\Http\\Controllers\\Controller;\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    /**\n     * Remove the specified resource from storage.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function __invoke($id)\n    {\n        $count = {{ model.getClassName(entity) }}::destroy($id);\n        if ($count) {\n            return response()->json('OK');\n        }\n        return response()->json('Resource already deleted!', 410);\n    }\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.deleter = ddd.project.getLayer('app/CRUD', 'Deleter')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ deleter.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke(int $id, {{ deleter.getClassName(entity) }} $deleter)\n    {\n        $user = auth()->user();\n        $this->throwIfUnauthorized($user);\n        $result = $deleter->run($id);\n        return $this->ok($result);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
                                                     },
                                                     {
-                                                        "name": "GetController",
+                                                        "name": "SearchController",
                                                         "description": "Single Action Controller\nget /path",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1555,17 +1555,17 @@
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
-                                                        "classPattern": "Get${entity.name}Controller",
-                                                        "filePattern": "Get${entity.name}Controller.php",
+                                                        "classPattern": "Search${entity.name}Controller",
+                                                        "filePattern": "Search${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse App\\Http\\Controllers\\Controller;\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    /**\n     * Display a listing of the resource.\n     *\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function __invoke()\n    {\n        $page = {{ model.getClassName(entity) }}::query()->paginate();\n        return response()->json(compact('page'));\n    }\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.searcher = ddd.project.getLayer('app/CRUD', 'Searcher')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ searcher.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke({{ searcher.getClassName(entity) }} $searcher)\n    {\n        $page = $searcher->query()->simplePaginate();\n        return $this->ok($page);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
                                                     },
                                                     {
-                                                        "name": "GetOneController",
+                                                        "name": "ReadController",
                                                         "description": "Single Action Controller\nget /path/{id}",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1573,17 +1573,17 @@
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
-                                                        "classPattern": "GetOne${entity.name}Controller",
-                                                        "filePattern": "GetOne${entity.name}Controller.php",
+                                                        "classPattern": "Read${entity.name}Controller",
+                                                        "filePattern": "Read${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse App\\Http\\Controllers\\Controller;\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    /**\n     * Display the specified resource.\n     *\n     * @param int $id\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function __invoke($id)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        return response()->json(compact('item'));\n    }\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Reader')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke(int $id, {{ reader.getClassName(entity) }} $reader)\n    {\n        $item = $reader->findOrFail($id);\n        return $this->ok($item);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
                                                     },
                                                     {
-                                                        "name": "PatchOneController",
+                                                        "name": "UpdateController",
                                                         "description": "Single Action Controller\npatch /path/{id}",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1591,17 +1591,17 @@
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
-                                                        "classPattern": "PatchOne${entity.name}Controller",
-                                                        "filePattern": "PatchOne${entity.name}Controller.php",
+                                                        "classPattern": "Update${entity.name}Controller",
+                                                        "filePattern": "Update${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'RequestUpdate')\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse App\\Http\\Controllers\\Controller;\nuse {{ request.getFullName(project, entity) }};\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    /**\n     * Update the specified resource in storage.\n     *\n     * @param int $id\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function __invoke($id, {{ request.getClassName(entity) }} $request)\n    {\n        $item = {{ model.getClassName(entity) }}::query()->findOrFail($id);\n        $item->update($request->validated());\n        return response()->json(compact('item'));\n    }\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'UpdateItemRequest')\n    ddd.updater = ddd.project.getLayer('app/CRUD', 'Updater')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ updater.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\nuse {{ request.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke(int $id, {{ request.getClassName(entity) }} $request, {{ updater.getClassName(entity) }} $updater)\n    {\n        $data = $request->validated();\n        $item = $updater->run($id, $data);\n        return $this->ok($item);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
                                                     },
                                                     {
-                                                        "name": "PostController",
+                                                        "name": "CreateController",
                                                         "description": "Single Action Controller\npost /path",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1609,11 +1609,11 @@
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
-                                                        "classPattern": "Post${entity.name}Controller",
-                                                        "filePattern": "Post${entity.name}Controller.php",
+                                                        "classPattern": "Create${entity.name}Controller",
+                                                        "filePattern": "Create${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'Request')\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse App\\Http\\Controllers\\Controller;\nuse {{ request.getFullName(project, entity) }};\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    /**\n     * Store a newly created resource in storage.\n     *\n     * @param {{ request.getClassName(entity) }} $request\n     * @return \\Illuminate\\Http\\JsonResponse\n     */\n    public function __invoke({{ request.getClassName(entity) }} $request)\n    {\n        $item = new {{ model.getClassName(entity) }};\n        $item->fill($request->validated());\n        $item->save();\n        return response()->json(compact('item'));\n    }\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.creater = ddd.project.getLayer('app/CRUD', 'Creater')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'CreateItemRequest')\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ creater.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\nuse {{ request.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke({{ request.getClassName(entity) }} $request, {{ creater.getClassName(entity) }} $creater)\n    {\n        $data = $request->validated();\n        $item = $creater->run($data);\n        return $this->ok($item);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
@@ -1663,7 +1663,7 @@
                                             "layerManager": {
                                                 "list": [
                                                     {
-                                                        "name": "Request",
+                                                        "name": "CreateItemRequest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "",
@@ -1671,17 +1671,17 @@
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
-                                                        "classPattern": "${entity.name}StoreRequest",
-                                                        "filePattern": "${entity.name}StoreRequest.php",
+                                                        "classPattern": "Create${entity.name}Request",
+                                                        "filePattern": "Create${entity.name}Request.php",
                                                         "pathPattern": "",
                                                         "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    const typeManager = ddd.project.getPreset('FieldType').propertyManager\n\n    /**\n     * set doc for field\n     * @param {Field} field\n     * @returns {string}\n     */\n    function setFieldType(field) {\n        const found = typeManager.find(field.type)\n        if (found) {\n            return found.tag\n        }\n\n        return 'mixed'\n    }\n\n    ddd.phptype = setFieldType\n\n    /**\n     * set validation rules\n     * @param {Field} field\n     * @returns {string}\n     */\n    function setFieldRule(field) {\n        if (field.ruleManager.list.length === 0) {\n            return '[]'\n        }\n\n        const list = field.ruleManager.list.map(rule => {\n            return rule.value ? `${rule.name}:${rule.value}` : rule.name\n        })\n        return `['${list.join(\"', '\")}']`\n    }\n\n    ddd.ruleText = setFieldRule\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n * {% for field in entity.fieldManager.list | selectattr('included') %}\n * @property {{ phptype(field) }} ${{ field.name }}{% endfor %}\n */\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n{% for field in entity.fieldManager.list | selectattr('included') %}\n            '{{ field.name }}' => {{ ruleText(field) }},\n{% endfor %}\n        ];\n    }\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n * {% for field in entity.fieldManager.list | selectattr('included') %}\n * @property {{ phptype(field) }} ${{ field.name }}{% endfor %}\n */\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return auth()->id() > 0;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n{% for field in entity.fieldManager.list | selectattr('included') %}\n            '{{ field.name }}' => {{ ruleText(field) }},\n{% endfor %}\n        ];\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
                                                     },
                                                     {
-                                                        "name": "RequestUpdate",
+                                                        "name": "UpdateItemRequest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "",
@@ -1689,11 +1689,11 @@
                                                         "original": false,
                                                         "requireName": true,
                                                         "single": false,
-                                                        "classPattern": "${entity.name}UpdateRequest",
-                                                        "filePattern": "${entity.name}UpdateRequest.php",
+                                                        "classPattern": "Update${entity.name}Request",
+                                                        "filePattern": "Update${entity.name}Request.php",
                                                         "pathPattern": "",
                                                         "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n    const typeManager = ddd.project.getPreset('FieldType').propertyManager\n\n    /**\n     * set doc for field\n     * @param {Field} field\n     * @returns {string}\n     */\n    function setFieldType(field) {\n        const found = typeManager.find(field.type)\n        if (found) {\n            return found.tag\n        }\n\n        return 'mixed'\n    }\n\n    ddd.phptype = setFieldType\n\n    /**\n     * set validation rules\n     * @param {Field} field\n     * @returns {string}\n     */\n    function setFieldRule(field) {\n        if (field.ruleManager.list.length === 0) {\n            return '[]'\n        }\n\n        const list = field.ruleManager.list.map(rule => {\n            return rule.value ? `${rule.name}:${rule.value}` : rule.name\n        })\n        return `['${list.join(\"', '\")}']`\n    }\n\n    ddd.ruleText = setFieldRule\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n * {% for field in entity.fieldManager.list | selectattr('included') %}\n * @property {{ phptype(field) }} ${{ field.name }}{% endfor %}\n */\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n{% for field in entity.fieldManager.list | selectattr('included') %}\n            '{{ field.name }}' => {{ ruleText(field) }},\n{% endfor %}\n        ];\n    }\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n * {% for field in entity.fieldManager.list | selectattr('included') %}\n * @property {{ phptype(field) }} ${{ field.name }}{% endfor %}\n */\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return auth()->id() > 0;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n{% for field in entity.fieldManager.list | selectattr('included') %}\n            '{{ field.name }}' => {{ ruleText(field) }},\n{% endfor %}\n        ];\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
