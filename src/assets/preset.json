@@ -1333,7 +1333,7 @@
                                             "filePattern": "${entity.name}Creater.php",
                                             "pathPattern": "Creater",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Reader')\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseCreate\n{\n    const Key = 'create:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    /**\n     * @param array<string, mixed> $data\n     * @return {{ model.getClassName(entity) }}\n     */\n    public function run(array $data)\n    {\n        $item = new {{ model.getClassName(entity) }}($data);\n        $item->save();\n        return $item;\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseCreater\n{\n    const Key = 'create:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    /**\n     * @param array<string, mixed> $data\n     * @return {{ model.getClassName(entity) }}\n     */\n    public function run(array $data)\n    {\n        $item = new {{ model.getClassName(entity) }}($data);\n        $item->save();\n        return $item;\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1351,7 +1351,7 @@
                                             "filePattern": "${entity.name}Deleter.php",
                                             "pathPattern": "Deleter",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Reader')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseDelete\n{\n    const Key = 'delete:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    public function run(int $id)\n    {\n        return $this->reader->findOrFail($id)->delete();\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseDeleter\n{\n    const Key = 'delete:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    public function run(int $id)\n    {\n        return $this->reader->findOrFail($id)->delete();\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1369,7 +1369,7 @@
                                             "filePattern": "${entity.name}Reader.php",
                                             "pathPattern": "Reader",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n *\n * @method {{ model.getClassName(entity) }}|null find($id)\n * @method {{ model.getClassName(entity) }} findOrFail($id)\n */\nclass {{ layer.getClassName(entity) }} extends BaseRead\n{\n    const Key = 'read:{{ entity.snakeCase }}';\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n *\n * @method {{ model.getClassName(entity) }}|null find($id)\n * @method {{ model.getClassName(entity) }} findOrFail($id)\n */\nclass {{ layer.getClassName(entity) }} extends BaseReader\n{\n    const Key = 'read:{{ entity.snakeCase }}';\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1387,7 +1387,7 @@
                                             "filePattern": "${entity.name}Searcher.php",
                                             "pathPattern": "Searcher",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseSearch\n{\n    const Key = 'search:{{ entity.snakeCase }}';\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseSearcher\n{\n    const Key = 'search:{{ entity.snakeCase }}';\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1405,7 +1405,7 @@
                                             "filePattern": "${entity.name}Updater.php",
                                             "pathPattern": "Updater",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Reader')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseUpdate\n{\n    const Key = 'update:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    public function run(int $id, array $data)\n    {\n        $item = $this->reader->findOrFail($id);\n        $item->update($data);\n        return $item;\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseUpdater\n{\n    const Key = 'update:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    public function run(int $id, array $data)\n    {\n        $item = $this->reader->findOrFail($id);\n        $item->update($data);\n        return $item;\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -2404,7 +2404,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "Base",
+                                                        "name": "BaseTest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
