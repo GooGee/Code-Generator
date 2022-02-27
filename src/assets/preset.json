@@ -2588,7 +2588,7 @@
                 "name": "CastPHP",
                 "original": true,
                 "color": "",
-                "description": "for Cast in Model (value is used in type comment)",
+                "description": "for Cast in Model (value is for comment)",
                 "version": 1,
                 "propertyManager": {
                     "list": [
@@ -2596,7 +2596,7 @@
                             "name": "array",
                             "data": {},
                             "tag": "",
-                            "value": "array"
+                            "value": "\\Illuminate\\Database\\Eloquent\\Casts\\ArrayObject"
                         },
                         {
                             "name": "boolean",
@@ -2623,6 +2623,12 @@
                             "value": "\\Illuminate\\Support\\Carbon"
                         },
                         {
+                            "name": "datetime:Y-m-d H:i:s",
+                            "data": {},
+                            "tag": "",
+                            "value": "\\Illuminate\\Support\\Carbon"
+                        },
+                        {
                             "name": "decimal:8",
                             "data": {},
                             "tag": "",
@@ -2635,10 +2641,46 @@
                             "value": "double"
                         },
                         {
+                            "name": "encrypted",
+                            "data": {},
+                            "tag": "",
+                            "value": "string"
+                        },
+                        {
+                            "name": "encrypted:array",
+                            "data": {},
+                            "tag": "",
+                            "value": "\\Illuminate\\Database\\Eloquent\\Casts\\ArrayObject"
+                        },
+                        {
+                            "name": "encrypted:collection",
+                            "data": {},
+                            "tag": "",
+                            "value": "\\Illuminate\\Support\\Collection"
+                        },
+                        {
+                            "name": "encrypted:object",
+                            "data": {},
+                            "tag": "",
+                            "value": "object"
+                        },
+                        {
                             "name": "float",
                             "data": {},
                             "tag": "",
                             "value": "float"
+                        },
+                        {
+                            "name": "immutable_date",
+                            "data": {},
+                            "tag": "",
+                            "value": "\\Illuminate\\Support\\Carbon"
+                        },
+                        {
+                            "name": "immutable_datetime",
+                            "data": {},
+                            "tag": "",
+                            "value": "\\Illuminate\\Support\\Carbon"
                         },
                         {
                             "name": "integer",
@@ -2653,6 +2695,12 @@
                             "value": "object"
                         },
                         {
+                            "name": "real",
+                            "data": {},
+                            "tag": "",
+                            "value": "double"
+                        },
+                        {
                             "name": "string",
                             "data": {},
                             "tag": "",
@@ -2660,12 +2708,6 @@
                         },
                         {
                             "name": "timestamp",
-                            "data": {},
-                            "tag": "",
-                            "value": "integer"
-                        },
-                        {
-                            "name": "timestampTz",
                             "data": {},
                             "tag": "",
                             "value": "integer"
