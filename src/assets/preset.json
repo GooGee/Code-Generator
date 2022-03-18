@@ -1321,91 +1321,91 @@
                                 "layerManager": {
                                     "list": [
                                         {
-                                            "name": "Creater",
+                                            "name": "Create",
                                             "description": "",
                                             "isLayer": true,
-                                            "nsPattern": "Creater",
+                                            "nsPattern": "Create",
                                             "color": "#0f0",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
-                                            "classPattern": "${entity.name}Creater",
-                                            "filePattern": "${entity.name}Creater.php",
-                                            "pathPattern": "Creater",
-                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Reader')\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseCreater\n{\n    const Key = 'create:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    /**\n     * @param array<string, mixed> $data\n     * @return {{ model.getClassName(entity) }}\n     */\n    public function run(array $data)\n    {\n        $item = new {{ model.getClassName(entity) }}($data);\n        $item->save();\n        return $item;\n    }\n}\n",
+                                            "classPattern": "Create${entity.name}",
+                                            "filePattern": "Create${entity.name}.php",
+                                            "pathPattern": "Create",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Read')\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseCreate\n{\n    const Key = 'create:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    /**\n     * @param array<string, mixed> $data\n     * @return {{ model.getClassName(entity) }}\n     */\n    public function run(array $data)\n    {\n        $item = new {{ model.getClassName(entity) }}($data);\n        $item->save();\n        return $item;\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
                                         },
                                         {
-                                            "name": "Deleter",
+                                            "name": "Delete",
                                             "description": "",
                                             "isLayer": true,
-                                            "nsPattern": "Deleter",
+                                            "nsPattern": "Delete",
                                             "color": "#0f0",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
-                                            "classPattern": "${entity.name}Deleter",
-                                            "filePattern": "${entity.name}Deleter.php",
-                                            "pathPattern": "Deleter",
-                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Reader')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseDeleter\n{\n    const Key = 'delete:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    public function run(int $id)\n    {\n        return $this->reader->findOrFail($id)->delete();\n    }\n}\n",
+                                            "classPattern": "Delete${entity.name}",
+                                            "filePattern": "Delete${entity.name}.php",
+                                            "pathPattern": "Delete",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Read')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseDelete\n{\n    const Key = 'delete:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    public function run(int $id)\n    {\n        return $this->reader->findOrFail($id)->delete();\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
                                         },
                                         {
-                                            "name": "Reader",
+                                            "name": "Read",
                                             "description": "",
                                             "isLayer": true,
-                                            "nsPattern": "Reader",
+                                            "nsPattern": "Read",
                                             "color": "#0f0",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
-                                            "classPattern": "${entity.name}Reader",
-                                            "filePattern": "${entity.name}Reader.php",
-                                            "pathPattern": "Reader",
+                                            "classPattern": "Read${entity.name}",
+                                            "filePattern": "Read${entity.name}.php",
+                                            "pathPattern": "Read",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n *\n * @method {{ model.getClassName(entity) }}|null find($id)\n * @method {{ model.getClassName(entity) }} findOrFail($id)\n */\nclass {{ layer.getClassName(entity) }} extends BaseReader\n{\n    const Key = 'read:{{ entity.snakeCase }}';\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\n/**\n * Class {{ layer.getClassName(entity) }}\n * @package {{ layer.getNameSpace(project, entity) }}\n *\n * @method {{ model.getClassName(entity) }}|null find($id)\n * @method {{ model.getClassName(entity) }} findOrFail($id)\n */\nclass {{ layer.getClassName(entity) }} extends BaseRead\n{\n    const Key = 'read:{{ entity.snakeCase }}';\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
                                         },
                                         {
-                                            "name": "Searcher",
+                                            "name": "Search",
                                             "description": "",
                                             "isLayer": true,
-                                            "nsPattern": "Searcher",
+                                            "nsPattern": "Search",
                                             "color": "#0f0",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
-                                            "classPattern": "${entity.name}Searcher",
-                                            "filePattern": "${entity.name}Searcher.php",
-                                            "pathPattern": "Searcher",
+                                            "classPattern": "Search${entity.name}",
+                                            "filePattern": "Search${entity.name}.php",
+                                            "pathPattern": "Search",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseSearcher\n{\n    const Key = 'search:{{ entity.snakeCase }}';\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ model.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseSearch\n{\n    const Key = 'search:{{ entity.snakeCase }}';\n\n    public function query()\n    {\n        return {{ model.getClassName(entity) }}::query();\n    }\n\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
                                         },
                                         {
-                                            "name": "Updater",
+                                            "name": "Update",
                                             "description": "",
                                             "isLayer": true,
-                                            "nsPattern": "Updater",
+                                            "nsPattern": "Update",
                                             "color": "#0f0",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
-                                            "classPattern": "${entity.name}Updater",
-                                            "filePattern": "${entity.name}Updater.php",
-                                            "pathPattern": "Updater",
-                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Reader')\n}\n",
-                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseUpdater\n{\n    const Key = 'update:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    public function run(int $id, array $data)\n    {\n        $item = $this->reader->findOrFail($id);\n        $item->update($data);\n        return $item;\n    }\n}\n",
+                                            "classPattern": "Update${entity.name}",
+                                            "filePattern": "Update${entity.name}.php",
+                                            "pathPattern": "Update",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Read')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends BaseUpdate\n{\n    const Key = 'update:{{ entity.snakeCase }}';\n\n    private {{ reader.getClassName(entity) }} $reader;\n\n    public function __construct({{ reader.getClassName(entity) }} $reader)\n    {\n        $this->reader = $reader;\n    }\n\n    public function run(int $id, array $data)\n    {\n        $item = $this->reader->findOrFail($id);\n        $item->update($data);\n        return $item;\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1594,7 +1594,7 @@
                                                         "classPattern": "Create${entity.name}Controller",
                                                         "filePattern": "Create${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.creater = ddd.project.getLayer('app/CRUD', 'Creater')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'CreateItemRequest')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.creater = ddd.project.getLayer('app/CRUD', 'Create')\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'CreateItemRequest')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ creater.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\nuse {{ request.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke({{ request.getClassName(entity) }} $request, {{ creater.getClassName(entity) }} $creater)\n    {\n        $data = $request->validated();\n        $item = $creater->run($data);\n        return response()->json(compact('item'));\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
@@ -1612,7 +1612,7 @@
                                                         "classPattern": "Delete${entity.name}Controller",
                                                         "filePattern": "Delete${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.deleter = ddd.project.getLayer('app/CRUD', 'Deleter')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.deleter = ddd.project.getLayer('app/CRUD', 'Delete')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ deleter.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke(int $id, {{ deleter.getClassName(entity) }} $deleter)\n    {\n        return response()->json('Error', 400);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
@@ -1630,7 +1630,7 @@
                                                         "classPattern": "Read${entity.name}Controller",
                                                         "filePattern": "Read${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Reader')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.reader = ddd.project.getLayer('app/CRUD', 'Read')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ reader.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke(int $id, {{ reader.getClassName(entity) }} $reader)\n    {\n        $item = $reader->findOrFail($id);\n        return response()->json(compact('item'));\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
@@ -1648,7 +1648,7 @@
                                                         "classPattern": "Search${entity.name}Controller",
                                                         "filePattern": "Search${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.searcher = ddd.project.getLayer('app/CRUD', 'Searcher')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.searcher = ddd.project.getLayer('app/CRUD', 'Search')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ searcher.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke({{ searcher.getClassName(entity) }} $searcher)\n    {\n        $page = $searcher->query()->simplePaginate();\n        return response()->json(compact('page'));\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
@@ -1666,7 +1666,7 @@
                                                         "classPattern": "Update${entity.name}Controller",
                                                         "filePattern": "Update${entity.name}Controller.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'UpdateItemRequest')\n    ddd.updater = ddd.project.getLayer('app/CRUD', 'Updater')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.request = ddd.project.getLayer('app/Http/Requests', 'UpdateItemRequest')\n    ddd.updater = ddd.project.getLayer('app/CRUD', 'Update')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ updater.getFullName(project, entity) }};\nuse App\\Http\\Controllers\\Controller;\nuse {{ request.getFullName(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends Controller\n{\n    public function __invoke(int $id, {{ request.getClassName(entity) }} $request, {{ updater.getClassName(entity) }} $updater)\n    {\n        $data = $request->validated();\n        $item = $updater->run($id, $data);\n        return response()->json(compact('item'));\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
