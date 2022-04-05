@@ -1632,6 +1632,42 @@
                                                         }
                                                     },
                                                     {
+                                                        "name": "DeleteItemRequest",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "#ff0",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "Delete${entity.name}Request",
+                                                        "filePattern": "Delete${entity.name}Request.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n        ];\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "Request",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "#ff0",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "${entity.name}Request",
+                                                        "filePattern": "${entity.name}Request.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\nclass {{ layer.getClassName(entity) }} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n        ];\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
                                                         "name": "UpdateItemRequest",
                                                         "description": "",
                                                         "isLayer": true,
