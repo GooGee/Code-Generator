@@ -1480,7 +1480,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "CreateController",
+                                                        "name": "CreateItemController",
                                                         "description": "Single Action Controller\npost /path",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1498,7 +1498,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "DeleteController",
+                                                        "name": "DeleteItemController",
                                                         "description": "Single Action Controller\ndelete /path/{id}",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1516,7 +1516,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "ReadController",
+                                                        "name": "ReadItemController",
                                                         "description": "Single Action Controller\nget /path/{id}",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1534,7 +1534,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "SearchController",
+                                                        "name": "SearchItemController",
                                                         "description": "Single Action Controller\nget /path",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -1552,7 +1552,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "UpdateController",
+                                                        "name": "UpdateItemController",
                                                         "description": "Single Action Controller\npatch /path/{id}",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -2288,7 +2288,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "Create",
+                                                        "name": "CreateItemTest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -2306,7 +2306,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "Delete",
+                                                        "name": "DeleteItemTest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -2324,7 +2324,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "Read",
+                                                        "name": "ReadItemTest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -2342,7 +2342,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "Search",
+                                                        "name": "SearchItemTest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -2360,7 +2360,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "Update",
+                                                        "name": "UpdateItemTest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
