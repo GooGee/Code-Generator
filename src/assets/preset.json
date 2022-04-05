@@ -2342,25 +2342,25 @@
                                             "layerManager": {
                                                 "list": [
                                                     {
-                                                        "name": "TestAPI",
+                                                        "name": "BaseTest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "",
                                                         "color": "#0ff",
                                                         "original": false,
-                                                        "requireName": true,
+                                                        "requireName": false,
                                                         "single": true,
-                                                        "classPattern": "${entity.name}Test",
-                                                        "filePattern": "${entity.name}Test.php",
+                                                        "classPattern": "BaseTest",
+                                                        "filePattern": "BaseTest.php",
                                                         "pathPattern": "",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
-                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Foundation\\Testing\\RefreshDatabase;\nuse Illuminate\\Foundation\\Testing\\WithFaker;\nuse PHPUnit\\Framework\\TestCase;\n\nclass {{ layer.getClassName(entity) }} extends TestCase\n{\n    /**\n     * A basic test example.\n     *\n     * @return void\n     */\n    public function testTrue()\n    {\n        $this->assertTrue(true);\n    }\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n}\n",
+                                                        "template": "<?php\n\nnamespace Tests\\Feature\\API;\n\nuse App\\Models\\User;\nuse Illuminate\\Routing\\Middleware\\ThrottleRequestsWithRedis;\nuse Tests\\TestCase;\n\nabstract class BaseTest extends TestCase\n{\n    protected $seed = true;\n\n    protected abstract function path(): string;\n\n    /**\n     * @return array<int, string>\n     */\n    protected abstract function structure(): array;\n\n    protected function setUp(): void\n    {\n        parent::setUp();\n\n        $this->withoutMiddleware([ThrottleRequestsWithRedis::class]);\n    }\n\n    protected function makeURI(string $path = '', array $parameterxx = [])\n    {\n        $uri = $this->path();\n        if ($path) {\n            $uri .= '/' . $path;\n        }\n        if (count($parameterxx)) {\n            $list = [];\n            foreach ($parameterxx as $key => $item) {\n                array_push($list, $key . '=' . $item);\n            }\n            $uri .= '?' . implode('&', $list);\n        }\n        return $uri;\n    }\n\n    /**\n     * @param array<string, mixed> $attributes\n     * @return User\n     */\n    protected function createUser(array $attributes = [])\n    {\n        $user = User::factory()->create($attributes);\n        return $user->refresh();\n    }\n\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
                                                     },
                                                     {
-                                                        "name": "BaseTest",
+                                                        "name": "BaseItemTest",
                                                         "description": "",
                                                         "isLayer": true,
                                                         "nsPattern": "${entity.name}",
@@ -2389,7 +2389,7 @@
                                                         "classPattern": "Create${entity.name}Test",
                                                         "filePattern": "Create${entity.name}Test.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseTest')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseItemTest')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function test{{ layer.name + entity.name }}ByGuest()\n    {\n        $user = $this->createUser();\n        $item = $this->makeItem($user);\n        $this->postJson($this->makeURI(), $item->toArray())\n            ->assertStatus(404);\n    }\n\n    public function test{{ layer.name + entity.name }}ByUser()\n    {\n        $user = $this->createUser();\n        $this->actingAs($user);\n        $item = $this->makeItem($user);\n        $this->postJson($this->makeURI(), $item->toArray())\n            ->assertStatus(404);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
@@ -2407,7 +2407,7 @@
                                                         "classPattern": "Delete${entity.name}Test",
                                                         "filePattern": "Delete${entity.name}Test.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseTest')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseItemTest')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function test{{ layer.name + entity.name }}ByGuest()\n    {\n        $user = $this->createUser();\n        $item = $this->makeItem($user);\n        $item->save();\n\n        $this->deleteJson($this->makeURI($item->id))\n            ->assertStatus(404);\n    }\n\n    public function test{{ layer.name + entity.name }}ByUser()\n    {\n        $user = $this->createUser();\n        $this->actingAs($user);\n        $item = $this->makeItem($user);\n        $item->save();\n\n        $this->deleteJson($this->makeURI($item->id))\n            ->assertStatus(404);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
@@ -2425,7 +2425,7 @@
                                                         "classPattern": "Read${entity.name}Test",
                                                         "filePattern": "Read${entity.name}Test.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseTest')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseItemTest')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function test{{ layer.name + entity.name }}ByGuest()\n    {\n        $user = $this->createUser();\n        $item = $this->makeItem($user);\n        $item->save();\n\n        $this->getJson($this->makeURI($item->id))\n            ->assertStatus(404);\n    }\n\n    public function test{{ layer.name + entity.name }}ByUser()\n    {\n        $user = $this->createUser();\n        $this->actingAs($user);\n        $item = $this->makeItem($user);\n        $item->save();\n\n        $this->getJson($this->makeURI($item->id))\n            ->assertStatus(404);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
@@ -2443,8 +2443,26 @@
                                                         "classPattern": "Search${entity.name}Test",
                                                         "filePattern": "Search${entity.name}Test.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseTest')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseItemTest')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function test{{ layer.name + entity.name }}ByGuest()\n    {\n        $user = $this->createUser();\n        $item = $this->makeItem($user);\n        $item->save();\n\n        $this->getJson($this->makeURI())\n            ->assertStatus(404);\n    }\n\n    public function test{{ layer.name + entity.name }}ByUser()\n    {\n        $user = $this->createUser();\n        $this->actingAs($user);\n        $item = $this->makeItem($user);\n        $item->save();\n\n        $this->getJson($this->makeURI())\n            ->assertStatus(404);\n    }\n}\n",
+                                                        "dataManager": {
+                                                            "list": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "TestAPI",
+                                                        "description": "",
+                                                        "isLayer": true,
+                                                        "nsPattern": "",
+                                                        "color": "#0ff",
+                                                        "original": false,
+                                                        "requireName": true,
+                                                        "single": false,
+                                                        "classPattern": "${entity.name}Test",
+                                                        "filePattern": "${entity.name}Test.php",
+                                                        "pathPattern": "",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}\n",
+                                                        "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse Illuminate\\Foundation\\Testing\\RefreshDatabase;\nuse Illuminate\\Foundation\\Testing\\WithFaker;\nuse PHPUnit\\Framework\\TestCase;\n\nclass {{ layer.getClassName(entity) }} extends TestCase\n{\n    /**\n     * A basic test example.\n     *\n     * @return void\n     */\n    public function testTrue()\n    {\n        $this->assertTrue(true);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
                                                         }
@@ -2461,7 +2479,7 @@
                                                         "classPattern": "Update${entity.name}Test",
                                                         "filePattern": "Update${entity.name}Test.php",
                                                         "pathPattern": "${entity.name}",
-                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseTest')\n}\n",
+                                                        "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.base = ddd.project.getLayer('tests/Feature/API', 'BaseItemTest')\n}\n",
                                                         "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nclass {{ layer.getClassName(entity) }} extends {{ base.getClassName(entity) }}\n{\n    public function test{{ layer.name + entity.name }}ByGuest()\n    {\n        $user = $this->createUser();\n        $item = $this->makeItem($user);\n        $item->save();\n\n        $this->patchJson($this->makeURI($item->id), $item->toArray())\n            ->assertStatus(404);\n    }\n\n    public function test{{ layer.name + entity.name }}ByUser()\n    {\n        $user = $this->createUser();\n        $this->actingAs($user);\n        $item = $this->makeItem($user);\n        $item->save();\n\n        $this->patchJson($this->makeURI($item->id), $item->toArray())\n            ->assertStatus(404);\n    }\n}\n",
                                                         "dataManager": {
                                                             "list": []
