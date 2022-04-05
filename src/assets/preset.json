@@ -1325,7 +1325,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#00f",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
@@ -1333,7 +1333,7 @@
                                             "filePattern": "${entity.name}CreatedEvent.php",
                                             "pathPattern": "",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('private-channel');\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('channel-name');\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1343,7 +1343,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#00f",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
@@ -1351,7 +1351,7 @@
                                             "filePattern": "${entity.name}DeletedEvent.php",
                                             "pathPattern": "",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('private-channel');\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('channel-name');\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1361,10 +1361,10 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#00f",
                                             "original": false,
                                             "requireName": true,
-                                            "single": true,
+                                            "single": false,
                                             "classPattern": "${entity.name}Event",
                                             "filePattern": "${entity.name}Event.php",
                                             "pathPattern": "",
@@ -1379,7 +1379,7 @@
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#00f",
                                             "original": false,
                                             "requireName": true,
                                             "single": false,
@@ -1387,7 +1387,7 @@
                                             "filePattern": "${entity.name}UpdatedEvent.php",
                                             "pathPattern": "",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.model = ddd.project.getLayer('app/Models', 'Model')\n}\n",
-                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('private-channel');\n    }\n}\n",
+                                            "template": "<?php\n\nnamespace App\\Events;\n\nuse {{ model.getFullName(project, entity) }};\nuse App\\Models\\User;\nuse Illuminate\\Broadcasting\\Channel;\nuse Illuminate\\Broadcasting\\InteractsWithSockets;\nuse Illuminate\\Broadcasting\\PresenceChannel;\nuse Illuminate\\Broadcasting\\PrivateChannel;\nuse Illuminate\\Contracts\\Broadcasting\\ShouldBroadcast;\nuse Illuminate\\Foundation\\Events\\Dispatchable;\nuse Illuminate\\Queue\\SerializesModels;\n\nclass {{ layer.getClassName(entity) }}\n{\n    use Dispatchable, InteractsWithSockets, SerializesModels;\n\n    private User $user;\n    private {{ model.getClassName(entity) }} $item;\n\n    public function __construct(User $user, {{ model.getClassName(entity) }} $item)\n    {\n        $this->user = $user;\n        $this->item = $item;\n    }\n\n    /**\n     * Get the channels the event should broadcast on.\n     *\n     * @return \\Illuminate\\Broadcasting\\Channel|array\n     */\n    public function broadcastOn()\n    {\n        return new PrivateChannel('channel-name');\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
                                             }
@@ -1736,18 +1736,72 @@
                                 "layerManager": {
                                     "list": [
                                         {
+                                            "name": "Created",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#00f",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}CreatedListener",
+                                            "filePattern": "${entity.name}CreatedListener.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.event = ddd.project.getLayer('app/Events', ddd.layer.name)\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ event.getFullName(project, entity) }};\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Queue\\InteractsWithQueue;\n\nclass {{ layer.getClassName(entity) }}\n{\n    /**\n     * Create the event listener.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Handle the event.\n     *\n     * @param  {{ event.getClassName(entity) }} $event\n     * @return void\n     */\n    public function handle({{ event.getClassName(entity) }} $event)\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        },
+                                        {
+                                            "name": "Deleted",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#00f",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}DeletedListener",
+                                            "filePattern": "${entity.name}DeletedListener.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.event = ddd.project.getLayer('app/Events', ddd.layer.name)\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ event.getFullName(project, entity) }};\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Queue\\InteractsWithQueue;\n\nclass {{ layer.getClassName(entity) }}\n{\n    /**\n     * Create the event listener.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Handle the event.\n     *\n     * @param  {{ event.getClassName(entity) }} $event\n     * @return void\n     */\n    public function handle({{ event.getClassName(entity) }} $event)\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        },
+                                        {
                                             "name": "Listener",
                                             "description": "",
                                             "isLayer": true,
                                             "nsPattern": "",
-                                            "color": "",
+                                            "color": "#00f",
                                             "original": false,
                                             "requireName": true,
-                                            "single": true,
+                                            "single": false,
                                             "classPattern": "${entity.name}Listener",
                                             "filePattern": "${entity.name}Listener.php",
                                             "pathPattern": "",
                                             "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.event = ddd.project.getLayer('app/Events', 'Event')\n}\n",
+                                            "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ event.getFullName(project, entity) }};\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Queue\\InteractsWithQueue;\n\nclass {{ layer.getClassName(entity) }}\n{\n    /**\n     * Create the event listener.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Handle the event.\n     *\n     * @param  {{ event.getClassName(entity) }} $event\n     * @return void\n     */\n    public function handle({{ event.getClassName(entity) }} $event)\n    {\n        //\n    }\n}\n",
+                                            "dataManager": {
+                                                "list": []
+                                            }
+                                        },
+                                        {
+                                            "name": "Updated",
+                                            "description": "",
+                                            "isLayer": true,
+                                            "nsPattern": "",
+                                            "color": "#00f",
+                                            "original": false,
+                                            "requireName": true,
+                                            "single": false,
+                                            "classPattern": "${entity.name}UpdatedListener",
+                                            "filePattern": "${entity.name}UpdatedListener.php",
+                                            "pathPattern": "",
+                                            "script": "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n    ddd.event = ddd.project.getLayer('app/Events', ddd.layer.name)\n}\n",
                                             "template": "<?php\n\nnamespace {{ layer.getNameSpace(project, entity) }};\n\nuse {{ event.getFullName(project, entity) }};\nuse Illuminate\\Contracts\\Queue\\ShouldQueue;\nuse Illuminate\\Queue\\InteractsWithQueue;\n\nclass {{ layer.getClassName(entity) }}\n{\n    /**\n     * Create the event listener.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        //\n    }\n\n    /**\n     * Handle the event.\n     *\n     * @param  {{ event.getClassName(entity) }} $event\n     * @return void\n     */\n    public function handle({{ event.getClassName(entity) }} $event)\n    {\n        //\n    }\n}\n",
                                             "dataManager": {
                                                 "list": []
