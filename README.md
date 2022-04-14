@@ -5,12 +5,9 @@
 
 # Laravel Code Generator
 
-Intuitive and efficient code generator for Laravel.
+Intuitive and efficient code generator for Laravel. [demo](https://GooGee.github.io/Code-Generator-Page/dist301)
 
 [PHPStorm plugin](https://plugins.jetbrains.com/plugin/15276)
-
-[demo](https://GooGee.github.io/Code-Generator-Page/dist300)
-
 
 
 ## Generate files
