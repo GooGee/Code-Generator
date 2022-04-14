@@ -12,15 +12,19 @@ Intuitive and efficient code generator for Laravel. [demo](https://GooGee.github
 
 ## Generate files
 
-![GUI](https://github.com/GooGee/Code-Generator/raw/main/image/file.gif)
+![file](https://github.com/GooGee/Code-Generator/raw/main/image/file.gif)
 
 ## Convert database schema to Laravel Migration
 
-![GUI](https://github.com/GooGee/Entity-Builder/raw/main/image/schema.gif)
+![schema](https://github.com/GooGee/Code-Generator/raw/main/image/schema.gif)
 
 ## Create migration
 
-![GUI](https://github.com/GooGee/Code-Generator/raw/main/image/table.gif)
+![migration](https://github.com/GooGee/Code-Generator/raw/main/image/table.gif)
+
+### Add doc to `Model` automatically
+
+![Model](https://github.com/GooGee/Code-Generator/raw/main/image/model.png)
 
 
 
