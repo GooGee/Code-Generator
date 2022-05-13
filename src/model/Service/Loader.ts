@@ -22,8 +22,12 @@ export default class Loader {
             throw new Error(message)
         }
 
-        const data = this.loadPreset(source, preset)
-        project.load(data)
+        if (source.version === project.version) {
+            project.load(source)
+        } else {
+            const data = this.loadPreset(source, preset)
+            project.load(data)
+        }
 
         return project
     }
