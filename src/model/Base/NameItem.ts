@@ -27,7 +27,7 @@ export default class NameItem extends Item {
         return lodash.snakeCase(this.name)
     }
 
-    get wavelCase() {
+    get waveCase() {
         return lodash.camelCase(this.name)
     }
 }
