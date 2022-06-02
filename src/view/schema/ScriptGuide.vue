@@ -1,5 +1,5 @@
 <template>
-    <OpenButton file="https://github.com/googee/Code-Generator-Page/blob/gh-pages/docs/script.md">
+    <OpenButton file="https://github.com/googee/Code-Generator-Page/blob/main/docs/script.md">
         Guide
     </OpenButton>
 </template>
